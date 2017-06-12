@@ -6745,3 +6745,1156 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1497253519.9653
     'REQUEST_TIME' => 1497253519
 ]
+2017-06-12 17:00:58 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Illegal string offset 'name'' in D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php:134
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php(134): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', 'D:\\angke-game_s...', 134, Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\angke-game_s...')
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\angke-game_s...', Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\angke-game_s...', Array, Object(backend\controllers\AgencyController))
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('index', Array, Object(backend\controllers\AgencyController))
+#5 D:\angke-game_standard-master\game_standard-master\backend\controllers\AgencyController.php(28): yii\base\Controller->render('index', Array)
+#6 [internal function]: backend\controllers\AgencyController->actionIndex()
+#7 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#9 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('index', Array)
+#10 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('agency/index', Array)
+#11 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#13 {main}
+2017-06-12 17:00:58 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2540'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/agency/index?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/agency/index'
+    'REMOTE_PORT' => '57215'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/pay/user-pay-log?id=1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497258058.6862
+    'REQUEST_TIME' => 1497258058
+]
+2017-06-12 17:14:47 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: backend\models\Agency::gold_config' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Component.php:147
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\db\BaseActiveRecord.php(286): yii\base\Component->__get('gold_config')
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Model.php(983): yii\db\BaseActiveRecord->__get('gold_config')
+#2 D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php(164): yii\base\Model->offsetGet('gold_config')
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\angke-game_s...')
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\angke-game_s...', Array)
+#5 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\angke-game_s...', Array, Object(backend\controllers\AgencyController))
+#6 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('index', Array, Object(backend\controllers\AgencyController))
+#7 D:\angke-game_standard-master\game_standard-master\backend\controllers\AgencyController.php(28): yii\base\Controller->render('index', Array)
+#8 [internal function]: backend\controllers\AgencyController->actionIndex()
+#9 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#10 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#11 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('index', Array)
+#12 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('agency/index', Array)
+#13 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#15 {main}
+2017-06-12 17:14:47 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2592'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/agency/index?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/agency/index'
+    'REMOTE_PORT' => '58699'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497258887.1617
+    'REQUEST_TIME' => 1497258887
+]
+2017-06-12 17:15:42 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Illegal string offset 'gold_config'' in D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php:164
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php(164): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', 'D:\\angke-game_s...', 164, Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\angke-game_s...')
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\angke-game_s...', Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\angke-game_s...', Array, Object(backend\controllers\AgencyController))
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('index', Array, Object(backend\controllers\AgencyController))
+#5 D:\angke-game_standard-master\game_standard-master\backend\controllers\AgencyController.php(28): yii\base\Controller->render('index', Array)
+#6 [internal function]: backend\controllers\AgencyController->actionIndex()
+#7 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#9 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('index', Array)
+#10 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('agency/index', Array)
+#11 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#13 {main}
+2017-06-12 17:15:42 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2592'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/agency/index?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/agency/index'
+    'REMOTE_PORT' => '58795'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497258942.2008
+    'REQUEST_TIME' => 1497258942
+]
+2017-06-12 17:15:43 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Illegal string offset 'gold_config'' in D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php:164
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php(164): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', 'D:\\angke-game_s...', 164, Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\angke-game_s...')
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\angke-game_s...', Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\angke-game_s...', Array, Object(backend\controllers\AgencyController))
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('index', Array, Object(backend\controllers\AgencyController))
+#5 D:\angke-game_standard-master\game_standard-master\backend\controllers\AgencyController.php(28): yii\base\Controller->render('index', Array)
+#6 [internal function]: backend\controllers\AgencyController->actionIndex()
+#7 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#9 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('index', Array)
+#10 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('agency/index', Array)
+#11 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#13 {main}
+2017-06-12 17:15:43 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2592'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/agency/index?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/agency/index'
+    'REMOTE_PORT' => '58799'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497258943.2956
+    'REQUEST_TIME' => 1497258943
+]
+2017-06-12 17:15:44 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Illegal string offset 'gold_config'' in D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php:164
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php(164): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', 'D:\\angke-game_s...', 164, Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\angke-game_s...')
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\angke-game_s...', Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\angke-game_s...', Array, Object(backend\controllers\AgencyController))
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('index', Array, Object(backend\controllers\AgencyController))
+#5 D:\angke-game_standard-master\game_standard-master\backend\controllers\AgencyController.php(28): yii\base\Controller->render('index', Array)
+#6 [internal function]: backend\controllers\AgencyController->actionIndex()
+#7 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#9 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('index', Array)
+#10 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('agency/index', Array)
+#11 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#13 {main}
+2017-06-12 17:15:44 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2592'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/agency/index?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/agency/index'
+    'REMOTE_PORT' => '58803'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497258944.0929
+    'REQUEST_TIME' => 1497258944
+]
+2017-06-12 17:15:44 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Illegal string offset 'gold_config'' in D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php:164
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php(164): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', 'D:\\angke-game_s...', 164, Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\angke-game_s...')
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\angke-game_s...', Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\angke-game_s...', Array, Object(backend\controllers\AgencyController))
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('index', Array, Object(backend\controllers\AgencyController))
+#5 D:\angke-game_standard-master\game_standard-master\backend\controllers\AgencyController.php(28): yii\base\Controller->render('index', Array)
+#6 [internal function]: backend\controllers\AgencyController->actionIndex()
+#7 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#9 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('index', Array)
+#10 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('agency/index', Array)
+#11 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#13 {main}
+2017-06-12 17:15:44 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2592'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/agency/index?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/agency/index'
+    'REMOTE_PORT' => '58806'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497258944.4227
+    'REQUEST_TIME' => 1497258944
+]
+2017-06-12 17:15:44 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Illegal string offset 'gold_config'' in D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php:164
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php(164): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', 'D:\\angke-game_s...', 164, Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\angke-game_s...')
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\angke-game_s...', Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\angke-game_s...', Array, Object(backend\controllers\AgencyController))
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('index', Array, Object(backend\controllers\AgencyController))
+#5 D:\angke-game_standard-master\game_standard-master\backend\controllers\AgencyController.php(28): yii\base\Controller->render('index', Array)
+#6 [internal function]: backend\controllers\AgencyController->actionIndex()
+#7 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#9 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('index', Array)
+#10 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('agency/index', Array)
+#11 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#13 {main}
+2017-06-12 17:15:44 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2592'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/agency/index?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/agency/index'
+    'REMOTE_PORT' => '58808'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497258944.605
+    'REQUEST_TIME' => 1497258944
+]
+2017-06-12 17:15:45 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Illegal string offset 'gold_config'' in D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php:164
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php(164): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', 'D:\\angke-game_s...', 164, Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\angke-game_s...')
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\angke-game_s...', Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\angke-game_s...', Array, Object(backend\controllers\AgencyController))
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('index', Array, Object(backend\controllers\AgencyController))
+#5 D:\angke-game_standard-master\game_standard-master\backend\controllers\AgencyController.php(28): yii\base\Controller->render('index', Array)
+#6 [internal function]: backend\controllers\AgencyController->actionIndex()
+#7 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#9 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('index', Array)
+#10 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('agency/index', Array)
+#11 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#13 {main}
+2017-06-12 17:15:44 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2592'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/agency/index?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/agency/index'
+    'REMOTE_PORT' => '58810'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497258944.8816
+    'REQUEST_TIME' => 1497258944
+]
+2017-06-12 17:15:45 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Illegal string offset 'gold_config'' in D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php:164
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php(164): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', 'D:\\angke-game_s...', 164, Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\angke-game_s...')
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\angke-game_s...', Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\angke-game_s...', Array, Object(backend\controllers\AgencyController))
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('index', Array, Object(backend\controllers\AgencyController))
+#5 D:\angke-game_standard-master\game_standard-master\backend\controllers\AgencyController.php(28): yii\base\Controller->render('index', Array)
+#6 [internal function]: backend\controllers\AgencyController->actionIndex()
+#7 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#9 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('index', Array)
+#10 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('agency/index', Array)
+#11 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#13 {main}
+2017-06-12 17:15:45 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2592'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/agency/index?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/agency/index'
+    'REMOTE_PORT' => '58814'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497258945.156
+    'REQUEST_TIME' => 1497258945
+]
+2017-06-12 17:15:45 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Illegal string offset 'gold_config'' in D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php:164
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php(164): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', 'D:\\angke-game_s...', 164, Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\angke-game_s...')
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\angke-game_s...', Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\angke-game_s...', Array, Object(backend\controllers\AgencyController))
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('index', Array, Object(backend\controllers\AgencyController))
+#5 D:\angke-game_standard-master\game_standard-master\backend\controllers\AgencyController.php(28): yii\base\Controller->render('index', Array)
+#6 [internal function]: backend\controllers\AgencyController->actionIndex()
+#7 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#9 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('index', Array)
+#10 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('agency/index', Array)
+#11 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#13 {main}
+2017-06-12 17:15:45 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2744'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/agency/index?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/agency/index'
+    'REMOTE_PORT' => '58805'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497258945.3145
+    'REQUEST_TIME' => 1497258945
+]
+2017-06-12 17:15:46 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Illegal string offset 'gold_config'' in D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php:164
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php(164): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', 'D:\\angke-game_s...', 164, Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\angke-game_s...')
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\angke-game_s...', Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\angke-game_s...', Array, Object(backend\controllers\AgencyController))
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('index', Array, Object(backend\controllers\AgencyController))
+#5 D:\angke-game_standard-master\game_standard-master\backend\controllers\AgencyController.php(28): yii\base\Controller->render('index', Array)
+#6 [internal function]: backend\controllers\AgencyController->actionIndex()
+#7 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#9 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('index', Array)
+#10 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('agency/index', Array)
+#11 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#13 {main}
+2017-06-12 17:15:45 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2744'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/agency/index?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/agency/index'
+    'REMOTE_PORT' => '58812'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497258945.9858
+    'REQUEST_TIME' => 1497258945
+]
+2017-06-12 17:15:46 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Illegal string offset 'gold_config'' in D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php:164
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\backend\views\agency\index.php(164): yii\base\ErrorHandler->handleError(2, 'Illegal string ...', 'D:\\angke-game_s...', 164, Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\angke-game_s...')
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\angke-game_s...', Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\angke-game_s...', Array, Object(backend\controllers\AgencyController))
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('index', Array, Object(backend\controllers\AgencyController))
+#5 D:\angke-game_standard-master\game_standard-master\backend\controllers\AgencyController.php(28): yii\base\Controller->render('index', Array)
+#6 [internal function]: backend\controllers\AgencyController->actionIndex()
+#7 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#8 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#9 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('index', Array)
+#10 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('agency/index', Array)
+#11 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#13 {main}
+2017-06-12 17:15:46 [127.0.0.1][-][95npr9pt7tk4m48ovv60elnpg5][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2744'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/agency/index?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/agency/index'
+    'REMOTE_PORT' => '58816'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497258946.3221
+    'REQUEST_TIME' => 1497258946
+]
+2017-06-12 18:34:10 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: users/deduction' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php:127
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('deduction', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('users/deduction', Array)
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-12 18:34:10 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '52'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2480'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/users/deduction?id=52'
+    'QUERY_STRING' => 'id=52'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=52'
+    'REDIRECT_URL' => '/users/deduction'
+    'REMOTE_PORT' => '50475'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497263650.6219
+    'REQUEST_TIME' => 1497263650
+]
+2017-06-12 18:34:14 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: users/deduction' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php:127
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('deduction', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('users/deduction', Array)
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-12 18:34:14 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '52'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2480'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/users/deduction?id=52'
+    'QUERY_STRING' => 'id=52'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=52'
+    'REDIRECT_URL' => '/users/deduction'
+    'REMOTE_PORT' => '50485'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497263654.8248
+    'REQUEST_TIME' => 1497263654
+]
+2017-06-12 18:34:21 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: users/deduction' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php:127
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('deduction', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('users/deduction', Array)
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-12 18:34:21 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '52'
+]
+
+$_COOKIE = [
+    'advanced-backend' => '95npr9pt7tk4m48ovv60elnpg5'
+    '_token_backend_' => 'c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2480'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/users/deduction?id=52'
+    'QUERY_STRING' => 'id=52'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=52'
+    'REDIRECT_URL' => '/users/deduction'
+    'REMOTE_PORT' => '50496'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daer.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=95npr9pt7tk4m48ovv60elnpg5; _token_backend_=c5d0945425ffa8c6a3bac4a136be4f971fa16d288f258a89d6767e8ad473390fa%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22ZJlWPTH9YDtpfSAAga0v0a9WqR9e0WTD%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daer.com/users/list'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daer.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497263661.2871
+    'REQUEST_TIME' => 1497263661
+]

@@ -20,9 +20,9 @@ $config = [
     ]]
 ];
 if (Yii::$app->params['distribution']) {
-    $config[] = ['label' => '返利管理', 'icon' => 'fa fa-dollar icon', 'bg_color' => 'bg-primary', 'url' => ['rebate/index'], 'items' => [
+    /*$config[] = ['label' => '返利管理', 'icon' => 'fa fa-dollar icon', 'bg_color' => 'bg-primary', 'url' => ['rebate/index'], 'items' => [
         ['label' => '返利记录', 'url' => ['rebate/index', 'id' => 1]]
-    ]];
+    ]];*/
 }
 $config[] = ['label' => '公告管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
     ['label' => '公告管理', 'url' => ['notice/index', 'id' => 1]]

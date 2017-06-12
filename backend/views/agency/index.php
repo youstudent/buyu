@@ -121,7 +121,7 @@ use yii\bootstrap\ActiveForm;
                             <th class="text-center" style="border-left: 0px;">编号</th>
                             <?php if (Yii::$app->params['distribution']): ?>
                                 <th class="text-center" style="width: 80px;">代理ID</th>
-                                <th class="text-center">上级代理姓名</th>
+                               <!--<th class="text-center">上级代理姓名</th>-->
                             <?php endif; ?>
                             <th class="text-center">手机号</th>
                             <th class="text-center">用户名</th>
@@ -131,15 +131,16 @@ use yii\bootstrap\ActiveForm;
                             <?php
                                 $item = \common\models\GoldConfigObject::find()->all();
                                 foreach ($item as $key=>$value){
-                                    echo "<th class=\"text-center\">".$value['name']."</th>";
+                                    if ($value['name']=='房卡'){
+                                        echo "<th class=\"text-center\">".$value['name']."</th>";
+                                    }
+                                   
                                 }
                             ?>
 <!--                            多货币修改代码-->
 
                             <th class="text-center">身份证号</th>
-                            <?php if (Yii::$app->params['distribution']): ?>
-                                <th class="text-center">推荐码</th>
-                            <?php endif; ?>
+                            
                             <th class="text-center">状态</th>
                             <th class="text-center" style="border-right: 0px;">操作</th>
                         </tr>
@@ -152,20 +153,20 @@ use yii\bootstrap\ActiveForm;
                                 <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                 <?php if (Yii::$app->params['distribution']): ?>
                                     <td class="text-center"><?= $value['pid'] ?></td>
-                                    <td class="text-center"><?= $value['pName'] ?></td>
+                                   
                                 <?php endif; ?>
                                 <td class="text-center"><?= $value['phone'] ?></td>
                                 <td class="text-center"><?= $value['name'] ?></td>
                                 <td class="text-center"><?= date("Y-m-d H:i:s", $value['reg_time']) ?></td>
 <!--                                多货币修改-->
                                 <?php foreach ($value['gold'] as $keys=>$values):?>
-                                    <td class="text-center"><?= $values ?></td>
+                                   
+                                   <td class="text-center"><?= $values ?></td>;
+                                   
                                 <?php endforeach;?>
 <!--                                多货币修改-->
                                 <td class="text-center"><?= $value['identity'] ?></td>
-                                <?php if (Yii::$app->params['distribution']): ?>
-                                    <td class="text-center"><?= $value['code'] ?></td>
-                                <?php endif; ?>
+                                
                                 <td class="text-center">
                                     <?php if ($value['status'] == 1): ?>
                                         <span class="label bg-primary"><?= Yii::t('app', 'agency_normal') ?></span>
@@ -191,11 +192,7 @@ use yii\bootstrap\ActiveForm;
                                            href="<?php echo \yii\helpers\Url::to(['agency/status', 'id' => $value['id']]) ?>"
                                            class="btn btn-xs btn-danger">&nbsp;封&nbsp;号&nbsp;</a>
 
-                                        <?php if (Yii::$app->params['distribution']): ?>
-                                            <a href="<?= \yii\helpers\Url::to(['rebate/index', 'Agency' => ['select' => 'phone', 'keyword' => $value['phone']]]) ?>"
-                                               class="btn btn-xs btn-primary"> 分 佣 </a>
-                                        <?php endif; ?>
-
+                                       
                                         <a href="<?php echo \yii\helpers\Url::to(['agency/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal"
                                            class="btn btn-xs btn-success">&nbsp;编 辑&nbsp;</a>

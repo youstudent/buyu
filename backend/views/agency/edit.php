@@ -28,9 +28,6 @@
                 <?php echo $form->field($model,'password')->passwordInput([])?>
                 <?php echo $form->field($model,'name')->textInput([])?>
                 <?php echo $form->field($model,'identity')->textInput([])?>
-                <?php if(Yii::$app->params['distribution']):?>
-                    <?php echo $form->field($model,'recode')->textInput([])?>
-                <?php endif;?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

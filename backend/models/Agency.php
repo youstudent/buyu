@@ -110,7 +110,7 @@ class Agency extends AgencyObject
             ['pay_gold','match','pattern'=>'/^\+?[1-9][0-9]*$/','on'=>'pay'],
             ['deduct_gold','match','pattern'=>'/^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/','on'=>'deduct'],
             ['deduct_gold','validateDeduct','on'=>'deduct'],
-            [['starttime','endtime'],'safe'],
+            [['starttime','endtime','detail'],'safe'],
         ];
     }
 
@@ -169,7 +169,8 @@ class Agency extends AgencyObject
             'deduct_gold' =>'扣除金币',
             'deduct_notes'=>'扣除备注',
             'deduct_money'  =>'人民币',
-            'pay_gold_config'=>'充值类型'
+            'pay_gold_config'=>'充值类型',
+            'detail'=>'备注'
             ];
         return ArrayHelper::merge(parent::attributeLabels(),$arr);
     }
