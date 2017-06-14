@@ -183,7 +183,7 @@ use yii\bootstrap\ActiveForm;
 
                                         <a href="<?php echo \yii\helpers\Url::to(['agency/pay', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal"
-                                           class="btn btn-xs btn-success">&nbsp;充&nbsp;值&nbsp;</a>
+                                           class="btn btn-xs btn-success">&nbsp;充 值</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['agency/deduct', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal"
                                            class="btn btn-xs btn-info">&nbsp;扣&nbsp;除&nbsp;</a>
@@ -191,12 +191,12 @@ use yii\bootstrap\ActiveForm;
                                         <a onclick="return openAgency(this,'是否封锁该账号?')"
                                            href="<?php echo \yii\helpers\Url::to(['agency/status', 'id' => $value['id']]) ?>"
                                            class="btn btn-xs btn-danger">&nbsp;封&nbsp;号&nbsp;</a>
-
-                                       
+                                        
+                                        
                                         <a href="<?php echo \yii\helpers\Url::to(['agency/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal"
                                            class="btn btn-xs btn-success">&nbsp;编 辑&nbsp;</a>
-
+                                        
                                     <?php elseif ($value['status'] == 2 || $value['status'] == 4): ?>
 
                                         <a onclick="return openAgency(this,'是否开启账号?')"

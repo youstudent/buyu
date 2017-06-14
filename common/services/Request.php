@@ -21,7 +21,7 @@ class Request
             return false;
         }
 //        'game_id'=>$model->game_id,'gold'=>$this->pay_gold_num,'gold_config'=>GoldConfigObject::getNumCodeByName($this->pay_gold_config);
-        $datas['operator']      = $param['game_id'];
+        $datas['uid']      = $param['game_id'];
         $datas['depositType']   = $param['gold_config'];
         $datas['gold']          = $param['gold'];
 
@@ -54,7 +54,15 @@ class Request
      */
     static function request_get($url = '')
     {
-        return json_decode(file_get_content($url));
+        $GetRetData = json_decode(file_get_contents($url));
+        if($GetRetData->ok){
+            $data['code'] = 1;
+            return $data;
+        }else{
+            $data['code'] = 0;
+            $data['message'] = '未知错误！';
+            return $data;
+        }
     }
 
 }

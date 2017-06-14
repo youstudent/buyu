@@ -28,7 +28,6 @@
                 <?php echo $form->field($model,'password')->passwordInput([])?>
                 <?php echo $form->field($model,'name')->textInput([])?>
                 <?php echo $form->field($model,'identity')->textInput([])?>
-                <?php echo $form->field($model,'detail')->textInput([])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

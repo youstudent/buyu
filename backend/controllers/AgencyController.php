@@ -130,6 +130,13 @@ class AgencyController extends ObjectController
         }
         return $this->render('edit',['model'=>$model]);
     }
+    
+    public function actionDel($id){
+       
+        Agency::deleteAll(['id'=>$id]);
+        return $this->redirect(['agency/index']);
+    }
+    
 
     /**
      * 用户充值操作

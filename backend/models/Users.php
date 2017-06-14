@@ -70,7 +70,7 @@ class Users extends UsersObject
             ['pay_gold_num','integer','on'=>'pay'],
             ['pay_gold_num','match','pattern'=>'/^\+?[1-9][0-9]*$/','on'=>'pay'],
             ['pay_money','number','on'=>'pay'],
-            [['starttime','endtime'],'safe'],
+            [['starttime','endtime','detail'],'safe'],
         ];
     }
 
@@ -81,6 +81,7 @@ class Users extends UsersObject
                 'pay_gold_num'    =>'充值金额',
                 'pay_money'       =>'收款',
                 'pay_gold_config' =>'充值类型',
+                'detail'=>'详情'
         ];
         return ArrayHelper::merge(parent::attributeLabels(),$arr);
     }
@@ -105,7 +106,14 @@ class Users extends UsersObject
                 /**
                  * 请求游戏服务器、并判断返回值进行逻辑处理
                  */
-                $data = Request::request_post(\Yii::$app->params['ApiUserPay'],['game_id'=>$model->game_id,'gold'=>$this->pay_gold_num,'gold_config'=>GoldConfigObject::getNumCodeByName($this->pay_gold_config)]);
+                //$data = Request::request_post(\Yii::$app->params['ApiUserPay'],['game_id'=>$model->game_id,'gold'=>$this->pay_gold_num,'gold_config'=>GoldConfigObject::getNumCodeByName($this->pay_gold_config)]);
+                if($this->pay_gold_config == '房卡'){
+                    $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=chargeCard&uid=".$model->game_id."&card=".$this->pay_gold_num;
+                }elseif($this->pay_gold_config == '金币'){
+                    $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=charge&uid=".$model->game_id."&cash=".$this->pay_gold_num;
+                }
+                $data = Request::request_get($url);
+               
                 if($data['code'] == 1)
                 {
                     /**
@@ -135,6 +143,7 @@ class Users extends UsersObject
                         $userModel->gold        = $this->pay_gold_num;
                         $userModel->money       = $this->pay_money;
                         $userModel->status      = 1;
+                        $userModel->detail      = $this->detail;
                         $userModel->gold_config = $this->pay_gold_config;
 
                         /* 保存失败抛出异常 */

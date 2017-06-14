@@ -77,11 +77,12 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center" style="border-left: 0px;">编号</th>
                                 <th  class="text-center">用户ID</th>
                                 <th  class="text-center">昵称</th>
-                                <th  class="text-center">代理名称</th>
+                                <th  class="text-center">充值来源</th>
                                 <th  class="text-center">充值数量</th>
                                 <th  class="text-center">充值类型</th>
                                 <th  class="text-center">人民币</th>
                                 <th  class="text-center">充值时间</th>
+                                <th  class="text-center">备注</th>
                                 <th  class="text-center" style="border-right: 0px;">状态</th>
                             </tr>
                         </thead>
@@ -97,6 +98,7 @@ use yii\bootstrap\ActiveForm;
                                     <td class="text-center"><?=$value['gold_config']?></td>
                                     <td class="text-center"><?=$value['money']?></td>
                                     <td class="text-center"><?=date('Y-m-d H:i:s',$value['time'])?></td>
+                                    <td class="text-center"><?=$value['detail']?></td>
                                     <td class="text-center" style="border-right: 0px;">
                                         <?php if($value['status'] == 1):?>
                                         <a href="#" class="active"">

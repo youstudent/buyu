@@ -77,6 +77,9 @@ return [
     'agency_structure_chart_phone' => '手机号：',
     'agency_structure_chart_id' => '身份证：',
     'agency_structure_chart_regtime' => '注册时间：',
+    'agency_structure_name' => '玩家ID',
+    'goods_index'=>'商品管理',
+    'game_index'=>'游戏设置'
 
 ];
 

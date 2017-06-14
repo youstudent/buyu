@@ -17,12 +17,18 @@ $config = [
     ['label' => '充值管理', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
         ['label' => '玩家充值列表', 'url' => ['pay/user-pay-log', 'id' => 1]],
         ['label' => '加盟商充值列表', 'url' => ['pay/agency-pay-log']],
+    ]],
+    ['label' => '游戏设置', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['game/index'], 'items' => [
+        ['label' => '设置列表', 'url' => ['game/index']],
+    ]],
+    ['label' => '商品管理', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['goods/index'], 'items' => [
+        ['label' => '兑换列表', 'url' => ['goods/index']]
     ]]
 ];
 if (Yii::$app->params['distribution']) {
-    /*$config[] = ['label' => '返利管理', 'icon' => 'fa fa-dollar icon', 'bg_color' => 'bg-primary', 'url' => ['rebate/index'], 'items' => [
-        ['label' => '返利记录', 'url' => ['rebate/index', 'id' => 1]]
-    ]];*/
+    $config[] = ['label' => '扣除记录', 'icon' => 'fa fa-dollar icon', 'bg_color' => 'bg-primary', 'url' => ['rebate/index'], 'items' => [
+        ['label' => '扣除列表', 'url' => ['rebate/index', 'id' => 1]]
+    ]];
 }
 $config[] = ['label' => '公告管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
     ['label' => '公告管理', 'url' => ['notice/index', 'id' => 1]]
