@@ -13,8 +13,8 @@ use yii\bootstrap\ActiveForm;
 <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="<?=\yii\helpers\Url::to(['site/index'])?>"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">用户管理</a></li>
-                <li class="active">玩家和扣除记录</li>
+                <li><a href="#">用户和平台管理</a></li>
+                <li class="active">玩家和平台扣除记录</li>
             </ul>
 <!--            面包屑结束            -->
             <section class="panel panel-default">
@@ -22,7 +22,7 @@ use yii\bootstrap\ActiveForm;
     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
                         <?php $form = ActiveForm::begin([
-                            'action'=>['users/pay-log'],
+                            'action'=>['users/deduct'],
                             'method'=>'get',
                             'fieldConfig' => [
                                 'template' => "{input}",
@@ -52,8 +52,10 @@ use yii\bootstrap\ActiveForm;
                             <div class="form-group">
                                 <?=$form->field($model,'select')
                                     ->dropDownList(["1"=>Yii::t('app','user_select_search_all'),
-                                        "game_id"=>Yii::t('app','user_select_search_game'),
-                                        "nickname"=>Yii::t('app','user_select_search_nickname')])?>
+                                        "agency_id"=>Yii::t('app','user_select_search_game'),
+                                        "name"=>Yii::t('app','user_select_search_nickname'),
+                                        "phone"=>Yii::t('app','agency_select_search_phone')
+                                        ])?>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
@@ -77,12 +79,12 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center" style="border-left: 0px;">编号</th>
                                 <th  class="text-center">用户ID</th>
                                 <th  class="text-center">昵称</th>
-                                <th  class="text-center">来源</th>
-                                <th  class="text-center">充值/扣除</th>
-                                <th  class="text-center">数量</th>
-                                <th  class="text-center">类型</th>
+                                <th  class="text-center">扣除数量</th>
+                                <th  class="text-center">扣除类型</th>
                                 <th  class="text-center">人民币</th>
-                                <th  class="text-center">时间</th>
+                                <th  class="text-center">手机号</th>
+                                <th  class="text-center">角色</th>
+                                <th  class="text-center">扣除时间</th>
                                 <th  class="text-center">备注</th>
                                 <th  class="text-center" style="border-right: 0px;">状态</th>
                             </tr>
@@ -92,15 +94,15 @@ use yii\bootstrap\ActiveForm;
                             <?php foreach ($data as $key=>$value):?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?=$i?></td>
-                                    <td class="text-center"><?=$value['game_id']?></td>
-                                    <td class="text-center"><?=$value['nickname']?></td>
-                                    <td class="text-center"><?=$value['agency_name']?></td>
-                                    <td class="text-center"><?=$value['type']?></td>
+                                    <td class="text-center"><?=$value['agency_id']?></td>
+                                    <td class="text-center"><?=$value['name']?></td>
                                     <td class="text-center"><?=$value['gold']?></td>
                                     <td class="text-center"><?=$value['gold_config']?></td>
                                     <td class="text-center"><?=$value['money']?></td>
+                                    <td class="text-center"><?=$value['phone']?></td>
+                                    <td class="text-center"><?=$value['type']==1?'代理':'玩家'?></td>
                                     <td class="text-center"><?=date('Y-m-d H:i:s',$value['time'])?></td>
-                                    <td class="text-center"><?=$value['detail']?></td>
+                                    <td class="text-center"><?=$value['notes']?></td>
                                     <td class="text-center" style="border-right: 0px;">
                                         <?php if($value['status'] == 1):?>
                                         <a href="#" class="active"">

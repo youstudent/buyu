@@ -7,16 +7,16 @@ $config = [
     ['label' => '首页中心', 'icon' => 'fa fa-dashboard icon', 'bg_color' => 'bg-danger', 'url' => ['site/index']],
     ['label' => '用户管理', 'icon' => 'fa fa-users icon', 'bg_color' => 'bg-success', 'url' => ['product/index'], 'items' => [
         ['label' => '玩家列表', 'url' => ['users/list']],
-        ['label' => '充值记录', 'url' => ['users/pay-log']],
+        ['label' => '充值和扣除记录', 'url' => ['users/pay-log']],
         ['label' => '消费记录', 'url' => ['users/out-log']],
         ['label' => '战绩记录', 'url' => ['users/exploits']],
     ]],
     ['label' => '代理管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['agency/index'], 'items' => [
         ['label' => '代理列表', 'url' => ['agency/index', 'id' => 1]],
     ]],
-    ['label' => '充值管理', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
-        ['label' => '玩家充值列表', 'url' => ['pay/user-pay-log', 'id' => 1]],
-        ['label' => '加盟商充值列表', 'url' => ['pay/agency-pay-log']],
+    ['label' => '充值/扣除记录', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
+        ['label' => '玩家充值/扣除列表', 'url' => ['pay/user-pay-log', 'id' => 1]],
+        ['label' => '加盟商充值/扣除列表', 'url' => ['pay/agency-pay-log']],
     ]],
     ['label' => '游戏设置', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['game/index'], 'items' => [
         ['label' => '设置列表', 'url' => ['game/index']],
@@ -26,9 +26,9 @@ $config = [
     ]]
 ];
 if (Yii::$app->params['distribution']) {
-    $config[] = ['label' => '扣除记录', 'icon' => 'fa fa-dollar icon', 'bg_color' => 'bg-primary', 'url' => ['rebate/index'], 'items' => [
-        ['label' => '扣除列表', 'url' => ['rebate/index', 'id' => 1]]
-    ]];
+    /*$config[] = ['label' => '扣除记录', 'icon' => 'fa fa-dollar icon', 'bg_color' => 'bg-primary', 'url' => ['users/deduct'], 'items' => [
+        ['label' => '扣除列表', 'url' => ['users/deduct']]
+    ]];*/
 }
 $config[] = ['label' => '公告管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
     ['label' => '公告管理', 'url' => ['notice/index', 'id' => 1]]

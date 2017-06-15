@@ -63,9 +63,8 @@ $this->title = "代理商列表-".\Yii::$app->params['appName'];
                             <?php if(!empty($data)):?>
                                 <td class="text-center">1</td>
                                 <td class="text-center"><?=$data['game_id']?></td>
-                                <td class="text-center"><?=$data['nickname']?></td>
                                 <td class="text-center"><?=$data['phone']?></td>
-
+                                <td class="text-center"><?=$data['nickname']?></td>
                                 <!--                                多货币修改-->
                                 <?php foreach ($data['gold'] as $keys=>$values):?>
                                     <td class="text-center"><?= $values ?></td>

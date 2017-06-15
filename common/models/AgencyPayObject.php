@@ -44,6 +44,7 @@ class AgencyPayObject extends Object
             [['notes','gold_config'], 'string'],
             [['name'], 'string', 'max' => 32],
             [['agency_id'], 'exist', 'skipOnError' => true, 'targetClass' => AgencyObject::className(), 'targetAttribute' => ['agency_id' => 'id']],
+            [['type'],'safe']
         ];
     }
 
@@ -61,6 +62,7 @@ class AgencyPayObject extends Object
             'money' => 'Money',
             'notes' => 'Notes',
             'status' => 'Status',
+            'type' => 'type',
         ];
     }
 

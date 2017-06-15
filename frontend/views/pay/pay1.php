@@ -33,7 +33,7 @@
                         <input type="text" id="users-gold" class="form-control" name="" value="<?=$value?>" readonly="">
                     </div>
                 <?php endforeach;?>
-                <?php echo $form->field($model,'pay_gold_config')->dropDownList($pay_config_gold)?>
+                <?php echo $form->field($model,'pay_gold_config')->dropDownList(['房卡'])?>
         <!--                升级版本的多货币改动-->
 
                 <?php echo $form->field($model,'pay_gold_num')->textInput([])?>

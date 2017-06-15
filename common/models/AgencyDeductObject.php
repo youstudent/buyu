@@ -39,9 +39,10 @@ class AgencyDeductObject extends Object
         return [
             [['agency_id', 'time', 'status'], 'integer'],
             [['gold', 'money'], 'number'],
-            [['notes'], 'string'],
+            [['notes','type','phone'], 'string'],
             [['name'], 'string', 'max' => 32],
             [['agency_id'], 'exist', 'skipOnError' => true, 'targetClass' => AgencyObject::className(), 'targetAttribute' => ['agency_id' => 'id']],
+            [['select','keyword','pay_gold_num','pay_money','starttime','endtime'],'safe']
         ];
     }
 
@@ -59,6 +60,8 @@ class AgencyDeductObject extends Object
             'money' => 'Money',
             'notes' => 'Notes',
             'status' => 'Status',
+            'type' => 'type',
+            'phone' => 'phone',
         ];
     }
 

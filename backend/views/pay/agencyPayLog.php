@@ -14,8 +14,8 @@ use yii\bootstrap\ActiveForm;
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="<?= \yii\helpers\Url::to(['site/index']) ?>"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">返利管理</a></li>
-                <li class="active">返利记录</li>
+                <li><a href="#">代理充值/扣除</a></li>
+                <li class="active">记录</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">
@@ -85,6 +85,7 @@ use yii\bootstrap\ActiveForm;
                                 <th class="text-center">充值人</th>
                                 <th class="text-center">数量</th>
                                 <th class="text-center">类型</th>
+                                <th class="text-center">充值/扣除</th>
                                 <th class="text-center">收款人民币</th>
                                 <th class="text-center">备注</th>
                                 <th class="text-center">时间</th>
@@ -100,10 +101,19 @@ use yii\bootstrap\ActiveForm;
                                     <td class="text-center"><?= $value['name'] ?></td>
                                     <td class="text-center"><?= $value['gold'] ?></td>
                                     <td class="text-center"><?= $value['gold_config']?></td>
+                                    <td class="text-center"><?= $value['type']?></td>
                                     <td class="text-center"><?= $value['money'] ?></td>
                                     <td class="text-center"><?= $value['notes'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['time']) ?></td>
-                                    <td class="text-center" style="border-right: 0px;"><?= $value['status'] ?></td>
+                                    <td class="text-center" style="border-right: 0px;">
+                                        <?php if ($value['status'] == 1): ?>
+                                            <span class="badge bg-success">代充值</span>
+                                        <?php elseif ($value['status'] == 2): ?>
+                                            <span class="badge bg-info">已完成</span>
+                                        <?php elseif ($value['status'] == 3): ?>
+                                            <span class="badge bg-danger">拒绝</span>
+                                        <?php endif; ?>
+                                    </td>
                                 </tr>
                                 <?php $i++ ?>
                             <?php endforeach; ?>

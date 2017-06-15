@@ -32,7 +32,7 @@
 
                 </div>
                 <?= \yii\helpers\Html::submitButton("登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录",['class'=>'btn btn-info btn-lg btn-block'])?>
-            <a href="<?= \yii\helpers\Url::to(['register/index'])?>" class="btn btn-default btn-lg btn-block">注册账号</a>
+            <!--<a href="<?/*= \yii\helpers\Url::to(['register/index'])*/?>" class="btn btn-default btn-lg btn-block">注册账号</a>-->
 <!--                <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>-->
             <?php ActiveForm::end()?>
 

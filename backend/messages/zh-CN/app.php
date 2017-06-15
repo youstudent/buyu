@@ -54,7 +54,7 @@ return [
     'user_select_search_all' => '智能查询',
     'user_select_search_game' => '玩家ＩＤ',
     'user_select_search_nickname' => '玩家昵称',
-    'user_pay_modal_title' => '用户充值',
+    'user_pay_modal_title' => '用户充值或扣除     注: 负数代表扣除  正数代表充值',
     'search_input' => '请输入查询内容',
     'agency_select_search_game' => '用户名',
     'agency_select_search_phone' => '手机号',
@@ -79,7 +79,8 @@ return [
     'agency_structure_chart_regtime' => '注册时间：',
     'agency_structure_name' => '玩家ID',
     'goods_index'=>'商品管理',
-    'game_index'=>'游戏设置'
+    'game_index'=>'游戏设置',
+    'user_select_search_type'=>'充值/扣除'
 
 ];
 

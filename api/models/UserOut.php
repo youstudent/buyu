@@ -43,7 +43,7 @@ class UserOut extends UserOutObject
     /**
      * 添加一条消费记录
      * @param $data
-     * @return bool|void
+     * @return bool|void|
      */
     public function add($data)
     {

@@ -181,3 +181,1360 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1497357924.0921
     'REQUEST_TIME' => 1497357924
 ]
+2017-06-14 09:01:37 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "css/font.css".' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('css/font.css', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-14 09:01:36 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2036'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/css/font.css'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/css/font.css'
+    'REMOTE_PORT' => '60330'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/login/login'
+    'HTTP_ACCEPT' => 'text/css,*/*;q=0.1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497402096.9129
+    'REQUEST_TIME' => 1497402096
+]
+2017-06-14 09:01:46 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "css/font.css".' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('css/font.css', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-14 09:01:45 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2036'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/css/font.css'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/css/font.css'
+    'REMOTE_PORT' => '60334'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/register/index'
+    'HTTP_ACCEPT' => 'text/css,*/*;q=0.1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497402105.9232
+    'REQUEST_TIME' => 1497402105
+]
+2017-06-14 09:01:47 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "register/js/app.v2.js".' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('register/js/app...', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-14 09:01:46 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2036'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/register/js/app.v2.js'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/register/js/app.v2.js'
+    'REMOTE_PORT' => '60338'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/register/index'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497402106.9574
+    'REQUEST_TIME' => 1497402106
+]
+2017-06-14 09:02:46 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "css/font.css".' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('css/font.css', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-14 09:02:46 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2036'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/css/font.css'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/css/font.css'
+    'REMOTE_PORT' => '60357'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/login/login'
+    'HTTP_ACCEPT' => 'text/css,*/*;q=0.1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497402166.1458
+    'REQUEST_TIME' => 1497402166
+]
+2017-06-14 09:03:02 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "css/font.css".' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('css/font.css', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-14 09:03:02 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2036'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/css/font.css'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/css/font.css'
+    'REMOTE_PORT' => '60365'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/login/login'
+    'HTTP_ACCEPT' => 'text/css,*/*;q=0.1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497402182.6984
+    'REQUEST_TIME' => 1497402182
+]
+2017-06-14 09:03:03 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "css/font.css".' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('css/font.css', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-14 09:03:03 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2036'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/css/font.css'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/css/font.css'
+    'REMOTE_PORT' => '60367'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/login/login'
+    'HTTP_ACCEPT' => 'text/css,*/*;q=0.1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497402183.8408
+    'REQUEST_TIME' => 1497402183
+]
+2017-06-14 09:03:04 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "css/font.css".' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('css/font.css', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-14 09:03:04 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2036'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/css/font.css'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/css/font.css'
+    'REMOTE_PORT' => '60369'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/login/login'
+    'HTTP_ACCEPT' => 'text/css,*/*;q=0.1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497402184.2204
+    'REQUEST_TIME' => 1497402184
+]
+2017-06-14 09:03:05 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "css/font.css".' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('css/font.css', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-14 09:03:05 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2036'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/css/font.css'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/css/font.css'
+    'REMOTE_PORT' => '60371'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/login/login'
+    'HTTP_ACCEPT' => 'text/css,*/*;q=0.1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497402185.027
+    'REQUEST_TIME' => 1497402185
+]
+2017-06-14 09:03:39 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "css/font.css".' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('css/font.css', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-14 09:03:39 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2036'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/css/font.css'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/css/font.css'
+    'REMOTE_PORT' => '60393'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/login/login'
+    'HTTP_ACCEPT' => 'text/css,*/*;q=0.1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497402219.7023
+    'REQUEST_TIME' => 1497402219
+]
+2017-06-14 09:08:39 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function getGold() on null' in D:\angke-game_standard-master\game_standard-master\frontend\controllers\PayController.php:24
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-06-14 09:08:39 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][info][application] $_GET = [
+    'game_id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'agencyId' => '31'
+    'agencyName' => '刘玉'
+    'status' => 1
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2036'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/pay/pay?game_id=2'
+    'QUERY_STRING' => 'game_id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'game_id=2'
+    'REDIRECT_URL' => '/pay/pay'
+    'REMOTE_PORT' => '60606'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/pay/pay'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497402519.5527
+    'REQUEST_TIME' => 1497402519
+]
+2017-06-14 18:47:28 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "css/font.css".' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('css/font.css', Array)
+#1 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-06-14 18:47:27 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2484'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/css/font.css'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/css/font.css'
+    'REMOTE_PORT' => '55660'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/login/login'
+    'HTTP_ACCEPT' => 'text/css,*/*;q=0.1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497437247.9519
+    'REQUEST_TIME' => 1497437247
+]
+2017-06-14 18:57:51 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function getGold() on null' in D:\angke-game_standard-master\game_standard-master\frontend\controllers\PayController.php:24
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-06-14 18:57:51 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][info][application] $_GET = [
+    'game_id' => '<td class=\"text-center\"><?=$data[\'phone\']?></td>'
+]
+
+$_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'agencyId' => '31'
+    'agencyName' => '刘玉'
+    'status' => 1
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2468'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/pay/pay?game_id=%3Ctd+class%3D%22text-center%22%3E%3C%3F%3D%24data%5B%27phone%27%5D%3F%3E%3C%2Ftd%3E'
+    'QUERY_STRING' => 'game_id=%3Ctd+class%3D%22text-center%22%3E%3C%3F%3D%24data%5B%27phone%27%5D%3F%3E%3C%2Ftd%3E'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'game_id=%3Ctd+class%3D%22text-center%22%3E%3C%3F%3D%24data%5B%27phone%27%5D%3F%3E%3C%2Ftd%3E'
+    'REDIRECT_URL' => '/pay/pay'
+    'REMOTE_PORT' => '56677'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/pay/pay'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497437871.6705
+    'REQUEST_TIME' => 1497437871
+]
+2017-06-14 18:58:01 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function getGold() on null' in D:\angke-game_standard-master\game_standard-master\frontend\controllers\PayController.php:24
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-06-14 18:58:01 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][info][application] $_GET = [
+    'game_id' => '</td>'
+]
+
+$_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'agencyId' => '31'
+    'agencyName' => '刘玉'
+    'status' => 1
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2468'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/pay/pay?game_id=%3C%2Ftd%3E'
+    'QUERY_STRING' => 'game_id=%3C%2Ftd%3E'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'game_id=%3C%2Ftd%3E'
+    'REDIRECT_URL' => '/pay/pay'
+    'REMOTE_PORT' => '56694'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/pay/pay'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497437881.008
+    'REQUEST_TIME' => 1497437881
+]
+2017-06-14 18:58:03 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function getGold() on null' in D:\angke-game_standard-master\game_standard-master\frontend\controllers\PayController.php:24
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-06-14 18:58:03 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][info][application] $_GET = [
+    'game_id' => '</td>'
+]
+
+$_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'agencyId' => '31'
+    'agencyName' => '刘玉'
+    'status' => 1
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2468'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/pay/pay?game_id=%3C%2Ftd%3E'
+    'QUERY_STRING' => 'game_id=%3C%2Ftd%3E'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'game_id=%3C%2Ftd%3E'
+    'REDIRECT_URL' => '/pay/pay'
+    'REMOTE_PORT' => '56698'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/pay/pay'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497437883.7415
+    'REQUEST_TIME' => 1497437883
+]
+2017-06-14 18:58:23 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function getGold() on null' in D:\angke-game_standard-master\game_standard-master\frontend\controllers\PayController.php:24
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-06-14 18:58:23 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][info][application] $_GET = [
+    'game_id' => '444'
+]
+
+$_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'agencyId' => '31'
+    'agencyName' => '刘玉'
+    'status' => 1
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2468'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/pay/pay?game_id=444'
+    'QUERY_STRING' => 'game_id=444'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'game_id=444'
+    'REDIRECT_URL' => '/pay/pay'
+    'REMOTE_PORT' => '56753'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/pay/pay?game_id='
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497437903.267
+    'REQUEST_TIME' => 1497437903
+]
+2017-06-14 19:27:41 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][error][Exception] exception 'Exception' with message 'save error 101028' in D:\angke-game_standard-master\game_standard-master\frontend\models\Users.php:100
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\frontend\controllers\PayController.php(45): frontend\models\Users->pay(Array)
+#1 [internal function]: frontend\controllers\PayController->actionPay1()
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('pay1', Array)
+#5 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('pay/pay1', Array)
+#6 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#8 {main}
+2017-06-14 19:27:41 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][info][application] $_POST = [
+    '_csrf-frontend' => 'aDk1WXRjWnZdWGY0AhAFDBlbVwsiUAlBPWBcazcHKSkpb0F0JAgWRQ=='
+    'id' => '52'
+    'Users' => [
+        'game_id' => '6543211'
+        'nickname' => 'lrdouble'
+        'pay_gold_config' => '0'
+        'pay_gold_num' => '1'
+        'pay_money' => '0'
+    ]
+]
+
+$_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'agencyId' => '31'
+    'agencyName' => '刘玉'
+    'status' => 1
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2472'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/pay/pay1'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'POST'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/pay/pay1'
+    'REMOTE_PORT' => '59857'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/pay/pay?game_id=6543211'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ORIGIN' => 'http://www.daili.com'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_LENGTH' => '215'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497439661.2072
+    'REQUEST_TIME' => 1497439661
+]
+2017-06-14 19:28:03 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][error][Exception] exception 'Exception' with message 'save error 101028' in D:\angke-game_standard-master\game_standard-master\frontend\models\Users.php:100
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\frontend\controllers\PayController.php(45): frontend\models\Users->pay(Array)
+#1 [internal function]: frontend\controllers\PayController->actionPay1()
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('pay1', Array)
+#5 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('pay/pay1', Array)
+#6 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#8 {main}
+2017-06-14 19:28:03 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][info][application] $_POST = [
+    '_csrf-frontend' => 'U1Njb08yLXBmMjACOUFyCiIxAT0ZAX5HBgoKXQxWXi8SBRdCH1lhQw=='
+    'id' => '52'
+    'Users' => [
+        'game_id' => '6543211'
+        'nickname' => 'lrdouble'
+        'pay_gold_config' => '0'
+        'pay_gold_num' => '1'
+        'pay_money' => '0'
+    ]
+]
+
+$_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'agencyId' => '31'
+    'agencyName' => '刘玉'
+    'status' => 1
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2472'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/pay/pay1'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'POST'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/pay/pay1'
+    'REMOTE_PORT' => '59909'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/pay/pay?game_id=6543211'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ORIGIN' => 'http://www.daili.com'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_LENGTH' => '215'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497439683.101
+    'REQUEST_TIME' => 1497439683
+]
+2017-06-14 19:28:21 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][error][Exception] exception 'Exception' with message 'save error 101028' in D:\angke-game_standard-master\game_standard-master\frontend\models\Users.php:100
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\frontend\controllers\PayController.php(45): frontend\models\Users->pay(Array)
+#1 [internal function]: frontend\controllers\PayController->actionPay1()
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('pay1', Array)
+#5 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('pay/pay1', Array)
+#6 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#8 {main}
+2017-06-14 19:28:21 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][info][application] $_POST = [
+    '_csrf-frontend' => 'LW5SVzNNNHUYDwE6RT5rD1wMMAVlfmdCeDc7ZXApRypsOCZ6YyZ4Rg=='
+    'id' => '52'
+    'Users' => [
+        'game_id' => '6543211'
+        'nickname' => 'lrdouble'
+        'pay_gold_config' => '0'
+        'pay_gold_num' => '1'
+        'pay_money' => '0'
+    ]
+]
+
+$_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'agencyId' => '31'
+    'agencyName' => '刘玉'
+    'status' => 1
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2472'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/pay/pay1'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'POST'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/pay/pay1'
+    'REMOTE_PORT' => '59936'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/pay/pay?game_id=6543211'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_ORIGIN' => 'http://www.daili.com'
+    'CONTENT_LENGTH' => '215'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497439701.4157
+    'REQUEST_TIME' => 1497439701
+]
+2017-06-14 19:28:50 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][error][Exception] exception 'Exception' with message 'save error 101028' in D:\angke-game_standard-master\game_standard-master\frontend\models\Users.php:100
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\frontend\controllers\PayController.php(45): frontend\models\Users->pay(Array)
+#1 [internal function]: frontend\controllers\PayController->actionPay1()
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('pay1', Array)
+#5 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('pay/pay1', Array)
+#6 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#8 {main}
+2017-06-14 19:28:49 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][info][application] $_POST = [
+    '_csrf-frontend' => 'LW5SVzNNNHUYDwE6RT5rD1wMMAVlfmdCeDc7ZXApRypsOCZ6YyZ4Rg=='
+    'id' => '52'
+    'Users' => [
+        'game_id' => '6543211'
+        'nickname' => 'lrdouble'
+        'pay_gold_config' => '0'
+        'pay_gold_num' => '1'
+        'pay_money' => '0'
+    ]
+]
+
+$_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'agencyId' => '31'
+    'agencyName' => '刘玉'
+    'status' => 1
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2472'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/pay/pay1'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'POST'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/pay/pay1'
+    'REMOTE_PORT' => '60000'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/pay/pay?game_id=6543211'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_ORIGIN' => 'http://www.daili.com'
+    'CONTENT_LENGTH' => '215'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497439729.6541
+    'REQUEST_TIME' => 1497439729
+]
+2017-06-14 19:29:21 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][error][Exception] exception 'Exception' with message 'save error 101028' in D:\angke-game_standard-master\game_standard-master\frontend\models\Users.php:100
+Stack trace:
+#0 D:\angke-game_standard-master\game_standard-master\frontend\controllers\PayController.php(45): frontend\models\Users->pay(Array)
+#1 [internal function]: frontend\controllers\PayController->actionPay1()
+#2 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#4 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('pay1', Array)
+#5 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('pay/pay1', Array)
+#6 D:\angke-game_standard-master\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\angke-game_standard-master\game_standard-master\frontend\web\index.php(17): yii\base\Application->run()
+#8 {main}
+2017-06-14 19:29:20 [127.0.0.1][-][brdt9r3um2kl4ujkcg92ea28a5][info][application] $_POST = [
+    '_csrf-frontend' => 'WktZX1F3NTRvKgoyJwRqTispOw0HRGYDDxIwbRITRmsbHS1yARx5Bw=='
+    'id' => '52'
+    'Users' => [
+        'game_id' => '6543211'
+        'nickname' => 'lrdouble'
+        'pay_gold_config' => '0'
+        'pay_gold_num' => '1'
+        'pay_money' => '0'
+    ]
+]
+
+$_COOKIE = [
+    'advanced-frontend' => 'brdt9r3um2kl4ujkcg92ea28a5'
+    '_csrf-frontend' => '59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"5aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'agencyId' => '31'
+    'agencyName' => '刘玉'
+    'status' => 1
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2472'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/pay/pay1'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'POST'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/pay/pay1'
+    'REMOTE_PORT' => '60069'
+    'SCRIPT_FILENAME' => 'D:/angke-game_standard-master/game_standard-master/frontend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/angke-game_standard-master/game_standard-master/frontend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.daili.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-frontend=brdt9r3um2kl4ujkcg92ea28a5; _csrf-frontend=59cf5019ad4e83ada8f1c0d87c859a5cdb48d5ba5a91bbd78fcb7b12e82f1c0da%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%225aSmvs_zqbbRV3S7UYi2Cds_AVt-PkL3%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.daili.com/pay/pay?game_id=6543211'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
+    'HTTP_ORIGIN' => 'http://www.daili.com'
+    'CONTENT_LENGTH' => '215'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.daili.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1497439760.9694
+    'REQUEST_TIME' => 1497439760
+]

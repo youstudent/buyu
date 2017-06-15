@@ -103,8 +103,11 @@ use yii\bootstrap\ActiveForm;
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td class="text-center"><?= $value['detail'] ?></td>
                                     <td class="text-center"><?= $value['status']==1?'未处理':'已处理'?></td>
-                                    <td <a href=" <?php echo \yii\helpers\Url::to(['goods/pay', 'id' => $value['id']]) ?>"
-                                          class="btn btn-xs btn-success">&nbsp;处 理 </a> </td>
+                                    <td
+                                    <td class="text-center" width="100px;">
+                                        <a onclick="return openAgency(this,'是否处理该数据?')" href="<?=\yii\helpers\Url::to(['goods/status','id'=>$value['id']])?>" class="btn btn-xs btn-success">通 过</a>
+                                        <a onclick="return openAgency(this,'是否处理该数据?')" href="<?=\yii\helpers\Url::to(['goods/status','id'=>$value['id']])?>" class="btn btn-xs btn-danger">拒 绝</a>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
@@ -183,7 +186,7 @@ use yii\bootstrap\ActiveForm;
                                     type: "error",
                                     showCancelButton: false,
                                     confirmButtonText: "确认",
-                                    closeOnConfirm: false,
+                                    closeOnConfirm: false
                                 }
                             );
                         }

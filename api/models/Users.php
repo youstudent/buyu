@@ -41,7 +41,7 @@ class Users extends UsersObject
 
             $this->reg_time = time();
             $this->status   = 1;
-            $this->gold_all = $this->gold;
+            $this->gold_all = 0;
             if($this->save())
             {
                 $datas = GoldConfigObject::find()->asArray()->all();

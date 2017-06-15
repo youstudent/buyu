@@ -43,7 +43,7 @@ $agency = \backend\models\Agency::find();
                                 class="fa fa-legal fa-stack-1x text-white"></i> </span>
                         <a class="clear"
                            href="#">
-                            <span class="h3 block m-t-xs"><strong><?php echo $model->rebate ?></strong></span>
+                            <span class="h3 block m-t-xs"><strong>#</strong></span>
                             <small class="text-muted text-uc">返佣总计</small>
                         </a>
                     </div>
@@ -52,7 +52,7 @@ $agency = \backend\models\Agency::find();
                                 class="fa fa-circle fa-stack-2x icon-muted"></i> <i
                                 class="fa fa-ban fa-stack-1x text-white"></i> </span>
                         <a class="clear">
-                            <span class="h3 block m-t-xs"><strong><?=$model->code?></strong></span>
+                            <span class="h3 block m-t-xs"><strong>#</strong></span>
                             <small class="text-muted text-uc">我的邀请码</small>
                         </a>
                     </div>

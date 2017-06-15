@@ -170,7 +170,7 @@ class Agency extends AgencyObject
             'deduct_notes'=>'扣除备注',
             'deduct_money'  =>'人民币',
             'pay_gold_config'=>'充值类型',
-            'detail'=>'备注'
+            'detail'=>'备注',
             ];
         return ArrayHelper::merge(parent::attributeLabels(),$arr);
     }
@@ -203,8 +203,19 @@ class Agency extends AgencyObject
                 $data = $model->consumeGold($this->pay_gold_config,$this->deduct_gold);
 
                 if($data == false)throw  new \Exception('0x00010');
-
-                $agencyDeduct = new AgencyDeduct();
+                $agencyPay = new AgencyPay();
+                $agencyPay->agency_id = $model->id;
+                $agencyPay->name      = $model->name;
+                $agencyPay->time      = time();
+                $agencyPay->gold      = $this->pay_gold;
+                $agencyPay->money     = $this->pay_money;
+                $agencyPay->notes     = $this->detail;  //充值备注
+                $agencyPay->type    = '扣除';
+                $agencyPay->status    = 2;
+                $agencyPay->manage_id = \Yii::$app->session->get('manageId');
+                $agencyPay->manage_name = \Yii::$app->session->get('manageName');
+                $agencyPay->gold_config = $this->pay_gold_config;
+                /*$agencyDeduct = new AgencyDeduct();
                 $agencyDeduct->agency_id    = $model->id;
                 $agencyDeduct->name         = $model->name;
                 $agencyDeduct->time         = time();
@@ -212,10 +223,11 @@ class Agency extends AgencyObject
                 $agencyDeduct->money        = $this->deduct_money;
                 $agencyDeduct->notes        = $this->deduct_notes;
                 $agencyDeduct->status       = 2;
+                $agencyDeduct->type         = 1; //代理扣除
                 $agencyDeduct->manage_id    = \Yii::$app->session->get('manageId');
                 $agencyDeduct->manage_name  = \Yii::$app->session->get('manageName');
-                $agencyDeduct->gold_config  = $this->pay_gold_config;
-                if($agencyDeduct->save() == false)throw new \Exception('0x00011');
+                $agencyDeduct->gold_config  = $this->pay_gold_config;*/
+                if($agencyPay->save() == false)throw new \Exception('0x00011');
 
                 $transaction->commit();
                 return true;
@@ -250,8 +262,9 @@ class Agency extends AgencyObject
                 $agencyPay->time      = time();
                 $agencyPay->gold      = $this->pay_gold;
                 $agencyPay->money     = $this->pay_money;
-                $agencyPay->notes     = '';
+                $agencyPay->notes     = $this->detail;  //充值备注
                 $agencyPay->status    = 2;
+                $agencyPay->type    = '充值';
                 $agencyPay->manage_id = \Yii::$app->session->get('manageId');
                 $agencyPay->manage_name = \Yii::$app->session->get('manageName');
                 $agencyPay->gold_config = $this->pay_gold_config;

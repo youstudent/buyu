@@ -6,6 +6,7 @@
  */
 namespace backend\controllers;
 
+use backend\models\AgencyDeduct;
 use backend\models\Users;
 use Yii;
 use yii\web\Response;
@@ -106,6 +107,14 @@ class UsersController extends ObjectController
             return $this->redirect(['users/list']);
         }
         
-        
+    }
+    
+    
+    //玩家 和平台的扣除记录
+    public function actionDeduct(){
+        $model = new AgencyDeduct();
+        $data = $model->getDeductLog(Yii::$app->request->get());
+        // var_dump($data);exit;
+        return $this->render('deduct',$data);
     }
 }

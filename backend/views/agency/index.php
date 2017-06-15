@@ -131,10 +131,8 @@ use yii\bootstrap\ActiveForm;
                             <?php
                                 $item = \common\models\GoldConfigObject::find()->all();
                                 foreach ($item as $key=>$value){
-                                    if ($value['name']=='房卡'){
-                                        echo "<th class=\"text-center\">".$value['name']."</th>";
-                                    }
-                                   
+                                   echo "<th class=\"text-center\">".$value['name']."</th>";
+                                  
                                 }
                             ?>
 <!--                            多货币修改代码-->

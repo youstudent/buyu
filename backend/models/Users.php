@@ -68,9 +68,9 @@ class Users extends UsersObject
         return [
             [['select','keyword','pay_gold_num','pay_gold_config'],'safe'],
             ['pay_gold_num','integer','on'=>'pay'],
-            ['pay_gold_num','match','pattern'=>'/^\+?[1-9][0-9]*$/','on'=>'pay'],
+           // ['pay_gold_num','match','pattern'=>'/^\+?[1-9][0-9]*$/','on'=>'pay'],
             ['pay_money','number','on'=>'pay'],
-            [['starttime','endtime','detail'],'safe'],
+            [['starttime','endtime','detail','type'],'safe'],
         ];
     }
 
@@ -78,10 +78,11 @@ class Users extends UsersObject
     public function attributeLabels()
     {
         $arr = [
-                'pay_gold_num'    =>'充值金额',
+                'pay_gold_num'    =>'金额:负数扣除 正数充值',
                 'pay_money'       =>'收款',
                 'pay_gold_config' =>'充值类型',
-                'detail'=>'详情'
+                'detail'=>'详情',
+                'type'=>'类型'
         ];
         return ArrayHelper::merge(parent::attributeLabels(),$arr);
     }
@@ -140,6 +141,11 @@ class Users extends UsersObject
                         $userModel->game_id     = $model->game_id;
                         $userModel->nickname    = $model->nickname;
                         $userModel->time        = time();
+                        if ($this->pay_gold_num<0){
+                         $userModel->type ='扣除';
+                        }else{
+                         $userModel->type ='充值';
+                        }
                         $userModel->gold        = $this->pay_gold_num;
                         $userModel->money       = $this->pay_money;
                         $userModel->status      = 1;
@@ -257,6 +263,7 @@ class Users extends UsersObject
     {
         if (!empty($this->select) && !empty($this->keyword))
         {
+            
             if ($this->select == 'game_id')
                 return ['game_id'=>$this->keyword];
             elseif ($this->select == 'nickname')

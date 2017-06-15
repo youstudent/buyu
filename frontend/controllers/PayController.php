@@ -21,6 +21,9 @@ class PayController extends ObjectController
         if(\Yii::$app->request->get('game_id'))
         {
             $data = Users::find()->where(['game_id'=>\Yii::$app->request->get('game_id')])->one();
+            if ($data===null || $data===false){
+                return $this->render('pay');
+            }
             $data->gold = $data->getGold();
             return $this->render('pay',['data'=>$data,'game_id'=>\Yii::$app->request->get('game_id')]);
         }
@@ -29,7 +32,7 @@ class PayController extends ObjectController
 
     /**
      * 确认充值操作
-     * @return string
+     * @return string|bool|array
      */
     public function actionPay1()
     {
