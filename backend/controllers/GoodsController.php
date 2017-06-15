@@ -10,6 +10,10 @@ namespace backend\controllers;
 
 
 use backend\models\Goods;
+use backend\models\Users;
+use Codeception\Module\REST;
+use common\models\UsersGoldObject;
+use common\services\Request;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use yii\data\Pagination;
 use yii\web\Controller;
@@ -63,6 +67,65 @@ class GoodsController extends ObjectController
             return ['code'=>1,'message'=>'账号操作成功!'];
         }
             return ['code'=>0,'message'=>'账号操作失败!'];
+    }
+    
+    
+    
+    //反馈  通过
+    public function actionYes(){
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $model = Goods::findOne(['id'=>1]);
+        if ($model->status==3 || $model->status==2){
+            return ['code'=>0,'message'=>'数据已经处理过了!'];
+        }
+        $game_id = $model->game_id;
+        $data = Users::findOne(['game_id'=>$game_id]);
+        if ($data===null || $data===false){
+            return ['code'=>0,'message'=>'没有该用户!'];
+        }
+        $uids = $data->id;
+        $rows = UsersGoldObject::findOne(['users_id'=>$uids,'gold_config'=>'金币']);
+        if ($rows->gold<$model->gold){
+           return ['code'=>0,'message'=>'金币不足!'];
+        }
+        $gold=$model->gold;
+        $rows->gold=$rows->gold-$gold;
+        $rows->save(false);
+        $model->status=2;
+        $model->updated_at=time();
+        if ($model->save()){
+            $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=shopSuccessFail&cash =".$model->gold."&uid=".$model->game_id."&result=".true;
+             if (Request::request_get($url)===false){
+                 return ['code'=>0,'message'=>'游戏端返回失败'];
+             }
+            return ['code'=>1,'message'=>'账号操作成功!'];
+        }
+            return ['code'=>0,'message'=>'账号操作失败!'];
+    }
+    
+    
+    //反馈  拒绝    通知游戏端
+    public function actionNo(){
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $model = Goods::findOne(['id'=>\Yii::$app->request->get('id')]);
+        if ($model->status==3 || $model->status==2){
+            return ['code'=>0,'message'=>'数据已经处理过了!'];
+        }
+        $game_id = $model->game_id;
+        $data = Users::findOne(['game_id'=>$game_id]);
+        if ($data===null || $data===false){
+            return ['code'=>0,'message'=>'没有该用户!'];
+        }
+        $model->status=3;
+        if ($model->save()){
+            $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=shopSuccessFail&cash =".$model->gold."&uid=".$model->game_id."&result=".false;
+            if (Request::request_get($url)===false){
+                return ['code'=>0,'message'=>'游戏端返回失败!'];
+            }
+            return ['code'=>1,'message'=>'账号操作成功!'];
+        }
+            return ['code'=>0,'message'=>'账号操作失败!'];
+        
     }
     
 }

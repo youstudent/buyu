@@ -45,7 +45,7 @@ class Goods extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['game_id', 'status', 'created_at', 'updated_at','gold','uid'], 'integer'],
             [['name'], 'required'],
             [['name', 'exchange'], 'string', 'max' => 30],
             [['phone'], 'string', 'max' => 11],
@@ -61,7 +61,7 @@ class Goods extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => '玩家ID',
+            'game_id' => '玩家ID',
             'name' => '昵称',
             'phone' => '电话',
             'exchange' => '兑换奖品',
@@ -69,6 +69,7 @@ class Goods extends \yii\db\ActiveRecord
             'created_at' => '兑换时间',
             'detail' => '备注',
             'updated_at' => '处理时间',
+            'uid' => '玩家自增id',
         ];
     }
     
@@ -82,8 +83,14 @@ class Goods extends \yii\db\ActiveRecord
             $this->phone = $data['phone'];  //电话
             $this->exchange = $data['exchange']; //奖品
             $this->detail = $data['detail'];*/
+            $game_id = $this->game_id;
+            $result = Users::findOne(['game_id'=>$game_id]);
+            if ($result===null || $result===false){
+                return false;
+            }
             $this->created_at = time();
             $this->status = 1;
+            $this->uid=$result->id;
             if ($this->save()) {
                 return true;
             }

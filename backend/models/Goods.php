@@ -45,12 +45,12 @@ class Goods extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'status', 'created_at', 'updated_ta'], 'integer'],
+            [['user_id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'required'],
             [['name', 'exchange'], 'string', 'max' => 30],
             [['phone'], 'string', 'max' => 11],
             [['detail'], 'string', 'max' => 255],
-            [['keyword','select','endtime','starttime'],'safe']
+            [['keyword','select','endtime','starttime','cash'],'safe']
         ];
     }
 
@@ -68,7 +68,8 @@ class Goods extends \yii\db\ActiveRecord
             'status' => '状态',
             'created_at' => '兑换时间',
             'detail' => '备注',
-            'updated_ta' => '处理时间',
+            'updated_at' => '处理时间',
+            'cash' => '金币',
         ];
     }
     

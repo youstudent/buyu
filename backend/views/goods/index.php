@@ -83,6 +83,7 @@ use yii\bootstrap\ActiveForm;
                                 <th class="text-center">昵称</th>
                                 <th class="text-center">手机号码</th>
                                 <th class="text-center">兑换奖品</th>
+                                <th class="text-center">金币</th>
                                 <th class="text-center">提交时间</th>
                                 <th class="text-center">处理时间</th>
                                 <th class="text-center">备注</th>
@@ -99,14 +100,22 @@ use yii\bootstrap\ActiveForm;
                                     <td class="text-center"><?= $value['name'] ?></td>
                                     <td class="text-center"><?= $value['phone'] ?></td>
                                     <td class="text-center"><?= $value['exchange'] ?></td>
+                                    <td class="text-center"><?= $value['cash'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['created_at']) ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td class="text-center"><?= $value['detail'] ?></td>
-                                    <td class="text-center"><?= $value['status']==1?'未处理':'已处理'?></td>
+                                    <td class="text-center">
+                                    <?php if ($value['status'] == 1): ?>
+                                        <span class="badge bg-success">未处理</span>
+                                    <?php elseif ($value['status'] == 2): ?>
+                                        <span class="badge bg-info">已完成</span>
+                                    <?php elseif ($value['status'] == 3): ?>
+                                        <span class="badge bg-danger">拒绝</span>
+                                    <?php endif; ?> </td>
                                     <td
                                     <td class="text-center" width="100px;">
-                                        <a onclick="return openAgency(this,'是否处理该数据?')" href="<?=\yii\helpers\Url::to(['goods/status','id'=>$value['id']])?>" class="btn btn-xs btn-success">通 过</a>
-                                        <a onclick="return openAgency(this,'是否处理该数据?')" href="<?=\yii\helpers\Url::to(['goods/status','id'=>$value['id']])?>" class="btn btn-xs btn-danger">拒 绝</a>
+                                        <a onclick="return openAgency(this,'是否处理该数据?')" href="<?=\yii\helpers\Url::to(['goods/yes','id'=>$value['id']])?>" class="btn btn-xs btn-success">通 过</a>
+                                        <a onclick="return openAgency(this,'是否处理该数据?')" href="<?=\yii\helpers\Url::to(['goods/no','id'=>$value['id']])?>" class="btn btn-xs btn-danger">拒 绝</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
