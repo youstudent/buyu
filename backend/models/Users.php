@@ -306,18 +306,53 @@ class Users extends UsersObject
     /**
      * 处理账号 停封和启用
      */
-    public function pass($data){
+    public function pass($info)
+    {
         $id = '';
         $status = '';
-        foreach ($data as $v){
-           $id=$v['id'];
-           $status =$v['status'];
+        foreach ($info as $v) {
+            $id = $v['id'];
+            $status = $v['status'];
         }
-        $model = self::findOne(['id'=>$id]);
-        if ($model){
-            $model->status=$status;
-           return $model->save();
+        $model = self::findOne(['id' => $id]);
+        if ($status == 1) {
+            $url = \Yii::$app->params['ApiUserPay'] . "?mod=gm&act=lockAccount&uid=" . $model->game_id;
+        }else{
+            $url = \Yii::$app->params['ApiUserPay'] . "?mod=gm&act=unLockAccount&uid=" . $model->game_id;
         }
-        return false;
+        $data = Request::request_get($url);
+
+        if ($data['code'] == 1) {
+            /**
+             * 开启数据库的事务操作
+             */
+            $transaction = \Yii::$app->db->beginTransaction();
+            try {
+                /**
+                 * 保存用户充值记录
+                 */
+                $model = self::findOne(['id' => $id]);
+
+                if ($model->status == 1) {
+                    $model->status = 0;
+                } else {
+                    $model->status = 1;
+                }
+
+                /* 保存失败抛出异常 */
+                if ($model->save(false)) {
+                    $transaction->commit();
+                    return true;
+                } else {
+                    throw new \Exception('save error 101024' . reset($model->getFirstErrors()));
+                }
+
+            } catch (\Exception $e) {
+                $transaction->rollBack();
+                throw $e;
+            }
+        } else {
+            return $this->addError('lock','通信错误');
+        }
     }
 }
