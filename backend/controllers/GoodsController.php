@@ -74,7 +74,7 @@ class GoodsController extends ObjectController
     //反馈  通过
     public function actionYes(){
         \Yii::$app->response->format = Response::FORMAT_JSON;
-        $model = Goods::findOne(['id'=>1]);
+        $model = Goods::findOne(['id'=>\Yii::$app->request->get('id')]);
         if ($model->status==3 || $model->status==2){
             return ['code'=>0,'message'=>'数据已经处理过了!'];
         }
@@ -93,12 +93,13 @@ class GoodsController extends ObjectController
         $rows->save(false);
         $model->status=2;
         $model->updated_at=time();
-        if ($model->save()){
-            $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=shopSuccessFail&cash =".$model->gold."&uid=".$model->game_id."&result=".true;
-             if (Request::request_get($url)===false){
-                 return ['code'=>0,'message'=>'游戏端返回失败'];
+        if ($model->save(false)){
+            $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=shopSuccessFail&cash=".$model->gold."&uid=".$model->game_id."&result=".true;
+            $data = Request::request_get($url);
+            if ($data['code']==1){
+              return ['code'=>1,'message'=>'账号操作成功'];
              }
-            return ['code'=>1,'message'=>'账号操作成功!'];
+            return ['code'=>0,'message'=>'失败!'];
         }
             return ['code'=>0,'message'=>'账号操作失败!'];
     }
@@ -117,14 +118,15 @@ class GoodsController extends ObjectController
             return ['code'=>0,'message'=>'没有该用户!'];
         }
         $model->status=3;
-        if ($model->save()){
-            $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=shopSuccessFail&cash =".$model->gold."&uid=".$model->game_id."&result=".false;
-            if (Request::request_get($url)===false){
-                return ['code'=>0,'message'=>'游戏端返回失败!'];
+        if ($model->save(false)){
+            $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=shopSuccessFail&cash=".$model->gold."&uid=".$model->game_id."&result=".false;
+            $data = Request::request_get($url);
+            if ($data['code']==1){
+                return ['code'=>1,'message'=>'账号操作成功'];
             }
-            return ['code'=>1,'message'=>'账号操作成功!'];
-        }
             return ['code'=>0,'message'=>'账号操作失败!'];
+        }
+           return ['code'=>0,'message'=>'账号操作失败!'];
         
     }
     

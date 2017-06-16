@@ -45,6 +45,7 @@ class LogController extends ObjectController
      */
     public function actionUserPay()
     {
+        $game_id =  \Yii::$app->request->get('game_id');
         $startTime = \Yii::$app->request->get('startTime');
         $endTime   = \Yii::$app->request->get('endTime');
         $model = UserPay::find()->andWhere(['agency_id'=>\Yii::$app->session->get('agencyId')]);
@@ -56,6 +57,14 @@ class LogController extends ObjectController
             $model = $model->andWhere(['<=','time',strtotime($endTime)]);
         else
             $endTime = date('Y-m-d H:i:s',time());
+        if ($game_id){
+            if (is_numeric($game_id)){
+                $model->andWhere(['game_id'=>$game_id]);
+            }else{
+                $model->andWhere(['nickname'=>$game_id]);
+            }
+            
+        }
         $pages = new Pagination(['totalCount' =>$model->count(), 'pageSize' => \Yii::$app->params['pageSize']]);
         $data = $model->offset($pages->offset)->limit($pages->limit)->all();
         return $this->render('userPay',['data'=>$data,'pages'=>$pages,'startTime'=>$startTime,'endTime'=>$endTime]);

@@ -50,6 +50,7 @@ class PayController extends ObjectController
             return ['code'=>0,'message'=>$message];
         }
         $model->goldArr = $model->getGold();
+        $model->scenario = 'pay';
         return $this->render('pay1',['model'=>$model,'game_id'=>\Yii::$app->request->get('game_id')]);
     }
 }

@@ -35,7 +35,7 @@ class UsersController extends ObjectController
             $model = new Users();
             if($model->pay(Yii::$app->request->post()))
             {
-                return ['code'=>1,'message'=>Yii::t('app','users_pay_success')];
+                return ['code'=>1,'message'=>Yii::t('app','操作成功')];
             }
             /**
              * 获取model返回的错误

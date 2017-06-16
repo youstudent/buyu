@@ -3,7 +3,8 @@
  * @link http://www.lrdouble.com/
  * @copyright Copyright (c) 2017 Double Software LLC
  * @license http://www.lrdouble.com/license/
- */?>
+ */
+?>
 <!-- Modal -->
 <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -22,8 +23,8 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'game_id')->textInput(['readonly'=>true])?>
-                <?php echo $form->field($model,'nickname')->textInput(['readonly'=>true])?>
+                <?=  $form->field($model,'game_id')->textInput(['readonly'=>true]) ?>
+                <?=  $form->field($model,'nickname')->textInput(['readonly'=>true])?>
 
         <!--                升级版本的多货币改动-->
                 <?php foreach ($model->goldArr as $key=>$value):?>
@@ -33,11 +34,11 @@
                         <input type="text" id="users-gold" class="form-control" name="" value="<?=$value?>" readonly="">
                     </div>
                 <?php endforeach;?>
-                <?php echo $form->field($model,'pay_gold_config')->dropDownList(['房卡'])?>
+                <?=  $form->field($model,'pay_gold_config')->dropDownList(['房卡'=>'房卡'])?>
         <!--                升级版本的多货币改动-->
 
-                <?php echo $form->field($model,'pay_gold_num')->textInput([])?>
-                <?php echo $form->field($model,'pay_money')->textInput([])?>
+                <?=  $form->field($model,'pay_gold_num')->textInput([])?>
+                <?=  $form->field($model,'pay_money')->textInput([])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

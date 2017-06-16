@@ -96,11 +96,11 @@ use yii\bootstrap\ActiveForm;
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center"><?=$value['id']  ?></td>
-                                    <td class="text-center"><?= $value['user_id'] ?></td>
+                                    <td class="text-center"><?= $value['game_id'] ?></td>
                                     <td class="text-center"><?= $value['name'] ?></td>
                                     <td class="text-center"><?= $value['phone'] ?></td>
                                     <td class="text-center"><?= $value['exchange'] ?></td>
-                                    <td class="text-center"><?= $value['cash'] ?></td>
+                                    <td class="text-center"><?= $value['gold'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['created_at']) ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td class="text-center"><?= $value['detail'] ?></td>

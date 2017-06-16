@@ -51,7 +51,7 @@ class Users extends UsersObject{
         $arr = [
             'pay_gold_num'    =>'充值金额',
             'pay_money'       =>'收款',
-            'pay_gold_config' =>'充值类型'
+            'pay_gold_config' =>'充值类型',
         ];
         return ArrayHelper::merge(parent::attributeLabels(),$arr);
     }
@@ -67,6 +67,7 @@ class Users extends UsersObject{
         $this->scenario = 'pay';
         if($this->load($data) && $this->validate())
         {
+            $this->pay_gold_config = '房卡';
             /**
              * 查询用户是否存在
              */
@@ -79,7 +80,7 @@ class Users extends UsersObject{
                 {
                     return $this->addError('pay_gold_num','对不起你的数量不足！');
                 }
-
+               
                 /**
                  * 请求游戏服务器、并判断返回值进行逻辑处理
                  */
@@ -87,15 +88,18 @@ class Users extends UsersObject{
                 $data = Request::request_get($url);
                 if($data['code'] == 1)
                 {
+                    
                     /**
                      * 开启数据库的事务操作
                      */
                     $transaction = \Yii::$app->db->beginTransaction();
                     try {
+                       
                         /**
                          * 减少金币数量
                          */
                         $data = $agencyModel->consumeGold($this->pay_gold_config,$this->pay_gold_num);
+                        
                         if(!$data)
                             throw new \Exception('save error 101028'); /* 保存失败抛出异常 */
                         /**
@@ -104,7 +108,7 @@ class Users extends UsersObject{
                         $data = $model->payGold($this->pay_gold_config,$this->pay_gold_num);
                         if (!$data)
                             throw new \Exception('save error 101023'); /* 保存失败抛出异常 */
-
+                       
                         /**
                          * 保存用户充值记录
                          */
@@ -118,11 +122,12 @@ class Users extends UsersObject{
                         $userModel->gold        = $this->pay_gold_num;
                         $userModel->money       = $this->pay_money;
                         $userModel->status      = 1;
+                        $userModel->type      = '充值';
                         $userModel->gold_config = $this->pay_gold_config;
-
-
+    
+                        
                         /* 保存失败抛出异常 */
-                        if ($userModel->save()) {
+                        if ($userModel->save(false)) {
                             $transaction->commit();
                             return true;
                         }else

@@ -225,7 +225,7 @@ class AgencyObject extends Object
                 $data->gold       = ($data->gold - $payGold);
                 $data->sum_gold   = ($data->sum_gold - $payGold);
 
-                return $data->save();
+                return $data->save(false);
             }
         }
     }

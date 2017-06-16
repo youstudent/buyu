@@ -110,7 +110,6 @@ class UsersObject extends Object
      */
     public function getGold()
     {
-
         if(empty(self::$goldConfig)){
             self::$goldConfig = GoldConfigObject::find()->asArray()->all();
         }

@@ -207,9 +207,9 @@ class Agency extends AgencyObject
                 $agencyPay->agency_id = $model->id;
                 $agencyPay->name      = $model->name;
                 $agencyPay->time      = time();
-                $agencyPay->gold      = $this->pay_gold;
+                $agencyPay->gold      = $this->deduct_gold;
                 $agencyPay->money     = $this->pay_money;
-                $agencyPay->notes     = $this->detail;  //充值备注
+                $agencyPay->notes     = $this->deduct_notes;  //充值备注
                 $agencyPay->type    = '扣除';
                 $agencyPay->status    = 2;
                 $agencyPay->manage_id = \Yii::$app->session->get('manageId');

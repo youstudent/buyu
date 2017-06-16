@@ -7,6 +7,7 @@
 namespace backend\models;
 
 use common\models\GoldConfigObject;
+use common\models\UsersGoldObject;
 use common\models\UsersObject;
 use common\services\Request;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
@@ -98,12 +99,24 @@ class Users extends UsersObject
         $this->scenario = 'pay';
         if($this->load($data) && $this->validate())
         {
+            
             /**
              * 查询用户是否存在
              */
             $model = self::findOne($data['id']);
             if($model)
             {
+                if ($this->pay_gold_num ==0){
+                    return $this->addError('pay_gold_num',"数量不能为0");
+                }
+                
+                if ($this->pay_gold_num < 0){
+                    $gold = UsersGoldObject::find()->Where(['users_id'=>$data['id']])->andWhere(['gold_config'=>$this->pay_gold_config])->one();
+                    if ($gold->gold <= abs($this->pay_gold_num)){
+                        return $this->addError('pay_gold_num',"玩家.$this->pay_gold_config.不足！");
+                    }
+                }
+                
                 /**
                  * 请求游戏服务器、并判断返回值进行逻辑处理
                  */
@@ -146,7 +159,7 @@ class Users extends UsersObject
                         }else{
                          $userModel->type ='充值';
                         }
-                        $userModel->gold        = $this->pay_gold_num;
+                        $userModel->gold        = abs($this->pay_gold_num);
                         $userModel->money       = $this->pay_money;
                         $userModel->status      = 1;
                         $userModel->detail      = $this->detail;
@@ -277,7 +290,7 @@ class Users extends UsersObject
     /**
      * 处理数组 [1,2,3]
      * @param $data
-     * @return array
+     * @return array|string
      */
     private function searchIn($data)
     {
