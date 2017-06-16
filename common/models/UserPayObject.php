@@ -18,7 +18,7 @@ use Yii;
  * @property string $money
  * @property integer $status
  * @property integer $gold_config
- *
+ * @property integer $type
  * @property UsersObject $user
  * @property AgencyObject $agency
  */
