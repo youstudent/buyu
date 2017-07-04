@@ -54,8 +54,7 @@ class UsersObject extends Object
         return [
             [['game_id', 'gold', 'gold_all', 'reg_time', 'game_count', 'status'], 'integer'],
             [['nickname'], 'string', 'max' => 32],
-            [['autograph', 'head'], 'string', 'max' => 255],
-            [['phone'], 'string', 'max' => 12],
+            [['vip_time','unset_time'],'safe']
         ];
     }
 
@@ -68,14 +67,11 @@ class UsersObject extends Object
             'id' => 'ID',
             'game_id' => '玩家ID',
             'nickname' => '玩家昵称',
-            'autograph' => '个性签名',
-            'phone' => '手机号码',
             'gold' => '金币',
-            'gold_all' => '总计消费金币',
             'reg_time' => '注册时间',
-            'game_count' => '游戏总局数',
-            'head' => '头像',
             'status' => '状态',
+            'vip_time'=>'vip有效时间',
+            //'unset_time'=>
         ];
     }
 
