@@ -14,8 +14,8 @@ use yii\bootstrap\ActiveForm;
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="<?= \yii\helpers\Url::to(['site/index']) ?>"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">代理管理</a></li>
-                <li class="active">代理商列表</li>
+                <li><a href="#">族长管理</a></li>
+                <li class="active">族长列表</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">

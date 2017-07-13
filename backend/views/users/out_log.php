@@ -73,11 +73,9 @@ use yii\bootstrap\ActiveForm;
                             <th  class="text-center" style="border-left: 0px;">编号</th>
                             <th  class="text-center">用户ID</th>
                             <th  class="text-center">昵称</th>
-                            <th  class="text-center">消费数量</th>
                             <th  class="text-center">消费类型</th>
-                            <th  class="text-center">游戏名称</th>
+                            <th  class="text-center">消费数量</th>
                             <th  class="text-center" >消费时间</th>
-                            <th  class="text-center" style="border-right: 0px;">消费详情</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -87,11 +85,9 @@ use yii\bootstrap\ActiveForm;
                                 <td class="text-center" style="border-left: 0px;"><?=$i?></td>
                                 <td class="text-center"><?=$value['game_id']?></td>
                                 <td class="text-center"><?=$value['nickname']?></td>
-                                <td class="text-center"><?=$value['gold']?></td>
                                 <td class="text-center"><?=$value['gold_config']?></td>
-                                <td class="text-center"><?=$value['game_class']?></td>
+                                <td class="text-center"><?=$value['gold']?></td>
                                 <td class="text-center" ><?=date('Y-m-d H:i:s',$value['time'])?></td>
-                                <td class="text-center" style="border-right: 0px;"><?=$value['notes']?></td>
                             </tr>
                             <?php $i++?>
                         <?php endforeach;?>

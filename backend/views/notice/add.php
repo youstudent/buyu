@@ -27,6 +27,8 @@
                 <?php echo $form->field($model,'title')->textInput(['placeholder'=>'标题'])?>
                 <?php echo $form->field($model,'content')->textarea(['placeholder'=>'内容'])?>
                 <?php echo $form->field($model,'notes')->textInput(['placeholder'=>'备注'])?>
+                <?php echo $form->field($model,'type')->dropDownList(['0'=>'不添加奖励','1'=>'金 币','2'=>'钻 石'])?>
+                <?php echo $form->field($model,'number')->textInput(['placeholder'=>'无奖励不填'])?>
                 <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','2'=>'隐 藏'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>

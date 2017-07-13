@@ -70,7 +70,7 @@ class NoticeController extends ObjectController
         if(\Yii::$app->request->isPost)
         {
             \Yii::$app->response->format = Response::FORMAT_JSON;
-            if($model->load(\Yii::$app->request->post()) && $model->save())
+            if($model->edit(\Yii::$app->request->post()))
             {
                 return ['code'=>1,'message'=>'修改成功'];
             }

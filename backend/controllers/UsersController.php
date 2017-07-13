@@ -114,7 +114,40 @@ class UsersController extends ObjectController
     public function actionDeduct(){
         $model = new AgencyDeduct();
         $data = $model->getDeductLog(Yii::$app->request->get());
-        // var_dump($data);exit;
         return $this->render('deduct',$data);
+    }
+    
+    
+    //设置解封时间
+    public function actionUnsetTime(){
+        $this->layout = false;
+        $model= new Users();
+        $model = $model->set(Yii::$app->request->get('game_id'));
+        return $this->render('unset_time',['model'=>$model]);
+    }
+    
+    
+    //将账号 加入黑名单或解除
+    public function actionBlack()
+    {
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $model = Users::findOne(\Yii::$app->request->get('id'));
+        if(!$model){
+            return ['code'=>0,'message'=>'账号不存在!'];
+        }
+        $model->status=Yii::$app->request->get('status');
+        if($model->save()){
+            return ['code'=>1,'message'=>'账号操作成功!'];
+        }
+            return ['code'=>0,'message'=>'账号操作失败!'];
+    }
+    
+    
+    
+    //黑名单列表
+    public function actionBlacklist(){
+        $model = new Users();
+        $data  =$model->blacklist(Yii::$app->request->get());
+        return $this->render('blacklist',$data);
     }
 }

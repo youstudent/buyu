@@ -10,9 +10,14 @@ $config = [
         ['label' => '充值和扣除记录', 'url' => ['users/pay-log']],
         ['label' => '消费记录', 'url' => ['users/out-log']],
         ['label' => '战绩记录', 'url' => ['users/exploits']],
+        ['label' => '黑名单表', 'url' => ['users/blacklist']],
+        ['label' => '兑换记录', 'url' => ['redeem-code/record']],
     ]],
-    ['label' => '代理管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['agency/index'], 'items' => [
-        ['label' => '代理列表', 'url' => ['agency/index', 'id' => 1]],
+    ['label' => '提现管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['withdraw/list'], 'items' => [
+        ['label' => '提现列表', 'url' => ['withdraw/list', 'id' => 1]],
+    ]],
+    ['label' => '族长管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['agency/index'], 'items' => [
+        ['label' => '族长列表', 'url' => ['agency/index', 'id' => 1]],
     ]],
     ['label' => '充值/扣除记录', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
         ['label' => '玩家充值/扣除列表', 'url' => ['pay/user-pay-log', 'id' => 1]],
@@ -33,7 +38,31 @@ if (Yii::$app->params['distribution']) {
 $config[] = ['label' => '公告管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
     ['label' => '公告管理', 'url' => ['notice/index', 'id' => 1]]
 ]];
-$config[] = ['label' => '设置中心', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-info', 'url' => ['manage/index'], 'items' => [
+$config[] = ['label' => '充值商城管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
+    ['label' => '充值商城货币设置', 'url' => ['currency-pay/index']]
+]];
+$config[] = ['label' => '排行榜', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
+    ['label' => '排行榜列表', 'url' => ['currency-pay/index']]
+]];
+$config[] = ['label' => '兑换管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
+    ['label' => '兑换列表', 'url' => ['redeem-code/index']]
+]];
+$config[] = ['label' => '大厅设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['touch/index'], 'items' => [
+    ['label' => '联系客户', 'url' => ['touch/index']],
+    ['label' => '游戏入口设置', 'url' => ['inle-porting/index']],
+    ['label' => '邮件设置', 'url' => ['mail/index']],
+    ['label' => '货币设置', 'url' => ['money/index']],
+    ['label' => '炮台设置', 'url' => ['battery/index']],
+    ['label' => 'vip每日福利', 'url' => ['vip-benefit/index']],
+    ['label' => 'vip升级管理', 'url' => ['vip-update/index']],
+    ['label' => '经验等级升级奖励', 'url' => ['experience/index']],
+    ['label' => '每日签到管理', 'url' => ['day/index']],
+    ['label' => '捕鱼任务奖励设置', 'url' => ['sign-board/index']],
+    ['label' => '救济金(金币和钻石设置)', 'url' => ['getgold/index']],
+]];
+$config[] = ['label' => '基础设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-info', 'url' => ['manage/index'], 'items' => [
+    ['label' => '聊天内容设置', 'url' => ['chat/index']],
+    ['label' => '商店道具设置', 'url' => ['shop/index']],
     ['label' => '管理员列表', 'url' => ['manage/index', 'id' => 1]],
 ]];
 $config[] = ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg_color' => 'bg-danger', 'url' => ['login/logout']]

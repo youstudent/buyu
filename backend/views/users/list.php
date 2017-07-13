@@ -70,18 +70,12 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">编号</th>
                                 <th  class="text-center">用户ID</th>
                                 <th  class="text-center">用户昵称</th>
-
-<!--                            多货币修改代码-->
-                                <?php
-                                $item = \common\models\GoldConfigObject::find()->all();
-                                foreach ($item as $key=>$value){
-                                    echo "<th class=\"text-center\">".$value['name']."</th>";
-                                }
-                                ?>
-<!--                            多货币修改代码-->
-
-                                <th  class="text-center">游戏总局数</th>
+                                <th  class="text-center">等级</th>
+                                <th  class="text-center">金币</th>
+                                <th  class="text-center">钻石</th>
+                                <th  class="text-center">宝石</th>
                                 <th  class="text-center">注册时间</th>
+                                <th  class="text-center">解封时间</th>
                                 <th  class="text-center">状态</th>
                                 <th  class="text-center">操作</th>
 
@@ -94,13 +88,16 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center"><?=$i?></td>
                                 <td  class="text-center"><?=$value['game_id']?></td>
                                 <td  class="text-center"><?=$value['nickname']?></td>
-<!--                                多货币修改-->
-                                <?php foreach ($value['gold'] as $keys=>$values):?>
-                                    <td class="text-center"><?= $values ?></td>
-                                <?php endforeach;?>
-<!--                                多货币修改-->
-                                <td  class="text-center"><?=$value['game_count']?></td>
+                                <td  class="text-center"><?=$value['grade']?></td>
+                                <td  class="text-center"><?=$value['gold']?></td>
+                                <td  class="text-center"><?=$value['jewel']?></td>
+                                <td  class="text-center"><?=$value['gem']?></td>
                                 <td  class="text-center"><?=date('Y-m-d H:i:s',$value['reg_time'])?></td>
+                                <?php if (empty($value['unset_time'])):?>
+                                    <td  class="text-center"><?=$value['unset_time']?></td>
+                                <?php else:?>
+                                <td  class="text-center"><?=date('Y-m-d H:i:s',$value['unset_time'])?></td>
+                                <?php endif;?>
                                 <td class="text-center">
                                     <?php if($value['status'] == 1):?>
                                             <a href="#" class="active">
@@ -111,9 +108,12 @@ use yii\bootstrap\ActiveForm;
                                         <i class="fa fa-times text-danger text"></i>
                                     </a>
                                 </td>
-                                <td class="text-center" width="400px;">
+                                <td class="text-center" width="500px;">
                                     <a href="<?=\yii\helpers\Url::to(['users/pass',
                                         'Users'=>['id'=>$value['id'],'status'=>$value['status']==0?1:0]])?>" class="btn btn-xs btn-danger"><?=$value['status']==1?'停封':'启用'?></a>
+                                    <a onclick="return openAgency(this,'是否将该账号加入黑名单?')"
+                                       href="<?php echo \yii\helpers\Url::to(['users/black', 'id' => $value['id'],'status'=>2]) ?>"
+                                       class="btn btn-xs btn-danger">&nbsp;加入黑名单</a>
                                     <a href="<?=\yii\helpers\Url::to(['users/pay-log',
                                         'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-primary">充值记录</a>
                                     <a href="<?=\yii\helpers\Url::to(['users/out-log',
@@ -122,6 +122,10 @@ use yii\bootstrap\ActiveForm;
                                         'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-info">&nbsp; 战绩&nbsp; </a>
                                     <?php if(Yii::$app->params['backendPayUser']):?>
                                     <a href="<?=\yii\helpers\Url::to(['users/pay','id'=>$value['id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal">&nbsp;充值或扣除&nbsp;</a>
+                                    <?php endif;?>
+                                    <?php if ($value['status'] == 0):?>
+                                        <a href="<?=\yii\helpers\Url::to(['users/unset-time',
+                                         'game_id'=>$value['game_id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal">设置解封时间</a>
                                     <?php endif;?>
                                 </td>
                             </tr>
@@ -144,8 +148,12 @@ use yii\bootstrap\ActiveForm;
                         <div class="col-sm-12 text-right text-center-xs">
                             <?=\yii\widgets\LinkPager::widget([
                                     'pagination'=>$pages,
+                                    'firstPageLabel' => '首页',
+                                    'lastPageLabel' => '尾页',
+                                    'nextPageLabel' => '下一页',
+                                    'prevPageLabel' => '上一页',
                                     'options'   =>[
-                                            'class'=>'pagination pagination-sm m-t-none m-b-none',
+                                     'class'=>'pagination pagination-sm m-t-none m-b-none',
                                 ]
                             ])?>
                         </div>
@@ -158,3 +166,58 @@ use yii\bootstrap\ActiveForm;
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
     <a href="" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
 </section>
+<script>
+
+    //    设置封停的状态
+    function setStatus(val) {
+        $("#status").val(val);
+        $("#agencyForm").submit();
+        console.log($("#status").val());
+    }
+    function openAgency(_this, title) {
+        swal({
+                title: title,
+                text: "请确认你的操作时经过再三是考虑!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonText: "确认",
+                cancelButtonText: "取消",
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true
+            },
+            function () {
+                console.log(_this.href);
+                $.ajax({
+                    url: _this.href,
+                    success: function (res) {
+                        if (res.code == 1) {
+                            swal(
+                                {
+                                    title: res.message,
+                                    type: "success",
+                                    showCancelButton: false,
+                                    confirmButtonText: "确认",
+                                    closeOnConfirm: false,
+                                    showLoaderOnConfirm: true
+                                }, function () {
+                                    window.location.reload();
+                                }
+                            );
+                        } else {
+                            swal(
+                                {
+                                    title: res.message,
+                                    type: "error",
+                                    showCancelButton: false,
+                                    confirmButtonText: "确认",
+                                    closeOnConfirm: false,
+                                }
+                            );
+                        }
+                    }
+                });
+            });
+
+        return false;
+    }
+</script>

@@ -21,12 +21,11 @@ class Request
             return false;
         }
 //        'game_id'=>$model->game_id,'gold'=>$this->pay_gold_num,'gold_config'=>GoldConfigObject::getNumCodeByName($this->pay_gold_config);
-        $datas['uid']      = $param['game_id'];
+        /*$datas['uid']      = $param['game_id'];
         $datas['depositType']   = $param['gold_config'];
-        $datas['gold']          = $param['gold'];
-
+        $datas['gold']          = $param['gold'];*/
         $postUrl = $url;
-        $curlPost = http_build_query($datas);
+        $curlPost = http_build_query($param);
         $ch = curl_init();//初始化curl
         curl_setopt($ch, CURLOPT_URL,$postUrl);//抓取指定网页
         curl_setopt($ch, CURLOPT_HEADER, 0);//设置header

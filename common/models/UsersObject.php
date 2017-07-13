@@ -52,9 +52,9 @@ class UsersObject extends Object
     public function rules()
     {
         return [
-            [['game_id', 'gold', 'gold_all', 'reg_time', 'game_count', 'status'], 'integer'],
+            [['game_id', 'gold','reg_time','status','grade'], 'integer'],
             [['nickname'], 'string', 'max' => 32],
-            [['vip_time','unset_time'],'safe']
+            [['jewel','unset_time','gem'],'safe']
         ];
     }
 
@@ -70,8 +70,10 @@ class UsersObject extends Object
             'gold' => '金币',
             'reg_time' => '注册时间',
             'status' => '状态',
-            'vip_time'=>'vip有效时间',
-            //'unset_time'=>
+            'jewel' => '钻石',
+            'gem' => '宝石',
+            'unset_time'=>'解封时间',
+            'grade'=>'等级',
         ];
     }
 

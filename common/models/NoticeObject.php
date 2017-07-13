@@ -57,6 +57,8 @@ class NoticeObject extends Object
             'time' => '添加时间',
             'notes' => '备注',
             'location' => '位置',
+            'type' => '奖励类型',
+            'number' => '数量',
         ];
     }
 }

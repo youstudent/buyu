@@ -127,7 +127,7 @@ class Users extends UsersObject
                     $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=charge&uid=".$model->game_id."&cash=".$this->pay_gold_num;
                 }
                 $data = Request::request_get($url);
-               
+                
                 if($data['code'] == 1)
                 {
                     /**
@@ -194,7 +194,7 @@ class Users extends UsersObject
         $this->initTime();
         $model   = self::find()->andWhere($this->searchWhere())
                                ->andWhere(['>=','reg_time',strtotime($this->starttime)])
-                               ->andWhere(['<=','reg_time',strtotime($this->endtime)]);
+                               ->andWhere(['<=','reg_time',strtotime($this->endtime)])->andWhere(['status'=>[0,1]]);
         $pages = new Pagination(
             [
                 'totalCount' =>$model->count(),
@@ -204,9 +204,9 @@ class Users extends UsersObject
 
         $data  = $model->limit($pages->limit)->offset($pages->offset)->all();
 
-        foreach ($data as $key=>$value){
+        /*foreach ($data as $key=>$value){
             $data[$key]['gold'] = $value->getGold();
-        }
+        }*/
 
         return ['data'=>$data,'pages'=>$pages,'model'=>$this];
     }
@@ -267,7 +267,30 @@ class Users extends UsersObject
         $data    = $model->limit($pages->limit)->offset($pages->offset)->asArray()->all();
         return ['data'=>$data,'pages'=>$pages,'model'=>$this];
     }
-
+    
+    /**
+     * 搜索并分页显示黑名单列表
+     * @param array $data
+     * @return array
+     */
+    public function blacklist($data = [])
+    {
+        $this->load($data);
+        $this->initTime();
+        $model   = self::find()->andWhere($this->searchWhere())
+            ->andWhere(['>=','reg_time',strtotime($this->starttime)])
+            ->andWhere(['<=','reg_time',strtotime($this->endtime)])->andWhere(['status'=>2]);
+        $pages = new Pagination(
+            [
+                'totalCount' =>$model->count(),
+                'pageSize' => \Yii::$app->params['pageSize']
+            ]
+        );
+        $data  = $model->limit($pages->limit)->offset($pages->offset)->all();
+        return ['data'=>$data,'pages'=>$pages,'model'=>$this];
+    }
+    
+    
     /**
      * 搜索处理数据函数
      * @return array
@@ -367,5 +390,11 @@ class Users extends UsersObject
         } else {
             return $this->addError('lock','通信错误');
         }
+    }
+    
+    //修改时间
+     public function set($data){
+        $model  = Users::findOne(['game_id'=>$data]);
+        return $model;
     }
 }

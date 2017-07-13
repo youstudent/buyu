@@ -38,7 +38,7 @@
 
                 <?php echo $form->field($model,'pay_gold_num')->textInput([])?>
                 <?php echo $form->field($model,'pay_money')->textInput([])?>
-                <?php echo $form->field($model,'detail')->textInput([])?>
+               
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
