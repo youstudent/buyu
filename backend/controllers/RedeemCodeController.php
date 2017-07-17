@@ -75,7 +75,17 @@ class RedeemCodeController extends ObjectController
         $model = RedeemCode::findOne($id);
         $JSON = json_decode($model->prize,true);
         $data  =[];
-        foreach ($JSON as  $k=>$v){
+        $re = RedeemCode::$give;
+        
+        foreach ($JSON as $key=>$value){
+            if (array_key_exists($key,$re)){
+                $data[$re[$key]]=$value;
+            }
+            
+            
+        }
+        //var_dump($JSON);
+        /*foreach ($JSON as  $k=>$v){
             if ($k=='gold'){     //金币
                 $model->gold=$v;
             }
@@ -104,9 +114,11 @@ class RedeemCodeController extends ObjectController
                 $model->six=$v;   //黑洞
             }
             $data[]=$k;
-        }
-        $model->give_type=$data;
-        return $this->render('prize',['model'=>$model]);
+        }*/
+       // $model->give_type=$data;
+       // var_dump($model->give_type);
+       // var_dump(RedeemCode::$give);
+        return $this->render('prize',['model'=>$model,'data'=>$data]);
     }
     
     
@@ -156,6 +168,38 @@ class RedeemCodeController extends ObjectController
         $model =new RedeemRecord();
         $data = $model->getList(\Yii::$app->request->get());
         return $this->render('record',$data);
+    }
+    
+    
+    
+    /**
+     *  修改兑换码
+     */
+    public function actionEdit()
+    {
+        $this->layout = false;
+        //RedeemCode::setShop();
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $model = RedeemCode::findOne($id);
+        if(\Yii::$app->request->isPost)
+        {
+            \Yii::$app->response->format = Response::FORMAT_JSON;
+            if($model->edit(\Yii::$app->request->post()))
+            {
+                return ['code'=>1,'message'=>'修改成功'];
+            }
+            $message = $model->getFirstErrors();
+            $message = reset($message);
+            return ['code'=>0,'message'=>$message];
+            
+        }
+        $data = json_decode($model->prize);
+        $datas=[];
+        foreach ($data as $K=>$v){
+          $datas[]=$K;
+        }
+        $model->give_type=$datas;
+        return $this->render('edit',['model'=>$model,'data'=>$data]);
     }
     
 }

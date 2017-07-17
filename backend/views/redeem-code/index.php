@@ -132,9 +132,8 @@ use yii\bootstrap\ActiveForm;
                                     <a href="<?php echo \yii\helpers\Url::to(['redeem-code/prize', 'id' => $value['id']]) ?>"
                                        data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
                                     <?php if ($value['status']==0 || $value['status']==2):?>
-                                        <a onclick="return openAgency(this,'是否修改该兑换码?')"
-                                           href="<?php echo \yii\helpers\Url::to(['redeem-code/del', 'id' => $value['id']]) ?>"
-                                           class="btn btn-xs btn-danger">编 辑</a>
+                                        <a href="<?php echo \yii\helpers\Url::to(['redeem-code/edit', 'id' => $value['id']]) ?>"
+                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编 辑</a>
                                     <?php endif;?>
                                     <?php if ($value['status']!==1):?>
                                         <a onclick="return openAgency(this,'是否删除该兑换码?')"

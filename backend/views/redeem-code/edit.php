@@ -29,6 +29,15 @@
                 <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\RedeemCode::$give)?>
                 <?php echo $form->field($model,'scope_type')->dropDownList(\common\models\RedeemCode::$scope_type)?>
                 <?php echo $form->field($model,'type')->dropDownList(\common\models\RedeemCode::$type)?>
+                <?php foreach ($data as $k=>$v):?>
+                    <div class="form-group field-redeemcode-<?php  echo $k ?>">
+                        <label class="col-lg-3 control-label" for="redeemcode-<?php  echo $k ?>"><?php  echo $k ?></label>
+                        <div class="col-lg-9">
+                            <input type="text" id="redeemcode-<?php /* echo $index*/?>>" class="form-control" name="RedeemCode[<?php echo $k?>" value="<?php echo $v?>">
+                            <span class="help-block m-b-none"></span>
+                        </div>
+                    </div>
+                <?php endforeach;?>
                <!-- <?php /*echo $form->field($model,'gold')*/?>
                 <?php /*echo $form->field($model,'diamond')*/?>
                 <?php /*echo $form->field($model,'fishGold')*/?>

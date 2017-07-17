@@ -5,7 +5,11 @@
  * @license http://www.lrdouble.com/license/
  */
 use kartik\datetime\DateTimePicker;
+use yii\web\View;
+
 ?>
+<!--<link type="text/css" href="jquery-ui-1.8.16.custom.css"
+	rel="stylesheet" />-->
 <!-- Modal -->
 <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -32,7 +36,7 @@ use kartik\datetime\DateTimePicker;
                 <?php echo $form->field($model,'type')->dropDownList(\common\models\RedeemCode::$type) ?>
             <?php
             $arr=\common\models\RedeemCode::$give;
-            var_dump($arr);
+            //var_dump($arr);
            /* $arr = [
                 ['name'=> 'gold', 'value'=> '', 'label' => '金币'],
                 ['name'=> 'diamond', 'value'=> '', 'label' => '砖石'],
@@ -41,15 +45,15 @@ use kartik\datetime\DateTimePicker;
                 ['name'=> 'tow', 'value'=> '', 'label' => 'two'],
             ];*/
             ?>
-                <?php foreach($arr as $index=> $val): ?>
-                    <div class="form-group field-redeemcode-<?php  echo $index ?>" style="display: none">
-                        <label class="col-lg-3 control-label" for="redeemcode-<?php  echo $index ?>"><?php  echo $index ?></label>
+                <?php /*foreach($arr as $index=> $val): */?><!--
+                    <div class="form-group field-redeemcode-<?php /* echo $index */?>" style="display: none">
+                        <label class="col-lg-3 control-label" for="redeemcode-<?php /* echo $index */?>"><?php /* echo $index */?></label>
                         <div class="col-lg-9">
-                            <input type="text" id="redeemcode-<?php  echo $index?>>" class="form-control" name="RedeemCode[<?php echo $index?>">
+                            <input type="text" id="redeemcode-<?php /* echo $index*/?>>" class="form-control" name="RedeemCode[<?php /*echo $index*/?>">
                             <span class="help-block m-b-none"></span>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                --><?php /*endforeach; */?>
 <!--                --><?php //echo $form->field($model,'gold')?>
 <!--                --><?php //echo $form->field($model,'diamond')?>
 <!--                --><?php //echo $form->field($model,'fishGold')?>
@@ -75,6 +79,8 @@ use kartik\datetime\DateTimePicker;
         padding-bottom: 0px;
     }
 </style>
+
+
 <script>
     $(document).ready(function () {
         $('.chk').on('click', function(){
@@ -119,5 +125,42 @@ use kartik\datetime\DateTimePicker;
                 },
             });
         });
+        
+        //checkbox选中添加对应输入框    
+        var  checkbox_input =  $('#redeemcode-give_type').find('.checkbox-inline');
+        checkbox_input.click(function(){
+        	var _this = $(this);    
+        	var input_text = _this.text();
+        	var input_name = 'RedeemCode['+ _this.find('input').val()+']';
+        	var input_id = _this.find('input').val();
+        	var html = '';
+        	if(_this.find('input').is(':checked')){
+        		$('#'+input_id).remove();
+        		html+= '<div class="form-group field-redeemcode-end_time" id="'+input_id+'">';
+        		html+= '<label class="col-lg-3 control-label" for="redeemcode-end_time">'+ input_text + '</label>';
+				html+= '<div class="col-lg-9">';
+				html+= '<input type="text" id="redeemcode-end_time" class="form-control" name="'+input_name+'">';
+				html+= '<span class="help-block m-b-none"></span></div></div>';																										
+				$('#payModalForm').append(html);
+        	}else{
+        		$('#'+input_id).remove();
+        	}
+        });
+        
+        //时间插件
+	     $("#time").datetimepicker({
+			changeYear : true,
+			changeMonth : true,
+			showSecond : true,
+			timeFormat : 'hh:mm:ss',
+			dateFormat : 'yy-mm-dd',
+			stepHour : 1,
+			stepMinute : 1,
+			stepSecond : 1
+		});
+        
     })
+    
+    
+  
 </script>

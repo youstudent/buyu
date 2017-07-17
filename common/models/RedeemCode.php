@@ -97,6 +97,7 @@ class RedeemCode extends Object
     public function rules()
     {
         return [
+            [['name'],'required'],
             [['type', 'created_at', 'number','status'], 'integer'],
             [['description'], 'string'],
             [['redeem_code', 'name'], 'string','max' => 50],
@@ -104,7 +105,7 @@ class RedeemCode extends Object
             [['one','tow','three','four','five','six'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
             [['end_time','start_time','give_type'],'safe'],
             [['select', 'keyword', 'pay_gold_num','pay_gold_config','game_id'], 'safe'],
-            [['starttime', 'endtime','gold','diamond','fishGold','scope_type','scope_type','show'],'safe'],
+            [['starttime', 'endtime','gold','diamond','fishGold','scope_type','scope_type','show','give_type'],'safe'],
         ];
     }
 
@@ -230,7 +231,34 @@ class RedeemCode extends Object
     {
         if($this->load($data) && $this->validate())
         {
-            if ($this->give_type){
+            $vv =[];
+            $re = RedeemCode::$give;
+            foreach ($data as $key=>$v){
+        
+                if (is_array($v)){
+                    foreach ($v as $k=>$v2){
+                        if (array_key_exists($k,$re)){
+                            $vv[$k]=$v2;
+                        }
+                    }
+                }
+        
+            }
+            if (empty($vv)){
+                $this->addError('give_type','请选择类型');
+                return false;
+            }
+            foreach ($vv as $kk=>$value){
+                if (empty($value)){
+                    $this->addError('gold','请选择对应类型的数量');
+                    return false;
+                }
+                if (!is_numeric($value)){
+                    $this->addError('gold','请输入数字类型');
+                    return false;
+                }
+            }
+            /*if ($this->give_type){
                 if (in_array('gold',$this->give_type)){
                     if ($this->gold==null || $this->gold==0 ){
                         $this->addError('gold','请选择对应类型的数量');
@@ -326,8 +354,8 @@ class RedeemCode extends Object
                         $data[$value]=$this->diamond;
                     }
         
-                }
-                $prize = json_encode($data);
+                }*/
+                $prize = json_encode($vv);
                 for ($i=1;$i<=(int)$this->number;$i++){
                     $model =new RedeemCode();
                     $model->add_type=1;
@@ -338,8 +366,9 @@ class RedeemCode extends Object
                     $model->created_at=time();
                     $model->prize=$prize;
                     $model->status=0;
-                    $model->save(false);
+                    $model->save();
                 }
+            
             }
             return true;
         
@@ -355,7 +384,37 @@ class RedeemCode extends Object
     {
         if($this->load($data) && $this->validate())
         {
-            if ($this->give_type){
+             $vv =[];
+            $re = RedeemCode::$give;
+            foreach ($data as $key=>$v){
+                
+                if (is_array($v)){
+                    foreach ($v as $k=>$v2){
+                     if (array_key_exists($k,$re)){
+                       $vv[$k]=$v2;
+                     }
+                    }
+                }
+                
+            }
+            
+            if (empty($vv)){
+                $this->addError('give_type','请选择类型');
+                return false;
+            }
+            foreach ($vv as $kk=>$value){
+                if (empty($value)){
+                    $this->addError('gold','请选择对应类型的数量');
+                    return false;
+                }
+                if (!is_numeric($value)){
+                    $this->addError('gold','请输入数字类型');
+                    return false;
+                }
+            }
+            
+            //var_dump($data);exit;
+            /*if ($this->give_type){
                 if (in_array('gold',$this->give_type)){
                     if ($this->gold==null || $this->gold==0 ){
                         $this->addError('gold','请选择对应类型的数量');
@@ -414,6 +473,7 @@ class RedeemCode extends Object
                 $this->addError('give_type','请选择类型');
                 return false;
             }
+            
             if ($this->one || $this->tow || $this->three || $this->four || $this->five ||$this->six || $this->gold || $this->fishGold ||$this->diamond){
                 if (!$this->give_type){
                     $this->addError('one','请选择对应类型的数量');
@@ -451,17 +511,17 @@ class RedeemCode extends Object
                     $data[$value]=$this->diamond;
                 }
                 
-            }
-            $prize = json_encode($data);
+            }*/
+            $prize = json_encode($vv);
                 $this->add_type=2;
                 $this->redeem_code=$this->getRandChar(12);
                 $this->created_at=time();
                 $this->prize=$prize;
                 $this->status=2;
-                $this->save();
+                return $this->save();
             }
         
-        return true;
+        return false;
         
     }
     
@@ -528,8 +588,7 @@ class RedeemCode extends Object
     }
     
     
-    //添加类型
-    
+    // 创建模型自动设置赠送礼品类型
     public function __construct(array $config = [])
     {
         //查询 道具列表中的数据
@@ -543,7 +602,7 @@ class RedeemCode extends Object
         parent::__construct($config);
     }
     
-    public static function setShop(){
+    /*public static function setShop(){
         //查询 道具列表中的数据
         $data  = Shop::find()->asArray()->all();
         //将道具数组格式化成  对应的数组
@@ -552,6 +611,17 @@ class RedeemCode extends Object
         $datas = ['gold'=>'金币','diamond'=>'钻石','fishGold'=>'鱼币'];
         //将数据合并 赋值给数组
         self::$give= ArrayHelper::merge($datas,$new_data);
+    }*/
+    
+    
+    // 修改兑换码
+    public function edit($data=[]){
+        if($this->load($data,'') && $this->validate()){
+            $datas['id']=$this->id;
+            $datas['num']=1;
+            $datas['level']=$this->level;
+            $datas['cost']=$this->jewel_number;
+        }
     }
     
 }
