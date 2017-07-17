@@ -2,9 +2,12 @@
 
 namespace common\models;
 
+use backend\models\Shop;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Symfony\Component\DomCrawler\Field\InputFormField;
 use Yii;
 use yii\data\Pagination;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%redeem_code}}".
@@ -24,7 +27,7 @@ class RedeemCode extends Object
 {
      public static $add_type=[1=>'一次使用型',2=>'无限制使用型'];
      public static $scope_type=[1=>'普通用户',2=>'VIP用户',3=>'所有用户'];
-     public static $give=['gold'=>'金币','diamond'=>'钻石','fishGold'=>'宝石',1=>'神灯',2=>'锁定',3=>'冻结',4=>'核弹',5=>'狂暴',6=>'黑洞'];
+     public static $give;
      public $give_type;
      public $gold;//金币
      public $diamond;//钻石
@@ -78,6 +81,8 @@ class RedeemCode extends Object
      * @return array
      */
     public $endtime      = 0;
+    
+    public $show        = '';
     /**
      * @inheritdoc
      */
@@ -99,7 +104,7 @@ class RedeemCode extends Object
             [['one','tow','three','four','five','six'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
             [['end_time','start_time','give_type'],'safe'],
             [['select', 'keyword', 'pay_gold_num','pay_gold_config','game_id'], 'safe'],
-            [['starttime', 'endtime','gold','diamond','fishGold','scope_type','scope_type'],'safe'],
+            [['starttime', 'endtime','gold','diamond','fishGold','scope_type','scope_type','show'],'safe'],
         ];
     }
 
@@ -143,11 +148,11 @@ class RedeemCode extends Object
         $model   = self::find()->andWhere($this->searchWhere())
             ->andWhere(['>=','created_at',strtotime($this->starttime)])
             ->andWhere(['<=','created_at',strtotime($this->endtime)]);
-        if ($data){
-            if ($data['show'] && $data['show']!==null){
+        
+        if (array_key_exists('show',$data)){
+            if (!$data['show']==null){
                 $model->andWhere(['add_type'=>$data['show']]);
             }
-            
         }
         $pages = new Pagination(
             [
@@ -520,6 +525,33 @@ class RedeemCode extends Object
             return $data;
         }
         return false;
+    }
+    
+    
+    //添加类型
+    
+    public function __construct(array $config = [])
+    {
+        //查询 道具列表中的数据
+        $data  = Shop::find()->asArray()->all();
+        //将道具数组格式化成  对应的数组
+        $new_data = ArrayHelper::map($data,'id','name');
+        //自定义 赠送类型
+        $datas = ['gold'=>'金币','diamond'=>'钻石','fishGold'=>'鱼币'];
+        //将数据合并 赋值给数组
+        self::$give= ArrayHelper::merge($datas,$new_data);
+        parent::__construct($config);
+    }
+    
+    public static function setShop(){
+        //查询 道具列表中的数据
+        $data  = Shop::find()->asArray()->all();
+        //将道具数组格式化成  对应的数组
+        $new_data = ArrayHelper::map($data,'id','name');
+        //自定义 赠送类型
+        $datas = ['gold'=>'金币','diamond'=>'钻石','fishGold'=>'鱼币'];
+        //将数据合并 赋值给数组
+        self::$give= ArrayHelper::merge($datas,$new_data);
     }
     
 }

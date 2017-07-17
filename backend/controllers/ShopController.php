@@ -9,6 +9,7 @@ class ShopController extends \yii\web\Controller
 {
     public function actionIndex()
     {
+        
         $data = Shop::find()->asArray()->all();
         
         return $this->render('index',['data'=>$data]);

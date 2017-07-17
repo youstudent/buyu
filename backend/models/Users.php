@@ -69,7 +69,7 @@ class Users extends UsersObject
         return [
             [['select','keyword','pay_gold_num','pay_gold_config'],'safe'],
             ['pay_gold_num','integer','on'=>'pay'],
-           // ['pay_gold_num','match','pattern'=>'/^\+?[1-9][0-9]*$/','on'=>'pay'],
+            ['pay_gold_num','match','pattern'=>'/^\+?[1-9][0-9]*$/','on'=>'pay'],
             ['pay_money','number','on'=>'pay'],
             [['starttime','endtime','detail','type'],'safe'],
         ];
@@ -203,11 +203,9 @@ class Users extends UsersObject
         );
 
         $data  = $model->limit($pages->limit)->offset($pages->offset)->all();
-
-        /*foreach ($data as $key=>$value){
+        foreach ($data as $key=>$value){
             $data[$key]['gold'] = $value->getGold();
-        }*/
-
+        }
         return ['data'=>$data,'pages'=>$pages,'model'=>$this];
     }
 

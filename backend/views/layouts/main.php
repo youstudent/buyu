@@ -45,7 +45,7 @@ $config[] = ['label' => '排行榜', 'icon' => 'fa fa-bullhorn icon', 'bg_color'
     ['label' => '排行榜列表', 'url' => ['currency-pay/index']]
 ]];
 $config[] = ['label' => '兑换管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
-    ['label' => '兑换列表', 'url' => ['redeem-code/index']]
+    ['label' => '兑换列表', 'url' => ['redeem-code/index','show'=>'']]
 ]];
 $config[] = ['label' => '大厅设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['touch/index'], 'items' => [
     ['label' => '联系客户', 'url' => ['touch/index']],

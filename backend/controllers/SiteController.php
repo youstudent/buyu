@@ -8,6 +8,7 @@
 namespace backend\controllers;
 
 use backend\models\Manage;
+use backend\models\Shop;
 use Yii;
 use backend\models\AgencyPay;
 use backend\models\UserPay;
@@ -36,6 +37,7 @@ class SiteController extends ObjectController
      */
     public function actionIndex()
     {
+        Shop::GetShop();
         $year       = date('Y');
         $month      = date('m');
         $dayNum     = cal_days_in_month(CAL_GREGORIAN,$month,$year);//算当前月份的天数

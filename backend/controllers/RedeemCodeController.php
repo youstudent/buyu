@@ -25,6 +25,7 @@ class RedeemCodeController extends ObjectController
     public function actionAdd()
     {
         $this->layout = false;
+        //RedeemCode::setShop();
         $model = new RedeemCode();
         if(\Yii::$app->request->isPost)
         {
@@ -50,6 +51,7 @@ class RedeemCodeController extends ObjectController
     public function actionAddOne()
     {
         $this->layout = false;
+        //RedeemCode::setShop();
         $model = new RedeemCode();
         if(\Yii::$app->request->isPost)
         {
@@ -68,6 +70,7 @@ class RedeemCodeController extends ObjectController
     //奖品内容的查看
     public function actionPrize(){
         $this->layout = false;
+       // RedeemCode::setShop();
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
         $model = RedeemCode::findOne($id);
         $JSON = json_decode($model->prize,true);
@@ -82,22 +85,22 @@ class RedeemCodeController extends ObjectController
             if ($k=='fishGold'){
                 $model->fishGold=$v;   //宝石鱼币
             }
-            if ($k==1){
+            if ($k=='1'){
                 $model->one=$v;   //神灯
             }
-            if ($k==2){
+            if ($k=='2'){
                 $model->tow=$v;  //锁定
             }
-            if ($k==3){
+            if ($k=='3'){
                 $model->three=$v; //冻结
             }
-            if ($k==4){
+            if ($k=='4'){
                 $model->four=$v;  //核弹
             }
-            if ($k==5){
+            if ($k=='5'){
                 $model->five=$v; //狂暴
             }
-            if ($k==6){
+            if ($k=='6'){
                 $model->six=$v;   //黑洞
             }
             $data[]=$k;

@@ -71,9 +71,12 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">用户ID</th>
                                 <th  class="text-center">用户昵称</th>
                                 <th  class="text-center">等级</th>
-                                <th  class="text-center">金币</th>
-                                <th  class="text-center">钻石</th>
-                                <th  class="text-center">宝石</th>
+                                <?php
+                                $item = \common\models\GoldConfigObject::find()->all();
+                                foreach ($item as $key=>$value){
+                                    echo "<th class=\"text-center\">".$value['name']."</th>";
+                                }
+                                ?>
                                 <th  class="text-center">注册时间</th>
                                 <th  class="text-center">解封时间</th>
                                 <th  class="text-center">状态</th>
@@ -89,9 +92,12 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center"><?=$value['game_id']?></td>
                                 <td  class="text-center"><?=$value['nickname']?></td>
                                 <td  class="text-center"><?=$value['grade']?></td>
-                                <td  class="text-center"><?=$value['gold']?></td>
-                                <td  class="text-center"><?=$value['jewel']?></td>
-                                <td  class="text-center"><?=$value['gem']?></td>
+                                <!--                                多货币修改-->
+                                    <?php foreach ($value['gold'] as $keys=>$values):?>
+                                    <td class="text-center"><?= $values ?></td>
+                                <?php endforeach;?>
+                                <!--                                多货币修改-->
+                               
                                 <td  class="text-center"><?=date('Y-m-d H:i:s',$value['reg_time'])?></td>
                                 <?php if (empty($value['unset_time'])):?>
                                     <td  class="text-center"><?=$value['unset_time']?></td>
@@ -109,8 +115,9 @@ use yii\bootstrap\ActiveForm;
                                     </a>
                                 </td>
                                 <td class="text-center" width="500px;">
-                                    <a href="<?=\yii\helpers\Url::to(['users/pass',
-                                        'Users'=>['id'=>$value['id'],'status'=>$value['status']==0?1:0]])?>" class="btn btn-xs btn-danger"><?=$value['status']==1?'停封':'启用'?></a>
+                                    <a onclick="return openAgency(this,'是否封锁该账号?')"
+                                       href="<?php echo \yii\helpers\Url::to(['users/pass', 'id' => $value['id'],'status'=>$value['status']==0?1:0]) ?>"
+                                       class="btn btn-xs btn-danger"><?=$value['status']==1?'停封':'启用'?></a>
                                     <a onclick="return openAgency(this,'是否将该账号加入黑名单?')"
                                        href="<?php echo \yii\helpers\Url::to(['users/black', 'id' => $value['id'],'status'=>2]) ?>"
                                        class="btn btn-xs btn-danger">&nbsp;加入黑名单</a>
@@ -121,7 +128,8 @@ use yii\bootstrap\ActiveForm;
                                     <a href="<?=\yii\helpers\Url::to(['users/exploits',
                                         'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-info">&nbsp; 战绩&nbsp; </a>
                                     <?php if(Yii::$app->params['backendPayUser']):?>
-                                    <a href="<?=\yii\helpers\Url::to(['users/pay','id'=>$value['id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal">&nbsp;充值或扣除&nbsp;</a>
+                                    <a href="<?=\yii\helpers\Url::to(['users/pay','id'=>$value['id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal">&nbsp;充值&nbsp;</a>
+                                    <a href="<?=\yii\helpers\Url::to(['users/pay','id'=>$value['id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal"> 扣除</a>
                                     <?php endif;?>
                                     <?php if ($value['status'] == 0):?>
                                         <a href="<?=\yii\helpers\Url::to(['users/unset-time',

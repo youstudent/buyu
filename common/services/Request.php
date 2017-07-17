@@ -35,13 +35,10 @@ class Request
         curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
         $data = curl_exec($ch);//运行curl
         curl_close($ch);
-
-
         $data = json_decode($data);
-        
         if($data->code == 1)
         {
-            return ['code'=>1];
+            return ['code'=>1,$data->data];
         }
         return ['code'=>0,'message'=>$data->message];
     }
