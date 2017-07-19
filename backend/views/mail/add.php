@@ -25,8 +25,7 @@
                 ])?>
                 <?php echo $form->field($model,'title')?>
                 <?php echo $form->field($model,'content')->textarea()?>
-                <?php echo $form->field($model,'type')->dropDownList(['0'=>'不添加奖励','1'=>'金币','2'=>'钻石'])?>
-                <?php echo $form->field($model,'number')?>
+                <?php echo $form->field($model,'number',['inline'=>true])->checkboxList(\common\models\Mail::$give)?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -45,6 +44,7 @@
 </style>
 <script>
     $(document).ready(function () {
+        clickTimeSelect($('#IDIDID'));
         //平台用户充值
         $("#payModalSubmit").click(function () {
             var  form   = $("#payModalForm");
@@ -59,15 +59,15 @@
                     if(res.code == 1)
                     {
                         swal({
-                            title:res.message,
-                            //text: "<?=Yii::t('app','swal_text_error')?>",
-                            type: "success",
-                            confirmButtonText: "<?=Yii::t('app','but_close')?>",
-                            closeOnConfirm: false,
-                        },
-                        function(){
-                            location.reload();
-                        });
+                                title:res.message,
+                                //text: "<?=Yii::t('app','swal_text_error')?>",
+                                type: "success",
+                                confirmButtonText: "<?=Yii::t('app','but_close')?>",
+                                closeOnConfirm: false,
+                            },
+                            function(){
+                                location.reload();
+                            });
                     }else{
                         swal({
                             title:res.message,
@@ -81,5 +81,26 @@
                 },
             });
         });
+
+        //checkbox选中添加对应输入框
+        var  checkbox_input =  $('#mail-number').find('.checkbox-inline');
+        checkbox_input.click(function(){
+            var _this = $(this);
+            var input_text = _this.text();
+            var input_name = 'Mail['+ _this.find('input').val()+']';
+            var input_id = _this.find('input').val();
+            var html = '';
+            if(_this.find('input').is(':checked')){
+                $('#'+input_id).remove();
+                html+= '<div class="form-group field-redeemcode-end_time" id="'+input_id+'">';
+                html+= '<label class="col-lg-3 control-label" for="redeemcode-end_time">'+ input_text + '</label>';
+                html+= '<div class="col-lg-9">';
+                html+= '<input type="text" id="redeemcode-end_time" class="form-control" name="'+input_name+'">';
+                html+= '<span class="help-block m-b-none"></span></div></div>';
+                $('#payModalForm').append(html);
+            }else{
+                $('#'+input_id).remove();
+            }
+        })
     })
 </script>

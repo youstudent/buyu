@@ -18,7 +18,7 @@ use kartik\datetime\DateTimePicker;
             <div class="col-xs-10">
             <?php $form = \yii\bootstrap\ActiveForm::begin([
                     'id'=>'payModalForm',
-                    'action'=>['users/unset_time'],
+                    'action'=>['users/unset-time'],
                     'fieldConfig' => [
                         'template' => "{label}{input}",
                     ],
@@ -26,20 +26,13 @@ use kartik\datetime\DateTimePicker;
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'game_id')->textInput(['readonly'=>true])?>
                 <?php echo $form->field($model,'nickname')->textInput(['readonly'=>true])?>
-                <?php echo $form->field($model,'unset_time')->widget(DateTimePicker::className(),
-                    [
-                        'options' => ['placeholder' => ''],
-                        'pluginOptions' => [
-                            'autoclose' => true,
-                        ]
-                    ]);
-                ?>
+                <?php echo $form->field($model,'unset_time')->textInput(['id'=>'IDIDID'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal"><?=Yii::t('app','but_close')?></button>
-            <button type="button" id="payModalSubmit" class="btn btn-primary"><?=Yii::t('app','but_submit_pay')?></button>
+            <button type="button" id="payModalSubmit" class="btn btn-primary">确认停封</button>
         </div>
     </div>
 </div>
@@ -52,6 +45,9 @@ use kartik\datetime\DateTimePicker;
 </style>
 <script>
     $(document).ready(function () {
+        
+       // var data  = format(time,"YYYY-MM-DD HH:mm:ss");
+        clickTimeSelect($('#IDIDID'),false);
         //平台用户充值
         $("#payModalSubmit").click(function () {
             var  form   = $("#payModalForm");

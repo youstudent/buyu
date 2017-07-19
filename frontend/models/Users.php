@@ -33,7 +33,7 @@ class Users extends UsersObject{
      * 充值类型
      * @var string
      */
-    public $pay_gold_config = 'gold';
+    public $pay_gold_config = '';
 
     public function rules()
     {
@@ -67,7 +67,7 @@ class Users extends UsersObject{
         $this->scenario = 'pay';
         if($this->load($data) && $this->validate())
         {
-            $this->pay_gold_config = '房卡';
+            //$this->pay_gold_config = '房卡';
             /**
              * 查询用户是否存在
              */
@@ -75,7 +75,7 @@ class Users extends UsersObject{
             if($model)
             {
                 $agencyModel = Agency::findOne(\Yii::$app->session->get('agencyId'));
-                $gold = $agencyModel->getNoeGold('房卡');
+                $gold = $agencyModel->getNoeGold($this->pay_gold_config);
                 if ($gold < $this->pay_gold_num)
                 {
                     return $this->addError('pay_gold_num','对不起你的数量不足！');
@@ -84,8 +84,9 @@ class Users extends UsersObject{
                 /**
                  * 请求游戏服务器、并判断返回值进行逻辑处理
                  */
-                $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=chargeCard&uid=".$model->game_id."&card=".$this->pay_gold_num;
-                $data = Request::request_get($url);
+               // $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=chargeCard&uid=".$model->game_id."&card=".$this->pay_gold_num;
+               // $data = Request::request_get($url);
+                $data['code']=1;
                 if($data['code'] == 1)
                 {
                     

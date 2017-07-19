@@ -56,9 +56,10 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center" style="border-left: 0px;">编号</th>
                                 <th  class="text-center">玩家昵称</th>
                                 <th  class="text-center">玩家ID</th>
+                                <th  class="text-center">类型</th>
                                 <th  class="text-center">数量</th>
                                 <th  class="text-center">时间</th>
-                                <th  class="text-center">收款人民币</th>
+                                <!--<th  class="text-center">收款人民币</th>-->
                                 <th  class="text-center" style="border-right: 0px;">充值人</th>
                             </tr>
                             </thead>
@@ -70,9 +71,10 @@ use yii\bootstrap\ActiveForm;
                                     <td  class="text-center" style="border-left: 0px;"><?=$i?></td>
                                     <td  class="text-center"><?=$value['nickname']?></td>
                                     <td  class="text-center"><?=$value['game_id']?></td>
+                                    <td  class="text-center"><?=$value['gold_config']?></td>
                                     <td  class="text-center"><?=$value['gold']?></td>
                                     <td  class="text-center"><?=date("Y-m-d H:i:s",$value['time'])?></td>
-                                    <td  class="text-center"><?=$value['money']?></td>
+                                   <!-- <td  class="text-center"><?/*=$value['money']*/?></td>-->
                                     <td  class="text-center" style="border-right: 0px;"><?=$value['agency_name']?></td>
                                 </tr>
                                 <?php $i++?>

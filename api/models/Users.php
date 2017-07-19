@@ -18,10 +18,8 @@ class Users extends UsersObject
     public function rules()
     {
         return [
-            [['game_id', 'gold', 'gold_all', 'reg_time', 'game_count', 'status'], 'integer'],
+            [['game_id', 'gold','reg_time','status','vip_grade','grade'], 'integer'],
             [['nickname'], 'string', 'max' => 32],
-            [['autograph', 'head'], 'string', 'max' => 255],
-            [['phone'], 'string', 'max' => 12],
             [['game_id'],'unique','on'=>'add'],
             [['game_id','nickname','gold'],'required','on'=>'add'],
 

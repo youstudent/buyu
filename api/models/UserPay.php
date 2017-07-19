@@ -22,7 +22,7 @@ class UserPay extends UserPayObject
         if(!isset($user)){
             $this->addError('user_id', '玩家不存在');
         }
-        $this->gold_config = '金币';
+       // $this->gold_config = '金币';
 
         if(!$user->payGold($this->gold_config, $this->gold)){
             $this->addError('gold', '充值失败');

@@ -54,7 +54,7 @@ class UsersObject extends Object
         return [
             [['game_id', 'gold','reg_time','status','grade'], 'integer'],
             [['nickname'], 'string', 'max' => 32],
-            [['jewel','unset_time','gem'],'safe']
+            [['jewel','unset_time','gem','vip_grade','time_online'],'safe']
         ];
     }
 
@@ -149,7 +149,7 @@ class UsersObject extends Object
         if(empty(self::$goldConfig)){
             self::$goldConfig = GoldConfigObject::find()->asArray()->all();
         }
-
+       
         /**
          * 循环处理代码、避免数据库压力
          */
@@ -158,6 +158,7 @@ class UsersObject extends Object
 
             if($value['name'] == $payGoldConfig)
             {
+                
                 /*
                  * 1代表数量 2代表时间处理
                  *  */
@@ -167,11 +168,11 @@ class UsersObject extends Object
                             ->andWhere(['users_id'=>$this->id])
                             ->andWhere(['gold_config'=>$payGoldConfig])
                             ->one();
-                    $data->gold = ($data->gold + $payGold);
-                    $data->sum_gold   = ($data->sum_gold + $payGold);
-
-                    return $data->save();
-
+                       $data->gold = ($data->gold + $payGold);
+                       $data->sum_gold   = ($data->sum_gold + $payGold);
+                       return $data->save();
+                      
+    
                 }
                 elseif ($value['type'] == 2)
                 {
@@ -183,6 +184,62 @@ class UsersObject extends Object
                     $data->gold = strtotime('+1month',$data->value);
                     //时间未执行使用多少 作者放得BUG
 
+                    return $data->save();
+                }
+            }
+        }
+    }
+    
+    /**
+     * 执行扣除操作
+     * @param $payGoldConfig
+     * @param $outGold
+     * @return bool
+     */
+    public function payOut($payGoldConfig,$payGold)
+    {
+        if(empty(self::$goldConfig)){
+            self::$goldConfig = GoldConfigObject::find()->asArray()->all();
+        }
+        
+        /**
+         * 循环处理代码、避免数据库压力
+         */
+        foreach (self::$goldConfig as $key=>$value)
+        {
+            
+            if($value['name'] == $payGoldConfig)
+            {
+                
+                /*
+                 * 1代表数量 2代表时间处理
+                 *  */
+                if($value['type'] == 1)
+                {
+                    $data = UsersGoldObject::find()
+                        ->andWhere(['users_id'=>$this->id])
+                        ->andWhere(['gold_config'=>$payGoldConfig])
+                        ->one();
+                    $data->gold = ($data->gold - $payGold);
+                    $data->sum_gold   = ($data->sum_gold - $payGold);
+                    if ($data->gold<0){
+                        $this->addError('pay_gold_num',"玩家.$payGoldConfig.数量不足");
+                        return false;
+                    }
+                    return $data->save();
+                    
+                    
+                }
+                elseif ($value['type'] == 2)
+                {
+                    $data = UsersGoldObject::find()
+                        ->andWhere(['users_id'=>$this->id])
+                        ->andWhere(['gold_config'=>$payGoldConfig])
+                        ->one();
+                    
+                    $data->gold = strtotime('+1month',$data->value);
+                    //时间未执行使用多少 作者放得BUG
+                    
                     return $data->save();
                 }
             }

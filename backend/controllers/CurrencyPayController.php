@@ -3,6 +3,8 @@
 namespace backend\controllers;
 
 use common\models\CurrencyPay;
+use yii\helpers\Json;
+use yii\web\Request;
 use yii\web\Response;
 
 class CurrencyPayController extends ObjectController
@@ -10,13 +12,14 @@ class CurrencyPayController extends ObjectController
     //充值货币管理
     public function actionIndex()
     {
-        if (\Yii::$app->request->get('show') == 1) {
+        CurrencyPay::GetCurrency();
+        /*if (\Yii::$app->request->get('show') == 1) {
             $data = CurrencyPay::find()->where(['type' => 1])->orderBy('money ASC')->asArray()->all();
         } else if (\Yii::$app->request->get('show') == 2) {
             $data = CurrencyPay::find()->where(['type' => 2])->orderBy('money ASC')->asArray()->all();
-        } else {
+        } else {*/
             $data = CurrencyPay::find()->orderBy('money ASC')->asArray()->all();
-        }
+       // }
         return $this->render('index', ['data' => $data]);
     }
     
@@ -39,6 +42,7 @@ class CurrencyPayController extends ObjectController
             return ['code' => 0, 'message' => $message];
             
         }
+        $model->fold=1;
         return $this->render('add', ['model' => $model]);
     }
     
@@ -64,7 +68,29 @@ class CurrencyPayController extends ObjectController
             return ['code'=>0,'message'=>$message];
             
         }
-        return $this->render('edit',['model'=>$model]);
+        $JSON = json_decode($model->give_prize,true);
+        $data  =[];
+        $re = CurrencyPay::$give;
+        foreach ($JSON as $key=>$value){
+            if (array_key_exists($key,$re)){
+                $data[$key]=$value;
+            }
+            if(is_array($value)){
+                foreach ($value as $K=>$v){
+                    if (array_key_exists($v['toolId'],$re)){
+                        //var_dump($v['toolId']);
+                        $data[$v['toolId']]=$v['toolNum'];
+                    }
+                }
+            }
+        
+        }
+        $type=[];
+        foreach($data as $k=>$v){
+            $type[]=$k;
+        }
+        $model->type=$type;
+        return $this->render('edit',['model'=>$model,'data'=>$data]);
     }
     
     /**
@@ -85,6 +111,33 @@ class CurrencyPayController extends ObjectController
             $messge = reset($messge);
             return ['code' => 0, 'message' => $messge];
         }
-        
     }
+    
+    //奖品内容的查看
+    public function actionPrize(){
+        $this->layout = false;
+        // RedeemCode::setShop();
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $model = CurrencyPay::findOne($id);
+        $JSON = json_decode($model->give_prize,true);
+        $data  =[];
+        $re = CurrencyPay::$give;
+        foreach ($JSON as $key=>$value){
+            if (array_key_exists($key,$re)){
+                $data[$re[$key]]=$value;
+            }
+            if(is_array($value)){
+               foreach ($value as $K=>$v){
+                   if (array_key_exists($v['toolId'],$re)){
+                       //var_dump($v['toolId']);
+                      $data[$re[$v['toolId']]]=$v['toolNum'];
+                   }
+               }
+            }
+            
+        }
+        return $this->render('prize',['model'=>$model,'data'=>$data]);
+    }
+    
+    
 }

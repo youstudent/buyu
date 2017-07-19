@@ -39,5 +39,6 @@ class ShopController extends \yii\web\Controller
         }
         return $this->render('edit',['model'=>$model]);
     }
+    
 
 }

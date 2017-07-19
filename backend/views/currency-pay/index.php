@@ -20,28 +20,10 @@ $this->title = Yii::t('app', 'currency_pay_index') . '-' . Yii::$app->params['ap
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-9">
-                            <!--筛选状态 全部|正常|封停 开始-->
-                            <div class="btn-group" data-toggle="buttons" style="margin-right: 8px;">
-                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == '') {
-                                    echo "active";
-                                } ?>" onclick="setStatus('')">
-                                    <input type="radio" name="options" id="statusAll">全部</label>
-                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 1) {
-                                    echo "active";
-                                } ?> " onclick="setStatus(1)">
-                                    <input type="radio" name="options" id="statusOk">金币</label>
-                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 2) {
-                                    echo "active";
-                                } ?> " onclick="setStatus(2)">
-                                    <input type="radio" name="options" id="statusColose">钻石</label>
-                            </div>
-                            <input type="hidden" name="Agency[searchstatus]" value="" id="status">
-                            <!--筛选状态 全部|正常|封停 结束-->
-                        </div>
+                       
                         <div class=" text-right">
-                            <a href="<?= \yii\helpers\Url::to(['currency-pay/add']) ?>" class="btn btn-primary"
-                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加充值货币</a>
+                            <a href="<?= \yii\helpers\Url::to(['currency-pay/add'])?>" class="btn btn-primary"
+                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加人民币等级</a>
                         </div>
                     </div>
                     <!--                搜索结束          -->
@@ -53,34 +35,32 @@ $this->title = Yii::t('app', 'currency_pay_index') . '-' . Yii::$app->params['ap
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <th class="text-center">类型</th>
-                                <th class="text-center">数量</th>
-                                <th class="text-center">所需人民币</th>
-                                <th class="text-center">赠送数量</th>
+                                <!--<th class="text-center">类型</th>-->
+                                <!--<th class="text-center">数量</th>-->
+                                <th class="text-center">钻石倍数</th>
+                                <th class="text-center">人民币</th>
                                 <th class="text-center">操作人</th>
                                 <th class="text-center">添加时间</th>
                                 <th class="text-center">修改时间</th>
-                               
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
                             <tbody>
-
                             <?php $i = 1; ?>
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?=\common\models\CurrencyPay::$get_type[$value['type']]?></td>
-                                    <td class="text-center"><?= $value['number'] ?></td>
+                                    <td class="text-center"><?= $value['fold']?>倍</td>
                                     <td class="text-center"><?= $value['money']?>元</td>
-                                    <td class="text-center"><?= $value['give_num']?></td>
                                     <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['created_at']) ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
-                                    <td class="text-center" style="width: 120px;">
+                                    <td class="text-center" style="width: 200px;">
+                                        <a href="<?php echo \yii\helpers\Url::to(['currency-pay/prize', 'id' => $value['id']]) ?>"
+                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['currency-pay/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
-                                        <a href="<?php echo \yii\helpers\Url::to(['currency-pay/del', 'id' => $value['id']]) ?>"
+                                        <a href="<?php echo \yii\helpers\Url::to(['currency-pay/del','id' => $value['id']])?>"
                                            onclick="return openAgency(this,'是否确认删除?')" class="btn btn-xs btn-danger">删除</a>
                                     </td>
                                 </tr>

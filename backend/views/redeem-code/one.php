@@ -24,8 +24,7 @@
                     ],
                 ])?>
                 <?php echo $form->field($model,'name')?>
-                <?php echo $form->field($model,'start_time')?>
-                <?php echo $form->field($model,'end_time')?>
+                <?php echo $form->field($model,'time')->textInput(['id'=>'IDIDID'])?>
                 <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\RedeemCode::$give)?>
                 <?php echo $form->field($model,'scope_type')->dropDownList(\common\models\RedeemCode::$scope_type)?>
                 <?php echo $form->field($model,'type')->dropDownList(\common\models\RedeemCode::$type)?>
@@ -56,6 +55,7 @@
 </style>
 <script>
     $(document).ready(function () {
+        clickTimeSelect($('#IDIDID'));
         //平台用户充值
         $("#payModalSubmit").click(function () {
             var  form   = $("#payModalForm");

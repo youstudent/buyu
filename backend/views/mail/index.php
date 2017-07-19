@@ -75,8 +75,6 @@ $this->title = Yii::t('app', 'mail_index') . '-' . Yii::$app->params['appName'];
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">标题</th>
                                 <th class="text-center">内容</th>
-                                <th class="text-center">奖励类型</th>
-                                <th class="text-center">数量</th>
                                 <th class="text-center">发布人</th>
                                 <th class="text-center">是否有奖励</th>
                                 <th class="text-center">发布时间</th>
@@ -91,16 +89,6 @@ $this->title = Yii::t('app', 'mail_index') . '-' . Yii::$app->params['appName'];
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['title'] ?></td>
                                     <td class="text-center"><?= $value['content'] ?></td>
-                                    <td class="text-center">
-                                        <?php if ($value['type']==1):?>
-                                            金币
-                                        <?php elseif($value['type']==2):?>
-                                            钻石
-                                        <?php else:?>
-                                        
-                                        <?php endif;?>
-                                    </td>
-                                    <td class="text-center"><?= $value['number'] ?></td>
                                     <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center"><?= $value['yes_no']==0?'否':'是'; ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['created_at']) ?></td>
@@ -110,6 +98,10 @@ $this->title = Yii::t('app', 'mail_index') . '-' . Yii::$app->params['appName'];
                                         <?php elseif ($value['status'] == 0): ?>
                                             <span class="badge bg-danger">失败</span>
                                         <?php endif; ?>
+                                    </td>
+                                    <td class="text-center" style="width: 200px;">
+                                        <a href="<?php echo \yii\helpers\Url::to(['mail/prize', 'id' => $value['id']]) ?>"
+                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
                                     </td>
                                 </tr>
                                 <?php $i++ ?>

@@ -39,6 +39,7 @@ class NoticeObject extends Object
             [['manage_name'], 'string', 'max' => 32],
             [['title'], 'string', 'max' => 64],
             [['notes', 'location'], 'string', 'max' => 255],
+            [['give','get_type'],'safe']
         ];
     }
 
@@ -59,6 +60,7 @@ class NoticeObject extends Object
             'location' => '位置',
             'type' => '奖励类型',
             'number' => '数量',
+            'get_type'=>'礼包类型'
         ];
     }
 }

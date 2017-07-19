@@ -9,31 +9,33 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">发布兑换码</h4>
+            <h4 class="modal-title" id="myModalLabel">修改兑换码</h4>
         </div>
         <div class="modal-body">
 
             <div class="col-xs-11">
             <?php $form = \yii\bootstrap\ActiveForm::begin([
                     'id'=>'payModalForm',
-                    'action'=>['redeem-code/add-one'],
+                    'action'=>['redeem-code/edit'],
                     'options'=>['class'=>'form-horizontal'],
                     'fieldConfig' => [
                         'template' => "{label}<div class=\"col-lg-9\">{input}<span class=\"help-block m-b-none\"></span></div>",
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
+                <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'name')?>
-                <?php echo $form->field($model,'start_time')?>
-                <?php echo $form->field($model,'end_time')?>
+                <?php echo $form->field($model,'time')->textInput(['id'=>'IDIDID'])?>
+                <div style="display: none"><?php echo $form->field($model,'start_time')->textInput()->hiddenInput(['id'=>'start'])->label(false)?></div>
+                <div style="display: none"><?php echo $form->field($model,'end_time')->hiddenInput(['id'=>'end'])->label(false)?></div>
                 <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\RedeemCode::$give)?>
                 <?php echo $form->field($model,'scope_type')->dropDownList(\common\models\RedeemCode::$scope_type)?>
                 <?php echo $form->field($model,'type')->dropDownList(\common\models\RedeemCode::$type)?>
                 <?php foreach ($data as $k=>$v):?>
-                    <div class="form-group field-redeemcode-<?php  echo $k ?>">
-                        <label class="col-lg-3 control-label" for="redeemcode-<?php  echo $k ?>"><?php  echo $k ?></label>
+                    <div class="form-group field-redeemcode-<?php  echo $k ?>" id=<?php echo $k?>>
+                        <label class="col-lg-3 control-label" for="redeemcode-<?php  echo $k ?>"><?php echo \common\models\RedeemCode::$give[$k] ?></label>
                         <div class="col-lg-9">
-                            <input type="text" id="redeemcode-<?php /* echo $index*/?>>" class="form-control" name="RedeemCode[<?php echo $k?>" value="<?php echo $v?>">
+                            <input type="text" id="redeemcode-<?php echo $k?>>" class="form-control" name="RedeemCode[<?php echo $k?>]" value="<?php echo $v?>">
                             <span class="help-block m-b-none"></span>
                         </div>
                     </div>
@@ -52,7 +54,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times">&nbsp;</i><?=Yii::t('app','but_close')?></button>
-            <button type="button" id="payModalSubmit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;<?=Yii::t('app','but_submit_add')?></button>
+            <button type="button" id="payModalSubmit" class="btn btn-primary"><i class="fa fa-save"></i>确认修改</button>
         </div>
     </div>
 </div>
@@ -65,6 +67,11 @@
 </style>
 <script>
     $(document).ready(function () {
+        var start = $('#start').val();
+        var end = $('#end').val();
+        if (start && end){
+        }
+        clickTimeSelect($('#IDIDID'),true,start,end);
         //平台用户充值
         $("#payModalSubmit").click(function () {
             var  form   = $("#payModalForm");

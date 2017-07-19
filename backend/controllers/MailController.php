@@ -41,5 +41,25 @@ class MailController extends \yii\web\Controller
         }
         return $this->render('add',['model'=>$model]);
     }
+    
+    
+    //奖品内容的查看
+    public function actionPrize(){
+        $this->layout = false;
+        // RedeemCode::setShop();
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $model = Mail::findOne($id);
+        $JSON = json_decode($model->number,true);
+        $data  =[];
+        $re = Mail::$give;
+        
+        foreach ($JSON as $key=>$value){
+            if (array_key_exists($key,$re)){
+                $data[$re[$key]]=$value;
+            }
+            
+        }
+        return $this->render('prize',['model'=>$model,'data'=>$data]);
+    }
 
 }

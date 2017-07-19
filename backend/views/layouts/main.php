@@ -7,28 +7,30 @@ $config = [
     ['label' => '首页中心', 'icon' => 'fa fa-dashboard icon', 'bg_color' => 'bg-danger', 'url' => ['site/index']],
     ['label' => '用户管理', 'icon' => 'fa fa-users icon', 'bg_color' => 'bg-success', 'url' => ['product/index'], 'items' => [
         ['label' => '玩家列表', 'url' => ['users/list']],
-        ['label' => '充值和扣除记录', 'url' => ['users/pay-log']],
+        ['label' => '充值记录', 'url' => ['users/pay-log']],
+        ['label' => '扣除记录', 'url' => ['users/pay-out']],
         ['label' => '消费记录', 'url' => ['users/out-log']],
-        ['label' => '战绩记录', 'url' => ['users/exploits']],
         ['label' => '黑名单表', 'url' => ['users/blacklist']],
         ['label' => '兑换记录', 'url' => ['redeem-code/record']],
+        ['label' => '比例设置', 'url' => ['users/ratio']],
     ]],
     ['label' => '提现管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['withdraw/list'], 'items' => [
         ['label' => '提现列表', 'url' => ['withdraw/list', 'id' => 1]],
     ]],
     ['label' => '族长管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['agency/index'], 'items' => [
-        ['label' => '族长列表', 'url' => ['agency/index', 'id' => 1]],
+        ['label' => '族长列表','url' => ['agency/index', 'id' => 1]],
+        ['label' => '族长充值记录', 'url' => ['pay/agency-pay-log']],
+        ['label' => '族长扣除记录', 'url' => ['pay/agency-out-log']],
     ]],
-    ['label' => '充值/扣除记录', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
-        ['label' => '玩家充值/扣除列表', 'url' => ['pay/user-pay-log', 'id' => 1]],
-        ['label' => '加盟商充值/扣除列表', 'url' => ['pay/agency-pay-log']],
+    ['label' => '排行榜管理', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
+        ['label' => '排行榜列表', 'url' => ['pay/agency-pay-log']],
     ]],
-    ['label' => '游戏设置', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['game/index'], 'items' => [
+    /*['label' => '游戏设置', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['game/index'], 'items' => [
         ['label' => '设置列表', 'url' => ['game/index']],
     ]],
     ['label' => '商品管理', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['goods/index'], 'items' => [
         ['label' => '兑换列表', 'url' => ['goods/index']]
-    ]]
+    ]]*/
 ];
 if (Yii::$app->params['distribution']) {
     /*$config[] = ['label' => '扣除记录', 'icon' => 'fa fa-dollar icon', 'bg_color' => 'bg-primary', 'url' => ['users/deduct'], 'items' => [
@@ -225,7 +227,87 @@ $config[] = ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg
 //            $('#time').val(start.format('YYYY-MM-DD HH:mm:ss') + ' - ' + end.format('YYYY-MM-DD HH:mm:ss'));
 //            console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
         });
-    })
+    });
+
+
+    function clickTimeSelect(_this,time=true,statr,end) {
+        if (time){
+            $(_this).daterangepicker({
+                startDate: statr?statr:$('#startTime').val(),
+                endDate: end?end:$('#endTime').val(),
+                locale: {
+                    format: 'YYYY-MM-DD HH:mm:ss',
+                    applyLabel: '确定',
+                    cancelLabel: '取消',
+                    fromLabel: '起始时间',
+                    toLabel: '结束时间',
+                    customRangeLabel: '自定义',
+                    daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+                    monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+                        '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                    firstDay: 1
+                },
+                ranges: {
+                    //'最近1小时': [moment().subtract('hours',1), moment()],
+                    '今日': [moment().startOf('day'), moment()],
+                    '昨日': [moment().subtract('days', 1).startOf('day'), moment().subtract('days', 1).endOf('day')],
+                    '最近7日': [moment().subtract('days', 6), moment()],
+                    '最近30日': [moment().subtract('days', 29), moment()]
+                },
+                "format": 'YYYY-MM-DD HH:mm:ss',
+                "alwaysShowCalendars": true,
+                "opens": "center"
+            }, function (start, end, label) {
+                console.log(start);
+                $('#reportrange span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' - ' + end.format('YYYY-MM-DD HH:mm:ss'));
+                $('#startTime').val(start.format('YYYY-MM-DD HH:mm:ss'));
+                $('#endTime').val(end.format('YYYY-MM-DD HH:mm:ss'));
+
+            });
+        }else {
+            var start1= '';
+            if (_this.val()){
+               start1=_this.val();
+               
+            }
+            $(_this).daterangepicker({
+                singleDatePicker: true,
+                startDate:start1?start1:$('#endTime').val(),
+                // endDate: $('#endTime').val(),
+                locale: {
+                    format: 'YYYY-MM-DD HH:mm:ss',
+                    applyLabel: '确定',
+                    cancelLabel: '取消',
+                    fromLabel: '起始时间',
+                    toLabel: '结束时间',
+                    customRangeLabel: '自定义',
+                    daysOfWeek: ['日', '一', '二', '三', '四', '五', '六'],
+                    monthNames: ['一月', '二月', '三月', '四月', '五月', '六月',
+                        '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                    firstDay: 1
+                },
+                ranges: {
+                    //'最近1小时': [moment().subtract('hours',1), moment()],
+                    '今日': [moment().startOf('day'), moment()],
+                    '昨日': [moment().subtract('days', 1).startOf('day'), moment().subtract('days', 1).endOf('day')],
+                    '最近7日': [moment().subtract('days', 6), moment()],
+                    '最近30日': [moment().subtract('days', 29), moment()]
+                },
+                "format": 'YYYY-MM-DD HH:mm:ss',
+                "alwaysShowCalendars": true,
+                "opens": "center"
+            }, function (start, end, label) {
+                console.log(start);
+                $('#reportrange span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' - ' + end.format('YYYY-MM-DD HH:mm:ss'));
+                $('#startTime').val(start.format('YYYY-MM-DD HH:mm:ss'));
+                $('#endTime').val(end.format('YYYY-MM-DD HH:mm:ss'));
+
+            });
+        }
+
+    }
+    
+    
 </script>
 <style>
     .panel-footer {

@@ -45,5 +45,4 @@ class RedeemCodeController extends ObjectController
         return $this->returnAjax(0,'Please submit with POST');
     }
     
-    
 }

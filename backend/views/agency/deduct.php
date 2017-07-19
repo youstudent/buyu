@@ -39,12 +39,12 @@
                     </div>
                     <?php $pay_config_gold[$key] = $key?>
                 <?php endforeach;?>
-                <?php echo $form->field($model,'pay_gold_config')->dropDownList(['房卡'=>'房卡'])?>
+                <?php echo $form->field($model,'pay_gold_config')->dropDownList(['金币'=>'金币','钻石'=>'钻石','鱼币'=>'鱼币'])?>
                 <!--                升级版本的多货币改动-->
 
                 <?php echo $form->field($model,'deduct_gold')->textInput([])?>
-                <?php echo $form->field($model,'deduct_money')->textInput([])?>
-                <?php echo $form->field($model,'deduct_notes')->textInput([])?>
+                <?php /*echo $form->field($model,'deduct_money')->textInput([])*/?><!--
+                --><?php /*echo $form->field($model,'deduct_notes')->textInput([])*/?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

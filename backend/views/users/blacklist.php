@@ -94,7 +94,7 @@ use yii\bootstrap\ActiveForm;
                                 <?php if (empty($value['unset_time'])):?>
                                     <td  class="text-center"><?=$value['unset_time']?></td>
                                 <?php else:?>
-                                <td  class="text-center"><?=date('Y-m-d H:i:s',$value['unset_time'])?></td>
+                                <td  class="text-center"><?=$value['unset_time']?></td>
                                 <?php endif;?>
                                 <td class="text-center">
                                     <?php if($value['status'] == 1):?>

@@ -70,7 +70,8 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">编号</th>
                                 <th  class="text-center">用户ID</th>
                                 <th  class="text-center">用户昵称</th>
-                                <th  class="text-center">等级</th>
+                                <th  class="text-center">经验等级</th>
+                                <th  class="text-center">Vip等级</th>
                                 <?php
                                 $item = \common\models\GoldConfigObject::find()->all();
                                 foreach ($item as $key=>$value){
@@ -92,6 +93,7 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center"><?=$value['game_id']?></td>
                                 <td  class="text-center"><?=$value['nickname']?></td>
                                 <td  class="text-center"><?=$value['grade']?></td>
+                                <td  class="text-center"><?=$value['vip_grade']?></td>
                                 <!--                                多货币修改-->
                                     <?php foreach ($value['gold'] as $keys=>$values):?>
                                     <td class="text-center"><?= $values ?></td>
@@ -102,7 +104,7 @@ use yii\bootstrap\ActiveForm;
                                 <?php if (empty($value['unset_time'])):?>
                                     <td  class="text-center"><?=$value['unset_time']?></td>
                                 <?php else:?>
-                                <td  class="text-center"><?=date('Y-m-d H:i:s',$value['unset_time'])?></td>
+                                <td  class="text-center"><?=$value['unset_time']?></td>
                                 <?php endif;?>
                                 <td class="text-center">
                                     <?php if($value['status'] == 1):?>
@@ -115,25 +117,28 @@ use yii\bootstrap\ActiveForm;
                                     </a>
                                 </td>
                                 <td class="text-center" width="500px;">
-                                    <a onclick="return openAgency(this,'是否封锁该账号?')"
-                                       href="<?php echo \yii\helpers\Url::to(['users/pass', 'id' => $value['id'],'status'=>$value['status']==0?1:0]) ?>"
-                                       class="btn btn-xs btn-danger"><?=$value['status']==1?'停封':'启用'?></a>
+                                    <?php if ($value['status']==0):?>
+                                        <a onclick="return openAgency(this,'是否解锁该账号?')"
+                                           href="<?php echo \yii\helpers\Url::to(['users/ban', 'id' => $value['id'],'status'=>$value['status']==0?1:0]) ?>"
+                                           class="btn btn-xs btn-danger">启用</a>
+                                    <?php else:?>
+                                        <a href="<?=\yii\helpers\Url::to(['users/unset-time',
+                                            'game_id'=>$value['game_id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal">停封</a>
+                                    <?php endif;?>
                                     <a onclick="return openAgency(this,'是否将该账号加入黑名单?')"
                                        href="<?php echo \yii\helpers\Url::to(['users/black', 'id' => $value['id'],'status'=>2]) ?>"
                                        class="btn btn-xs btn-danger">&nbsp;加入黑名单</a>
                                     <a href="<?=\yii\helpers\Url::to(['users/pay-log',
                                         'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-primary">充值记录</a>
+                                    <a href="<?=\yii\helpers\Url::to(['users/pay-out',
+                                        'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-primary">扣除记录</a>
                                     <a href="<?=\yii\helpers\Url::to(['users/out-log',
                                         'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-success">消费记录</a>
-                                    <a href="<?=\yii\helpers\Url::to(['users/exploits',
-                                        'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-info">&nbsp; 战绩&nbsp; </a>
+                                   <!-- <a href="<?/*=\yii\helpers\Url::to(['users/exploits',
+                                        'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])*/?>" class="btn btn-xs btn-info">&nbsp; 战绩&nbsp; </a>-->
                                     <?php if(Yii::$app->params['backendPayUser']):?>
                                     <a href="<?=\yii\helpers\Url::to(['users/pay','id'=>$value['id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal">&nbsp;充值&nbsp;</a>
-                                    <a href="<?=\yii\helpers\Url::to(['users/pay','id'=>$value['id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal"> 扣除</a>
-                                    <?php endif;?>
-                                    <?php if ($value['status'] == 0):?>
-                                        <a href="<?=\yii\helpers\Url::to(['users/unset-time',
-                                         'game_id'=>$value['game_id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal">设置解封时间</a>
+                                    <a href="<?=\yii\helpers\Url::to(['users/out','id'=>$value['id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal"> 扣除</a>
                                     <?php endif;?>
                                 </td>
                             </tr>

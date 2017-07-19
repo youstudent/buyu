@@ -8,6 +8,8 @@ namespace backend\controllers;
 
 use backend\models\AgencyDeduct;
 use backend\models\Users;
+use common\models\Ratio;
+use common\services\Request;
 use Yii;
 use yii\web\Response;
 
@@ -51,6 +53,42 @@ class UsersController extends ObjectController
         $model->goldArr = $model->getGold();
         return $this->render('payModal',['model'=>$model]);
     }
+    
+    
+    /**
+     * 平台给玩家扣除处理
+     * @return array|string
+     */
+    public function actionOut()
+    {
+        $this->layout = false;
+        if(Yii::$app->request->isPost)
+        {
+            /**
+             * 设置返回为json格式
+             */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            $model = new Users();
+            if($model->out(Yii::$app->request->post()))
+            {
+                return ['code'=>1,'message'=>Yii::t('app','操作成功')];
+            }
+            /**
+             * 获取model返回的错误
+             */
+            $message = $model->getFirstErrors();
+            $message = reset($message);
+            return ['code'=>0,'message'=>$message];
+        }
+        /**
+         * 查询用户并返回给页面进行渲染
+         */
+        $model = Users::findOne(Yii::$app->request->get('id'));
+        $model->goldArr = $model->getGold();
+        return $this->render('outModal',['model'=>$model]);
+    }
+    
+    
 
     /**
      * 显示用户列表
@@ -58,6 +96,7 @@ class UsersController extends ObjectController
      */
     public function actionList()
     {
+        Users::automatic();
         $model = new Users();
         $data = $model->getList(Yii::$app->request->get());
         return $this->render('list',$data);
@@ -72,6 +111,18 @@ class UsersController extends ObjectController
         $model = new Users();
         $data = $model->getPayLog(Yii::$app->request->get());
        // var_dump($data);exit;
+        return $this->render('pay_log',$data);
+    }
+    
+    /**
+     * 显示用户的扣除记录表
+     * @return string
+     */
+    public function actionPayOut()
+    {
+        $model = new Users();
+        $data = $model->getPayOut(Yii::$app->request->get());
+        // var_dump($data);exit;
         return $this->render('pay_log',$data);
     }
 
@@ -122,7 +173,43 @@ class UsersController extends ObjectController
     public function actionUnsetTime(){
         $this->layout = false;
         $model= new Users();
+//        $data = Users::findOne(['id'=>Yii::$app->request->get('game_id')]);
         $model = $model->set(Yii::$app->request->get('game_id'));
+        if(Yii::$app->request->isPost)
+        {
+            /**
+             * 设置返回为json格式
+             */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if(Yii::$app->request->post())
+            {
+                $data = Yii::$app->request->post();
+                $model = Users::findOne($data['id']);
+                $model->game_id = $data['Users']['game_id'];
+                $model->nickname = $data['Users']['nickname'];
+                $model->unset_time = $data['Users']['unset_time'];
+                $datas['playerId']=$data['Users']['game_id'];
+                $banTime=strtotime($data['Users']['unset_time']);
+                $time = $banTime-time();
+                if ($time<=0){
+                    return ['code'=>0,'message'=>'停封时间不能小于当前时间'];
+                }
+                $datas['banTime']=$time*1000;//将时间戳转化成毫秒
+                $result = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/ban',$datas);
+                if ($result['code'] == 1){
+                    $model->status=0;
+                    $model->save(false);
+                    return ['code'=>1,'message'=>Yii::t('app','操作成功')];
+                }
+                /**
+                 * 获取model返回的错误
+                 */
+                $message = $model->getFirstErrors();
+                $message = reset($message);
+                return ['code'=>0,'message'=>$message];
+            }
+            
+        }
         return $this->render('unset_time',['model'=>$model]);
     }
     
@@ -131,15 +218,16 @@ class UsersController extends ObjectController
     public function actionBlack()
     {
         \Yii::$app->response->format = Response::FORMAT_JSON;
-        $model = Users::findOne(\Yii::$app->request->get('id'));
-        if(!$model){
-            return ['code'=>0,'message'=>'账号不存在!'];
+        $model = new Users();
+        if ($model->black(Yii::$app->request->get('id'),Yii::$app->request->get('status'))){
+            return ['code'=>1,'message'=>'操作成功'];
         }
-        $model->status=Yii::$app->request->get('status');
-        if($model->save()){
-            return ['code'=>1,'message'=>'账号操作成功!'];
-        }
-            return ['code'=>0,'message'=>'账号操作失败!'];
+            /**
+             * 获取model返回的错误
+             */
+            $message = $model->getFirstErrors();
+            $message = reset($message);
+            return ['code'=>0,'message'=>$message];
     }
     
     
@@ -150,4 +238,30 @@ class UsersController extends ObjectController
         $data  =$model->blacklist(Yii::$app->request->get());
         return $this->render('blacklist',$data);
     }
+    
+    
+    public function actionBan(){
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        
+        $model = new Users;
+        if ($model->ban(\Yii::$app->request->get('id'))){
+            return ['code'=>1,'message'=>'操作成功'];
+        }
+    
+        /**
+         * 获取model返回的错误
+         */
+        $message = $model->getFirstErrors();
+        $message = reset($message);
+        return ['code'=>0,'message'=>$message];
+        
+    }
+    
+    
+    //充值 比例设置
+    public function actionRatio(){
+        $model  = Ratio::find()->asArray()->all();
+        return $this->render('ratio',['data'=>$model]);
+    }
+   
 }

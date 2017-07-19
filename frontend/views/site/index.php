@@ -17,13 +17,13 @@ $agency = \backend\models\Agency::find();
                                 class="fa fa-circle fa-stack-2x text-info"></i> <i
                                 class="fa fa-male fa-stack-1x text-white"></i> </span>
                         <a class="clear" href="#">
-                                <span class="h3 block m-t-xs"><strong>
+                                <span class="h3 block m-t-xs">
                                     <?php
                                         $data = $model->getGold();
                                         foreach ($data as $key=>$value){
                                             echo $key.":".$value."\t";
                                         }
-                                    ?></strong>
+                                    ?>
                                 </span>
                             <small class="text-muted text-uc">我的余额</small>
                         </a>

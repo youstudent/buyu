@@ -120,6 +120,8 @@ class AgencyObject extends Object
                 return ['phone'=>$this->keyword];
             elseif($this->select == 'identity')
                 return ['identity'=>$this->keyword];
+            elseif($this->select == 'id')
+                return ['id'=>$this->keyword];
             else
                 return ['or',['name'=>$this->keyword],['phone'=>$this->keyword],['identity'=>$this->keyword]];
         }

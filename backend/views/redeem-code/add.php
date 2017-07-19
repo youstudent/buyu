@@ -30,7 +30,7 @@ use yii\web\View;
                 ])?>
                 <?php echo $form->field($model,'name')?>
                 <?php echo $form->field($model,'number')?>
-                <?php echo $form->field($model,'end_time')?>
+                <?php echo $form->field($model,'time')->textInput(['id'=>'IDIDID'])?>
                 <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\RedeemCode::$give)?>
                
                 <?php echo $form->field($model,'type')->dropDownList(\common\models\RedeemCode::$type) ?>
@@ -83,6 +83,8 @@ use yii\web\View;
 
 <script>
     $(document).ready(function () {
+        clickTimeSelect($('#IDIDID'));
+        
         $('.chk').on('click', function(){
             var that = this;
             var input =$('.field-redeemcode-'+ that.data('name'));
@@ -148,7 +150,7 @@ use yii\web\View;
         });
         
         //时间插件
-	     $("#time").datetimepicker({
+	     /*$("#time").datetimepicker({
 			changeYear : true,
 			changeMonth : true,
 			showSecond : true,
@@ -157,7 +159,7 @@ use yii\web\View;
 			stepHour : 1,
 			stepMinute : 1,
 			stepSecond : 1
-		});
+		});*/
         
     })
     

@@ -166,7 +166,7 @@ class Agency extends AgencyObject
             'recode' => '推荐码',
             'pay_gold'=>'充值数量',
             'pay_money'=>'收款金额',
-            'deduct_gold' =>'扣除金币',
+            'deduct_gold' =>'扣除数量',
             'deduct_notes'=>'扣除备注',
             'deduct_money'  =>'人民币',
             'pay_gold_config'=>'充值类型',
@@ -209,7 +209,7 @@ class Agency extends AgencyObject
                 $agencyPay->time      = time();
                 $agencyPay->gold      = $this->deduct_gold;
                 $agencyPay->money     = $this->pay_money;
-                $agencyPay->notes     = $this->deduct_notes;  //充值备注
+                //$agencyPay->notes     = $this->deduct_notes;  //充值备注
                 $agencyPay->type    = '扣除';
                 $agencyPay->status    = 2;
                 $agencyPay->manage_id = \Yii::$app->session->get('manageId');
@@ -227,7 +227,7 @@ class Agency extends AgencyObject
                 $agencyDeduct->manage_id    = \Yii::$app->session->get('manageId');
                 $agencyDeduct->manage_name  = \Yii::$app->session->get('manageName');
                 $agencyDeduct->gold_config  = $this->pay_gold_config;*/
-                if($agencyPay->save() == false)throw new \Exception('0x00011');
+                if($agencyPay->save(false) == false)throw new \Exception('0x00011');
 
                 $transaction->commit();
                 return true;

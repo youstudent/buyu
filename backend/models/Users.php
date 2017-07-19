@@ -11,6 +11,7 @@ use common\models\UsersGoldObject;
 use common\models\UsersObject;
 use common\services\Request;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+use Symfony\Component\DomCrawler\Field\InputFormField;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 
@@ -68,8 +69,8 @@ class Users extends UsersObject
     {
         return [
             [['select','keyword','pay_gold_num','pay_gold_config'],'safe'],
-            ['pay_gold_num','integer','on'=>'pay'],
-            ['pay_gold_num','match','pattern'=>'/^\+?[1-9][0-9]*$/','on'=>'pay'],
+            //['pay_gold_num','integer','on'=>'pay'],
+           // ['pay_gold_num','match','pattern'=>'/^\+?[1-9][0-9]*$/','on'=>'pay'],
             ['pay_money','number','on'=>'pay'],
             [['starttime','endtime','detail','type'],'safe'],
         ];
@@ -79,8 +80,8 @@ class Users extends UsersObject
     public function attributeLabels()
     {
         $arr = [
-                'pay_gold_num'    =>'金额:负数扣除 正数充值',
-                'pay_money'       =>'收款',
+                'pay_gold_num'    =>'数量',
+                'pay_money'       =>'充值人民币',
                 'pay_gold_config' =>'充值类型',
                 'detail'=>'详情',
                 'type'=>'类型'
@@ -106,7 +107,7 @@ class Users extends UsersObject
             $model = self::findOne($data['id']);
             if($model)
             {
-                if ($this->pay_gold_num ==0){
+                /*if ($this->pay_gold_num ==0){
                     return $this->addError('pay_gold_num',"数量不能为0");
                 }
                 
@@ -115,21 +116,31 @@ class Users extends UsersObject
                     if ($gold->gold <= abs($this->pay_gold_num)){
                         return $this->addError('pay_gold_num',"玩家.$this->pay_gold_config.不足！");
                     }
-                }
-                
+                }*/
                 /**
                  * 请求游戏服务器、并判断返回值进行逻辑处理
                  */
-                //$data = Request::request_post(\Yii::$app->params['ApiUserPay'],['game_id'=>$model->game_id,'gold'=>$this->pay_gold_num,'gold_config'=>GoldConfigObject::getNumCodeByName($this->pay_gold_config)]);
-                if($this->pay_gold_config == '房卡'){
+                $config ='';
+                if ($this->pay_gold_config=='金币'){
+                    $config=1;
+                }elseif($this->pay_gold_config=='钻石'){
+                    $config=2;
+                }else{
+                    $config=3;
+                }
+                $data = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/deposit',['game_id'=>$model->game_id,'pay_gold_config'=>$config,'pay_money'=>$this->pay_money]);
+                /*if($this->pay_gold_config == '金币'){
                     $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=chargeCard&uid=".$model->game_id."&card=".$this->pay_gold_num;
-                }elseif($this->pay_gold_config == '金币'){
+                }elseif($this->pay_gold_config == '钻石'){
+                    $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=charge&uid=".$model->game_id."&cash=".$this->pay_gold_num;
+                }elseif($this->pay_gold_config == '鱼币'){
                     $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=charge&uid=".$model->game_id."&cash=".$this->pay_gold_num;
                 }
-                $data = Request::request_get($url);
-                
+                $data = Request::request_get($url);*/
+                $data['code']=1;
                 if($data['code'] == 1)
                 {
+                   
                     /**
                      * 开启数据库的事务操作
                      */
@@ -140,7 +151,9 @@ class Users extends UsersObject
 //                        foreach ($goldConfig as $key=>$val){
 //
 //                        }
+                        $this->pay_gold_num=$this->pay_money*50;
                         $data = $model->payGold($this->pay_gold_config,$this->pay_gold_num);
+                        
                         if (!$data)
                             throw new \Exception('save error 101023'); /* 保存失败抛出异常 */
 
@@ -154,15 +167,11 @@ class Users extends UsersObject
                         $userModel->game_id     = $model->game_id;
                         $userModel->nickname    = $model->nickname;
                         $userModel->time        = time();
-                        if ($this->pay_gold_num<0){
-                         $userModel->type ='扣除';
-                        }else{
-                         $userModel->type ='充值';
-                        }
+                        $userModel->type ='充值';
                         $userModel->gold        = abs($this->pay_gold_num);
                         $userModel->money       = $this->pay_money;
                         $userModel->status      = 1;
-                        $userModel->detail      = $this->detail;
+                        //$userModel->detail      = $this->detail;
                         $userModel->gold_config = $this->pay_gold_config;
 
                         /* 保存失败抛出异常 */
@@ -183,13 +192,122 @@ class Users extends UsersObject
             }
         }
     }
+    
+    
+    
+    /**
+     * 用户充值功能
+     * @param array $data
+     * @return bool
+     * @throws \Exception
+     */
+    public function out($data = [])
+    {
+        $this->scenario = 'pay';
+        if($this->load($data) && $this->validate())
+        {
+            
+            /**
+             * 查询用户是否存在
+             */
+            $model = self::findOne($data['id']);
+            if($model)
+            {
+                /*if ($this->pay_gold_num ==0){
+                    return $this->addError('pay_gold_num',"数量不能为0");
+                }
+                
+                if ($this->pay_gold_num < 0){
+                    $gold = UsersGoldObject::find()->Where(['users_id'=>$data['id']])->andWhere(['gold_config'=>$this->pay_gold_config])->one();
+                    if ($gold->gold <= abs($this->pay_gold_num)){
+                        return $this->addError('pay_gold_num',"玩家.$this->pay_gold_config.不足！");
+                    }
+                }*/
+                $config ='';
+                if ($this->pay_gold_config=='金币'){
+                    $config=1;
+                }elseif($this->pay_gold_config=='钻石'){
+                    $config=2;
+                }else{
+                    $config=3;
+                }
+                $data = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/undeposit',['game_id'=>$model->game_id,'pay_gold_config'=>$config,'pay_money'=>$this->pay_money]);
+                //$data = Request::request_post(\Yii::$app->params['ApiUserPay'],['game_id'=>$model->game_id,'pay_gold_config'=>$config,'pay_money'=>$this->pay_money]);
+                /**
+                 * 请求游戏服务器、并判断返回值进行逻辑处理
+                 */
+                //$data = Request::request_post(\Yii::$app->params['ApiUserPay'],['game_id'=>$model->game_id,'gold'=>$this->pay_gold_num,'gold_config'=>GoldConfigObject::getNumCodeByName($this->pay_gold_config)]);
+                /*if($this->pay_gold_config == '金币'){
+                    $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=chargeCard&uid=".$model->game_id."&card=".$this->pay_gold_num;
+                }elseif($this->pay_gold_config == '钻石'){
+                    $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=charge&uid=".$model->game_id."&cash=".$this->pay_gold_num;
+                }elseif($this->pay_gold_config == '鱼币'){
+                    $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=charge&uid=".$model->game_id."&cash=".$this->pay_gold_num;
+                }
+                $data = Request::request_get($url);*/
+                $data['code']=1;
+                if($data['code'] == 1)
+                {
+                    
+                    /**
+                     * 开启数据库的事务操作
+                     */
+                    $transaction = \Yii::$app->db->beginTransaction();
+                    try {
 
+//                        $goldConfig = $model->getGold();
+//                        foreach ($goldConfig as $key=>$val){
+//
+//                        }
+                        $this->pay_gold_num=$this->pay_money*50;
+                        $data = $model->payOut($this->pay_gold_config,$this->pay_gold_num);
+                        
+                        if (!$data)
+                           // $this->addError('pay_gold_num',"玩家.$this->pay_gold_config.不足");
+                           // return false;
+                           throw new \Exception('save error 101023'); /* 保存失败抛出异常 */
+                        
+                        /**
+                         * 保存用户充值记录
+                         */
+                        $userModel = new UserPay();
+                        $userModel->agency_id   = '1';
+                        $userModel->agency_name = '平台';
+                        $userModel->user_id     = $model->id;
+                        $userModel->game_id     = $model->game_id;
+                        $userModel->nickname    = $model->nickname;
+                        $userModel->time        = time();
+                        $userModel->type ='扣除';
+                        $userModel->gold        = abs($this->pay_gold_num);
+                        $userModel->money       = $this->pay_money;
+                        $userModel->status      = 1;
+                        $userModel->gold_config = $this->pay_gold_config;
+                        
+                        /* 保存失败抛出异常 */
+                        if ($userModel->save()) {
+                            $transaction->commit();
+                            return true;
+                        }else{
+                            throw new \Exception('save error 101024'.reset($userModel->getFirstErrors()));
+                        }
+                        
+                    } catch (\Exception $e) {
+                        $transaction->rollBack();
+                        throw $e;
+                    }
+                }else{
+                    return $this->addError('out',$data['message']);
+                }
+            }
+        }
+    }
     /**
      * 搜索并分页显示用户的数据
      * @return array
      */
     public function getList($data = [])
     {
+        
         $this->load($data);
         $this->initTime();
         $model   = self::find()->andWhere($this->searchWhere())
@@ -222,7 +340,25 @@ class Users extends UsersObject
                 ->andWhere(['>=','reg_time',strtotime($this->starttime)])
                 ->andWhere(['<=','reg_time',strtotime($this->endtime)]);
         $idArray = $model->asArray()->select('id')->all();
-        $model   = UserPay::find()->where(['IN','user_id',$this->searchIn($idArray)]);
+        $model   = UserPay::find()->where(['IN','user_id',$this->searchIn($idArray)])->andWhere(['type'=>'充值']);
+        $pages   = new Pagination(['totalCount' =>$model->count(), 'pageSize' => \Yii::$app->params['pageSize']]);
+        $data    = $model->limit($pages->limit)->offset($pages->offset)->asArray()->all();
+        return ['data'=>$data,'pages'=>$pages,'model'=>$this];
+    }
+    /**
+     * 搜索并分页显示用户充值记录
+     * @param array $data
+     * @return array
+     */
+    public function getPayOut($data = [])
+    {
+        $this->load($data);
+        $this->initTime();
+        $model   = self::find()->andWhere($this->searchWhere())
+            ->andWhere(['>=','reg_time',strtotime($this->starttime)])
+            ->andWhere(['<=','reg_time',strtotime($this->endtime)]);
+        $idArray = $model->asArray()->select('id')->all();
+        $model   = UserPay::find()->where(['IN','user_id',$this->searchIn($idArray)])->andWhere(['type'=>'扣除']);
         $pages   = new Pagination(['totalCount' =>$model->count(), 'pageSize' => \Yii::$app->params['pageSize']]);
         $data    = $model->limit($pages->limit)->offset($pages->offset)->asArray()->all();
         return ['data'=>$data,'pages'=>$pages,'model'=>$this];
@@ -394,5 +530,65 @@ class Users extends UsersObject
      public function set($data){
         $model  = Users::findOne(['game_id'=>$data]);
         return $model;
+    }
+    
+    
+    public function time($data ='')
+    {
+        if ($this->load($data, '') && $this->validate()) {
+        
+        }
+    }
+    
+    
+    //取消封停
+    public function ban($id){
+        
+        $data = self::findOne(['id'=>$id]);
+        $datas['playerId']=$data->game_id;
+        $result = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/unban',$datas);
+        if($result['code'] == 1){
+            $data->status=1;
+            $data->unset_time='';
+            return $data->save(false);  //更新数据变成添加有可能是对象不是之前的
+        }
+        $this->addError('status',$result['message']);
+        return  false;
+    
+    }
+    
+    
+    //加入黑名单
+    public function black($id,$status){
+        $model = self::findOne(['id'=>$id]);
+        if(!$model){
+            return ['code'=>0,'message'=>'账号不存在!'];
+        }
+        if ($model->status==2){
+            $url = \Yii::$app->params['Api'].'/gameserver/control/removeblack';
+        }else{
+            $url = \Yii::$app->params['Api'].'/gameserver/control/addblack';
+        }
+        $datas['playerId']=$model->game_id;
+        $result = Request::request_post($url,$datas);
+        if($result['code'] == 1){
+            $model->status=$status;
+            return $model->save(false);  //更新数据变成添加有可能是对象不是之前的
+        }
+        $this->addError('status',$result['message']);
+        return  false;
+    }
+    
+    /**
+     * 查询用户超过解封时间的
+     */
+    public static function automatic(){
+        $data = self::find()->where(['<','unset_time',date('Y-m-d H:i:s')])->andWhere(['status'=>0])->all();
+        if ($data){
+            foreach ($data AS $K=>$v){
+                $v['status']=1;
+                $v->save();
+            }
+        }
     }
 }

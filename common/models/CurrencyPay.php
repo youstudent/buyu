@@ -2,7 +2,11 @@
 
 namespace common\models;
 
+use backend\models\Shop;
+use common\services\Request;
 use Yii;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "{{%currency_pay}}".
@@ -19,7 +23,9 @@ use Yii;
  */
 class CurrencyPay extends Object
 {
+    public $type;
     public static $get_type=[1=>'金币',2=>'钻石'];
+    public static $give;
     /**
      * @inheritdoc
      */
@@ -34,10 +40,11 @@ class CurrencyPay extends Object
     public function rules()
     {
         return [
-            [['type', 'give_num', 'number', 'money', 'manage_id', 'created_at', 'updated_at'], 'integer'],
-            [['number','money'],'required'],
-            [['number','money'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
+            [['money', 'manage_id', 'created_at', 'updated_at','fold'], 'integer'],
+            [['money'],'required'],
+            [['fold'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'倍数必须大于0'],
             [['manage_name'], 'string', 'max' => 20],
+            [['give_prize'],'safe'],
         ];
     }
 
@@ -48,14 +55,14 @@ class CurrencyPay extends Object
     {
         return [
             'id' => 'ID',
-            'type' => '类型',
-            'give_num' => '赠送数量',
-            'number' => '购买数量',
+            'give_prize' => '礼包类型',
             'money' => '人民币',
             'manage_id' => 'Manage ID',
             'manage_name' => 'Manage Name',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'fold'=>'倍数',
+            'type'=>'赠送类型'
         ];
     }
     
@@ -69,6 +76,60 @@ class CurrencyPay extends Object
     {
         if($this->load($data) && $this->validate())
         {
+            /**
+             * pays": [
+            {
+            "id": 1,
+            "money": 1,
+            "diamond": 0,
+            "firstDouble": 1,
+            "send": {
+            "sendDiamond": 1,
+            "sendGold": 1,
+            "sendFishGold": 1,
+            "tools": [
+            {
+            "toolId": 1,
+            "toolNum": 1
+            },
+            {
+            "toolId": 2,
+            "toolNum": 2
+            }
+            ]
+            }
+            },
+             */
+            $datas=['gold','diamond','fishGold'];
+            $pays=[];
+            $send=[];
+            $tools = [];
+            $i = 0;
+            $tool = [];
+            $pays['money']=$this->money;
+            $pays['firstDouble']=$this->fold;
+            foreach ($data as $K=>$v){
+                if (is_array($v)){
+                    foreach ($v as $kk=>$VV){
+                        if (in_array($kk,$datas)){
+                            $send[$kk]=$VV;
+                        }
+                        if (is_numeric($kk)){
+                                $tool['toolId']=$kk;
+                                $tool['toolNum']=$VV;
+                                $tools[$i]=$tool;
+                            $i++;
+                        }
+                    }
+                }
+            }
+           
+            if (array_key_exists('gold',self::$give)){
+               //$send['gold']=$this->gold;
+            }
+            $send['tools']=$tools;
+            $pays['send']=$send;
+            $this->give_prize=Json::encode($send);
             $this->manage_id    = \Yii::$app->session->get('manageId');
             $this->manage_name  = \Yii::$app->session->get('manageName');
             $this->created_at         = time();
@@ -80,11 +141,122 @@ class CurrencyPay extends Object
     public function edit($data = []){
         if($this->load($data) && $this->validate())
         {
+            $datas=['gold','diamond','fishGold'];
+            $pays=[];
+            $send=[];
+            $tools = [];
+            $i = 0;
+            $tool = [];
+            $pays['id']=$this->id;
+            $pays['money']=$this->money;
+            $pays['firstDouble']=$this->fold;
+            foreach ($data as $K=>$v){
+                if (is_array($v)){
+                    foreach ($v as $kk=>$VV){
+                        if (in_array($kk,$datas)){
+                            $send[$kk]=$VV;
+                        }
+                        if (is_numeric($kk)){
+                            $tool['toolId']=$kk;
+                            $tool['toolNum']=$VV;
+                            $tools[$i]=$tool;
+                            $i++;
+                        }
+                    }
+                }
+            }
+            $send['tools']=$tools;
+            $pays['send']=$send;
+            $this->give_prize=Json::encode($send);
             $this->manage_id    = \Yii::$app->session->get('manageId');
             $this->manage_name  = \Yii::$app->session->get('manageName');
             $this->updated_at         = time();
             return $this->save(false);
         }
     }
-  
+    
+    
+    //请求游戏服务器  货币
+    public static function GetPay(){
+        $url = Yii::$app->params['Api'].'/gameserver/control/gettools';
+        $data = Request::request_post($url,['time'=>time()]);
+        if ($data['code']==1){
+            /*$d=[];
+            foreach ($data as $key=>$v){
+                if (is_object($v)){
+                    $d[]=$v;
+                }
+            }
+            $new = $d[0]->tools;
+            foreach ($new as &$e){
+                $e->toolName;
+            }*/
+    
+            /*foreach ($new as $K=>$value){
+                $model = new Shop();
+                $model->save($value);
+            }*/
+           // Shop::deleteAll();
+            $model =  new CurrencyPay();
+            foreach($new as $K=>$attributes)
+            {
+                $model->id=$attributes->toolId;
+                $model->name =$attributes->toolName;
+                $model->number =1;
+                $model->toolDescript =$attributes->toolDescript;
+                $model->jewel_number =$attributes->unitPrice;
+                $model->level =$attributes->minVip;
+                $_model = clone $model;
+                $_model->setAttributes($attributes);
+                $_model->save(false);
+            }
+        }else{
+            echo '没有数据';
+        }
+        
+    }
+    
+    // 创建模型自动设置赠送礼品类型
+    public function __construct(array $config = [])
+    {
+        //查询 道具列表中的数据
+        $data  = Shop::find()->asArray()->all();
+        //将道具数组格式化成  对应的数组
+        $new_data = ArrayHelper::map($data,'id','name');
+        //自定义 赠送类型
+        $datas = ['gold'=>'金币','diamond'=>'钻石','fishGold'=>'鱼币'];
+        //将数据合并 赋值给数组
+        self::$give= ArrayHelper::merge($datas,$new_data);
+        parent::__construct($config);
+    }
+    
+    
+    /**
+     * 同步游戏服务端商城充值
+     */
+    public static function GetCurrency(){
+        $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
+        $data = \common\services\Request::request_post($url,['time'=>time()]);
+        $d=[];
+        foreach ($data as $key=>$v){
+            if (is_object($v)){
+                $d[]=$v;
+            }
+        }
+        $new = $d[0]->pays;
+        CurrencyPay::deleteAll();
+        $model =  new CurrencyPay();
+        //请求到数据   循环保存到数据库
+        foreach($new as $K=>$attributes)
+        {
+            $model->give_prize=Json::encode($attributes->send);
+            $model->id=$attributes->id;
+            $model->money =$attributes->money;
+            $model->fold =$attributes->firstDouble;
+            $_model = clone $model;
+            $_model->setAttributes($attributes);
+            $_model->save(false);
+        }
+    }
+    
 }

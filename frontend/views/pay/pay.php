@@ -44,7 +44,7 @@ $this->title = "代理商列表-".\Yii::$app->params['appName'];
                             <tr>
                                 <th class="text-center">编号</th>
                                 <th class="text-center">ID</th>
-                                <th class="text-center">手机号</th>
+                                <!--<th class="text-center">手机号</th>-->
                                 <th class="text-center">昵称</th>
 
                                 <!--                            多货币修改代码-->
@@ -63,7 +63,7 @@ $this->title = "代理商列表-".\Yii::$app->params['appName'];
                             <?php if(!empty($data)):?>
                                 <td class="text-center">1</td>
                                 <td class="text-center"><?=$data['game_id']?></td>
-                                <td class="text-center"><?=$data['phone']?></td>
+                               <!-- <td class="text-center"><?/*=$data['phone']*/?></td>-->
                                 <td class="text-center"><?=$data['nickname']?></td>
                                 <!--                                多货币修改-->
                                 <?php foreach ($data['gold'] as $keys=>$values):?>

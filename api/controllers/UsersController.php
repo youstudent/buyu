@@ -10,6 +10,7 @@ use api\models\GameExploits;
 use api\models\UserOut;
 use api\models\UserPay;
 use api\models\Users;
+use common\models\Ratio;
 
 class UsersController extends ObjectController
 {
@@ -86,5 +87,29 @@ class UsersController extends ObjectController
             return $this->returnAjax(0,$message,[]);
         }
         return $this->returnAjax(0,'Please submit with POST');
+    }
+    
+    //充值比例
+    public function actionRatioPay(){
+      $type = \Yii::$app->request->getQueryParam('type');
+      $model=Ratio::findOne(['type'=>$type,'pay_out'=>'充值']);
+      if ($model){
+          $data['type']=$type;
+          $data['number']=$model->number;
+          return $this->returnAjax(1,'成功',$data);
+      }
+      return $this->returnAjax(0,'参数不正确',[]);
+    }
+    
+    //扣除比例
+    public function actionRatioOut(){
+      $type = \Yii::$app->request->getQueryParam('data');
+      $model=Ratio::findOne(['type'=>$type,'pay_out'=>'扣除']);
+      if ($model){
+          $data['type']=$type;
+          $data['number']=$model->number;
+          return $this->returnAjax(1,'成功',$model);
+      }
+        return $this->returnAjax(0,'参数不正确',[]);
     }
 }

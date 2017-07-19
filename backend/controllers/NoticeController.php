@@ -79,7 +79,13 @@ class NoticeController extends ObjectController
             return ['code'=>0,'message'=>$message];
 
         }
-        return $this->render('edit',['model'=>$model]);
+        $data = json_decode($model->number);
+        $datas=[];
+        foreach ($data as $K=>$v){
+            $datas[]=$K;
+        }
+        $model->get_type=$datas;
+        return $this->render('edit',['model'=>$model,'data'=>$data]);
     }
 
     /**
@@ -103,4 +109,28 @@ class NoticeController extends ObjectController
         }
         return ['code'=>0,'message'=>'删除的ID不存在'];
     }
+    
+    
+    //奖品内容的查看
+    public function actionPrize(){
+        $this->layout = false;
+        // RedeemCode::setShop();
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $model = Notice::findOne($id);
+        $JSON = json_decode($model->number,true);
+        $data  =[];
+        $re = Notice::$give;
+        
+        foreach ($JSON as $key=>$value){
+            if (array_key_exists($key,$re)){
+                $data[$re[$key]]=$value;
+            }
+            
+            
+        }
+        var_dump($data);exit;
+        return $this->render('prize',['model'=>$model,'data'=>$data]);
+    }
+    
+    
 }

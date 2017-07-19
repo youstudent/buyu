@@ -39,6 +39,7 @@ class RedeemCode extends Object
      public $five;  //狂暴
      public $six;  //黑洞
      public static $type=[1=>'普通礼包',2=>'高级礼包'];
+     public $time;
     /**
      * 搜索时使用的用于记住筛选
      * @var string
@@ -104,7 +105,7 @@ class RedeemCode extends Object
             [['prize'], 'string', 'max' => 100],
             [['one','tow','three','four','five','six'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
             [['end_time','start_time','give_type'],'safe'],
-            [['select', 'keyword', 'pay_gold_num','pay_gold_config','game_id'], 'safe'],
+            [['select', 'keyword', 'pay_gold_num','pay_gold_config','game_id','time'], 'safe'],
             [['starttime', 'endtime','gold','diamond','fishGold','scope_type','scope_type','show','give_type'],'safe'],
         ];
     }
@@ -137,7 +138,8 @@ class RedeemCode extends Object
             'five'=>'狂暴',
             'six'=>'黑洞',
             'status'=>'状态',
-            'scope_type'=>'礼包范围'
+            'scope_type'=>'礼包范围',
+            'time'=>'兑换码有效时间'
         ];
     }
     
@@ -355,10 +357,19 @@ class RedeemCode extends Object
                     }
         
                 }*/
+                //截取时间
+                $start ='';
+                $end = '';
+                if ($this->time){
+                    $start = substr($this->time,0,19);
+                    $end = substr($this->time,22);
+                }
                 $prize = json_encode($vv);
                 for ($i=1;$i<=(int)$this->number;$i++){
                     $model =new RedeemCode();
                     $model->add_type=1;
+                    $model->start_time=$start;
+                    $model->end_time=$end;
                     $model->scope_type=3;
                     $model->type=$this->type;
                     $model->name=$this->name;
@@ -512,10 +523,19 @@ class RedeemCode extends Object
                 }
                 
             }*/
+            //截取时间
+            $start ='';
+            $end = '';
+            if ($this->time){
+                $start = substr($this->time,0,19);
+                $end = substr($this->time,22);
+            }
             $prize = json_encode($vv);
                 $this->add_type=2;
                 $this->redeem_code=$this->getRandChar(12);
                 $this->created_at=time();
+                $this->start_time=$start;
+                $this->end_time=$end;
                 $this->prize=$prize;
                 $this->status=2;
                 return $this->save();
@@ -542,17 +562,17 @@ class RedeemCode extends Object
     
         if ($this->load($data, '') && $this->validate()) {
             //验证兑换码的有效性
-            $result = RedeemCode::findOne(['redeem_code' =>'TA1PD2AJKUYM']);
+            $result = RedeemCode::findOne(['redeem_code' =>$this->redee]);
             if ($result === null || $result === false || $result->status == 1) {
                 $this->addError('message', '验证码无效');
                 return false;
             }
             //判断是否在兑换时间内
-           /* $time = time();
-            if ($time < $result->start_time || $time > $result->end_time) {
+            $time = time();
+            if ($time < strtotime($result->start_time) || $time > strtotime($result->end_time)) {
                 $this->addError('message', '兑换不在兑换时间范围内');
                 return false;
-            }*/
+            }
             //到兑换记录中查询该用户是否兑换过该兑换码
             $re = RedeemRecord::findOne(['redeem_code' => $this->redeem_code, 'game_id' => $this->game_id]);
             if ($re) {
@@ -616,11 +636,47 @@ class RedeemCode extends Object
     
     // 修改兑换码
     public function edit($data=[]){
-        if($this->load($data,'') && $this->validate()){
-            $datas['id']=$this->id;
-            $datas['num']=1;
-            $datas['level']=$this->level;
-            $datas['cost']=$this->jewel_number;
+        if($this->load($data) && $this->validate()){
+            $vv =[];
+            $re = RedeemCode::$give;
+            foreach ($data as $key=>$v){
+        
+                if (is_array($v)){
+                    foreach ($v as $k=>$v2){
+                        if (array_key_exists($k,$re)){
+                            $vv[$k]=$v2;
+                        }
+                    }
+                }
+        
+            }
+    
+            if (empty($vv)){
+                $this->addError('give_type','请选择类型');
+                return false;
+            }
+            foreach ($vv as $kk=>$value){
+                if (empty($value)){
+                    $this->addError('give_type','请选择对应类型的数量');
+                    return false;
+                }
+                if (!is_numeric($value)){
+                    $this->addError('give_type','请输入数字类型');
+                    return false;
+                }
+            }
+            //截取时间
+            $start ='';
+            $end = '';
+            if ($this->time){
+                $start = substr($this->time,0,19);
+                $end = substr($this->time,22);
+            }
+            $prize = json_encode($vv);
+            $this->start_time=$start;
+            $this->end_time=$end;
+            $this->prize=$prize;
+            return $this->save();
         }
     }
     

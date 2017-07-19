@@ -7,10 +7,12 @@
 namespace backend\models;
 
 use common\models\NoticeObject;
+use yii\helpers\ArrayHelper;
 
 class Notice extends NoticeObject
 {
-    public static $get_type=['0'=>'暂无奖励','1'=>'金币',2=>'钻石'];
+    public static $give;
+    public $get_type;
     /**
      * @inheritdoc
      */
@@ -18,7 +20,7 @@ class Notice extends NoticeObject
     {
         return [
             [['title','content','status','location'],'required'],
-            [['manage_id', 'status', 'time','number','type'], 'integer'],
+            [['manage_id', 'status', 'time','type'], 'integer'],
             [['content'], 'string'],
             [['manage_name'], 'string', 'max' => 32],
             [['title'], 'string', 'max' => 64],
@@ -35,7 +37,7 @@ class Notice extends NoticeObject
     {
         if($this->load($data) && $this->validate())
         {
-            if ($this->type == 1 || $this->type == 2) {
+           /* if ($this->type == 1 || $this->type == 2) {
                 if (empty($this->number)) {
                     $this->addError('message', '请选择赠送的数量!!');
                     return false;
@@ -44,7 +46,37 @@ class Notice extends NoticeObject
             if ($this->number && $this->type==0){
                 $this->addError('message', '请选择赠送类型!!');
                 return false;
+            }*/
+            $vv =[];
+            $re = Notice::$give;
+            foreach ($data as $key=>$v){
+        
+                if (is_array($v)){
+                    foreach ($v as $k=>$v2){
+                        if (array_key_exists($k,$re)){
+                            $vv[$k]=$v2;
+                        }
+                    }
+                }
+        
             }
+    
+            if (empty($vv)){
+                $this->addError('give_type','请选择类型');
+                return false;
+            }
+            foreach ($vv as $kk=>$value){
+                if (empty($value)){
+                    $this->addError('give_type','请选择对应类型的数量');
+                    return false;
+                }
+                if (!is_numeric($value)){
+                    $this->addError('give_type','请输入数字类型');
+                    return false;
+                }
+            }
+            $prize = json_encode($vv);
+            $this->number=$prize;
             $this->manage_id    = \Yii::$app->session->get('manageId');
             $this->manage_name  = \Yii::$app->session->get('manageName');
             $this->time         = time();
@@ -57,17 +89,54 @@ class Notice extends NoticeObject
     public function edit($data = []){
         if($this->load($data) && $this->validate())
         {
-            if ($this->type == 1 || $this->type == 2) {
-                if (empty($this->number)) {
-                    $this->addError('message', '请选择赠送的数量!!');
+            $vv =[];
+            $re = Notice::$give;
+            foreach ($data as $key=>$v){
+        
+                if (is_array($v)){
+                    foreach ($v as $k=>$v2){
+                        if (array_key_exists($k,$re)){
+                            $vv[$k]=$v2;
+                        }
+                    }
+                }
+        
+            }
+    
+            if (empty($vv)){
+                $this->addError('give_type','请选择类型');
+                return false;
+            }
+            foreach ($vv as $kk=>$value){
+                if (empty($value)){
+                    $this->addError('give_type','请选择对应类型的数量');
+                    return false;
+                }
+                if (!is_numeric($value)){
+                    $this->addError('give_type','请输入数字类型');
                     return false;
                 }
             }
-            if ($this->number && $this->type==0){
-                $this->addError('message', '请选择赠送类型!!');
-                return false;
-            }
+            $prize = json_encode($vv);
+            $this->number=$prize;
             return $this->save();
+            
+            
         }
+    }
+    
+    
+    // 创建模型自动设置赠送礼品类型
+    public function __construct(array $config = [])
+    {
+        //查询 道具列表中的数据
+        $data  = Shop::find()->asArray()->all();
+        //将道具数组格式化成  对应的数组
+        $new_data = ArrayHelper::map($data,'id','name');
+        //自定义 赠送类型
+        $datas = ['gold'=>'金币','diamond'=>'钻石','fishGold'=>'鱼币'];
+        //将数据合并 赋值给数组
+        self::$give= ArrayHelper::merge($datas,$new_data);
+        parent::__construct($config);
     }
 }

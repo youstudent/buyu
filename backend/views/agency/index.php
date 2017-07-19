@@ -185,6 +185,10 @@ use yii\bootstrap\ActiveForm;
                                         <a href="<?php echo \yii\helpers\Url::to(['agency/deduct', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal"
                                            class="btn btn-xs btn-info">&nbsp;扣&nbsp;除&nbsp;</a>
+                                        <a href="<?=\yii\helpers\Url::to(['pay/agency-pay-log',
+                                            'Agency'=>['select'=>'id','keyword'=>$value['id']]])?>" class="btn btn-xs btn-primary">充值记录</a>
+                                        <a href="<?=\yii\helpers\Url::to(['pay/agency-out-log',
+                                            'Agency'=>['select'=>'id','keyword'=>$value['id']]])?>" class="btn btn-xs btn-primary">扣除记录</a>
 
                                         <a onclick="return openAgency(this,'是否封锁该账号?')"
                                            href="<?php echo \yii\helpers\Url::to(['agency/status', 'id' => $value['id']]) ?>"

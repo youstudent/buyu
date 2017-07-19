@@ -6,6 +6,7 @@ use common\models\RedeemCode;
 use common\models\RedeemRecord;
 use m35\thecsv\theCsv;
 use yii\console\Response;
+use yii\web\Request;
 
 class RedeemCodeController extends ObjectController
 {
@@ -183,7 +184,7 @@ class RedeemCodeController extends ObjectController
         $model = RedeemCode::findOne($id);
         if(\Yii::$app->request->isPost)
         {
-            \Yii::$app->response->format = Response::FORMAT_JSON;
+            \Yii::$app->response->format =\yii\web\Response::FORMAT_JSON;
             if($model->edit(\Yii::$app->request->post()))
             {
                 return ['code'=>1,'message'=>'修改成功'];
