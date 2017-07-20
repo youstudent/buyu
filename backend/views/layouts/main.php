@@ -23,7 +23,13 @@ $config = [
         ['label' => '族长扣除记录', 'url' => ['pay/agency-out-log']],
     ]],
     ['label' => '排行榜管理', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
-        ['label' => '排行榜列表', 'url' => ['pay/agency-pay-log']],
+       // ['label' => '排行榜列表', 'url' => ['pay/agency-pay-log']],
+    ]],
+    ['label' => '监控中心', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
+        // ['label' => '排行榜列表', 'url' => ['pay/agency-pay-log']],
+    ]],
+    ['label' => '机器人管理', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
+        // ['label' => '排行榜列表', 'url' => ['pay/agency-pay-log']],
     ]],
     /*['label' => '游戏设置', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['game/index'], 'items' => [
         ['label' => '设置列表', 'url' => ['game/index']],

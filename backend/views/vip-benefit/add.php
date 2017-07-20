@@ -9,25 +9,22 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">添加通知</h4>
+            <h4 class="modal-title" id="myModalLabel">添加炮台倍数</h4>
         </div>
         <div class="modal-body">
 
             <div class="col-xs-11">
             <?php $form = \yii\bootstrap\ActiveForm::begin([
                     'id'=>'payModalForm',
-                    'action'=>['notice/add'],
+                    'action'=>['vip-benefit/add'],
                     'options'=>['class'=>'form-horizontal'],
                     'fieldConfig' => [
                         'template' => "{label}<div class=\"col-lg-9\">{input}<span class=\"help-block m-b-none\"></span></div>",
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'location')->dropDownList(['系统公告'=>'系统公告','游戏公告'=>'游戏公告'])?>
-                <?php echo $form->field($model,'title')->textInput(['placeholder'=>'标题'])?>
-                <?php echo $form->field($model,'content')->textarea(['placeholder'=>'内容'])?>
-                <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','2'=>'隐 藏'])?>
-                <?php echo $form->field($model,'get_type',['inline'=>true])->checkboxList(\backend\models\Notice::$give)?>
+                <?php echo $form->field($model,'grade')?>
+                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\VipBenefit::$give)?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -85,11 +82,11 @@
         });
 
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#notice-get_type').find('.checkbox-inline');
+        var  checkbox_input =  $('#vipbenefit-type').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'Notice['+ _this.find('input').val()+']';
+            var input_name = 'vipbenefit['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){

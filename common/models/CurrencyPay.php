@@ -100,6 +100,11 @@ class CurrencyPay extends Object
             }
             },
              */
+            
+            
+            /**
+             *  将接收到的数据进行 拼装发送给游戏服务器
+             */
             $datas=['gold','diamond','fishGold'];
             $pays=[];
             $send=[];
@@ -123,12 +128,17 @@ class CurrencyPay extends Object
                     }
                 }
             }
-           
-            if (array_key_exists('gold',self::$give)){
-               //$send['gold']=$this->gold;
-            }
             $send['tools']=$tools;
             $pays['send']=$send;
+            /**
+             * 请求服务器地址 充值商城添加
+             */
+            $payss = Json::encode($pays);
+            $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
+            $re = Request::request_post_raw($url,$payss);
+            if ($re['code']== 1){
+            
+            }
             $this->give_prize=Json::encode($send);
             $this->manage_id    = \Yii::$app->session->get('manageId');
             $this->manage_name  = \Yii::$app->session->get('manageName');
@@ -141,6 +151,9 @@ class CurrencyPay extends Object
     public function edit($data = []){
         if($this->load($data) && $this->validate())
         {
+            /**
+             * 接收数据  拼装
+             */
             $datas=['gold','diamond','fishGold'];
             $pays=[];
             $send=[];
@@ -167,6 +180,15 @@ class CurrencyPay extends Object
             }
             $send['tools']=$tools;
             $pays['send']=$send;
+            /**
+             * 请求游戏服务端   修改数据
+             */
+            $payss = Json::encode($pays);
+            $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
+            $re = Request::request_post_raw($url,$payss);
+            if ($re['code']== 1){
+            
+            }
             $this->give_prize=Json::encode($send);
             $this->manage_id    = \Yii::$app->session->get('manageId');
             $this->manage_name  = \Yii::$app->session->get('manageName');
@@ -236,7 +258,7 @@ class CurrencyPay extends Object
      */
     public static function GetCurrency(){
         $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
-        $data = \common\services\Request::request_post($url,['time'=>time()]);
+        $data = \common\services\Request::request_post_raw($url,time());
         $d=[];
         foreach ($data as $key=>$v){
             if (is_object($v)){
@@ -253,6 +275,8 @@ class CurrencyPay extends Object
             $model->id=$attributes->id;
             $model->money =$attributes->money;
             $model->fold =$attributes->firstDouble;
+            $model->created_at =time();
+            $model->updated_at =time();
             $_model = clone $model;
             $_model->setAttributes($attributes);
             $_model->save(false);

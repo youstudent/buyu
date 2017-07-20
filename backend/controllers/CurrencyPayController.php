@@ -46,7 +46,6 @@ class CurrencyPayController extends ObjectController
         return $this->render('add', ['model' => $model]);
     }
     
-    
     /**
      * 充值货币修改操作操作
      * @return array|string
@@ -102,9 +101,20 @@ class CurrencyPayController extends ObjectController
         $this->layout = false;
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $id = \Yii::$app->request->get('id');
+        /**
+         * 请求游戏服务端   删除数据
+         */
+        $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
+        $data=[];
+        $data['id']=$id;
+        $datas = Json::encode($data);
+        $re = \common\services\Request::request_post($url,$datas);
+        if ($re['code']== 1){
+        
+        }
         $model = CurrencyPay::findOne($id);
         if ($model) {
-            if ($model->delete()) {
+            if ($model->delete()){
                 return ['code' => 1, 'message' => '删除成功'];
             }
             $messge = $model->getFirstErrors();
@@ -138,6 +148,5 @@ class CurrencyPayController extends ObjectController
         }
         return $this->render('prize',['model'=>$model,'data'=>$data]);
     }
-    
     
 }

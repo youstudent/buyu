@@ -9,29 +9,39 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">发布邮件</h4>
+            <h4 class="modal-title" id="myModalLabel">查看奖品</h4>
         </div>
         <div class="modal-body">
 
             <div class="col-xs-11">
             <?php $form = \yii\bootstrap\ActiveForm::begin([
                     'id'=>'payModalForm',
-                    'action'=>['mail/add'],
+                    'action'=>['redeem-code/add'],
                     'options'=>['class'=>'form-horizontal'],
                     'fieldConfig' => [
                         'template' => "{label}<div class=\"col-lg-9\">{input}<span class=\"help-block m-b-none\"></span></div>",
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'title')?>
-                <?php echo $form->field($model,'content')->textarea()?>
-                <?php echo $form->field($model,'number',['inline'=>true])->checkboxList(\common\models\Mail::$give)?>
+                <?php foreach ($data as $key=>$value):?>
+                    <label class="col-lg-3 control-label" for="redeemcode-diamond"><?php echo $key?></label>
+                    <div class="col-lg-9"><input type="text" id="redeemcode-diamond" class="form-control" name="RedeemCode[diamond]" value="<?php echo $value?>" readonly=""><span class="help-block m-b-none"></span></div>
+                <?php endforeach;?>
+                
+               <!-- <?php /*echo $form->field($model,'give_type')->checkboxList(\common\models\RedeemCode::$give)*/?>
+                <?php /*echo $form->field($model,'gold')->textInput(['readonly'=>true])*/?>
+                <?php /*echo $form->field($model,'diamond')->textInput(['readonly'=>true])*/?>
+                <?php /*echo $form->field($model,'fishGold')->textInput(['readonly'=>true])*/?>
+                <?php /*echo $form->field($model,'one')->textInput(['readonly'=>true])*/?>
+                <?php /*echo $form->field($model,'tow')->textInput(['readonly'=>true])*/?>
+                <?php /*echo $form->field($model,'three')->textInput(['readonly'=>true])*/?>
+                <?php /*echo $form->field($model,'four')->textInput(['readonly'=>true])*/?>
+                <?php /*echo $form->field($model,'five')->textInput(['readonly'=>true])*/?>
+                --><?php /*echo $form->field($model,'six')->textInput(['readonly'=>true])*/?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times">&nbsp;</i><?=Yii::t('app','but_close')?></button>
-            <button type="button" id="payModalSubmit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp确认发布</button>
         </div>
     </div>
 </div>
@@ -44,7 +54,6 @@
 </style>
 <script>
     $(document).ready(function () {
-        clickTimeSelect($('#IDIDID'));
         //平台用户充值
         $("#payModalSubmit").click(function () {
             var  form   = $("#payModalForm");
@@ -59,15 +68,15 @@
                     if(res.code == 1)
                     {
                         swal({
-                                title:res.message,
-                                //text: "<?=Yii::t('app','swal_text_error')?>",
-                                type: "success",
-                                confirmButtonText: "<?=Yii::t('app','but_close')?>",
-                                closeOnConfirm: false,
-                            },
-                            function(){
-                                location.reload();
-                            });
+                            title:res.message,
+                            //text: "<?=Yii::t('app','swal_text_error')?>",
+                            type: "success",
+                            confirmButtonText: "<?=Yii::t('app','but_close')?>",
+                            closeOnConfirm: false,
+                        },
+                        function(){
+                            location.reload();
+                        });
                     }else{
                         swal({
                             title:res.message,
@@ -81,26 +90,5 @@
                 },
             });
         });
-
-        //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#mail-number').find('.checkbox-inline');
-        checkbox_input.click(function(){
-            var _this = $(this);
-            var input_text = _this.text();
-            var input_name = 'Mail['+ _this.find('input').val()+']';
-            var input_id = _this.find('input').val();
-            var html = '';
-            if(_this.find('input').is(':checked')){
-                $('#'+input_id).remove();
-                html+= '<div class="form-group field-redeemcode-end_time" id="'+input_id+'">';
-                html+= '<label class="col-lg-3 control-label" for="redeemcode-end_time">'+ input_text + '</label>';
-                html+= '<div class="col-lg-9">';
-                html+= '<input type="text" id="redeemcode-end_time" class="form-control" name="'+input_name+'">';
-                html+= '<span class="help-block m-b-none"></span></div></div>';
-                $('#payModalForm').append(html);
-            }else{
-                $('#'+input_id).remove();
-            }
-        })
     })
 </script>

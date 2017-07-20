@@ -3,9 +3,11 @@
 namespace common\models;
 
 use backend\models\Shop;
+use common\services\Request;
 use Yii;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "{{%mail}}".
@@ -175,40 +177,48 @@ class Mail extends Object
     public function add($data = [])
     {
         if ($this->load($data) && $this->validate()) {
-            /*if ($this->type && $this->number) {
-                $this->yes_no = 1;
-            } else {
-                $this->yes_no = 0;
-            }
-            if ($this->type == 1 || $this->type == 2) {
-                if (empty($this->number)) {
-                    $this->addError('message', '请选择赠送的数量!!');
-                    return false;
-                }
-            }
-            if ($this->number && $this->type==0){
-                $this->addError('message', '请选择赠送类型!!');
-                return false;
-            }*/
-    
-            $vv =[];
-            $re = Mail::$give;
-            foreach ($data as $key=>$v){
-        
+            /**
+             *  将接收到的数据进行 拼装发送给游戏服务器
+             */
+            $datas=['gold','diamond','fishGold'];
+            $pays=[];
+            $send=[];
+            $tools = [];
+            $i = 0;
+            $tool = [];
+            $pays['title']=$this->title;
+            $pays['content']=$this->content;
+            foreach ($data as $K=>$v){
                 if (is_array($v)){
-                    foreach ($v as $k=>$v2){
-                        if (array_key_exists($k,$re)){
-                            $vv[$k]=$v2;
+                    foreach ($v as $kk=>$VV){
+                        if (in_array($kk,$datas)){
+                            $send[$kk]=$VV;
+                        }
+                        if (is_numeric($kk)){
+                            $tool['toolId']=$kk;
+                            $tool['toolNum']=$VV;
+                            $tools[$i]=$tool;
+                            $i++;
                         }
                     }
                 }
-        
             }
+            $send['tools']=$tools;
+            $pays['send']=$send;
+            $payss = Json::encode($pays);
+            /**
+             * 请求服务器  添加邮件
+             */
+            /*$url = \Yii::$app->params['Api'].'/gameserver/control/addemail';
+            $re = Request::request_post_raw($url,$payss);
+            if ($re['code']== 1){
+                return true;
+            }*/
             //请求游戏服务器地址
-            $prize = json_encode($vv);
+            $prize = json_encode($send);
+            $this->yes_no=$this->number?1:0;
             $this->number=$prize;
             $this->status = 1;
-            $this->yes_no=$prize?1:0;
             $this->manage_id = \Yii::$app->session->get('manageId');
             $this->manage_name = \Yii::$app->session->get('manageName');
             $this->created_at = time();

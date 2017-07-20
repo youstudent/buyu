@@ -9,7 +9,7 @@ namespace common\services;
 class Request
 {
     /**
-     * POST提交数据
+     * POST提交数据    form da
      * @param string $url
      * @param string $param
      * @return bool|string
@@ -20,6 +20,7 @@ class Request
         if (empty($url) || empty($param)) {
             return false;
         }
+        
 //        'game_id'=>$model->game_id,'gold'=>$this->pay_gold_num,'gold_config'=>GoldConfigObject::getNumCodeByName($this->pay_gold_config);
         /*$datas['uid']      = $param['game_id'];
         $datas['depositType']   = $param['gold_config'];
@@ -42,7 +43,37 @@ class Request
         }
         return ['code'=>0,'message'=>$data->message];
     }
-
+    /**
+     * POST提交数据
+     * @param string $url
+     * @param string $param
+     * @return bool|string
+     */
+    static function request_post_raw($url = '', $raw) {
+//        return ['code'=>1,'message'=>"游戏服务器相应失败"];
+        if (empty($url) || empty($raw)) {
+            return false;
+        }
+        $ch = curl_init();
+        curl_setopt_array($ch, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $raw
+        ));
+        $data = curl_exec($ch);//运行curl
+        curl_close($ch);
+        $data = json_decode($data);
+        if($data->code == 1)
+        {
+            return ['code'=>1,$data->data];
+        }
+        return ['code'=>0,'message'=>$data->message];
+    }
     /**
      * get调用接口
      * @param string $url

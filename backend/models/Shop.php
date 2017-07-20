@@ -61,9 +61,10 @@ class Shop extends \yii\db\ActiveRecord
     
     //修改商品
     public function edit($data=[]){
-        if($this->load($data,'') && $this->validate()){
+        if($this->load($data) && $this->validate()){
             $datas['id']=$this->id;
             $datas['num']=1;
+           // $datas['name']=$this->name;
             $datas['level']=$this->level;
             $datas['cost']=$this->jewel_number;
             //$data = Request::request_post(\Yii::$app->params['ApiUserPay'],['game_id'=>$model->game_id,'gold'=>$this->pay_gold_num,'gold_config'=>GoldConfigObject::getNumCodeByName($this->pay_gold_config)]);

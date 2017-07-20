@@ -32,7 +32,7 @@ class MailController extends \yii\web\Controller
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if($model->add(\Yii::$app->request->post()))
             {
-                return ['code'=>1,'message'=>'添加成功'];
+                return ['code'=>1,'message'=>'发布成功'];
             }
             $message = $model->getFirstErrors();
             $message = reset($message);
@@ -52,13 +52,33 @@ class MailController extends \yii\web\Controller
         $JSON = json_decode($model->number,true);
         $data  =[];
         $re = Mail::$give;
+        foreach ($JSON as $key=>$value){
+            if (array_key_exists($key,$re)){
+                $data[$re[$key]]=$value;
+            }
+            if(is_array($value)){
+                foreach ($value as $K=>$v){
+                    if (array_key_exists($v['toolId'],$re)){
+                        $data[$re[$v['toolId']]]=$v['toolNum'];
+                    }
+                }
+            }
+        
+        }
+       /* $this->layout = false;
+        // RedeemCode::setShop();
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $model = Mail::findOne($id);
+        $JSON = json_decode($model->number,true);
+        $data  =[];
+        $re = Mail::$give;
         
         foreach ($JSON as $key=>$value){
             if (array_key_exists($key,$re)){
                 $data[$re[$key]]=$value;
             }
             
-        }
+        }*/
         return $this->render('prize',['model'=>$model,'data'=>$data]);
     }
 

@@ -20,7 +20,9 @@ $this->title = Yii::t('app', 'vip_index') . '-' . Yii::$app->params['appName'];
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-3 text-right">
+                        <div class="col-sm-3 text-left">
+                            <a href="<?= \yii\helpers\Url::to(['vip-benefit/add'])?>" class="btn btn-primary"
+                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加Vip等级</a>
                         </div>
                     </div>
                     <!--                搜索结束          -->
@@ -33,7 +35,6 @@ $this->title = Yii::t('app', 'vip_index') . '-' . Yii::$app->params['appName'];
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">vip等级</th>
-                                <th class="text-center">每日赠送金币数量</th>
                                 <th class="text-center">修改人</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
@@ -45,13 +46,16 @@ $this->title = Yii::t('app', 'vip_index') . '-' . Yii::$app->params['appName'];
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?= $value['grade']?></td>
-                                    <td class="text-center"><?= $value['number']?></td>
+                                    <td class="text-center">Vip<?= $value['grade']?></td>
                                     <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
-                                    <td class="text-center" style="width: 120px;">
+                                    <td  class="text-center" style="width: 200px;">
+                                        <a href="<?php echo \yii\helpers\Url::to(['vip-benefit/prize', 'id' => $value['id']]) ?>"
+                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['vip-benefit/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                        <a href="<?php echo \yii\helpers\Url::to(['vip-benefit/del','id' => $value['id']])?>"
+                                           onclick="return openAgency(this,'是否确认删除?')" class="btn btn-xs btn-danger">删除</a>
                                     </td>
                                 </tr>
                                 <?php $i++ ?>
