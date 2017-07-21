@@ -9,7 +9,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">添加通知</h4>
+            <h4 class="modal-title" id="myModalLabel">添加公告</h4>
         </div>
         <div class="modal-body">
 
@@ -23,10 +23,9 @@
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'location')->dropDownList(['系统公告'=>'系统公告','游戏公告'=>'游戏公告'])?>
-                <?php echo $form->field($model,'title')->textInput(['placeholder'=>'标题'])?>
+                <?php echo $form->field($model,'location')->dropDownList([1=>'登录公告',2=>'大厅公告',3=>'滚动公告'])?>
                 <?php echo $form->field($model,'content')->textarea(['placeholder'=>'内容'])?>
-                <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','2'=>'隐 藏'])?>
+                <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
                 <?php echo $form->field($model,'get_type',['inline'=>true])->checkboxList(\backend\models\Notice::$give)?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>

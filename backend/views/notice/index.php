@@ -23,17 +23,17 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                         <div class="col-sm-9">
                             <!--筛选状态 全部|正常|封停 开始-->
                             <div class="btn-group" data-toggle="buttons" style="margin-right: 8px;">
-                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == '') {
+                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 2) {
                                     echo "active";
-                                } ?>" onclick="setStatus('')">
+                                } ?>" onclick="setStatus(2)">
                                     <input type="radio" name="options" id="statusAll">全部</label>
                                 <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 1) {
                                     echo "active";
                                 } ?> " onclick="setStatus(1)">
                                     <input type="radio" name="options" id="statusOk">显示</label>
-                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 2) {
+                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 0) {
                                     echo "active";
-                                } ?> " onclick="setStatus(2)">
+                                } ?> " onclick="setStatus(0)">
                                     <input type="radio" name="options" id="statusColose">隐藏</label>
                             </div>
                             <input type="hidden" name="Agency[searchstatus]" value="" id="status">
@@ -53,10 +53,8 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <th class="text-center">标题</th>
                                 <th class="text-center">内容</th>
                                 <th class="text-center">位置</th>
-                                <th class="text-center">备注</th>
                                 <th class="text-center">时间</th>
                                 <th class="text-center">添加人</th>
                                 <th class="text-center">状态</th>
@@ -69,16 +67,22 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?= $value['title'] ?></td>
                                     <td class="text-center"><?= $value['content'] ?></td>
-                                    <td class="text-center"><?= $value['location'] ?></td>
-                                    <td class="text-center"><?= $value['notes'] ?></td>
+                                    <td class="text-center">
+                                    <?php if ($value['location'] == 1): ?>
+                                        <span class="text-center">登录公告</span>
+                                    <?php elseif ($value['location'] == 2): ?>
+                                        <span class="text-center">大厅公告</span>
+                                    <?php else:?>
+                                        <span class="text-center">滚动公告</span>
+                                    <?php endif; ?>
+                                    </td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['time']) ?></td>
                                     <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center" style="border-right: 0px;">
                                         <?php if ($value['status'] == 1): ?>
                                             <span class="badge bg-success">显示</span>
-                                        <?php elseif ($value['status'] == 2): ?>
+                                        <?php elseif ($value['status'] == 0): ?>
                                             <span class="badge bg-danger">隐藏</span>
                                         <?php endif; ?>
                                     </td>
@@ -107,7 +111,20 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                 <!--                表格结束          -->
                 <!--                分页开始          -->
                 <footer class="panel-footer">
-
+                    <div class="row">
+                        <div class="col-sm-12 text-right text-center-xs">
+                            <?=\yii\widgets\LinkPager::widget([
+                                'pagination'=>$pages,
+                                'firstPageLabel' => '首页',
+                                'lastPageLabel' => '尾页',
+                                'nextPageLabel' => '下一页',
+                                'prevPageLabel' => '上一页',
+                                'options'   =>[
+                                    'class'=>'pagination pagination-sm m-t-none m-b-none',
+                                ]
+                            ])?>
+                        </div>
+                    </div>
                 </footer>
                 <!--                分页结束          -->
             </section>

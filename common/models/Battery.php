@@ -215,6 +215,7 @@ class Battery extends Object
             if ($re['code']== 1){
                 return true;
             }
+            
             /*$this->give_gold_num=Json::encode($send);
             $this->manage_id    = \Yii::$app->session->get('manageId');
             $this->manage_name  = \Yii::$app->session->get('manageName');

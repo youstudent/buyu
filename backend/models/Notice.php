@@ -7,7 +7,9 @@
 namespace backend\models;
 
 use common\models\NoticeObject;
+use common\services\Request;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 
 class Notice extends NoticeObject
 {
@@ -19,7 +21,7 @@ class Notice extends NoticeObject
     public function rules()
     {
         return [
-            [['title','content','status','location'],'required'],
+            [['content','status','location'],'required'],
             [['manage_id', 'status', 'time','type'], 'integer'],
             [['content'], 'string'],
             [['manage_name'], 'string', 'max' => 32],
@@ -27,9 +29,9 @@ class Notice extends NoticeObject
             [['notes', 'location'], 'string', 'max' => 255],
         ];
     }
-
+    
     /**
-     * 添加一个通知
+     * 添加 公告
      * @param array $data
      * @return bool
      */
@@ -37,50 +39,49 @@ class Notice extends NoticeObject
     {
         if($this->load($data) && $this->validate())
         {
-           /* if ($this->type == 1 || $this->type == 2) {
-                if (empty($this->number)) {
-                    $this->addError('message', '请选择赠送的数量!!');
-                    return false;
-                }
-            }
-            if ($this->number && $this->type==0){
-                $this->addError('message', '请选择赠送类型!!');
-                return false;
-            }*/
-            $vv =[];
-            $re = Notice::$give;
-            foreach ($data as $key=>$v){
-        
+            /**
+             *  将接收到的数据进行 拼装发送给游戏服务器
+             */
+            $datas=['gold','diamond','fishGold'];
+            $pays=[];
+            $send=[];
+            $tools = [];
+            $i = 0;
+            $tool = [];
+            $pays['content']=$this->content;
+            $pays['type']=$this->location;
+            $pays['useable']=$this->status;
+            foreach ($data as $K=>$v){
                 if (is_array($v)){
-                    foreach ($v as $k=>$v2){
-                        if (array_key_exists($k,$re)){
-                            $vv[$k]=$v2;
+                    foreach ($v as $kk=>$VV){
+                        if (in_array($kk,$datas)){
+                            $send[$kk]=$VV;
+                        }
+                        if (is_numeric($kk)){
+                            $tool['toolId']=$kk;
+                            $tool['toolNum']=$VV;
+                            $tools[$i]=$tool;
+                            $i++;
                         }
                     }
                 }
-        
             }
-    
-            if (empty($vv)){
-                $this->addError('give_type','请选择类型');
-                return false;
+            $send['tools']=$tools;
+            $pays['send']=$send;
+            /**
+             * 请求服务器地址 炮台倍数
+             */
+            $payss = Json::encode($pays);
+            $url = \Yii::$app->params['Api'].'/gameserver/control/addNotice';
+            $re = Request::request_post_raw($url,$payss);
+            if ($re['code']== 1){
+                return true;
             }
-            foreach ($vv as $kk=>$value){
-                if (empty($value)){
-                    $this->addError('give_type','请选择对应类型的数量');
-                    return false;
-                }
-                if (!is_numeric($value)){
-                    $this->addError('give_type','请输入数字类型');
-                    return false;
-                }
-            }
-            $prize = json_encode($vv);
-            $this->number=$prize;
+            /*$this->give_gold_num=Json::encode($send);
             $this->manage_id    = \Yii::$app->session->get('manageId');
             $this->manage_name  = \Yii::$app->session->get('manageName');
-            $this->time         = time();
-            return $this->save();
+            $this->updated_at         = time();
+            return $this->save();*/
         }
     }
     
@@ -89,38 +90,45 @@ class Notice extends NoticeObject
     public function edit($data = []){
         if($this->load($data) && $this->validate())
         {
-            $vv =[];
-            $re = Notice::$give;
-            foreach ($data as $key=>$v){
-        
+            /**
+             * 接收数据  拼装
+             */
+            $datas=['gold','diamond','fishGold'];
+            $pays=[];
+            $send=[];
+            $tools = [];
+            $i = 0;
+            $tool = [];
+            $pays['id']=$this->id;
+            $pays['content']=$this->content;
+            $pays['type']=$this->location;
+            $pays['useable']=$this->status;
+            foreach ($data as $K=>$v){
                 if (is_array($v)){
-                    foreach ($v as $k=>$v2){
-                        if (array_key_exists($k,$re)){
-                            $vv[$k]=$v2;
+                    foreach ($v as $kk=>$VV){
+                        if (in_array($kk,$datas)){
+                            $send[$kk]=$VV;
+                        }
+                        if (is_numeric($kk)){
+                            $tool['toolId']=$kk;
+                            $tool['toolNum']=$VV;
+                            $tools[$i]=$tool;
+                            $i++;
                         }
                     }
                 }
-        
             }
-    
-            if (empty($vv)){
-                $this->addError('give_type','请选择类型');
-                return false;
+            $send['tools']=$tools;
+            $pays['send']=$send;
+            /**
+             * 请求游戏服务端   修改数据
+             */
+            $payss = Json::encode($pays);
+            $url = \Yii::$app->params['Api'].'/gameserver/control/updateNotice';
+            $re = Request::request_post_raw($url,$payss);
+            if ($re['code']== 1){
+                return true;
             }
-            foreach ($vv as $kk=>$value){
-                if (empty($value)){
-                    $this->addError('give_type','请选择对应类型的数量');
-                    return false;
-                }
-                if (!is_numeric($value)){
-                    $this->addError('give_type','请输入数字类型');
-                    return false;
-                }
-            }
-            $prize = json_encode($vv);
-            $this->number=$prize;
-            return $this->save();
-            
             
         }
     }
@@ -138,5 +146,37 @@ class Notice extends NoticeObject
         //将数据合并 赋值给数组
         self::$give= ArrayHelper::merge($datas,$new_data);
         parent::__construct($config);
+    }
+    
+    
+    /**
+     *    初始化游戏服务端 炮台倍数
+     */
+    public static function GetNotice(){
+        $url = \Yii::$app->params['Api'].'/gameserver/control/getNotice';
+        $data = \common\services\Request::request_post($url,['time'=>time()]);
+        $d=[];
+        
+        foreach ($data as $key=>$v){
+            if (is_array($v)){
+                $d[]=$v;
+            }
+        }
+        $new = $d[0];
+        Notice::deleteAll();
+        $model =  new Notice();
+        //请求到数据   循环保存到数据库
+        foreach($new as $K=>$attributes)
+        {
+            $model->number=Json::encode($attributes->send);  //赠送礼包
+            $model->id=$attributes->id;
+            $model->content =$attributes->content;  //  公告内容
+            $model->status =$attributes->useable;  //  公告内容
+            $model->location =$attributes->type;  //  公告内容
+            //$model->number =$attributes->send;  //  公告内容
+            $_model = clone $model;
+            $_model->setAttributes($attributes);
+            $_model->save(false);
+        }
     }
 }

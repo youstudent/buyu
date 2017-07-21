@@ -9,7 +9,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">修改通知</h4>
+            <h4 class="modal-title" id="myModalLabel">修改公告</h4>
         </div>
         <div class="modal-body">
 
@@ -24,12 +24,10 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'location')->dropDownList(['系统公告'=>'系统公告','游戏公告'=>'游戏公告'])?>
-                <?php echo $form->field($model,'title')->textInput(['placeholder'=>'标题'])?>
-                <?php echo $form->field($model,'content')->textarea(['placeholder'=>'内容'])?>
-                <?php echo $form->field($model,'notes')->textInput(['placeholder'=>'备注'])?>
+                <?php echo $form->field($model,'location')->dropDownList([1=>'登录公告',2=>'大厅公告',3=>'滚动公告'])?>
+                <?php echo $form->field($model,'content')?>
                 <?php echo $form->field($model,'get_type',['inline'=>true])->checkboxList(\backend\models\Notice::$give)?>
-                <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','2'=>'隐 藏'])?>
+                <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \backend\models\Notice::$give[$k] ?></label>

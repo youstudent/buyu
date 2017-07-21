@@ -44,7 +44,7 @@ if (Yii::$app->params['distribution']) {
     ]];*/
 }
 $config[] = ['label' => '公告管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
-    ['label' => '公告管理', 'url' => ['notice/index', 'id' => 1]]
+    ['label' => '公告管理', 'url' => ['notice/index', 'show' => '']]
 ]];
 $config[] = ['label' => '充值商城管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
     ['label' => '充值商城货币设置', 'url' => ['currency-pay/index']]
@@ -66,10 +66,10 @@ $config[] = ['label' => '大厅设置', 'icon' => 'fa fa-bullhorn icon', 'bg_col
     ['label' => '经验等级升级奖励', 'url' => ['experience/index']],
     ['label' => '每日签到管理', 'url' => ['day/index']],
     ['label' => '捕鱼任务奖励设置', 'url' => ['sign-board/index']],
-    ['label' => '救济金(金币和钻石设置)', 'url' => ['getgold/index']],
+    ['label' => '救济金(金币和鱼币设置)', 'url' => ['getgold/index']],
 ]];
 $config[] = ['label' => '基础设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-info', 'url' => ['manage/index'], 'items' => [
-    ['label' => '聊天内容设置', 'url' => ['chat/index']],
+    ['label' => '聊天内容设置', 'url' => ['chat/index','show'=>'']],
     ['label' => '商店道具设置', 'url' => ['shop/index']],
     ['label' => '管理员列表', 'url' => ['manage/index', 'id' => 1]],
 ]];

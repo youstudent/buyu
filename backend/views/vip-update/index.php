@@ -35,7 +35,7 @@ $this->title = Yii::t('app', 'vip_update') . '-' . Yii::$app->params['appName'];
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">vip升级等级</th>
-                                <th class="text-center">升级所需钻石</th>
+                                <th class="text-center">充值人民币</th>
                                 <th class="text-center">修改人</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>

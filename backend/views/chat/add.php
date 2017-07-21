@@ -24,7 +24,7 @@
                     ],
                 ])?>
                 <?php echo $form->field($model,'content')->textarea(['placeholder'=>'内容'])?>
-                <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','2'=>'隐 藏'])?>
+                <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

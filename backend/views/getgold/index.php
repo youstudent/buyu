@@ -12,8 +12,8 @@ $this->title = Yii::t('app', 'get_gold_index') . '-' . Yii::$app->params['appNam
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">金币领取管理</a></li>
-                <li class="active">金币领取列表</li>
+                <li><a href="#">救济金领取管理</a></li>
+                <li class="active">领取列表</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">
@@ -36,9 +36,10 @@ $this->title = Yii::t('app', 'get_gold_index') . '-' . Yii::$app->params['appNam
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
+                                <th class="text-center">类型</th>
                                 <th class="text-center">最低谷值</th>
                                 <th class="text-center">领取数量</th>
-                                <th class="text-center">类型</th>
+                                <th class="text-center">每日领取次数</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
@@ -49,13 +50,14 @@ $this->title = Yii::t('app', 'get_gold_index') . '-' . Yii::$app->params['appNam
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
+                                    <?php if ($value['type']==1):?>
+                                        <td class="text-center">金币</td>
+                                    <?php else:?>
+                                        <td class="text-center">鱼币</td>
+                                    <?php endif;?>
                                     <td class="text-center"><?= $value['lowest'] ?></td>
                                     <td class="text-center"><?= $value['number'] ?></td>
-                                    <?php if ($value['type']==1):?>
-                                    <td class="text-center">金币</td>
-                                    <?php else:?>
-                                    <td class="text-center">钻石</td>
-                                    <?php endif;?>
+                                    <td class="text-center"><?= $value['count'] ?></td>
                                     <?php if (!empty($value['updated_at'])):?>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <?php else:?>

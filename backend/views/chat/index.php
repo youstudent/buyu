@@ -23,17 +23,17 @@ $this->title = Yii::t('app', 'chat_index') . '-' . Yii::$app->params['appName'];
                         <div class="col-sm-9">
                             <!--筛选状态 全部|正常|封停 开始-->
                             <div class="btn-group" data-toggle="buttons" style="margin-right: 8px;">
-                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == '') {
+                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') ==3) {
                                     echo "active";
-                                } ?>" onclick="setStatus('')">
+                                } ?>" onclick="setStatus(3)">
                                     <input type="radio" name="options" id="statusAll">全部</label>
                                 <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 1) {
                                     echo "active";
                                 } ?> " onclick="setStatus(1)">
                                     <input type="radio" name="options" id="statusOk">显示</label>
-                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 2) {
+                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 0) {
                                     echo "active";
-                                } ?> " onclick="setStatus(2)">
+                                } ?> " onclick="setStatus(0)">
                                     <input type="radio" name="options" id="statusColose">隐藏</label>
                             </div>
                             <input type="hidden" name="Agency[searchstatus]" value="" id="status">
@@ -72,7 +72,7 @@ $this->title = Yii::t('app', 'chat_index') . '-' . Yii::$app->params['appName'];
                                     <td class="text-center" style="border-right: 0px;">
                                         <?php if ($value['status'] == 1): ?>
                                             <span class="badge bg-success">显示</span>
-                                        <?php elseif ($value['status'] == 2): ?>
+                                        <?php elseif ($value['status'] == 0): ?>
                                             <span class="badge bg-danger">隐藏</span>
                                         <?php endif; ?>
                                     </td>

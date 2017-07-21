@@ -170,7 +170,7 @@ class Mail extends Object
     }
     
     /**
-     * 添加一个通知
+     * 添加
      * @param array $data
      * @return bool
      */
@@ -180,51 +180,50 @@ class Mail extends Object
             /**
              *  将接收到的数据进行 拼装发送给游戏服务器
              */
-            $datas=['gold','diamond','fishGold'];
-            $pays=[];
-            $send=[];
+            $datas = ['gold', 'diamond', 'fishGold'];
+            $pays = [];
+            $send = [];
             $tools = [];
             $i = 0;
             $tool = [];
-            $pays['title']=$this->title;
-            $pays['content']=$this->content;
-            foreach ($data as $K=>$v){
-                if (is_array($v)){
-                    foreach ($v as $kk=>$VV){
-                        if (in_array($kk,$datas)){
-                            $send[$kk]=$VV;
+            $pays['title'] = $this->title;
+            $pays['content'] = $this->content;
+            foreach ($data as $K => $v) {
+                if (is_array($v)) {
+                    foreach ($v as $kk => $VV) {
+                        if (in_array($kk, $datas)) {
+                            $send[$kk] = $VV;
                         }
-                        if (is_numeric($kk)){
-                            $tool['toolId']=$kk;
-                            $tool['toolNum']=$VV;
-                            $tools[$i]=$tool;
+                        if (is_numeric($kk)) {
+                            $tool['toolId'] = $kk;
+                            $tool['toolNum'] = $VV;
+                            $tools[$i] = $tool;
                             $i++;
                         }
                     }
                 }
             }
-            $send['tools']=$tools;
-            $pays['send']=$send;
+            $send['tools'] = $tools;
+            $pays['send'] = $send;
             $payss = Json::encode($pays);
             /**
              * 请求服务器  添加邮件
              */
-            /*$url = \Yii::$app->params['Api'].'/gameserver/control/addemail';
-            $re = Request::request_post_raw($url,$payss);
-            if ($re['code']== 1){
+            $url = \Yii::$app->params['Api'] . '/gameserver/control/addemail';
+            $re = Request::request_post_raw($url, $payss);
+            if ($re['code'] == 1) {
+                //请求游戏服务器地址
+                $prize = json_encode($send);
+                $this->yes_no = $this->number ? 1 : 0;
+                $this->number = $prize;
+                $this->status = 1;
+                $this->manage_id = \Yii::$app->session->get('manageId');
+                $this->manage_name = \Yii::$app->session->get('manageName');
+                $this->created_at = time();
+                $this->save();
                 return true;
-            }*/
-            //请求游戏服务器地址
-            $prize = json_encode($send);
-            $this->yes_no=$this->number?1:0;
-            $this->number=$prize;
-            $this->status = 1;
-            $this->manage_id = \Yii::$app->session->get('manageId');
-            $this->manage_name = \Yii::$app->session->get('manageName');
-            $this->created_at = time();
-            return $this->save();
+            }
         }
-        
     }
     
     
