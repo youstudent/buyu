@@ -17,6 +17,9 @@ $config = [
     ['label' => '提现管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['withdraw/list'], 'items' => [
         ['label' => '提现列表', 'url' => ['withdraw/list', 'id' => 1]],
     ]],
+    ['label' => '鱼群管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['fishing/index'], 'items' => [
+        ['label' => '鱼群列表', 'url' => ['fishing/index', 'show' => '']],
+    ]],
     ['label' => '族长管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['agency/index'], 'items' => [
         ['label' => '族长列表','url' => ['agency/index', 'id' => 1]],
         ['label' => '族长充值记录', 'url' => ['pay/agency-pay-log']],
@@ -61,8 +64,8 @@ $config[] = ['label' => '大厅设置', 'icon' => 'fa fa-bullhorn icon', 'bg_col
     ['label' => '邮件设置', 'url' => ['mail/index']],
     ['label' => '货币设置', 'url' => ['money/index']],
     ['label' => '炮台设置', 'url' => ['battery/index']],
-    ['label' => 'vip每日福利', 'url' => ['vip-benefit/index']],
-    ['label' => 'vip升级管理', 'url' => ['vip-update/index']],
+   // ['label' => 'vip每日福利', 'url' => ['vip-benefit/index']],
+    ['label' => 'vip管理', 'url' => ['vip-update/index']],
     ['label' => '经验等级升级奖励', 'url' => ['experience/index']],
     ['label' => '每日签到管理', 'url' => ['day/index']],
     ['label' => '捕鱼任务奖励设置', 'url' => ['sign-board/index']],

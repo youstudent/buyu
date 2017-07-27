@@ -23,6 +23,8 @@ $this->title = Yii::t('app', 'battery_index') . '-' . Yii::$app->params['appName
                         <div class="col-sm-3 text-left">
                                 <a href="<?= \yii\helpers\Url::to(['battery/add'])?>" class="btn btn-primary"
                                    data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加炮台倍数</a>
+                            <a href="<?php echo \yii\helpers\Url::to(['battery/getbattery']) ?>"
+                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
                         </div>
                     </div>
                     <!--                搜索结束          -->
@@ -77,7 +79,20 @@ $this->title = Yii::t('app', 'battery_index') . '-' . Yii::$app->params['appName
                 <!--                表格结束          -->
                 <!--                分页开始          -->
                 <footer class="panel-footer">
-
+                    <div class="row">
+                        <div class="col-sm-12 text-right text-center-xs">
+                            <?=\yii\widgets\LinkPager::widget([
+                                'pagination'=>$pages,
+                                'firstPageLabel' => '首页',
+                                'lastPageLabel' => '尾页',
+                                'nextPageLabel' => '下一页',
+                                'prevPageLabel' => '上一页',
+                                'options'   =>[
+                                    'class'=>'pagination pagination-sm m-t-none m-b-none',
+                                ]
+                            ])?>
+                        </div>
+                    </div>
                 </footer>
                 <!--                分页结束          -->
             </section>

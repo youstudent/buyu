@@ -8,6 +8,7 @@ namespace backend\models;
 
 use common\models\NoticeObject;
 use common\services\Request;
+use Symfony\Component\DomCrawler\Field\InputFormField;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 
@@ -39,6 +40,13 @@ class Notice extends NoticeObject
     {
         if($this->load($data) && $this->validate())
         {
+            if ($this->location == 1 || $this->location == 2){
+              if (Notice::find()->where(['location'=>$this->location,'status'=>1])->exists()){
+                  $this->addError('status','登录公告和大厅公告只能显示一条');
+                  return false;
+              }
+            }
+           // Notice::findOne(['location'=>$this->location,'status'=>1]);
             /**
              *  将接收到的数据进行 拼装发送给游戏服务器
              */
@@ -66,8 +74,14 @@ class Notice extends NoticeObject
                     }
                 }
             }
-            $send['tools']=$tools;
-            $pays['send']=$send;
+            if (!empty($tools)){
+                $send['tools']=$tools;
+            }
+            if (!empty($send)){
+                $pays['send']=$send;
+            }
+          /*  $send['tools']=$tools;
+            $pays['send']=$send;*/
             /**
              * 请求服务器地址 炮台倍数
              */
@@ -75,9 +89,12 @@ class Notice extends NoticeObject
             $url = \Yii::$app->params['Api'].'/gameserver/control/addNotice';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
+                $this->number=Json::encode($send);
+                $this->time        = time();
+                $this->save(false);
                 return true;
             }
-            /*$this->give_gold_num=Json::encode($send);
+            /*;
             $this->manage_id    = \Yii::$app->session->get('manageId');
             $this->manage_name  = \Yii::$app->session->get('manageName');
             $this->updated_at         = time();
@@ -90,6 +107,12 @@ class Notice extends NoticeObject
     public function edit($data = []){
         if($this->load($data) && $this->validate())
         {
+            if ( ($this->location == 1 || $this->location == 2) && $this->status ==1 ){
+                if (Notice::find()->where(['location'=>$this->location,'status'=>1])->exists()){
+                    $this->addError('status','登录公告和大厅公告只能显示一条');
+                    return false;
+                }
+            }
             /**
              * 接收数据  拼装
              */
@@ -118,8 +141,12 @@ class Notice extends NoticeObject
                     }
                 }
             }
-            $send['tools']=$tools;
-            $pays['send']=$send;
+            if (!empty($tools)){
+              $send['tools']=$tools;
+            }
+            if (!empty($send)){
+              $pays['send']=$send;
+            }
             /**
              * 请求游戏服务端   修改数据
              */
@@ -127,6 +154,9 @@ class Notice extends NoticeObject
             $url = \Yii::$app->params['Api'].'/gameserver/control/updateNotice';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
+                $this->number=Json::encode($send);
+                $this->time= time();
+                $this->save(false);
                 return true;
             }
             
@@ -171,12 +201,13 @@ class Notice extends NoticeObject
             $model->number=Json::encode($attributes->send);  //赠送礼包
             $model->id=$attributes->id;
             $model->content =$attributes->content;  //  公告内容
-            $model->status =$attributes->useable;  //  公告内容
-            $model->location =$attributes->type;  //  公告内容
-            //$model->number =$attributes->send;  //  公告内容
+            $model->status =$attributes->useable;  //  公告状态
+            $model->location =$attributes->type;  //  公告位置
+            $model->time =time();  //  同步时间
             $_model = clone $model;
             $_model->setAttributes($attributes);
             $_model->save(false);
         }
+        return $data['code'];
     }
 }

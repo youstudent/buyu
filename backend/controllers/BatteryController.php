@@ -3,6 +3,8 @@
 namespace backend\controllers;
 
 use common\models\Battery;
+use common\models\GetGold;
+use yii\data\Pagination;
 use yii\helpers\Json;
 use yii\web\Response;
 
@@ -10,9 +12,16 @@ class BatteryController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        Battery::GetBattery();
-        $model  = Battery::find()->asArray()->all();
-        return $this->render('index',['data'=>$model]);
+        //Battery::GetBattery();
+        $model  = Battery::find();
+        $pages = new Pagination(
+            [
+                'totalCount' =>$model->count(),
+                'pageSize' =>\Yii::$app->params['pageSize']
+            ]
+        );
+        $data  = $model->limit($pages->limit)->offset($pages->offset)->asArray()->all();
+        return $this->render('index',['data'=>$data,'pages'=>$pages]);
     }
     
     
@@ -95,24 +104,26 @@ class BatteryController extends \yii\web\Controller
         /**
          * 请求游戏服务端   删除数据
          */
-        $url = \Yii::$app->params['Api'].'/gameserver/control/deletebatterypower';
-        $data=[];
-        $data['id']=$id;
-        $datas = Json::encode($data);
-        $re = \common\services\Request::request_post_raw($url,$datas);
-        if ($re['code']== 1){
-            return ['code'=>1,'message'=>'删除成功'];
-        }
-        return ['code'=>0,'message'=>'删除失败'];
-        /*$model = Battery::findOne($id);
-        if ($model) {
-            if ($model->delete()){
-                return ['code' => 1, 'message' => '删除成功'];
-            }
-            $messge = $model->getFirstErrors();
-            $messge = reset($messge);
-            return ['code' => 0, 'message' => $messge];
-        }*/
+      $model = Battery::findOne($id);
+      $url = \Yii::$app->params['Api'].'/gameserver/control/deletebatterypower';
+      $data=[];
+      $data['id']=$id;
+      $datas = Json::encode($data);
+      $re = \common\services\Request::request_post_raw($url,$datas);
+      if ($re['code']== 1){
+          $model->delete();
+          return ['code'=>1,'message'=>'删除成功'];
+      }
+      return ['code'=>0,'message'=>'删除失败'];
+      /*$model = Battery::findOne($id);
+      if ($model) {
+          if ($model->delete()){
+              return ['code' => 1, 'message' => '删除成功'];
+          }
+          $messge = $model->getFirstErrors();
+          $messge = reset($messge);
+          return ['code' => 0, 'message' => $messge];
+      }*/
     }
     
     
@@ -139,5 +150,18 @@ class BatteryController extends \yii\web\Controller
             
         }
         return $this->render('prize',['model'=>$model,'data'=>$data]);
+    }
+    
+    /**
+     * 同步炮台数据
+     */
+    public function actionGetbattery(){
+        $this->layout = false;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $code = Battery::GetBattery();
+        if ($code ==1){
+            return ['code'=>1,'message'=>'同步成功'];
+        }
+        return ['code'=>0,'message'=>'同步失败'];
     }
 }

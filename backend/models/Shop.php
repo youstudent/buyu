@@ -110,10 +110,12 @@ class Shop extends \yii\db\ActiveRecord
             $model->toolDescript =$attributes->toolDescript;
             $model->jewel_number =$attributes->unitPrice;
             $model->level =$attributes->minVip;
+            $model->updated_at =time();
             $_model = clone $model;
             $_model->setAttributes($attributes);
             $_model->save(false);
         }
+        return $data['code'];
     }
     
    

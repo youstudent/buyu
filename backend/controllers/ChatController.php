@@ -12,7 +12,7 @@ class ChatController extends ObjectController
     public function actionIndex($show)
     {
        
-        Chat::GetChat(); //请求游戏服端 聊天数据
+        //Chat::GetChat(); //请求游戏服端 聊天数据
         if (\Yii::$app->request->get('show') == 1) {
             $data = Chat::find()->andWhere(["status" => 1])->asArray()->all();
         } elseif (\Yii::$app->request->get('show') == 0) {
@@ -90,6 +90,7 @@ class ChatController extends ObjectController
         $url = \Yii::$app->params['Api'].'/gameserver/control/deleteChat';
         $re = Request::request_post_raw($url,$datas);
         if ($re['code']==1){
+            $model->delete();
             return ['code'=>1,'message'=>'删除成功'];
         }
         return ['code'=>0,'message'=>'删除失败'];
@@ -104,5 +105,17 @@ class ChatController extends ObjectController
         }
         return ['code'=>0,'message'=>'删除的ID不存在'];*/
     }
+    
+    //同步数据
+    public function actionGetchat(){
+        $this->layout = false;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $code = Chat::GetChat();
+        if ($code ==1){
+            return ['code'=>1,'message'=>'同步成功'];
+        }
+        return ['code'=>0,'message'=>'同步失败'];
+    }
+    
     
 }

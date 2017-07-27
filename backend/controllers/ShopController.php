@@ -40,5 +40,19 @@ class ShopController extends \yii\web\Controller
         return $this->render('edit',['model'=>$model]);
     }
     
+    
+    //同步数据
+    public function actionGetshop(){
+        $this->layout = false;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $code = Shop::GetShop();
+        if ($code ==1){
+            return ['code'=>1,'message'=>'同步成功'];
+        }
+        return ['code'=>0,'message'=>'同步失败'];
+    }
+    
+    
+    
 
 }

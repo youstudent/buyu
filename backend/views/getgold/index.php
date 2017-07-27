@@ -23,9 +23,11 @@ $this->title = Yii::t('app', 'get_gold_index') . '-' . Yii::$app->params['appNam
                         <div class="col-sm-9">
                             <!--筛选状态 全部|正常|封停 结束-->
                         </div>
-                        <div class="col-sm-3 text-right">
+                        <div class="col-sm-3 text-left">
                         
                         </div>
+                        <a style="margin-left: 30px" href="<?php echo \yii\helpers\Url::to(['getgold/getgold']) ?>"
+                           onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
                     </div>
                     <!--                搜索结束          -->
                 </div>

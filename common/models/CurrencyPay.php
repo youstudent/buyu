@@ -128,22 +128,28 @@ class CurrencyPay extends Object
                     }
                 }
             }
-            $send['tools']=$tools;
-            $pays['send']=$send;
+            if (!empty($tools)){
+                $send['tools']=$tools;
+            }
+            if (!empty($send)){
+                $pays['send']=$send;
+            }
+            //$pays['send']=$send;
             /**
              * 请求服务器地址 充值商城添加
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
+            $url = \Yii::$app->params['Api'].'/gameserver/control/addPay';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
-            
+                $this->give_prize=Json::encode($send);
+                $this->manage_id    = \Yii::$app->session->get('manageId');
+                $this->manage_name  = \Yii::$app->session->get('manageName');
+                $this->created_at         = time();
+                $this->save(false);
+                return true;
             }
-            $this->give_prize=Json::encode($send);
-            $this->manage_id    = \Yii::$app->session->get('manageId');
-            $this->manage_name  = \Yii::$app->session->get('manageName');
-            $this->created_at         = time();
-            return $this->save();
+            
         }
     }
     
@@ -178,22 +184,27 @@ class CurrencyPay extends Object
                     }
                 }
             }
-            $send['tools']=$tools;
-            $pays['send']=$send;
+            if (!empty($tools)){
+                $send['tools']=$tools;
+            }
+            if (!empty($send)){
+                $pays['send']=$send;
+            }
             /**
              * 请求游戏服务端   修改数据
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
+            $url = \Yii::$app->params['Api'].'/gameserver/control/updatePay';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
-            
+                $this->give_prize=Json::encode($send);
+                $this->manage_id    = \Yii::$app->session->get('manageId');
+                $this->manage_name  = \Yii::$app->session->get('manageName');
+                $this->updated_at         = time();
+                $this->save(false);
+                return true;
             }
-            $this->give_prize=Json::encode($send);
-            $this->manage_id    = \Yii::$app->session->get('manageId');
-            $this->manage_name  = \Yii::$app->session->get('manageName');
-            $this->updated_at         = time();
-            return $this->save(false);
+            
         }
     }
     
@@ -281,6 +292,7 @@ class CurrencyPay extends Object
             $_model->setAttributes($attributes);
             $_model->save(false);
         }
+        return $data['code'];
     }
     
 }

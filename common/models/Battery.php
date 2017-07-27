@@ -105,10 +105,12 @@ class Battery extends Object
             $model->id=$attributes->id;
             $model->number =$attributes->needdiamond;   //钻石数量
             $model->multiple =$attributes->power;  //炮台倍数
+            $model->updated_at =time();  //同步时间
             $_model = clone $model;
             $_model->setAttributes($attributes);
             $_model->save(false);
         }
+        return $data['code'];
     }
     
     
@@ -157,9 +159,12 @@ class Battery extends Object
             $url = \Yii::$app->params['Api'].'/gameserver/control/addbatterypower';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
+                $this->give_gold_num=Json::encode($send);
+                $this->updated_at= time();
+                $this->save(false);
                 return true;
             }
-            /*$this->give_gold_num=Json::encode($send);
+            /*
             $this->manage_id    = \Yii::$app->session->get('manageId');
             $this->manage_name  = \Yii::$app->session->get('manageName');
             $this->updated_at         = time();
@@ -213,6 +218,9 @@ class Battery extends Object
             $url = \Yii::$app->params['Api'].'/gameserver/control/updatebatterypower';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
+                $this->give_gold_num=Json::encode($send);
+                $this->updated_at=time();
+                $this->save(false);
                 return true;
             }
             

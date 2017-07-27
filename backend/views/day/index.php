@@ -20,8 +20,14 @@ $this->title = Yii::t('app', 'day_index') . '-' . Yii::$app->params['appName'];
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-3 text-right">
-                        </div>
+                    <div class="col-sm-9">
+                        <a href="<?php echo \yii\helpers\Url::to(['day/getday']) ?>"
+                           onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
+                    </div>
+                    <div class=" text-right">
+                        <a href="<?= \yii\helpers\Url::to(['day/add']) ?>" class="btn btn-primary"
+                           data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加经验等级</a>
+                    </div>
                     </div>
                     <!--                搜索结束          -->
                 </div>
@@ -49,7 +55,7 @@ $this->title = Yii::t('app', 'day_index') . '-' . Yii::$app->params['appName'];
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['day'] ?></td>
-                                    <td class="text-center"><?=\common\models\Day::$get_type[$value['type']]?></td>
+                                    <td class="text-center"><?=\common\models\Day::$get_type[$value['jewel_num']]?></td>
                                    <!-- <td class="text-center"><?/*=\common\models\Day::$get_gives_type[$value['give_type']]*/?></td>
                                     <td class="text-center"><?/*= $value['gold_num'] */?></td>
                                     <td class="text-center"><?/*= $value['jewel_num'] */?></td>
@@ -57,10 +63,12 @@ $this->title = Yii::t('app', 'day_index') . '-' . Yii::$app->params['appName'];
                                     <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td class="text-center" style="width: 200px;">
-                                        <a href="<?php echo \yii\helpers\Url::to(['day/edit', 'id' => $value['id']]) ?>"
-                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['day/prize', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
+                                        <a href="<?php echo \yii\helpers\Url::to(['day/edit', 'id' => $value['id']]) ?>"
+                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                        <a href="<?php echo \yii\helpers\Url::to(['day/del', 'id' => $value['id']]) ?>"
+                                           onclick="return openAgency(this,'是否确认删除?')" class="btn btn-xs btn-danger">删除</a>
                                     </td>
                                 </tr>
                                 <?php $i++ ?>
@@ -99,7 +107,7 @@ $this->title = Yii::t('app', 'day_index') . '-' . Yii::$app->params['appName'];
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['day'] ?></td>
-                                    <td class="text-center"><?=\common\models\Day::$get_type[$value['type']]?></td>
+                                    <td class="text-center"><?=\common\models\Day::$get_type[$value['jewel_num']]?></td>
                <!--                     <td class="text-center"><?/*=\common\models\Day::$get_give_type[$value['give_type']]*/?></td>
                                     <td class="text-center"><?/*= $value['gold_num'] */?></td>
                                     <td class="text-center"><?/*= $value['jewel_num'] */?></td>
@@ -107,10 +115,12 @@ $this->title = Yii::t('app', 'day_index') . '-' . Yii::$app->params['appName'];
                                     <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td class="text-center" style="width: 200px;">
-                                        <a href="<?php echo \yii\helpers\Url::to(['day/edit', 'id' => $value['id']]) ?>"
-                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['day/prize', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
+                                        <a href="<?php echo \yii\helpers\Url::to(['day/edit', 'id' => $value['id']]) ?>"
+                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                        <a href="<?php echo \yii\helpers\Url::to(['day/del', 'id' => $value['id']]) ?>"
+                                           onclick="return openAgency(this,'是否确认删除?')" class="btn btn-xs btn-danger">删除</a>
                                     </td>
                                 </tr>
                                 <?php $i++ ?>

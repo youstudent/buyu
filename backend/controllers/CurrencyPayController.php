@@ -12,7 +12,7 @@ class CurrencyPayController extends ObjectController
     //充值货币管理
     public function actionIndex()
     {
-        CurrencyPay::GetCurrency();
+       // CurrencyPay::GetCurrency();
         /*if (\Yii::$app->request->get('show') == 1) {
             $data = CurrencyPay::find()->where(['type' => 1])->orderBy('money ASC')->asArray()->all();
         } else if (\Yii::$app->request->get('show') == 2) {
@@ -104,22 +104,15 @@ class CurrencyPayController extends ObjectController
         /**
          * 请求游戏服务端   删除数据
          */
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
+        $model = CurrencyPay::findOne($id);
+        $url = \Yii::$app->params['Api'].'/gameserver/control/deletePay';
         $data=[];
         $data['id']=$id;
         $datas = Json::encode($data);
-        $re = \common\services\Request::request_post($url,$datas);
+        $re = \common\services\Request::request_post_raw($url,$datas);
         if ($re['code']== 1){
-        
-        }
-        $model = CurrencyPay::findOne($id);
-        if ($model) {
-            if ($model->delete()){
-                return ['code' => 1, 'message' => '删除成功'];
-            }
-            $messge = $model->getFirstErrors();
-            $messge = reset($messge);
-            return ['code' => 0, 'message' => $messge];
+           $model->delete();
+            return ['code' => 1, 'message' => '删除成功'];
         }
     }
     
@@ -147,6 +140,18 @@ class CurrencyPayController extends ObjectController
             
         }
         return $this->render('prize',['model'=>$model,'data'=>$data]);
+    }
+    
+    
+    //同步数据
+    public function actionGetcurrency(){
+        $this->layout = false;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $code = CurrencyPay::GetCurrency();
+        if ($code ==1){
+            return ['code'=>1,'message'=>'同步成功'];
+        }
+        return ['code'=>0,'message'=>'同步失败'];
     }
     
 }

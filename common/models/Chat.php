@@ -72,6 +72,8 @@ class Chat extends Object
             $url = \Yii::$app->params['Api'].'/gameserver/control/addChat';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
+                $this->reg_time=time();
+                $this->save(false);
                 return true;
             }
             /*$this->manage_id    = \Yii::$app->session->get('manageId');
@@ -102,6 +104,8 @@ class Chat extends Object
             $url = \Yii::$app->params['Api'].'/gameserver/control/updateChat';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
+                $this->reg_time=time();
+                $this->save(false);
                 return true;
             }
             /*$this->give_gold_num=Json::encode($send);
@@ -136,9 +140,11 @@ class Chat extends Object
             $model->id=$attributes->id;
             $model->content =$attributes->message;   // 聊天内容
             $model->status =$attributes->useable;  //  状态
+            $model->reg_time =time();  //  状态
             $_model = clone $model;
             $_model->setAttributes($attributes);
             $_model->save(false);
         }
+        return $data['code'];
     }
 }

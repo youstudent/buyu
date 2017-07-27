@@ -16,7 +16,7 @@ class TouchController extends ObjectController
 {
     //联系客户列表接口
     public function actionIndex(){
-        $data = Touch::find()->select('phone,qq_number,hkmovie')->all();
+        $data = Touch::find()->select('phone,qq_number,hkmovie')->one();
         if ($data){
             return $this->returnAjax(1,'成功',$data);
         }

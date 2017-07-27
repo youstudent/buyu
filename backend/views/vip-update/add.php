@@ -24,7 +24,9 @@
                 ])?>
                 <?php echo $form->field($model,'grade')?>
                 <?php echo $form->field($model,'number')?>
+                <?php echo $form->field($model,'burst')?>
                 <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\VipUpdate::$give)?>
+                <?php echo $form->field($model,'give_upgrade',['inline'=>true])->checkboxList(\common\models\VipUpdate::$give)?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -101,5 +103,28 @@
                 $('#'+input_id).remove();
             }
         })
+
+
+        //checkbox选中添加对应输入框
+        var  checkbox_input =  $('#vipupdate-give_upgrade').find('.checkbox-inline');
+        checkbox_input.click(function(){
+            var _this = $(this);
+            var input_text = _this.text();
+            var input_name = 'vipupdate-type['+ _this.find('input').val()+']';
+            var input_id = _this.find('input').val();
+            var html = '';
+            if(_this.find('input').is(':checked')){
+                $('#'+input_id).remove();
+                html+= '<div class="form-group field-redeemcode-end_time" id="'+input_id+'">';
+                html+= '<label class="col-lg-3 control-label" for="redeemcode-end_time">'+ input_text + '</label>';
+                html+= '<div class="col-lg-9">';
+                html+= '<input type="text" id="redeemcode-end_time" class="form-control" name="'+input_name+'">';
+                html+= '<span class="help-block m-b-none"></span></div></div>';
+                $('#payModalForm').append(html);
+            }else{
+                $('#'+input_id).remove();
+            }
+        })
     })
 </script>
+

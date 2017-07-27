@@ -3,6 +3,7 @@
 namespace common\models;
 
 use backend\models\Shop;
+use common\services\Request;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
@@ -23,6 +24,8 @@ class VipUpdate extends Object
 {
     public $type;   //显示
     public static $give;
+    public static $give_day;
+    
     /**
      * @inheritdoc
      */
@@ -38,10 +41,10 @@ class VipUpdate extends Object
     {
         return [
             [['number','grade'],'required'],
-            [['number'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
-            [['type', 'number','manage_id', 'updated_at'], 'integer'],
+            [['number','burst'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
+            [['number','manage_id', 'updated_at'], 'integer'],
             [['manage_name', 'grade'],'string', 'max' => 20],
-            [['give_gold_num'],'safe']
+            [['give_day','give_upgrade','type'],'safe']
         ];
     }
 
@@ -52,13 +55,15 @@ class VipUpdate extends Object
     {
         return [
             'id' => 'ID',
-            'type' => '礼包类型',
-            'number' => '所需钻石数量',
-            'give_gold_num' => '赠送金币数量',
+            'type' => '每日赠送',
+            'number' => '人民币',
+            'give_day' => '每日礼包',
             'manage_name' => '修改人',
             'manage_id' => '修改人ID',
             'updated_at' => '修改时间',
-            'grade' => 'Vip等级范围',
+            'grade' => 'Vip等级',
+            'burst' => '爆率',
+            'give_upgrade' =>'升级赠送',
         ];
     }
     
@@ -77,6 +82,12 @@ class VipUpdate extends Object
         $datas = ['gold'=>'金币','diamond'=>'钻石','fishGold'=>'鱼币'];
         //将数据合并 赋值给数组
         self::$give= ArrayHelper::merge($datas,$new_data);
+        $re =[];
+        $i = 9;
+        foreach (self::$give as $K=>$V){
+            $re[$K.$i]=$V;
+         }
+         self::$give_day=$re;
         parent::__construct($config);
     }
     
@@ -84,28 +95,33 @@ class VipUpdate extends Object
      *    初始化游戏服务端  vip等级每日福利
      */
     public static function GetVipBenefit(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getbatterypower';
+        $url = \Yii::$app->params['Api'].'/gameserver/control/getVIP';
         $data = \common\services\Request::request_post($url,['time'=>time()]);
         $d=[];
         foreach ($data as $key=>$v){
-            if (is_object($v)){
+            if (is_array($v)){
                 $d[]=$v;
             }
+        
         }
-        $new = $d[0]->pays;
-        Battery::deleteAll();
-        $model =  new Battery();
+        $new = $d[0];
+        VipUpdate::deleteAll();
+        $model =  new VipUpdate();
         //请求到数据   循环保存到数据库
         foreach($new as $K=>$attributes)
         {
-            $model->give_gold_num=Json::encode($attributes->send);  //赠送礼包
             $model->id=$attributes->id;
-            $model->grade =$attributes->power; //等级
-            //$model->multiple =$attributes->needdiamond;  //炮台倍数
+            $model->give_day=Json::encode($attributes->sign);  //每日礼包
+            $model->give_upgrade=Json::encode($attributes->levelUp);  //升级礼包
+            $model->number=$attributes->vipEx;  //人民币
+            $model->grade =$attributes->vipLevel; //等级
+            $model->burst =$attributes->killrate; //等级
+            $model->updated_at =time(); // 同步时间
             $_model = clone $model;
             $_model->setAttributes($attributes);
             $_model->save(false);
         }
+        return $data['code'];
     }
     
     
@@ -123,11 +139,14 @@ class VipUpdate extends Object
              */
             $datas=['gold','diamond','fishGold'];
             $pays=[];
-            $send=[];
+            $levelUp=[]; //升级
+            $sign=[];  //每日
             $tools = [];
             $i = 0;
             $tool = [];
-            $pays['grade']=$this->number;
+            $pays['grade']=$this->grade;  //等级
+            $pays['number']=$this->number;   //人民币
+            $pays['burst']=$this->burst;   //暴力
             foreach ($data as $K=>$v){
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
@@ -143,18 +162,26 @@ class VipUpdate extends Object
                     }
                 }
             }
-            $send['tools']=$tools;
-            $pays['send']=$send;
+            if (!empty($tools)){
+                $levelUp['tools']=$tools;
+            }
+            if (!empty($levelUp)){
+                $pays['levelUp']=$levelUp;
+            }
+            if (!empty($sign)){
+                $pays['sign']=$sign;
+            }
+            
             /**
              * 请求服务器地址 VIP升级福利
              */
-            /*$payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
+            $payss = Json::encode($pays);
+            $url = \Yii::$app->params['Api'].'/gameserver/control/addVIP';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 return true;
-            }*/
-            $this->give_gold_num=Json::encode($send);
+            }
+          //  $this->give_gold_num=Json::encode();
             $this->manage_id    = \Yii::$app->session->get('manageId');
             $this->manage_name  = \Yii::$app->session->get('manageName');
             $this->updated_at         = time();
@@ -170,50 +197,103 @@ class VipUpdate extends Object
      * @return bool
      */
     public function edit($data = []){
-        if($this->load($data) && $this->validate())
-        {
+        if($this->load($data) && $this->validate()) {
             /**
              * 接收数据  拼装
              */
+           // $datas = self::$give;
             $datas=['gold','diamond','fishGold'];
-            $pays=[];
-            $send=[];
+            $pays = [];
+            $levelUp = []; //升级
+            $sign = [];  //每日
             $tools = [];
+            $toolss = [];
             $i = 0;
             $tool = [];
-            $pays['id']=$this->id;
-            $pays['grade']=$this->number;
-            foreach ($data as $K=>$v){
-                if (is_array($v)){
-                    foreach ($v as $kk=>$VV){
-                        if (in_array($kk,$datas)){
-                            $send[$kk]=$VV;
+            $pays['id'] = $this->id;  //等级
+            $pays['vipLevel'] = $this->grade;  //等级
+            $pays['vipEx'] = $this->number;   //人民币
+            $pays['killrate'] = $this->burst;   //暴力
+    
+            /**
+             * 解析 升级
+             */
+            
+            if (!empty($data['VipUpdate'])) {
+                /**
+                 *  循环每日礼包
+                 */
+                if (array_key_exists('day',$data['VipUpdate'])){
+                    $day = $data['VipUpdate']['day'];
+                    foreach ($day as $key => $value) {
+                        if (in_array($key,$datas)) {
+                            $sign[$key] = $value;
                         }
-                        if (is_numeric($kk)){
-                            $tool['toolId']=$kk;
-                            $tool['toolNum']=$VV;
-                            $tools[$i]=$tool;
+                        if (is_numeric($key)) {
+                            $tool['toolId'] = $key;
+                            $tool['toolNum'] = $value;
+                            $tools[$i] = $tool;
+                            $i++;
+                        }
+        
+                    }
+                }
+                /**
+                 *  循环升级礼包
+                 */
+                if (array_key_exists('upgrade',$update= $data['VipUpdate'])){
+                    $update= $data['VipUpdate']['upgrade'];
+                    $updates =[];
+                    foreach ($update as $A=>$B){
+                        $updates[str_replace(9,"",$A)]=$B;
+                    }
+                    foreach ($updates as $key => $value) {
+                        if (in_array($key,$datas)) {
+                            $levelUp[$key] = $value;
+                        }
+                        if (is_numeric($key)) {
+                            $tool['toolId'] = $key;
+                            $tool['toolNum'] = $value;
+                            $toolss[$i] = $tool;
                             $i++;
                         }
                     }
                 }
+               
+            
             }
-            $send['tools']=$tools;
-            $pays['send']=$send;
+    
+            if (!empty($tools)) {
+                $sign['tools'] = $tools;
+            }
+            if (!empty($toolss)) {
+                $levelUp['tools'] = $toolss;
+            }
+            if (!empty($levelUp)) {
+                $pays['levelUp'] = $levelUp;
+            }
+            if (!empty($sign)) {
+                $pays['sign'] = $sign;
+            }
+    
+            $payss = Json::encode($pays);
+           // var_dump($payss);exit;
             /**
+             *
              * 请求游戏服务端  Vip升级福利
              */
-            /*$payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
+            $url = \Yii::$app->params['Api'].'/gameserver/control/updateVIP';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
-              return true;
-            }*/
-            $this->give_gold_num=Json::encode($send);
-            $this->manage_id    = \Yii::$app->session->get('manageId');
-            $this->manage_name  = \Yii::$app->session->get('manageName');
-            $this->updated_at         = time();
-            return $this->save(false);
+                $this->give_day=Json::encode($levelUp);
+                $this->give_upgrade=Json::encode($sign);
+                $this->manage_id    = \Yii::$app->session->get('manageId');
+                $this->manage_name  = \Yii::$app->session->get('manageName');
+                $this->updated_at         = time();
+                $this->save(false);
+                return true;
+            }
+            
         }
     }
 }

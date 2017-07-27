@@ -20,7 +20,10 @@ $this->title = Yii::t('app', 'currency_pay_index') . '-' . Yii::$app->params['ap
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                       
+                        <div class="col-sm-9">
+                            <a href="<?php echo \yii\helpers\Url::to(['currency-pay/getcurrency']) ?>"
+                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
+                        </div>
                         <div class=" text-right">
                             <a href="<?= \yii\helpers\Url::to(['currency-pay/add'])?>" class="btn btn-primary"
                                data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加人民币等级</a>

@@ -20,7 +20,11 @@ $this->title = Yii::t('app', 'sign_board_index') . '-' . Yii::$app->params['appN
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-3 text-right">
+                        <div class="col-sm-3 text-left">
+                            <a href="<?php echo \yii\helpers\Url::to(['sign-board/get-sign']) ?>"
+                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
+                            <a href="<?= \yii\helpers\Url::to(['sign-board/add']) ?>" class="btn btn-primary"
+                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>&nbsp;添加鱼任务</a>
                         </div>
                     </div>
                     <!--                搜索结束          -->
@@ -32,9 +36,9 @@ $this->title = Yii::t('app', 'sign_board_index') . '-' . Yii::$app->params['appN
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <th class="text-center">赠送类型</th>
-                                <th class="text-center">赠送数量</th>
-                                <th class="text-center">说明</th>
+                                <th class="text-center">鱼名字</th>
+                                <th class="text-center">击杀数量</th>
+                                <th class="text-center">任务出现概率</th>
                                 <th class="text-center">修改人</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
@@ -46,14 +50,18 @@ $this->title = Yii::t('app', 'sign_board_index') . '-' . Yii::$app->params['appN
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?=\common\models\SignBoard::$get_type[$value['type']]?></td>
+                                    <td class="text-center"><?= \common\models\SignBoard::$fishing[$value['fishing_id']]?></td>
                                     <td class="text-center"><?= $value['number'] ?></td>
-                                    <td class="text-center"><?= $value['detail'] ?></td>
+                                    <td class="text-center"><?= $value['probability'] ?></td>
                                     <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
-                                    <td class="text-center" style="width: 120px;">
+                                    <td class="text-center" style="width: 200px;">
+                                        <a href="<?php echo \yii\helpers\Url::to(['sign-board/prize', 'id' => $value['id']]) ?>"
+                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看详情</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['sign-board/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                        <a href="<?php echo \yii\helpers\Url::to(['sign-board/del', 'id' => $value['id']]) ?>"
+                                           onclick="return openAgency(this,'是否确认删除?')" class="btn btn-xs btn-danger">删除</a>
                                     </td>
                                 </tr>
                                 <?php $i++ ?>
@@ -72,7 +80,20 @@ $this->title = Yii::t('app', 'sign_board_index') . '-' . Yii::$app->params['appN
                 <!--                表格结束          -->
                 <!--                分页开始          -->
                 <footer class="panel-footer">
-
+                    <div class="row">
+                        <div class="col-sm-12 text-right text-center-xs">
+                            <?=\yii\widgets\LinkPager::widget([
+                                'pagination'=>$pages,
+                                'firstPageLabel' => '首页',
+                                'lastPageLabel' => '尾页',
+                                'nextPageLabel' => '下一页',
+                                'prevPageLabel' => '上一页',
+                                'options'   =>[
+                                    'class'=>'pagination pagination-sm m-t-none m-b-none',
+                                ]
+                            ])?>
+                        </div>
+                    </div>
                 </footer>
                 <!--                分页结束          -->
             </section>

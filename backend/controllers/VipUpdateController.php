@@ -60,10 +60,16 @@ class VipUpdateController extends ObjectController
             return ['code'=>0,'message'=>$message];
             
         }
-        $JSON = json_decode($model->number,true);
+        $give_day = json_decode($model->give_day,true);  // 每日赠送礼包
+        $give_upgrade = json_decode($model->give_upgrade,true);  //升级礼包
+        $datas = [];
         $data  =[];
-        $re = VipUpdate::$give;
-        foreach ($JSON as $key=>$value){
+        $re = VipUpdate::$give;   //获取所有礼包
+        $res = VipUpdate::$give_day;   //获取所有礼包
+        /**
+         *  解析每日礼包
+         */
+        foreach ($give_day as $key=>$value){
             if (array_key_exists($key,$re)){
                 $data[$key]=$value;
             }
@@ -76,12 +82,36 @@ class VipUpdateController extends ObjectController
             }
             
         }
-        $type=[];
-        foreach($data as $k=>$v){
-            $type[]=$k;
+        $type=[];  //取出礼包的 key值
+        foreach($data as $k=>$v) {
+            $type[] = $k;
         }
-        $model->type=$type;
-        return $this->render('edit',['model'=>$model,'data'=>$data]);
+        $i = 9;
+        /**
+         *   解析升级礼包
+         */
+        
+        foreach ($give_upgrade as $key=>$value){
+            if (array_key_exists($key.$i,$res)){
+                $datas[$key.$i]=$value;
+            }
+            if(is_array($value)){
+              
+                foreach ($value as $K=>$v){
+                    if (array_key_exists($v['toolId'].$i,$res)){
+                        $datas[$v['toolId'].$i]=$v['toolNum'];
+                    }
+                }
+            }
+        
+        }
+           $give_upgrade=[];
+        foreach($datas as $k=>$v){
+            $give_upgrade[]=$k;
+        }
+        $model->give_day=$type;  //每日礼包key值
+        $model->give_upgrade=$give_upgrade;  //升级礼包key值
+        return $this->render('edit',['model'=>$model,'data'=>$data,'datas'=>$datas]);
     }
     
     /**
@@ -96,7 +126,7 @@ class VipUpdateController extends ObjectController
         /**
          * 请求游戏服务端   删除数据
          */
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
+        $url = \Yii::$app->params['Api'].'/gameserver/control/deleteVIP';
         $data=[];
         $data['id']=$id;
         $re = \common\services\Request::request_post($url,$data);
@@ -121,13 +151,12 @@ class VipUpdateController extends ObjectController
         // RedeemCode::setShop();
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
         $model = VipUpdate::findOne($id);
-        $JSON = json_decode($model->number,true);
+        $JSON = json_decode($model->give_day,true);
+        $JSONS = json_decode($model->give_upgrade,true);
         $data  =[];
+        $datas = [];
         $re = VipUpdate::$give;
         foreach ($JSON as $key=>$value){
-            if (array_key_exists($key,$re)){
-                $data[$re[$key]]=$value;
-            }
             if(is_array($value)){
                 foreach ($value as $K=>$v){
                     if (array_key_exists($v['toolId'],$re)){
@@ -136,8 +165,42 @@ class VipUpdateController extends ObjectController
                     }
                 }
             }
-            
+            if (array_key_exists($key,$re)){
+                $data[$re[$key]]=$value;
+            }
+         
         }
-        return $this->render('prize',['model'=>$model,'data'=>$data]);
+        foreach ($JSONS as $key=>$value){
+            if(is_array($value)){
+                foreach ($value as $K=>$v){
+                    if (array_key_exists($v['toolId'],$re)){
+                        //var_dump($v['toolId']);
+                        $datas[$re[$v['toolId']]]=$v['toolNum'];
+                    }
+                }
+            }
+            if (array_key_exists($key,$re)){
+                $datas[$re[$key]]=$value;
+            }
+        
+        }
+    
+        return $this->render('prize',['model'=>$model,'data'=>$data,'datas'=>$datas]);
+    }
+    
+    
+    /**
+     *  获取 vip等级 列表
+     */
+    public function actionGetvip(){
+        $this->layout = false;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $code = VipUpdate::GetVipBenefit();
+        if ($code ==1){
+            return ['code'=>1,'message'=>'同步成功'];
+        }
+        return ['code'=>0,'message'=>'同步失败'];
+        
+        
     }
 }

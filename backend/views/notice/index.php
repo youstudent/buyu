@@ -38,10 +38,13 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                             </div>
                             <input type="hidden" name="Agency[searchstatus]" value="" id="status">
                             <!--筛选状态 全部|正常|封停 结束-->
+                            <a href="<?php echo \yii\helpers\Url::to(['notice/getnotice']) ?>"
+                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
                         </div>
                         <div class="col-sm-3 text-right">
                             <a href="<?= \yii\helpers\Url::to(['notice/add']) ?>" class="btn btn-primary"
                                data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>&nbsp;添加新的公告</a>
+                            
                         </div>
                     </div>
                     <!--                搜索结束          -->

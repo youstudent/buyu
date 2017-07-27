@@ -12,8 +12,8 @@ $this->title = Yii::t('app', 'vip_update') . '-' . Yii::$app->params['appName'];
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">vip升级管理</a></li>
-                <li class="active">vip升级管理详情</li>
+                <li><a href="#">vip管理</a></li>
+                <li class="active">vip管理详情</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">
@@ -21,8 +21,10 @@ $this->title = Yii::t('app', 'vip_update') . '-' . Yii::$app->params['appName'];
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
                         <div class="col-sm-3 text-left">
-                            <a href="<?= \yii\helpers\Url::to(['vip-update/add'])?>" class="btn btn-primary"
-                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加Vip升级管理</a>
+                            <a href="<?php echo \yii\helpers\Url::to(['vip-update/getvip']) ?>"
+                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
+                            <!--<a href="<?/*= \yii\helpers\Url::to(['vip-update/add'])*/?>" class="btn btn-primary"
+                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加Vip管理</a>-->
                         </div>
                     </div>
                     <!--                搜索结束          -->
@@ -34,8 +36,9 @@ $this->title = Yii::t('app', 'vip_update') . '-' . Yii::$app->params['appName'];
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <th class="text-center">vip升级等级</th>
+                                <th class="text-center">vip等级</th>
                                 <th class="text-center">充值人民币</th>
+                                <th class="text-center">爆率</th>
                                 <th class="text-center">修改人</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
@@ -49,6 +52,7 @@ $this->title = Yii::t('app', 'vip_update') . '-' . Yii::$app->params['appName'];
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['grade']?></td>
                                     <td class="text-center"><?= $value['number']?></td>
+                                    <td class="text-center"><?= $value['burst']?></td>
                                     <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td  class="text-center" style="width: 200px;">
@@ -56,8 +60,8 @@ $this->title = Yii::t('app', 'vip_update') . '-' . Yii::$app->params['appName'];
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['vip-update/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
-                                        <a href="<?php echo \yii\helpers\Url::to(['vip-update/del','id' => $value['id']])?>"
-                                           onclick="return openAgency(this,'是否确认删除?')" class="btn btn-xs btn-danger">删除</a>
+                                        <!--<a href="<?php /*echo \yii\helpers\Url::to(['vip-update/del','id' => $value['id']])*/?>"
+                                           onclick="return openAgency(this,'是否确认删除?')" class="btn btn-xs btn-danger">删除</a>-->
                                     </td>
                                 </tr>
                                 <?php $i++ ?>

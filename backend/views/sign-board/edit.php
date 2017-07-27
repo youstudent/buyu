@@ -24,9 +24,20 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'type')->dropDownList(\common\models\SignBoard::$get_type)?>
+                <?php echo $form->field($model,'fishing_id')->dropDownList(\common\models\SignBoard::$fishing)?>
+                <?php echo $form->field($model,'from_fishing')->dropDownList(\common\models\SignBoard::$fishing,['multiple'=>true])?>
                 <?php echo $form->field($model,'number')?>
-                <?php echo $form->field($model,'detail')->textarea(['readonly'=>true])?>
+                <?php echo $form->field($model,'probability')?>
+                <?php echo $form->field($model,'give_number',['inline'=>true])->checkboxList(\common\models\SignBoard::$give)?>
+                <?php foreach ($data as $k=>$v):?>
+                    <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
+                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\models\SignBoard::$give[$k] ?></label>
+                        <div class="col-lg-9">
+                            <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="Notice[<?php echo $k?>]" value="<?php echo $v?>">
+                            <span class="help-block m-b-none"></span>
+                        </div>
+                    </div>
+                <?php endforeach;?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -81,5 +92,27 @@
                 },
             });
         });
+
+
+        //checkbox选中添加对应输入框
+        var  checkbox_input =  $('#signboard-give_number').find('.checkbox-inline');
+        checkbox_input.click(function(){
+            var _this = $(this);
+            var input_text = _this.text();
+            var input_name = 'SignBoard['+ _this.find('input').val()+']';
+            var input_id = _this.find('input').val();
+            var html = '';
+            if(_this.find('input').is(':checked')){
+                $('#'+input_id).remove();
+                html+= '<div class="form-group field-redeemcode-end_time" id="'+input_id+'">';
+                html+= '<label class="col-lg-3 control-label" for="redeemcode-end_time">'+ input_text + '</label>';
+                html+= '<div class="col-lg-9">';
+                html+= '<input type="text" id="redeemcode-end_time" class="form-control" name="'+input_name+'">';
+                html+= '<span class="help-block m-b-none"></span></div></div>';
+                $('#payModalForm').append(html);
+            }else{
+                $('#'+input_id).remove();
+            }
+        })
     })
 </script>

@@ -3,7 +3,10 @@
  * @link http://www.lrdouble.com/
  * @copyright Copyright (c) 2017 Double Software LLC
  * @license http://www.lrdouble.com/license/
- */?>
+ */
+$i=1;
+
+?>
 <!-- Modal -->
 <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -26,7 +29,31 @@
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'grade')->textInput(['readonly'=>true])?>
                 <?php echo $form->field($model,'number')?>
-                <?php echo $form->field($model,'give_gold_num')?>
+                <?php echo $form->field($model,'burst')?>
+                <div id="a1">
+                <?php echo $form->field($model,'give_day',['inline'=>true])->checkboxList(\common\models\VipUpdate::$give)?>
+                <?php foreach ($data as $k=>$v):?>
+                    <div class="form-group field-type-<?php  echo $k ?>" id=<?php echo $k?>>
+                        <label class="col-lg-3 control-label" for="type-<?php  echo $k ?>"><?php echo \common\models\VipUpdate::$give[$k] ?></label>
+                        <div class="col-lg-9">
+                            <input type="text" id="type-<?php echo $k?>>" class="form-control" name="VipUpdate[day][<?php echo $k?>]" value="<?php echo $v?>">
+                            <span class="help-block m-b-none"></span>
+                        </div>
+                    </div>
+                <?php endforeach;?>
+                </div>
+                <div id="a2">
+                <?php echo $form->field($model,'give_upgrade',['inline'=>true])->checkboxList(\common\models\VipUpdate::$give_day)?>
+                <?php foreach ($datas as $k=>$v):?>
+                    <div class="form-group field-give_upgrade-<?php  echo $k ?>" id=<?php echo $k?>>
+                        <label class="col-lg-3 control-label" for="give_upgrade-<?php  echo $k ?>"><?php echo \common\models\VipUpdate::$give_day[$k] ?></label>
+                        <div class="col-lg-9">
+                            <input type="text" id="give_upgrade-<?php echo $k?>>" class="form-control" name="VipUpdate[upgrade][<?php echo $k?>]" value="<?php echo $v?>">
+                            <span class="help-block m-b-none"></span>
+                        </div>
+                    </div>
+                <?php endforeach;?>
+                </div>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -81,5 +108,52 @@
                 },
             });
         });
+
+
+
+        //checkbox选中添加对应输入框
+        var  checkbox_input =  $('#vipupdate-give_day').find('.checkbox-inline');
+        checkbox_input.click(function(){
+            var _this = $(this);
+            var input_text = _this.text();
+            var input_name = 'VipUpdate[day]['+ _this.find('input').val()+']';
+            var input_id = _this.find('input').val();
+            var html = '';
+            if(_this.find('input').is(':checked')){
+                $('#'+input_id).remove();
+                html+= '<div class="form-group field-type-gold" id="'+input_id+'">';
+                html+= '<label class="col-lg-3 control-label" for="'+input_id+'">'+ input_text + '</label>';
+                html+= '<div class="col-lg-9">';
+                html+= '<input type="text" id="'+input_id+'" class="form-control" name="'+input_name+'">';
+                html+= '<span class="help-block m-b-none"></span></div></div>';
+                $('#a1').append(html);
+            }else{
+                $('#'+input_id).remove();
+            }
+            
+        });
+        //checkbox选中添加对应输入框
+        var  checkbox_input2 =  $('#vipupdate-give_upgrade').find('.checkbox-inline');
+        checkbox_input2.click(function(){
+            var _this = $(this);
+            var input_text = _this.text();
+            var input_name = 'VipUpdate[upgrade]['+ _this.find('input').val()+']';
+            var input_id = _this.find('input').val();
+            var html = '';
+            if(_this.find('input').is(':checked')){
+                $('#'+input_id).remove();
+                html+= '<div class="form-group field-type-gold" id="'+input_id+'">';
+                html+= '<label class="col-lg-3 control-label" for="'+input_id+'">'+ input_text + '</label>';
+                html+= '<div class="col-lg-9">';
+                html+= '<input type="text" id="'+input_id+'" class="form-control" name="'+input_name+'">';
+                html+= '<span class="help-block m-b-none"></span></div></div>';
+                $('#a2').append(html);
+            }else{
+                $('#'+input_id).remove();
+            }
+        })
     })
+    
+    
+    
 </script>

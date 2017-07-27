@@ -25,7 +25,6 @@ class NoticeController extends ObjectController
      */
     public function actionIndex()
     {
-         Notice::GetNotice();
          $data = new Notice();
          $model = $data::find();
         if (\Yii::$app->request->get('show') == 1) {
@@ -129,6 +128,7 @@ class NoticeController extends ObjectController
         $url = \Yii::$app->params['Api'].'/gameserver/control/deleteNotice';
         $re = Request::request_post_raw($url,$datas);
         if ($re['code']==1){
+            $model->delete();
             return ['code'=>1,'message'=>'删除成功'];
         }
         return ['code'=>0,'message'=>'删除失败'];
@@ -170,6 +170,19 @@ class NoticeController extends ObjectController
         return $this->render('prize',['model'=>$model,'data'=>$data]);
     }
     
+    
+    /**
+     * 获取  同步公告数据
+     */
+    public function actionGetnotice(){
+        $this->layout = false;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $code = Notice::GetNotice();
+        if ($code ==1){
+            return ['code'=>1,'message'=>'同步成功'];
+        }
+        return ['code'=>0,'message'=>'同步失败'];
+    }
     
     
 }

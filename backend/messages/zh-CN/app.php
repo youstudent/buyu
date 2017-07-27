@@ -94,13 +94,16 @@ return [
     'money_index'=>'货币管理',
     'battery_index'=>'炮台管理',
     'vip_index'=>'vip每日福利管理',
-    'vip_update'=>'vip升级奖励',
+    'vip_update'=>'vip管理',
     'day'=>'签到每日奖励',
     'currency_pay_index'=>'充值管理',
     'experience_index'=>'经验等级管理',
     'redeem_list'=>'兑换码管理',
     'redeem_code_select_search_nickname'=>'兑换码',
     'redeem_record'=>'兑换记录列表',
+    'fishing_index'=>'鱼列表',
+    'notes'=>'击杀概率和出现概率比例是万分比例',
+    'user_unset_modal_title'=>'设置停封',
 ];
 
 /**

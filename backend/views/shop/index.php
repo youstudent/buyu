@@ -22,6 +22,8 @@ $this->title = Yii::t('app', 'shop_index') . '-' . Yii::$app->params['appName'];
                     <div class="row text-sm wrapper">
                         <div class="col-sm-9">
                             <!--筛选状态 全部|正常|封停 结束-->
+                            <a href="<?php echo \yii\helpers\Url::to(['shop/getshop']) ?>"
+                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
                         </div>
                         <div class="col-sm-3 text-right">
                         
