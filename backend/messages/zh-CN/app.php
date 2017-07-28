@@ -104,6 +104,7 @@ return [
     'fishing_index'=>'鱼列表',
     'notes'=>'击杀概率和出现概率比例是万分比例',
     'user_unset_modal_title'=>'设置停封',
+    'day_task_index'=>'每日捕鱼任务',
 ];
 
 /**

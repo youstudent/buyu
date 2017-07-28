@@ -37,7 +37,7 @@ class SiteController extends ObjectController
      */
     public function actionIndex()
     {
-        Shop::GetShop();
+        //Shop::GetShop();
         $year       = date('Y');
         $month      = date('m');
         $dayNum     = cal_days_in_month(CAL_GREGORIAN,$month,$year);//算当前月份的天数

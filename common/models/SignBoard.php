@@ -54,7 +54,7 @@ class SignBoard extends Object
     {
         return [
             'id' => 'ID',
-            'fishing_id' => '鱼ID',
+            'fishing_id' => '鱼名字',
             'number' => '击杀数量',
             'manage_id' => '修改人ID',
             'manage_name' => '修改人',
@@ -116,7 +116,6 @@ class SignBoard extends Object
     {
         if($this->load($data) && $this->validate())
         {
-           
             // Notice::findOne(['location'=>$this->location,'status'=>1]);
             /**
              *  将接收到的数据进行 拼装发送给游戏服务器

@@ -40325,3 +40325,1966 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1501141288.0094
     'REQUEST_TIME' => 1501141288
 ]
+2017-07-28 09:29:11 [127.0.0.1][-][u2djkvn0152mg92euu3rf4t396][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in D:\game_standard-master\common\services\Request.php:40
+Stack trace:
+#0 D:\game_standard-master\backend\controllers\SiteController.php(40): backend\models\Shop::GetShop()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\SiteController->actionIndex()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#3 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#7 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#8 {main}
+2017-07-28 09:29:09 [127.0.0.1][-][u2djkvn0152mg92euu3rf4t396][info][application] $_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2228'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '49191'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501205348.9603
+    'REQUEST_TIME' => 1501205348
+]
+2017-07-28 09:31:36 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "css/font.css".' in D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('css/font.css', Array)
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-07-28 09:31:36 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2228'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/css/font.css'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/css/font.css'
+    'REMOTE_PORT' => '49215'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/login/login'
+    'HTTP_ACCEPT' => 'text/css,*/*;q=0.1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501205496.0223
+    'REQUEST_TIME' => 1501205496
+]
+2017-07-28 09:39:52 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "fonts/glyphicons-halflings-regular.woff".' in D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('fonts/glyphicon...', Array)
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-07-28 09:39:52 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2348'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/fonts/glyphicons-halflings-regular.woff'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/fonts/glyphicons-halflings-regular.woff'
+    'REMOTE_PORT' => '49500'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/css/app.v2.css'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://www.fishing.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501205992.0192
+    'REQUEST_TIME' => 1501205992
+]
+2017-07-28 09:39:52 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "fonts/glyphicons-halflings-regular.ttf".' in D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('fonts/glyphicon...', Array)
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-07-28 09:39:52 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2348'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/fonts/glyphicons-halflings-regular.ttf'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/fonts/glyphicons-halflings-regular.ttf'
+    'REMOTE_PORT' => '49501'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/css/app.v2.css'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://www.fishing.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501205992.1049
+    'REQUEST_TIME' => 1501205992
+]
+2017-07-28 09:40:27 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "fonts/glyphicons-halflings-regular.woff".' in D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('fonts/glyphicon...', Array)
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-07-28 09:40:27 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2348'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/fonts/glyphicons-halflings-regular.woff'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/fonts/glyphicons-halflings-regular.woff'
+    'REMOTE_PORT' => '49524'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/css/app.v2.css'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://www.fishing.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501206027.7804
+    'REQUEST_TIME' => 1501206027
+]
+2017-07-28 09:40:27 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "fonts/glyphicons-halflings-regular.ttf".' in D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('fonts/glyphicon...', Array)
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-07-28 09:40:27 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2348'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/fonts/glyphicons-halflings-regular.ttf'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/fonts/glyphicons-halflings-regular.ttf'
+    'REMOTE_PORT' => '49525'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/css/app.v2.css'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://www.fishing.com'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501206027.8614
+    'REQUEST_TIME' => 1501206027
+]
+2017-07-28 11:20:27 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Undefined variable: data' in D:\game_standard-master\backend\views\day-task\index.php:49
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render()
+#3 D:\game_standard-master\backend\controllers\DayTaskController.php(16): yii\base\Controller->render()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\DayTaskController->actionIndex()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#8 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#10 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#11 {main}
+2017-07-28 11:20:27 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2684'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/index'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/day-task/index'
+    'REMOTE_PORT' => '53939'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/inle-porting/index'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501212027.7446
+    'REQUEST_TIME' => 1501212027
+]
+2017-07-28 11:50:53 [127.0.0.1][-][u2djkvn0152mg92euu3rf4t396][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in D:\game_standard-master\backend\views\touch\edit.php:26
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render()
+#3 D:\game_standard-master\backend\controllers\TouchController.php(42): yii\base\Controller->render()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\TouchController->actionEdit()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#8 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#10 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#11 {main}
+2017-07-28 11:50:53 [127.0.0.1][-][u2djkvn0152mg92euu3rf4t396][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2784'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/touch/edit?id=2'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/touch/edit'
+    'REMOTE_PORT' => '54110'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501213853.7831
+    'REQUEST_TIME' => 1501213853
+]
+2017-07-28 11:50:58 [127.0.0.1][-][u2djkvn0152mg92euu3rf4t396][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in D:\game_standard-master\backend\views\touch\edit.php:26
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render()
+#3 D:\game_standard-master\backend\controllers\TouchController.php(42): yii\base\Controller->render()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\TouchController->actionEdit()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#8 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#10 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#11 {main}
+2017-07-28 11:50:58 [127.0.0.1][-][u2djkvn0152mg92euu3rf4t396][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2784'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/touch/edit?id=2'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/touch/edit'
+    'REMOTE_PORT' => '54117'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501213858.6803
+    'REQUEST_TIME' => 1501213858
+]
+2017-07-28 11:54:11 [127.0.0.1][-][u2djkvn0152mg92euu3rf4t396][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in D:\game_standard-master\backend\views\touch\edit.php:26
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render()
+#3 D:\game_standard-master\backend\controllers\TouchController.php(42): yii\base\Controller->render()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\TouchController->actionEdit()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#8 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#10 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#11 {main}
+2017-07-28 11:54:11 [127.0.0.1][-][u2djkvn0152mg92euu3rf4t396][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2784'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/touch/edit?id=2'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/touch/edit'
+    'REMOTE_PORT' => '54307'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501214051.7437
+    'REQUEST_TIME' => 1501214051
+]
+2017-07-28 11:54:16 [127.0.0.1][-][u2djkvn0152mg92euu3rf4t396][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in D:\game_standard-master\backend\views\touch\edit.php:26
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render()
+#3 D:\game_standard-master\backend\controllers\TouchController.php(42): yii\base\Controller->render()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\TouchController->actionEdit()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#8 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#10 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#11 {main}
+2017-07-28 11:54:16 [127.0.0.1][-][u2djkvn0152mg92euu3rf4t396][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2784'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/touch/edit?id=2'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/touch/edit'
+    'REMOTE_PORT' => '54308'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501214056.6238
+    'REQUEST_TIME' => 1501214056
+]
+2017-07-28 11:55:06 [127.0.0.1][-][u2djkvn0152mg92euu3rf4t396][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Trying to get property of non-object' in D:\game_standard-master\backend\views\touch\edit.php:26
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render()
+#3 D:\game_standard-master\backend\controllers\TouchController.php(42): yii\base\Controller->render()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\TouchController->actionEdit()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#8 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#10 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#11 {main}
+2017-07-28 11:55:05 [127.0.0.1][-][u2djkvn0152mg92euu3rf4t396][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'manageId' => 1
+    'manageName' => 'lrdouble'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2784'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/touch/edit?id=2'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/touch/edit'
+    'REMOTE_PORT' => '54383'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501214105.9469
+    'REQUEST_TIME' => 1501214105
+]
+2017-07-28 11:55:37 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\DayTask::fishing_number' in D:\game_standard-master\vendor\yiisoft\yii2\base\Component.php:147
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\db\BaseActiveRecord.php(286): yii\base\Component->__get('fishing_number')
+#1 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(2081): yii\db\BaseActiveRecord->__get('fishing_number')
+#2 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(1693): yii\helpers\BaseHtml::getAttributeValue(Object(common\models\DayTask), 'fishing_number')
+#3 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(1531): yii\helpers\BaseHtml::activeListInput('dropDownList', Object(common\models\DayTask), 'fishing_number', Array, Array)
+#4 D:\game_standard-master\vendor\yiisoft\yii2\widgets\ActiveField.php(612): yii\helpers\BaseHtml::activeDropDownList(Object(common\models\DayTask), 'fishing_number', Array, Array)
+#5 D:\game_standard-master\backend\views\day-task\edit.php(27): yii\widgets\ActiveField->dropDownList(Array)
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\game_standar...')
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\game_standar...', Array)
+#8 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\game_standar...', Array, Object(backend\controllers\DayTaskController))
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('edit', Array, Object(backend\controllers\DayTaskController))
+#10 D:\game_standard-master\backend\controllers\DayTaskController.php(88): yii\base\Controller->render('edit', Array)
+#11 [internal function]: backend\controllers\DayTaskController->actionEdit()
+#12 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#13 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#14 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('edit', Array)
+#15 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('day-task/edit', Array)
+#16 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#18 {main}
+2017-07-28 11:55:37 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2804'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit?id=2'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '54404'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501214137.6805
+    'REQUEST_TIME' => 1501214137
+]
+2017-07-28 11:55:41 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\DayTask::fishing_number' in D:\game_standard-master\vendor\yiisoft\yii2\base\Component.php:147
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\db\BaseActiveRecord.php(286): yii\base\Component->__get('fishing_number')
+#1 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(2081): yii\db\BaseActiveRecord->__get('fishing_number')
+#2 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(1693): yii\helpers\BaseHtml::getAttributeValue(Object(common\models\DayTask), 'fishing_number')
+#3 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(1531): yii\helpers\BaseHtml::activeListInput('dropDownList', Object(common\models\DayTask), 'fishing_number', Array, Array)
+#4 D:\game_standard-master\vendor\yiisoft\yii2\widgets\ActiveField.php(612): yii\helpers\BaseHtml::activeDropDownList(Object(common\models\DayTask), 'fishing_number', Array, Array)
+#5 D:\game_standard-master\backend\views\day-task\edit.php(27): yii\widgets\ActiveField->dropDownList(Array)
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\game_standar...')
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\game_standar...', Array)
+#8 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\game_standar...', Array, Object(backend\controllers\DayTaskController))
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('edit', Array, Object(backend\controllers\DayTaskController))
+#10 D:\game_standard-master\backend\controllers\DayTaskController.php(88): yii\base\Controller->render('edit', Array)
+#11 [internal function]: backend\controllers\DayTaskController->actionEdit()
+#12 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#13 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#14 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('edit', Array)
+#15 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('day-task/edit', Array)
+#16 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#18 {main}
+2017-07-28 11:55:41 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2804'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit?id=2'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '54413'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501214141.8074
+    'REQUEST_TIME' => 1501214141
+]
+2017-07-28 11:55:45 [127.0.0.1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\DayTask::fishing_number' in D:\game_standard-master\vendor\yiisoft\yii2\base\Component.php:147
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\db\BaseActiveRecord.php(286): yii\base\Component->__get('fishing_number')
+#1 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(2081): yii\db\BaseActiveRecord->__get('fishing_number')
+#2 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(1693): yii\helpers\BaseHtml::getAttributeValue(Object(common\models\DayTask), 'fishing_number')
+#3 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(1531): yii\helpers\BaseHtml::activeListInput('dropDownList', Object(common\models\DayTask), 'fishing_number', Array, Array)
+#4 D:\game_standard-master\vendor\yiisoft\yii2\widgets\ActiveField.php(612): yii\helpers\BaseHtml::activeDropDownList(Object(common\models\DayTask), 'fishing_number', Array, Array)
+#5 D:\game_standard-master\backend\views\day-task\edit.php(27): yii\widgets\ActiveField->dropDownList(Array)
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): require('D:\\game_standar...')
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile('D:\\game_standar...', Array)
+#8 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile('D:\\game_standar...', Array, Object(backend\controllers\DayTaskController))
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render('edit', Array, Object(backend\controllers\DayTaskController))
+#10 D:\game_standard-master\backend\controllers\DayTaskController.php(88): yii\base\Controller->render('edit', Array)
+#11 [internal function]: backend\controllers\DayTaskController->actionEdit()
+#12 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#13 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#14 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('edit', Array)
+#15 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('day-task/edit', Array)
+#16 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#18 {main}
+2017-07-28 11:55:45 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2804'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit?id=2'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '54405'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501214145.2055
+    'REQUEST_TIME' => 1501214145
+]
+2017-07-28 14:12:54 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'array_key_exists() expects parameter 2 to be array, null given' in D:\game_standard-master\backend\controllers\DayTaskController.php:73
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\DayTaskController->actionEdit()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#3 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#6 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#7 {main}
+2017-07-28 14:12:54 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2912'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit?id=2'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '59785'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501222374.3442
+    'REQUEST_TIME' => 1501222374
+]
+2017-07-28 14:13:04 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'array_key_exists() expects parameter 2 to be array, null given' in D:\game_standard-master\backend\controllers\DayTaskController.php:73
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\DayTaskController->actionEdit()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#3 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#6 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#7 {main}
+2017-07-28 14:13:04 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2912'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit?id=2'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '59807'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501222384.4556
+    'REQUEST_TIME' => 1501222384
+]
+2017-07-28 14:21:28 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'array_key_exists() expects parameter 2 to be array, null given' in D:\game_standard-master\backend\controllers\DayTaskController.php:70
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\DayTaskController->actionEdit()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#3 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#6 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#7 {main}
+2017-07-28 14:21:28 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '3044'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '60679'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501222888.575
+    'REQUEST_TIME' => 1501222888
+]
+2017-07-28 14:24:33 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Undefined index: goldz' in D:\game_standard-master\backend\views\day-task\edit.php:42
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render()
+#3 D:\game_standard-master\backend\controllers\DayTaskController.php(85): yii\base\Controller->render()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\DayTaskController->actionEdit()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#8 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#10 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#11 {main}
+2017-07-28 14:24:33 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '3044'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '60768'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501223073.6991
+    'REQUEST_TIME' => 1501223073
+]
+2017-07-28 14:24:37 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Undefined index: goldz' in D:\game_standard-master\backend\views\day-task\edit.php:42
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render()
+#3 D:\game_standard-master\backend\controllers\DayTaskController.php(85): yii\base\Controller->render()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\DayTaskController->actionEdit()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#8 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#10 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#11 {main}
+2017-07-28 14:24:37 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '3068'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '60776'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501223077.6901
+    'REQUEST_TIME' => 1501223077
+]
+2017-07-28 14:27:11 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Invalid argument supplied for foreach()' in D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php:922
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(1631): yii\helpers\BaseHtml::activeListInput()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\widgets\ActiveField.php(662): yii\helpers\BaseHtml::activeCheckboxList()
+#2 D:\game_standard-master\vendor\yiisoft\yii2-bootstrap\ActiveField.php(264): yii\widgets\ActiveField->checkboxList()
+#3 D:\game_standard-master\backend\views\day-task\edit.php(39): yii\bootstrap\ActiveField->checkboxList()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): ::unknown()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile()
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render()
+#8 D:\game_standard-master\backend\controllers\DayTaskController.php(85): yii\base\Controller->render()
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\DayTaskController->actionEdit()
+#10 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#11 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#12 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#13 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#14 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#15 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#16 {main}
+2017-07-28 14:27:10 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '3068'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit?id=2'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '60980'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501223230.8533
+    'REQUEST_TIME' => 1501223230
+]
+2017-07-28 14:27:42 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Invalid argument supplied for foreach()' in D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php:922
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(1631): yii\helpers\BaseHtml::activeListInput()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\widgets\ActiveField.php(662): yii\helpers\BaseHtml::activeCheckboxList()
+#2 D:\game_standard-master\vendor\yiisoft\yii2-bootstrap\ActiveField.php(264): yii\widgets\ActiveField->checkboxList()
+#3 D:\game_standard-master\backend\views\day-task\edit.php(39): yii\bootstrap\ActiveField->checkboxList()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): ::unknown()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile()
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render()
+#8 D:\game_standard-master\backend\controllers\DayTaskController.php(85): yii\base\Controller->render()
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\DayTaskController->actionEdit()
+#10 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#11 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#12 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#13 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#14 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#15 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#16 {main}
+2017-07-28 14:27:42 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '2'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '3068'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit?id=2'
+    'QUERY_STRING' => 'id=2'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=2'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '61025'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501223262.1812
+    'REQUEST_TIME' => 1501223262
+]
+2017-07-28 14:29:15 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Invalid argument supplied for foreach()' in D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php:922
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(1631): yii\helpers\BaseHtml::activeListInput()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\widgets\ActiveField.php(662): yii\helpers\BaseHtml::activeCheckboxList()
+#2 D:\game_standard-master\vendor\yiisoft\yii2-bootstrap\ActiveField.php(264): yii\widgets\ActiveField->checkboxList()
+#3 D:\game_standard-master\backend\views\day-task\edit.php(41): yii\bootstrap\ActiveField->checkboxList()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): ::unknown()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile()
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render()
+#8 D:\game_standard-master\backend\controllers\DayTaskController.php(85): yii\base\Controller->render()
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\DayTaskController->actionEdit()
+#10 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#11 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#12 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#13 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#14 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#15 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#16 {main}
+2017-07-28 14:29:15 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '3068'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '61104'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501223355.3902
+    'REQUEST_TIME' => 1501223355
+]
+2017-07-28 14:29:19 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Invalid argument supplied for foreach()' in D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php:922
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\helpers\BaseHtml.php(1631): yii\helpers\BaseHtml::activeListInput()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\widgets\ActiveField.php(662): yii\helpers\BaseHtml::activeCheckboxList()
+#2 D:\game_standard-master\vendor\yiisoft\yii2-bootstrap\ActiveField.php(264): yii\widgets\ActiveField->checkboxList()
+#3 D:\game_standard-master\backend\views\day-task\edit.php(41): yii\bootstrap\ActiveField->checkboxList()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(328): ::unknown()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(250): yii\base\View->renderPhpFile()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\View.php(152): yii\base\View->renderFile()
+#7 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(381): yii\base\View->render()
+#8 D:\game_standard-master\backend\controllers\DayTaskController.php(85): yii\base\Controller->render()
+#9 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\DayTaskController->actionEdit()
+#10 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#11 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#12 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#13 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#14 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#15 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#16 {main}
+2017-07-28 14:29:19 [127.0.0.1][-][-][info][application] $_GET = [
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '3068'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit?id=1'
+    'QUERY_STRING' => 'id=1'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'id=1'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '61112'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501223359.4319
+    'REQUEST_TIME' => 1501223359
+]
+2017-07-28 14:34:33 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "dat-task/edit".' in D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('dat-task/edit', Array)
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-07-28 14:34:33 [127.0.0.1][-][-][info][application] $_POST = [
+    '_token_backend_' => 'Z2NRM1Y4b0cFBWFUD3VXDTFQJ2N7Dg0XCRMgBwJOODACMSB6NAg6Ng=='
+    'id' => '1'
+    'DayTask' => [
+        'fish_number' => [
+            1 => '500'
+            2 => '300'
+        ]
+        'package' => [
+            0 => 'goldz'
+            'goldz' => '500'
+        ]
+    ]
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '3040'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/dat-task/edit'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'POST'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/dat-task/edit'
+    'REMOTE_PORT' => '61407'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_ORIGIN' => 'http://www.fishing.com'
+    'CONTENT_LENGTH' => '271'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501223673.3513
+    'REQUEST_TIME' => 1501223673
+]
+2017-07-28 14:35:14 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "dat-task/edit".' in D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php:532
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('dat-task/edit', Array)
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php:114
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#2 {main}
+2017-07-28 14:35:14 [127.0.0.1][-][-][info][application] $_POST = [
+    '_token_backend_' => 'Z2NRM1Y4b0cFBWFUD3VXDTFQJ2N7Dg0XCRMgBwJOODACMSB6NAg6Ng=='
+    'id' => '1'
+    'DayTask' => [
+        'fish_number' => [
+            1 => '500'
+            2 => '300'
+        ]
+        'package' => [
+            0 => 'goldz'
+            'goldz' => '500'
+        ]
+    ]
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '3040'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/dat-task/edit'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'POST'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/dat-task/edit'
+    'REMOTE_PORT' => '61483'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_ORIGIN' => 'http://www.fishing.com'
+    'CONTENT_LENGTH' => '271'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501223714.7237
+    'REQUEST_TIME' => 1501223714
+]
+2017-07-28 14:52:03 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in D:\game_standard-master\common\models\DayTask.php:141
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(29): ::spl_autoload_call()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\DayTaskController->actionEdit()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#3 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#7 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#8 {main}
+2017-07-28 14:52:03 [127.0.0.1][-][-][info][application] $_POST = [
+    '_token_backend_' => 'dHZtZDEyeWoWEF0DaH9BICJFGzQcBBs6GgYcUGVELh0RJBwtUwIsGw=='
+    'id' => '1'
+    'DayTask' => [
+        'fish_number' => [
+            1 => '500'
+            2 => '300'
+        ]
+        'package' => [
+            0 => 'goldz'
+            1 => 'fishGoldz'
+            2 => '1z'
+            3 => '2z'
+            'goldz' => '500'
+            'fishGoldz' => '1'
+            '1z' => '2'
+            '2z' => '3'
+        ]
+    ]
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2656'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/edit'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'POST'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/day-task/edit'
+    'REMOTE_PORT' => '63301'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/day-task/index'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_ORIGIN' => 'http://www.fishing.com'
+    'CONTENT_LENGTH' => '468'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501224723.8075
+    'REQUEST_TIME' => 1501224723
+]
+2017-07-28 14:52:44 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in D:\game_standard-master\common\models\DayTask.php:141
+Stack trace:
+#0 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(16): ::spl_autoload_call()
+#1 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): backend\controllers\DayTaskController->actionIndex()
+#2 D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php(57): ::call_user_func_array:{D:\game_standard-master\vendor\yiisoft\yii2\base\InlineAction.php:57}()
+#3 D:\game_standard-master\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams()
+#4 D:\game_standard-master\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction()
+#5 D:\game_standard-master\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction()
+#6 D:\game_standard-master\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest()
+#7 D:\game_standard-master\backend\web\index.php(17): yii\base\Application->run()
+#8 {main}
+2017-07-28 14:52:44 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'advanced-backend' => 'u2djkvn0152mg92euu3rf4t396'
+    '_token_backend_' => '9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a:2:{i:0;s:15:\"_token_backend_\";i:1;s:32:\"bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq\";}'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;D:\\phpStudy\\php\\php-5.6.27-nts;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\TortoiseGit\\bin;C:\\Users\\gba12\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\gba12\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'SYSTEMROOT' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php/php-5.6.27-nts/'
+    '_FCGI_SHUTDOWN_EVENT_' => '2656'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/day-task/index'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/day-task/index'
+    'REMOTE_PORT' => '63360'
+    'SCRIPT_FILENAME' => 'D:/game_standard-master/backend/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/game_standard-master/backend/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'www.fishing.com'
+    'SERVER_SOFTWARE' => 'Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\WINDOWS'
+    'HTTP_COOKIE' => 'advanced-backend=u2djkvn0152mg92euu3rf4t396; _token_backend_=9f3e7abd2faf4595156527934c30b621bccdb1b0e7a61d4d11f23cf4ade5c1f6a%3A2%3A%7Bi%3A0%3Bs%3A15%3A%22_token_backend_%22%3Bi%3A1%3Bs%3A32%3A%22bf0gYM8JV3vP-6bPnpq4TvWweRqIb0Uq%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://www.fishing.com/inle-porting/index'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'www.fishing.com'
+    'REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1501224764.3639
+    'REQUEST_TIME' => 1501224764
+]

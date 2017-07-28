@@ -71,6 +71,9 @@ $config[] = ['label' => '大厅设置', 'icon' => 'fa fa-bullhorn icon', 'bg_col
     ['label' => '捕鱼任务奖励设置', 'url' => ['sign-board/index']],
     ['label' => '救济金(金币和鱼币设置)', 'url' => ['getgold/index']],
 ]];
+$config[] = ['label' => '每日任务管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-info', 'url' => ['manage/index'], 'items' => [
+    ['label' => '捕鱼任务列表', 'url' => ['day-task/index']],
+]];
 $config[] = ['label' => '基础设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-info', 'url' => ['manage/index'], 'items' => [
     ['label' => '聊天内容设置', 'url' => ['chat/index','show'=>'']],
     ['label' => '商店道具设置', 'url' => ['shop/index']],
