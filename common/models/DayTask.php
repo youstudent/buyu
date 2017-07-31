@@ -98,6 +98,7 @@ class DayTask extends Object
     public function edit($data = []){
         if($this->load($data) && $this->validate())
         {
+            var_dump($data);EXIT;
             /**
              * 接收数据  拼装
              */
@@ -180,5 +181,55 @@ class DayTask extends Object
             }
             
         }
+    }
+    
+    
+    /**
+     *  获取游戏服务端的列表数据
+     */
+    public static function GetDay(){
+        $url = \Yii::$app->params['Api'].'/gameserver/control/getEveryDayTask';
+        $data = \common\services\Request::request_post($url,['time'=>time()]);
+       
+        $d=[];
+        foreach ($data as $key=>$v){
+            if (is_array($v)){
+                $d[]=$v;
+            }
+        }
+        $new = $d[0];
+        DayTask::deleteAll();
+        $model =  new DayTask();
+        //请求到数据   循环保存到数据库
+        foreach($new as $K=>$attributes)
+        {
+            $model->content=$attributes->content;  //赠送礼包
+            $model->id=$attributes->id;
+            $model->status=$attributes->enable;  //是否开启任务
+            $model->type_id=$attributes->typeId;
+            $model->name =$attributes->taskName;  // 名字
+            $model->updated_at =time();  //同步时间
+            $_model = clone $model;
+            $_model->setAttributes($attributes);
+            $_model->save(false);
+        }
+        return $data['code'];
+        
+    }
+    
+    /**
+     *  提取鱼名字 和击杀数量
+     */
+    public static function fishing($data){
+       $JSON = json_decode($data,true);
+       $fishing_id =$JSON['fishId'];
+       $num =$JSON['num'];
+       $row = Fishing::findOne(['id'=>$fishing_id]);
+       if ($row){
+           $name =$row->name;
+           return '击杀'.$name.$num.'条';
+       }
+       return '';
+       
     }
 }

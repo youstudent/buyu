@@ -3,6 +3,7 @@
 namespace common\models;
 
 use backend\models\Shop;
+use Codeception\Module\REST;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Symfony\Component\DomCrawler\Field\InputFormField;
 use Yii;
@@ -98,15 +99,14 @@ class RedeemCode extends Object
     public function rules()
     {
         return [
-            [['name'],'required'],
-            [['type', 'created_at', 'number','status'], 'integer'],
+            [['type', 'created_at','number','status'], 'integer'],
             [['description'], 'string'],
             [['redeem_code', 'name'], 'string','max' => 50],
             [['prize'], 'string', 'max' => 100],
             [['one','tow','three','four','five','six'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
             [['end_time','start_time','give_type'],'safe'],
             [['select', 'keyword', 'pay_gold_num','pay_gold_config','game_id','time'], 'safe'],
-            [['starttime', 'endtime','gold','diamond','fishGold','scope_type','scope_type','show','give_type'],'safe'],
+            [['starttime', 'endtime','gold','diamond','fishGold','scope_type','scope_type','show','give_type','name'],'safe'],
         ];
     }
 
@@ -559,10 +559,9 @@ class RedeemCode extends Object
     //验证验证码
     public function check($data)
     {
-    
-        if ($this->load($data, '') && $this->validate()) {
+        if ($this->load($data, '')) {
             //验证兑换码的有效性
-            $result = RedeemCode::findOne(['redeem_code' =>$this->redee]);
+            $result = RedeemCode::find()->where(['redeem_code'=>"$this->redeem_code"])->one();
             if ($result === null || $result === false || $result->status == 1) {
                 $this->addError('message', '验证码无效');
                 return false;

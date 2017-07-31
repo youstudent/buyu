@@ -72,7 +72,15 @@ $config[] = ['label' => '大厅设置', 'icon' => 'fa fa-bullhorn icon', 'bg_col
     ['label' => '救济金(金币和鱼币设置)', 'url' => ['getgold/index']],
 ]];
 $config[] = ['label' => '每日任务管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-info', 'url' => ['manage/index'], 'items' => [
-    ['label' => '捕鱼任务列表', 'url' => ['day-task/index']],
+    ['label' => '基础任务', 'url' => ['day-task/list']],
+    ['label' => '捕鱼能手', 'url' => ['day-task/expert']],
+    ['label' => '日进斗金', 'url' => ['day-task/money-today']],
+    ['label' => '智斗鱼王', 'url' => ['day-task/king']],
+    ['label' => '弹无虚发', 'url' => ['day-task/cannon-index']],
+    ['label' => '惊天一炮', 'url' => ['day-task/one-index']],
+    ['label' => '挥金如土', 'url' => ['day-task/waste']],
+    ['label' => '决战深海', 'url' => ['day-task/deep-sea']],
+    ['label' => '持之以恒', 'url' => ['day-task/game-index']],
 ]];
 $config[] = ['label' => '基础设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-info', 'url' => ['manage/index'], 'items' => [
     ['label' => '聊天内容设置', 'url' => ['chat/index','show'=>'']],

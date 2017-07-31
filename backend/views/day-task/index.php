@@ -78,7 +78,7 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看任务</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['touch/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖励</a>
-                                        <a href="<?php echo \yii\helpers\Url::to(['day-task/edit', 'id' => $value['id']]) ?>"
+                                        <a href="<?php echo \yii\helpers\Url::to(['day-task/land', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
                                     </td>
                                 </tr>
