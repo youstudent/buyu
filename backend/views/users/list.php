@@ -134,6 +134,8 @@ use yii\bootstrap\ActiveForm;
                                         'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-primary">扣除记录</a>
                                     <a href="<?=\yii\helpers\Url::to(['users/out-log',
                                         'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-success">消费记录</a>
+                                    <a href="<?=\yii\helpers\Url::to(['redeem-code/record',
+                                        'RedeemRecord'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-success">兑换记录</a>
                                    <!-- <a href="<?/*=\yii\helpers\Url::to(['users/exploits',
                                         'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])*/?>" class="btn btn-xs btn-info">&nbsp; 战绩&nbsp; </a>-->
                                     <?php if(Yii::$app->params['backendPayUser']):?>

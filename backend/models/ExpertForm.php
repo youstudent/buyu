@@ -9,6 +9,7 @@
 namespace backend\models;
 
 
+use common\models\DayTask;
 use common\models\Fishing;
 use common\services\Request;
 use yii\base\Model;
@@ -34,6 +35,9 @@ class ExpertForm extends Model
     public function rules()
     {
         return [
+            [['num'],'required'],
+            [['num'], 'integer'],
+            [['num'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'数量必须大于0'],
             [['gives','num','fishings','type','typeId','id','enable'],'safe']
         ];
     }
@@ -47,6 +51,7 @@ class ExpertForm extends Model
             'gives' => '礼包',
             'fishings' => '选择鱼',
             'num' => '数量',
+            'enable'=>'状态'
         ];
     }
     
@@ -94,6 +99,7 @@ class ExpertForm extends Model
             $i = 0;
             $tool = [];
             $datas=['gold','diamond','fishGold'];
+            if ($this->type){
             foreach ($this->type as $key => $value) {
                 if (in_array($key,$datas)) {
                     $send[$key] = $value;
@@ -104,6 +110,8 @@ class ExpertForm extends Model
                     $tools[$i] = $tool;
                     $i++;
                 }
+            }
+    
             }
             if (!empty($tools)){
                 $send['tools']=$tools;
@@ -120,6 +128,12 @@ class ExpertForm extends Model
             $url = \Yii::$app->params['Api'].'/gameserver/control/updateEveryDayTask';
             $re = Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
+                $model =DayTask::findOne(['id'=>$this->id]);
+                $model->content=Json::encode($content);
+                $model->status=$this->enable;
+                $model->type_id=$this->typeId;
+                $model->updated_at=time();
+                $model->save(false);
                 return true;
             }
         }
@@ -166,6 +180,17 @@ class ExpertForm extends Model
             $url = \Yii::$app->params['Api'].'/gameserver/control/addEveryDayTask';
             $re = Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
+                $model = new DayTask();
+                if ($this->typeId == 2){
+                    $model->name='捕鱼能手';
+                }else{
+                    $model->name='智斗鱼王';
+                }
+                $model->content=Json::encode($content);
+                $model->status=1;
+                $model->type_id=$this->typeId;
+                $model->updated_at=time();
+                $model->save(false);
                 return true;
             }
         }

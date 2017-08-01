@@ -39,6 +39,7 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">任务名字</th>
+                                <th class="text-center">任务说明</th>
                                 <th class="text-center">状态</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
@@ -50,6 +51,7 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['name'] ?></td>
+                                    <td class="text-center"><?=\common\models\DayTask::getBasics($value['content'])?></td>
                                     <td class="text-center">
                                         <?php if($value['status'] == 1):?>
                                         <a href="#" class="active">

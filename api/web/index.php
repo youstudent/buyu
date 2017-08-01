@@ -13,5 +13,6 @@ $config = yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/../config/main.php'),
     require(__DIR__ . '/../config/main-local.php')
 );
+file_put_contents(__DIR__.'/log.log', json_encode($_POST, JSON_UNESCAPED_UNICODE).PHP_EOL, FILE_APPEND);
 
 (new yii\web\Application($config))->run();

@@ -9,6 +9,7 @@
 namespace backend\models;
 
 
+use common\models\DayTask;
 use common\services\Request;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
@@ -39,7 +40,8 @@ class OneCannonForm extends Model
     {
         return [
             [['num','enable','lost','get','number','out_gold','time'],'integer'],
-            [['give','type','id','typeId','gives','type1'],'safe']
+            [['give','type','id','typeId','gives','type1'],'safe'],
+            [['lost','num','get','number','time'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'数量必须大于0'],
         ];
     }
     
@@ -58,6 +60,7 @@ class OneCannonForm extends Model
             'type1' => '货币类型',
             'number' => '钻石数量',
             'time' => '在线分钟',
+            'gives' => '礼包',
         ];
     }
     
@@ -91,6 +94,9 @@ class OneCannonForm extends Model
         {
             $arr = [];
             if ($this->typeId == 5){
+                if (empty($this->get) || empty($this->lost)){
+                    return false;
+                }
                 $content['type']=$this->type1;
                 $content['get']=$this->get;
                 $content['lost']=$this->lost;
@@ -101,8 +107,9 @@ class OneCannonForm extends Model
                 $content['num']=$this->lost;
                 $content['type']=$this->type1;
             }elseif ($this->typeId == 10){
-                $content['num']=($this->time*1000);
+                $content['num']=($this->time*1000)*60;
             }else{
+                $content['type']=$this->type1;
                 $content['num']=$this->num;
             }
             
@@ -141,10 +148,12 @@ class OneCannonForm extends Model
             $url = \Yii::$app->params['Api'].'/gameserver/control/updateEveryDayTask';
             $re =Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
-                //SignBoard::GetSign();
-                /*$this->give_number=Json::encode($send);
-                $this->updated_at        = time();
-                $this->save(false);*/
+                $model =DayTask::findOne(['id'=>$this->id]);
+                $model->content=Json::encode($content);
+                $model->status=$this->enable;
+                $model->type_id=$this->typeId;
+                $model->updated_at=time();
+                $model->save(false);
                 return true;
             }
             
@@ -155,19 +164,44 @@ class OneCannonForm extends Model
     public function addcannon($data = []){
         if($this->load($data) && $this->validate())
         {
+            $name = '弹无虚发';
             $arr = [];
             if ($this->typeId == 6){
+                if (empty($this->num)){
+                    $this->addError('num','分数不能为空');
+                    return false;
+                }
                 $content['num']=$this->num;
                 $content['type']=$this->type1;
+                $name='惊天一炮';
             }elseif ($this->typeId == 7){
+                if (empty($this->number)){
+                    $this->addError('number','钻石不能为空');
+                    return false;
+                }
+                $name='挥金如土';
                 $content['type']=$this->type1;
                 $content['num']=$this->number;
             }elseif ($this->typeId==9){
+                $name='决战深海';
+                if (empty($this->lost)){
+                    $this->addError('lost','消耗数量不能为空');
+                    return false;
+                }
                 $content['num']=$this->lost;
                 $content['type']=$this->type1;
             }elseif ($this->typeId == 10){
-                $content['num']=($this->time*1000);
+                if (empty($this->time)){
+                    $this->addError('time','在线时间不能为空');
+                    return false;
+                }
+                $name='持之以恒';
+                $content['num']=($this->time*1000)*60;
             }else{
+                if (empty($this->time) || empty($this->lost)){
+                    $this->addError('get','货币不等为空');
+                    return  false;
+                }
                 $content['type']=$this->type1;
                 $content['get']=$this->get;
                 $content['lost']=$this->lost;
@@ -205,6 +239,13 @@ class OneCannonForm extends Model
             $url = \Yii::$app->params['Api'].'/gameserver/control/addEveryDayTask';
             $re = Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
+                $model = new DayTask();
+                $model->name=$name;
+                $model->content=Json::encode($content);
+                $model->status=1;
+                $model->type_id=$this->typeId;
+                $model->updated_at=time();
+                $model->save(false);
                 return true;
             }
             
@@ -233,9 +274,9 @@ class OneCannonForm extends Model
     public static function getOne($data){
         $json = Json::decode($data,true);
         $num = $json['num'];
-        $type= $json['type'];
-        
-        return '单条鱼获得金币达到30000金币';
+        $type = $json['type'];
+        $new = static::$types[$type];
+        return '单条鱼获得分数达到'.$num.$new;
     }
     
     /**
@@ -263,14 +304,13 @@ class OneCannonForm extends Model
         
     }
     
-    
     /**
      *  持之以恒
      */
     public static function getGame($data){
         $json = Json::decode($data,true);
         $num = $json['num'];
-        $new = $num/1000;
+        $new = ($num/1000)/60;
         return '每日在线:'.$new.'分钟';
         
     }

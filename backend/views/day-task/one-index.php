@@ -52,7 +52,7 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i.'任务'?></td>
                                     <td class="text-center"><?= $value['name'] ?></td>
-                                    <td class="text-center"><?= $value['content']?></td>
+                                    <td class="text-center"><?= \backend\models\OneCannonForm::getOne($value['content'])?></td>
                                     <?php if (!empty($value['updated_at'])):?>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <?php else:?>
@@ -69,7 +69,7 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                                         </a>
                                     </td>
                                     <td class="text-center" style="width: 300px;">
-                                        <a href="<?php echo \yii\helpers\Url::to(['touch/edit', 'id' => $value['id']]) ?>"
+                                        <a href="<?php echo \yii\helpers\Url::to(['day-task/prize-expert', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖励</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['day-task/one-cannon', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>

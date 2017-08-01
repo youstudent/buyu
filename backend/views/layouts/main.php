@@ -11,7 +11,6 @@ $config = [
         ['label' => '扣除记录', 'url' => ['users/pay-out']],
         ['label' => '消费记录', 'url' => ['users/out-log']],
         ['label' => '黑名单表', 'url' => ['users/blacklist']],
-        ['label' => '兑换记录', 'url' => ['redeem-code/record']],
         ['label' => '比例设置', 'url' => ['users/ratio']],
     ]],
     ['label' => '提现管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['withdraw/list'], 'items' => [
@@ -56,7 +55,11 @@ $config[] = ['label' => '排行榜', 'icon' => 'fa fa-bullhorn icon', 'bg_color'
     ['label' => '排行榜列表', 'url' => ['currency-pay/index']]
 ]];
 $config[] = ['label' => '兑换管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
-    ['label' => '兑换列表', 'url' => ['redeem-code/index','show'=>'']]
+    ['label' => '兑换列表', 'url' => ['redeem-code/index','show'=>'']],
+    ['label' => '兑换记录', 'url' => ['redeem-code/record']],
+]];
+$config[] = ['label' => '钻石等级管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['diamonds/index'], 'items' => [
+    ['label' => '钻石管理列表', 'url' => ['diamonds/index','show'=>'']]
 ]];
 $config[] = ['label' => '大厅设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['touch/index'], 'items' => [
     ['label' => '联系客户', 'url' => ['touch/index']],
@@ -214,6 +217,7 @@ $config[] = ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg
         console.log("一张网页，要经历怎样的过程，才能抵达用户面前？\n一位新人，要经历怎样的成长，才能站在技术之巅？\n你，可以影响世界。\n\t\t\t\t\t\t\t\t__lrdouble");
         $('#reportrange span').html($('#startTime').val() + ' - ' + $('#endTime').val());
         $('#reportrange').daterangepicker({
+            timePicker: true,
             startDate: $('#startTime').val(),
             endDate: $('#endTime').val(),
             locale: {
@@ -253,6 +257,7 @@ $config[] = ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg
     function clickTimeSelect(_this,time=true,statr,end) {
         if (time){
             $(_this).daterangepicker({
+                timePicker: true,
                 startDate: statr?statr:$('#startTime').val(),
                 endDate: end?end:$('#endTime').val(),
                 locale: {
@@ -291,6 +296,7 @@ $config[] = ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg
                
             }
             $(_this).daterangepicker({
+                timePicker: true,
                 singleDatePicker: true,
                 startDate:start1?start1:$('#endTime').val(),
                 // endDate: $('#endTime').val(),

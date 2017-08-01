@@ -469,6 +469,8 @@ class DayTaskController extends \yii\web\Controller
           $modelForm->typeId=$model->type_id;
           $modelForm->gives=$type;
           $modelForm->num=$JSON['num'];
+          $modelForm->enable=$model->status;
+          $modelForm->type1=$JSON['type'];
           return $this->render('one',['model'=>$modelForm,'data'=>$data]);
       }
     
@@ -565,6 +567,7 @@ class DayTaskController extends \yii\web\Controller
         $modelForm->get=$JSON['get'];
         $modelForm->lost=$JSON['lost'];
         $modelForm->type1=$JSON['type'];
+        $modelForm->enable=$model->status;
         return $this->render('cannon',['model'=>$modelForm,'data'=>$data]);
     }
     
@@ -848,7 +851,7 @@ class DayTaskController extends \yii\web\Controller
         $modelForm->id=$model->id;
         $modelForm->typeId=$model->type_id;
         $modelForm->gives=$type;
-        $modelForm->time=$JSON['num'];
+        $modelForm->time=($JSON['num']/1000/60);
         $modelForm->enable=$model->status;
         return $this->render('update-game',['model'=>$modelForm,'data'=>$data]);
     }

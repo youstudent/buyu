@@ -4,7 +4,7 @@ return [
     'supportEmail' => 'support@example.com',
     'user.passwordResetTokenExpire' => 3600,
     'distribution'      => true,#是否开启分销
-    'pageSize'          =>10,
+    'pageSize'          =>15,
     'backendPayUser' => true,//后台开启给用户充值功能
     'appName'           =>'猎宝寻鱼',//APP名称
     'startTime'         =>'2017-01-01 00:00:00',//时间组件开始时间

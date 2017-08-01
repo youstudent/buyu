@@ -9,7 +9,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">修改每日登陆</h4>
+            <h4 class="modal-title" id="myModalLabel">修改惊天一炮</h4>
         </div>
         <div class="modal-body">
 
@@ -29,6 +29,7 @@
                     <?php echo $form->field($model,'typeId')->hiddenInput()?>
                     <?php echo $form->field($model,'id')->hiddenInput()?>
                 </div>
+                <?php echo $form->field($model,'type1')->dropDownList(\backend\models\OneCannonForm::$types)?>
                 <?php echo $form->field($model,'num')?>
                 <?php echo $form->field($model,'enable')->dropDownList(\backend\models\OneCannonForm::$enables)?>
                 <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\OneCannonForm::$give)?>

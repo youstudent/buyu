@@ -9,6 +9,7 @@
 namespace backend\models;
 
 
+use common\models\DayTask;
 use common\services\Request;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
@@ -45,6 +46,7 @@ class DayForm extends Model
             'num' => '获得数量',
             'gold' => '货币类型',
             'gives' => '礼包',
+            'enable'=>'状态'
         ];
     }
     
@@ -112,10 +114,12 @@ class DayForm extends Model
             $url = \Yii::$app->params['Api'].'/gameserver/control/updateEveryDayTask';
             $re = Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
-                //SignBoard::GetSign();
-                /*$this->give_number=Json::encode($send);
-                $this->updated_at        = time();
-                $this->save(false);*/
+                $model =DayTask::findOne(['id'=>$this->id]);
+                $model->content=Json::encode($content);
+                $model->status=$this->enable;
+                $model->type_id=$this->typeId;
+                $model->updated_at=time();
+                $model->save(false);
                 return true;
             }
             
@@ -158,6 +162,13 @@ class DayForm extends Model
             $url = \Yii::$app->params['Api'].'/gameserver/control/addEveryDayTask';
             $re = Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
+                $model = new DayTask();
+                $model->content=Json::encode($content);
+                $model->status=1;
+                $model->name='日进斗金';
+                $model->type_id=$this->typeId;
+                $model->updated_at=time();
+                $model->save(false);
                 return true;
             }
     

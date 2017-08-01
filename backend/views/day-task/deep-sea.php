@@ -26,7 +26,7 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                         </div>
                         <div class=" text-right">
                             <a href="<?= \yii\helpers\Url::to(['day-task/add-deep-sea']) ?>" class="btn btn-primary"
-                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加决战深海任我</a>
+                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加决战深海任务</a>
                         </div>
                     </div>
                     <!--                搜索结束          -->

@@ -42,10 +42,11 @@ class LandForm extends Model
     public function attributeLabels()
     {
         return [
-            'give' => '礼包',
+            'gives' => '礼包',
             'type' => '奖励',
             'types' => '礼包',
             'num' => '次数',
+            'enable' => '状态',
         ];
     }
     

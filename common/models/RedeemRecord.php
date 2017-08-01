@@ -104,8 +104,10 @@ class RedeemRecord extends \yii\db\ActiveRecord
      */
     public function getList($data = [])
     {
+        
         $this->load($data);
         $this->initTime();
+        //var_dump($this->searchWhere());exit;
         $model   = self::find()->andWhere($this->searchWhere())
             ->andWhere(['>=','created_at',strtotime($this->starttime)])
             ->andWhere(['<=','created_at',strtotime($this->endtime)]);
@@ -116,6 +118,7 @@ class RedeemRecord extends \yii\db\ActiveRecord
             ]
         );
         $data  = $model->limit($pages->limit)->offset($pages->offset)->all();
+       // var_dump($data);EXIT;
         return ['data'=>$data,'pages'=>$pages,'model'=>$this];
     }
     
@@ -174,17 +177,28 @@ class RedeemRecord extends \yii\db\ActiveRecord
      */
     public function add($data){
         if ($this->load($data, '') && $this->validate()) {
-            $re = RedeemCode::findOne(['redeem_code'=>$this->redeem_code]);
-            if ($re->status==0){
-                $re->status=1;
-                $re->save(false);
+            if ($re = RedeemCode::findOne(['redeem_code'=>$this->redeem_code])){
+                if ($re->status==0){
+                    $re->status=1;
+                    $re->save(false);
+                }
+            }else{
+                $this->addError('redeem_code','兑换码不存在');
+                return false;
             }
-            $result= Users::findOne(['game_id'=>$this->game_id]);
-            $this->uid=$result->id;//用户表的自增ID
-            $this->nickname=$result->nickname;
-            $this->created_at=time();
-            $this->status=1;
-            return $this->save();
+            if ($result= Users::findOne(['game_id'=>$this->game_id])){
+                $this->uid=$result->id;//用户表的自增ID
+                $this->nickname=$result->nickname;
+                $this->created_at=time();
+                $this->status=1;
+                return $this->save();
+            }else{
+                $this->addError('game_id','用户不存在');
+                return false;
+            }
+            
+           
+           
         }
     }
     

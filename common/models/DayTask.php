@@ -230,6 +230,16 @@ class DayTask extends Object
            return '击杀'.$name.$num.'条';
        }
        return '';
-       
+    }
+    
+    /**
+     *  基础任务详情
+     */
+    public static function getBasics($data){
+        $JSON = json_decode($data,true);
+        if (array_key_exists('num',$JSON)){
+            return $JSON['num'].'次';
+        }
+            return '完成任赠送相应的礼品';
     }
 }

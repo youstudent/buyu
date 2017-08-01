@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use api\models\Users;
 use backend\models\Shop;
 use Codeception\Module\REST;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
@@ -578,6 +579,22 @@ class RedeemCode extends Object
                 $this->addError('message', '该兑换码你已兑换');
                 return false;
             }
+            if ($result->status==0){
+                $result->status=1;
+                $result->save(false);
+            }
+            if ($results= Users::findOne(['game_id'=>$this->game_id])){
+                $model =new RedeemRecord();
+                $model->uid=$results->id;//用户表的自增ID
+                $model->game_id=$this->game_id;//用户表的自增ID
+                $model->redeem_code=$this->redeem_code;//用户表的自增ID
+                $model->uid=$results->id;//用户表的自增ID
+                $model->nickname=$results->nickname;
+                $model->created_at=time();
+                $model->status=1;
+                $model->save(false);
+            }
+           
             //去出兑换的奖品   将json格式数据转换成数组
             $Json = json_decode($result->prize);
             $data = [];
