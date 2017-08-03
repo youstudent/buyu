@@ -12,8 +12,8 @@ $this->title = Yii::t('app', 'shop_index') . '-' . Yii::$app->params['appName'];
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">商品管理</a></li>
-                <li class="active">商品管理列表</li>
+                <li><a href="#">道具管理</a></li>
+                <li class="active">道具管理列表</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">

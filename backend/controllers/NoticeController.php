@@ -109,6 +109,9 @@ class NoticeController extends ObjectController
             $type[]=$k;
         }
         $model->get_type=$type;
+        if ($model->location == 2 ){
+            return $this->render('edit2',['model'=>$model,'data'=>$data]);
+        }
         return $this->render('edit',['model'=>$model,'data'=>$data]);
     }
 
@@ -182,6 +185,17 @@ class NoticeController extends ObjectController
             return ['code'=>1,'message'=>'同步成功'];
         }
         return ['code'=>0,'message'=>'同步失败'];
+    }
+    
+    
+    /**
+     * 查看内容
+     */
+    public function actionContent(){
+        $this->layout = false;
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $model = Notice::findOne($id);
+        return $this->render('content',['model'=>$model]);
     }
     
     

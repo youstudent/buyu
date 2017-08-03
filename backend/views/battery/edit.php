@@ -26,7 +26,7 @@
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'number')?>
                 <?php echo $form->field($model,'multiple')?>
-                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\Battery::$give)?>
+                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\Battery::$give,['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\models\Battery::$give[$k]?></label>

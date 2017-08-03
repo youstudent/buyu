@@ -70,7 +70,10 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?= $value['content'] ?></td>
+                                    <td class="text-center">
+                                        <a href="<?php echo \yii\helpers\Url::to(['notice/content', 'id' => $value['id']]) ?>"
+                                        data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-info">查看内容</a>
+                                    </td>
                                     <td class="text-center">
                                     <?php if ($value['location'] == 1): ?>
                                         <span class="text-center">登录公告</span>
@@ -89,9 +92,11 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                                             <span class="badge bg-danger">隐藏</span>
                                         <?php endif; ?>
                                     </td>
-                                    <td class="text-center" style="width: 200px;">
+                                    <td class="text-center" style="width: 300px;">
+                                        <?php if ($value['location']==2):?>
                                         <a href="<?php echo \yii\helpers\Url::to(['notice/prize', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
+                                        <?php endif?>
                                         <a href="<?php echo \yii\helpers\Url::to(['notice/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['notice/del', 'id' => $value['id']]) ?>"

@@ -29,8 +29,9 @@ class Fishing extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id','rate','groupNum','groupNum','cost','ariseRate','ex','aliveTime'], 'integer'],
-            [['rate','groupNum','groupNum','cost','ariseRate','ex'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'修改数据必须大于0'],
+            [['rate','groupNum','cost','ariseRate','ex','aliveTime'],'required'],
+            [['id','rate','groupNum','aliveTime','cost','ariseRate','ex','aliveTime'], 'integer'],
+            [['rate','groupNum','aliveTime','cost','ariseRate','ex'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'修改数据必须大于0'],
             [['name'], 'string', 'max' => 255],
             [['updated_at','type'],'safe'],
         ];

@@ -34,7 +34,7 @@
                 <?php echo $form->field($model,'typeId')->hiddenInput()?>
             </div>
            
-            <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\ExpertForm::$give)?>
+            <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\ExpertForm::$give,['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

@@ -25,9 +25,11 @@
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'location')->dropDownList([1=>'登录公告',2=>'大厅公告',3=>'滚动公告'])?>
-                <?php echo $form->field($model,'content')?>
-                <?php echo $form->field($model,'get_type',['inline'=>true])->checkboxList(\backend\models\Notice::$give)?>
+                <?php echo $form->field($model,'content')->textarea()?>
                 <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
+                <div class="dis" style="display: none">
+                <?php echo $form->field($model,'get_type',['inline'=>true])->checkboxList(\backend\models\Notice::$give,['style'=>'margin-left: 113px;'])?>
+                </div>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \backend\models\Notice::$give[$k] ?></label>
@@ -55,6 +57,18 @@
 </style>
 <script>
     $(document).ready(function () {
+        
+        $("#notice-location").change(function(){
+            var thisVal = $(this).val();
+            var tempText = $('#notice-location').find('option[value='+ thisVal +']');
+            if(thisVal==2){
+                $(".dis").attr("style","");
+            }else{
+                $(".dis").attr("style","display: none");
+
+            }
+        });
+        
         clickTimeSelect($('#IDIDID'));
         //平台用户充值
         $("#payModalSubmit").click(function () {

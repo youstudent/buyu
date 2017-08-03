@@ -27,10 +27,11 @@
                     <label class="col-lg-3 control-label" for="redeemcode-diamond"><?php echo $key?></label>
                     <div class="col-lg-9"><input type="text" id="redeemcode-diamond" class="form-control" name="RedeemCode[diamond]" value="<?php echo $value?>" readonly=""><span class="help-block m-b-none"></span></div>
                 <?php endforeach;?>
-                    <?php foreach ($datas as $key=>$value):?>
-                        <label class="col-lg-3 control-label" for="redeemcode-diamond"><?php echo $key?></label>
-                        <div class="col-lg-9"><input type="text" id="redeemcode-diamond" class="form-control" name="RedeemCode[diamond]" value="<?php echo $value?>" readonly=""><span class="help-block m-b-none"></span></div>
-                    <?php endforeach;?>
+                <?php foreach ($datas as $key=>$value):?>
+                    <label class="col-lg-3 control-label" for="redeemcode-diamond"><?php echo $key?></label>
+                    <div class="col-lg-9"><input type="text" id="redeemcode-diamond" class="form-control" name="RedeemCode[diamond]" value="<?php echo $value?>" readonly=""><span class="help-block m-b-none"></span></div>
+                <?php endforeach;?>
+              
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

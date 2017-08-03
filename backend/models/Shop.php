@@ -35,7 +35,7 @@ class Shop extends \yii\db\ActiveRecord
         return [
             [['jewel_number'],'required'],
             [['jewel_number'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
-            [['number','jewel_number','created_at','type','order_number','level'], 'integer'],
+            [['number','jewel_number','created_at','type','order_number','level','id'], 'integer'],
             [['name'],'string', 'max' => 20],
             
         ];
@@ -95,15 +95,28 @@ class Shop extends \yii\db\ActiveRecord
              $e->toolName;
              
          }
-         
          /*foreach ($new as $K=>$value){
              $model = new Shop();
              $model->save($value);
          }*/
-        Shop::deleteAll();
-        $model =  new Shop();
+       Shop::deleteAll();
+       $model =  new Shop();
         foreach($new as $K=>$attributes)
         {
+            /*if (Shop::updateAllCounters(
+                ['name'=>'防辐射服'],
+                ['id'=>$attributes->toolId]
+              
+            )){
+                continue;
+            }
+            $data[] = [
+                'id' => $attributes->toolId,
+                'name'=>$attributes->toolName,
+                'toolDescript' => $attributes->toolDescript,
+                'jewel_number' => $attributes->unitPrice,
+                'level' => $attributes->minVip,
+            ];*/
             $model->id=$attributes->toolId;
             $model->name =$attributes->toolName;
             $model->number =1;
@@ -115,8 +128,49 @@ class Shop extends \yii\db\ActiveRecord
             $_model->setAttributes($attributes);
             $_model->save(false);
         }
+      /*if (isset($data))
+        {
+            Yii::$app->db->createCommand()
+                ->batchInsert(Shop::tableName(),['id','name'],
+                    $data)
+                ->execute();
+        }*/
         return $data['code'];
     }
+    
+    
+    /**
+     *
+     *
+     *
+     * foreach($goods as $k => $v)
+    {
+    if(yourModel::updateAllCounters(
+    ['goods_num' => $v],
+    ['goods_id' => $k,'user_id' => $id]
+    ))
+    {
+    continue;//如果已经更新,则跳过此次循环,到下一次
+    }
+
+    $data[] = [
+    'user_id' => $id,
+    'goods_id' => $k,
+    'goods_num' => $v,
+    'created_time' => $time,
+    ]
+    }
+
+    //再执行批量插入
+    if (isset($data))
+    {
+    Yii::$app->db->createCommand()
+    ->batchInsert(yourModel::tableName(),['user_id','goods_id','goods_num','created_time'],
+    $data)
+    ->execute();
+    }
+ 
+     */
     
    
     

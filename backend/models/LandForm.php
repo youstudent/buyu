@@ -11,10 +11,12 @@ namespace backend\models;
 
 use backend\controllers\DayController;
 use common\models\DayList;
+use common\models\DayTask;
 use common\services\Request;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use yii\web\ViewAction;
 
 class LandForm extends Model
 {
@@ -79,29 +81,7 @@ class LandForm extends Model
         if($this->load($data) && $this->validate())
         {
             $arr = [];
-            $send=[];
-            $tools = [];
-            $i = 0;
-            $tool = [];
-            $datas=['gold','diamond','fishGold'];
-            if ($this->type){
-            foreach ($this->type as $key => $value) {
-                if (in_array($key,$datas)) {
-                    $send[$key] = $value;
-                }
-                if (is_numeric($key)) {
-                    $tool['toolId'] = $key;
-                    $tool['toolNum'] = $value;
-                    $tools[$i] = $tool;
-                    $i++;
-                }
-             }
-    
-            }
-            if (!empty($tools)){
-                $send['tools']=$tools;
-            }
-            $content['send']=$send;
+            $content = \common\models\Test::set($this->type);
             $arr['enable']=$this->enable;
             $arr['id']=$this->id;
             $arr['typeId']=$this->typeId;
@@ -110,10 +90,14 @@ class LandForm extends Model
             $url = \Yii::$app->params['Api'].'/gameserver/control/updateEveryDayTask';
             $re = Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
-                $re= DayList::findOne(['type_id'=>$this->typeId]);
-                $re->status=$this->enable;
-                $re->content=Json::encode($content);
-                $re->save(false);
+                $row= DayList::findOne(['type_id'=>$this->typeId]);
+                $rows = DayTask::findOne(['type_id'=>$this->typeId]);
+                $rows->status =$this->enable;
+                $rows->content =Json::encode($content);
+                $rows->save(false);
+                $row->status=$this->enable;
+                $row->content=Json::encode($content);
+                $row->save(false);
                 return true;
             }
             
@@ -155,7 +139,13 @@ class LandForm extends Model
             if (!empty($tools)){
                 $send['tools']=$tools;
             }
-            $content['send']=$send;
+            $sends=['gold'=>0,'diamond'=>0,'fishGold'=>0];
+            if (empty($send)){
+                $content['send']=$sends;
+            }else{
+                $content['send']=$send;
+            }
+            //$content['send']=$send;
             $arr['enable']=$this->enable;
             $arr['id']=$this->id;
             $arr['typeId']=$this->typeId;

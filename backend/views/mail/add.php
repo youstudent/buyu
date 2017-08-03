@@ -25,7 +25,7 @@
                 ])?>
                 <?php echo $form->field($model,'title')?>
                 <?php echo $form->field($model,'content')->textarea()?>
-                <?php echo $form->field($model,'number',['inline'=>true])->checkboxList(\common\models\Mail::$give)?>
+                <?php echo $form->field($model,'number',['inline'=>true])->checkboxList(\common\models\Mail::$give,['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

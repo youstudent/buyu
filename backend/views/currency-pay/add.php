@@ -25,7 +25,7 @@
                 ])?>
                 <?php echo $form->field($model,'money')?>
                 <?php echo $form->field($model,'fold')?>
-                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\CurrencyPay::$give)?>
+                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\CurrencyPay::$give,['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

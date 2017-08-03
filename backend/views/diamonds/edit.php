@@ -25,7 +25,7 @@
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'need_diamond')?>
-                <?php echo $form->field($model,'content',['inline'=>true])->checkboxList(\common\models\Diamonds::$give)?>
+                <?php echo $form->field($model,'content',['inline'=>true])->checkboxList(\common\models\Diamonds::$give,['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\models\Diamonds::$give[$k] ?></label>

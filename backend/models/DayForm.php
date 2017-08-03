@@ -22,7 +22,7 @@ class DayForm extends Model
     public $gives;
     public $gold;
     public static $option= [0=>'金币',1=>'钻石',2=>'鱼币'];
-    public $num;
+    public $num=0;
     public $typeId;
     public $id;
     public $enable;
@@ -33,7 +33,10 @@ class DayForm extends Model
     public function rules()
     {
         return [
-            [['type','num','gold','typeId','id','enable'],'safe']
+            [['num'],'required'],
+            [['num'],'integer'],
+            [['num'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'数量必须大于0'],
+            [['type','num','gold','typeId','id','enable'],'safe'],
         ];
     }
     
@@ -102,7 +105,13 @@ class DayForm extends Model
             if (!empty($tools)){
                 $send['tools']=$tools;
             }
-            $content['send']=$send;
+            $sends=['gold'=>0,'diamond'=>0,'fishGold'=>0];
+            if (empty($send)){
+                $content['send']=$sends;
+            }else{
+                $content['send']=$send;
+            }
+            //$content['send']=$send;
             $arr['enable']=$this->enable;
             $arr['id']=$this->id;
             $arr['typeId']=$this->typeId;
@@ -137,6 +146,7 @@ class DayForm extends Model
             $i = 0;
             $tool = [];
             $datas=['gold','diamond','fishGold'];
+            if ($this->type){
             foreach ($this->type as $key => $value) {
                 if (in_array($key,$datas)) {
                     $send[$key] = $value;
@@ -148,14 +158,21 @@ class DayForm extends Model
                     $i++;
                 }
             }
+            }
             if (!empty($tools)){
                 $send['tools']=$tools;
             }
-            $content['send']=$send;
+            $sends=['gold'=>0,'diamond'=>0,'fishGold'=>0];
+            if (empty($send)){
+                $content['send']=$sends;
+            }else{
+                $content['send']=$send;
+            }
             $arr['enable']=1;
             $arr['typeId']=$this->typeId;
             $arr['content']=$content;
             $JS = Json::encode($arr);
+            //var_dump($JS);EXIT;
             /**
              * 请求游戏服务端   修改数据
              */

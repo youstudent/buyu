@@ -12,7 +12,7 @@ $i=1;
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">修改炮台</h4>
+            <h4 class="modal-title" id="myModalLabel">修改VIP管理</h4>
         </div>
         <div class="modal-body">
 
@@ -30,8 +30,10 @@ $i=1;
                 <?php echo $form->field($model,'grade')->textInput(['readonly'=>true])?>
                 <?php echo $form->field($model,'number')?>
                 <?php echo $form->field($model,'burst')?>
+                <?php echo $form->field($model,'alms_num')?>
+                <?php echo $form->field($model,'alms_rate')?>
                 <div id="a1">
-                <?php echo $form->field($model,'give_day',['inline'=>true])->checkboxList(\common\models\VipUpdate::$give)?>
+                <?php echo $form->field($model,'give_day',['inline'=>true])->checkboxList(\common\models\VipUpdate::$give,['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-type-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="type-<?php  echo $k ?>"><?php echo \common\models\VipUpdate::$give[$k] ?></label>
@@ -43,7 +45,7 @@ $i=1;
                 <?php endforeach;?>
                 </div>
                 <div id="a2">
-                <?php echo $form->field($model,'give_upgrade',['inline'=>true])->checkboxList(\common\models\VipUpdate::$give_day)?>
+                <?php echo $form->field($model,'give_upgrade',['inline'=>true])->checkboxList(\common\models\VipUpdate::$give_day,['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($datas as $k=>$v):?>
                     <div class="form-group field-give_upgrade-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="give_upgrade-<?php  echo $k ?>"><?php echo \common\models\VipUpdate::$give_day[$k] ?></label>

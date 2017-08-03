@@ -10,7 +10,7 @@ class ShopController extends \yii\web\Controller
     public function actionIndex()
     {
         
-        $data = Shop::find()->asArray()->all();
+        $data = Shop::find()->orderBy('jewel_number ASC')->asArray()->all();
         
         return $this->render('index',['data'=>$data]);
     }

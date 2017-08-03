@@ -32,7 +32,7 @@
                 <?php echo $form->field($model,'fishings')->dropDownList(\backend\models\ExpertForm::$fishing)?>
                 <?php echo $form->field($model,'num')?>
                 <?php echo $form->field($model,'enable')->dropDownList(\backend\models\ExpertForm::$enables)?>
-                <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\ExpertForm::$give)?>
+                <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\ExpertForm::$give,['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \backend\models\ExpertForm::$give[$k]?></label>

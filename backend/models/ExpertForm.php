@@ -22,7 +22,7 @@ class ExpertForm extends Model
     public static $fishing;
     public $fishings;
     public $gives;
-    public $num;
+    public $num=0;
     public $type;
     public static $boos;
     public $typeId;
@@ -116,7 +116,13 @@ class ExpertForm extends Model
             if (!empty($tools)){
                 $send['tools']=$tools;
             }
-            $content['send']=$send;
+            $sends=['gold'=>0,'diamond'=>0,'fishGold'=>0];
+            if (empty($send)){
+                $content['send']=$sends;
+            }else{
+                $content['send']=$send;
+            }
+            //$content['send']=$send;
             $arr['enable']=$this->enable;
             $arr['id']=$this->id;
             $arr['typeId']=$this->typeId;
@@ -169,7 +175,13 @@ class ExpertForm extends Model
             if (!empty($tools)){
                 $send['tools']=$tools;
             }
-            $content['send']=$send;
+            $sends=['gold'=>0,'diamond'=>0,'fishGold'=>0];
+            if (empty($send)){
+                $content['send']=$sends;
+            }else{
+                $content['send']=$send;
+            }
+            //$content['send']=$send;
             $arr['enable']=1;
             $arr['typeId']=$this->typeId;
             $arr['content']=$content;

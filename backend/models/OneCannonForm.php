@@ -20,16 +20,16 @@ class OneCannonForm extends Model
     public static $give;
     public $type;
     public $id;
-    public $num;
+    public $num=0;
     public $typeId;
     public $gives;
     public $enable;
-    public $lost;
-    public $get;
+    public $lost=0;
+    public $get=0;
     public $type1;
-    public $number;
+    public $number=0;
     public $out_gold;
-    public $time;
+    public $time=0;
     public static $enables=[1=>'开启',0=>'关闭'];
     public static $types=[2=>'宝石',0=>'金币'];
     public static $pay_out=[0=>'充值',1=>'消耗'];
@@ -41,7 +41,6 @@ class OneCannonForm extends Model
         return [
             [['num','enable','lost','get','number','out_gold','time'],'integer'],
             [['give','type','id','typeId','gives','type1'],'safe'],
-            [['lost','num','get','number','time'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'数量必须大于0'],
         ];
     }
     
@@ -134,7 +133,13 @@ class OneCannonForm extends Model
             if (!empty($tools)){
                 $send['tools']=$tools;
             }
-            $content['send']=$send;
+            $sends=['gold'=>0,'diamond'=>0,'fishGold'=>0];
+            if (empty($send)){
+                $content['send']=$sends;
+            }else{
+                $content['send']=$send;
+            }
+           // $content['send']=$send;
             $arr['enable']=$this->enable;
             $arr['id']=$this->id;
             $arr['typeId']=$this->typeId;
@@ -228,7 +233,13 @@ class OneCannonForm extends Model
             if (!empty($tools)){
                 $send['tools']=$tools;
             }
-            $content['send']=$send;
+            $sends=['gold'=>0,'diamond'=>0,'fishGold'=>0];
+            if (empty($send)){
+                $content['send']=$sends;
+            }else{
+                $content['send']=$send;
+            }
+            //$content['send']=$send;
             $arr['enable']=$this->enable;
             $arr['typeId']=$this->typeId;
             $arr['content']=$content;

@@ -26,7 +26,7 @@
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'grade')->textInput(['placeholder'=>'经验等级','readonly'=>true])?>
                 <?php echo $form->field($model,'type')->textInput(['placeholder'=>'经验值'])?>
-                <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\Experience::$give)?>
+                <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\Experience::$give,['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\models\Experience::$give[$k]?></label>

@@ -39,7 +39,7 @@ class DayTask extends Object
             [['id'], 'required'],
             [['id', 'updated_at','status'], 'integer'],
             [['name'], 'string', 'max' => 20],
-            [['package','fish_number'],'safe']
+            [['package','fish_number'],'safe'],
         ];
     }
 

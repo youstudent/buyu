@@ -28,7 +28,7 @@
                 <?php echo $form->field($model,'from_fishing')->dropDownList(\common\models\SignBoard::$fishing,['multiple'=>true])?>
                 <?php echo $form->field($model,'number')?>
                 <?php echo $form->field($model,'probability')?>
-                <?php echo $form->field($model,'give_number',['inline'=>true])->checkboxList(\common\models\SignBoard::$give)?>
+                <?php echo $form->field($model,'give_number',['inline'=>true])->checkboxList(\common\models\SignBoard::$give,['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\models\SignBoard::$give[$k] ?></label>

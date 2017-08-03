@@ -25,7 +25,7 @@
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'give_type',['inline'=>true])->radioList(['1'=>'是','0'=>'否'])?>
-                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\Day::$give)?>
+                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\Day::$give,['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\models\Day::$give[$k]?></label>

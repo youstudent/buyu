@@ -26,7 +26,7 @@
                 <?php /*echo $form->field($model,'name')*/?>
                 <?php echo $form->field($model,'number')?>
                 <?php echo $form->field($model,'multiple')?>
-                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\Battery::$give)?>
+                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\Battery::$give,['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

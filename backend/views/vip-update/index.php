@@ -39,6 +39,8 @@ $this->title = Yii::t('app', 'vip_update') . '-' . Yii::$app->params['appName'];
                                 <th class="text-center">vip等级</th>
                                 <th class="text-center">充值人民币</th>
                                 <th class="text-center">爆率</th>
+                                <th class="text-center">增加救济次数</th>
+                                <th class="text-center">增加救济金领取比例</th>
                                 <th class="text-center">修改人</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
@@ -52,7 +54,9 @@ $this->title = Yii::t('app', 'vip_update') . '-' . Yii::$app->params['appName'];
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['grade']?></td>
                                     <td class="text-center"><?= $value['number']?></td>
-                                    <td class="text-center"><?= $value['burst']?></td>
+                                    <td class="text-center"><?= $value['burst']?>/10000</td>
+                                    <td class="text-center"><?= $value['alms_num']?></td>
+                                    <td class="text-center"><?= $value['alms_rate']?>/1000</td>
                                     <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td  class="text-center" style="width: 200px;">

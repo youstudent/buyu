@@ -176,7 +176,7 @@ use yii\bootstrap\ActiveForm;
                                         <span class="label bg-danger"><?= Yii::t('app', '拒绝') ?></span>
                                     <?php endif; ?>
                                 </td>
-                                <td class="text-center" style="width: 270px;border-right: 0px;">
+                                <td class="text-center" style="width: 400px;border-right: 0px;">
                                     <?php if ($value['status'] == 1): ?>
 
                                         <a href="<?php echo \yii\helpers\Url::to(['agency/pay', 'id' => $value['id']]) ?>"

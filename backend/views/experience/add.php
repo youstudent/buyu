@@ -25,7 +25,7 @@
                 ])?>
             <?php echo $form->field($model,'grade')->textInput(['readonly'=>true])?>
             <?php echo $form->field($model,'type')->textInput(['placeholder'=>'所需经验'])?>
-            <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\Experience::$give)?>
+            <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\Experience::$give,['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

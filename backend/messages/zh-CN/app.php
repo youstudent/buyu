@@ -105,6 +105,8 @@ return [
     'notes'=>'击杀概率和出现概率比例是万分比例',
     'user_unset_modal_title'=>'设置停封',
     'day_task_index'=>'每日捕鱼任务',
+    'diamonds_index'=>'钻石管理',
+    'ranking_index'=>'排行榜',
 ];
 
 /**

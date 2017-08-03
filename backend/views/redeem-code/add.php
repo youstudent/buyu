@@ -31,7 +31,7 @@ use yii\web\View;
                 <?php echo $form->field($model,'name')?>
                 <?php echo $form->field($model,'number')?>
                 <?php echo $form->field($model,'time')->textInput(['id'=>'IDIDID'])?>
-                <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\RedeemCode::$give)?>
+                <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\RedeemCode::$give,['style'=>'margin-left: 113px;'])?>
                
                 <?php echo $form->field($model,'type')->dropDownList(\common\models\RedeemCode::$type) ?>
             <?php

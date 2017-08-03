@@ -20,7 +20,9 @@ $this->title = Yii::t('app', 'money_index') . '-' . Yii::$app->params['appName']
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-3 text-right">
+                        <div class="col-sm-3 text-left">
+                            <a href="<?php echo \yii\helpers\Url::to(['money/get-money']) ?>"
+                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
                         </div>
                     </div>
                     <!--                搜索结束          -->
@@ -32,9 +34,10 @@ $this->title = Yii::t('app', 'money_index') . '-' . Yii::$app->params['appName']
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <th class="text-center">类型</th>
-                                <th class="text-center">数量</th>
-                                <th class="text-center">说明</th>
+                                <th class="text-center">发布留言</th>
+                                <th class="text-center">发布喇叭</th>
+                                <th class="text-center">钻石 : 金币</th>
+                                <th class="text-center">人民 : 钻石</th>
                                 <th class="text-center">修改人</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
@@ -43,21 +46,7 @@ $this->title = Yii::t('app', 'money_index') . '-' . Yii::$app->params['appName']
                             <tbody>
 
                             <?php $i = 1; ?>
-                            <?php foreach ($data as $key => $value): ?>
-                                <tr>
-                                    <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?=\common\models\Money::$get_type[$value['type']]?></td>
-                                    <td class="text-center"><?=$value['type']==2?'1:':'';?><?= $value['number'] ?></td>
-                                    <td class="text-center"><?= $value['detail'] ?></td>
-                                    <td class="text-center"><?= $value['manage_name'] ?></td>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
-                                    <td class="text-center" style="width: 120px;">
-                                        <a href="<?php echo \yii\helpers\Url::to(['money/edit', 'id' => $value['id']]) ?>"
-                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
-                                    </td>
-                                </tr>
-                                <?php $i++ ?>
-                            <?php endforeach; ?>
+                            
                             </tbody>
                         </table>
                         <?php if(empty($data)):?>

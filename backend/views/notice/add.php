@@ -26,7 +26,9 @@
                 <?php echo $form->field($model,'location')->dropDownList([1=>'登录公告',2=>'大厅公告',3=>'滚动公告'])?>
                 <?php echo $form->field($model,'content')->textarea(['placeholder'=>'内容'])?>
                 <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
-                <?php echo $form->field($model,'get_type',['inline'=>true])->checkboxList(\backend\models\Notice::$give)?>
+            <div class="dis" style="display: none">
+                <?php echo $form->field($model,'get_type',['inline'=>true])->checkboxList(\backend\models\Notice::$give,['style'=>'margin-left: 113px;'])?>
+            </div>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -82,7 +84,18 @@
                 },
             });
         });
-
+        
+    $("#notice-location").change(function(){
+     var thisVal = $(this).val();
+     var tempText = $('#notice-location').find('option[value='+ thisVal +']');
+     if(thisVal==2){
+        $(".dis").attr("style","");
+     }else{
+        $(".dis").attr("style","display: none");
+      
+     }
+    });
+        
         //checkbox选中添加对应输入框
         var  checkbox_input =  $('#notice-get_type').find('.checkbox-inline');
         checkbox_input.click(function(){

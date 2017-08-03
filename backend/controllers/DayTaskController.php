@@ -9,6 +9,7 @@ use backend\models\OneCannonForm;
 use Codeception\Util\JsonArray;
 use common\models\DayList;
 use common\models\DayTask;
+use common\models\Test;
 use common\services\Request;
 use yii\helpers\Json;
 use yii\web\Response;
@@ -46,7 +47,7 @@ class DayTaskController extends \yii\web\Controller
     {
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = DayTask::findOne($id);
+        $model = DayTask::findOne(5);
         if(\Yii::$app->request->isPost)
         {
             \Yii::$app->response->format = Response::FORMAT_JSON;
@@ -59,7 +60,7 @@ class DayTaskController extends \yii\web\Controller
             return ['code'=>0,'message'=>$message];
             
         }
-        $JSON = json_decode($model->package,true);
+        $JSON = json_decode($model->content,true);
         $data  =[];
         $re = DayTask::setFishing();
         $i='z';
@@ -81,7 +82,7 @@ class DayTaskController extends \yii\web\Controller
             $type[]=$k;
         }
         
-        $JSONS = json_decode($model->fish_number,true);
+        $JSONS = json_decode($model->content,true);
         $datas  =[];
         $res = DayTask::$fishing;
             /**
@@ -100,8 +101,8 @@ class DayTaskController extends \yii\web\Controller
         $b = trim($a, "]");
         $c = explode(",", $b);
         $model->from_fishing=$c;*/
-        $model->fish_number=$types;
-        $model->package=$type;
+        //$model->fish_number=$types;
+       // $model->package=$type;
         return $this->render('edit',['model'=>$model,'data'=>$data,'datas'=>$datas]);
     }
     
@@ -127,36 +128,19 @@ class DayTaskController extends \yii\web\Controller
             return ['code'=>0,'message'=>$message];
         
         }
-        $data=[];
-        $products = json_decode($model->content,true);
-        $re = DayTask::$give;
-        foreach ($products['send'] as $key=>$value){
-            if (array_key_exists($key,$re)){
-                $data[$key]=$value;
-            }
-            if(is_array($value)){
-                foreach ($value as $K=>$v){
-                    if (array_key_exists($v['toolId'],$re)){
-                        $data[$v['toolId']]=$v['toolNum'];
-                    }
-                }
-            }
         
-        }
-        $type=[];
-        foreach($data as $k=>$v){
-            $type[]=$k;
-        }
+        $products = json_decode($model->content,true);
+        $rows = Test::get($products['send']);
         $modelForm->id=$model->id;
         $modelForm->typeId= $model->type_id;
-        $modelForm->gives=$type;
+        $modelForm->gives=$rows['type'];
         $modelForm->enable=$model->status;
         if ($model->type_id ==1){
-            return $this->render('land',['model'=>$modelForm,'data'=>$data]);
+            return $this->render('land',['model'=>$modelForm,'data'=>$rows['data']]);
         }elseif ($model->type_id ==8){
-            return $this->render('share',['model'=>$modelForm,'data'=>$data]);
+            return $this->render('share',['model'=>$modelForm,'data'=>$rows['data']]);
         }else{
-            return $this->render('prop',['model'=>$modelForm,'data'=>$data]);
+            return $this->render('prop',['model'=>$modelForm,'data'=>$rows['data']]);
         }
         
     }
@@ -374,7 +358,7 @@ class DayTaskController extends \yii\web\Controller
     }
     
     /**
-     *  添加每日消耗的 货币数量,配置,礼包
+     *  添加每日消耗的 货币数量,配置,礼包   每日斗金
      * @return array|string
      */
     public function actionAddDay(){

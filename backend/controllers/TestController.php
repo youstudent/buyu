@@ -34,4 +34,13 @@ class TestController extends ObjectController
         var_dump(self::$data);
     }
     
+    
+    
+    public function actionGet(){
+        //$this->layout=false;
+        $model = new Shop();
+    
+        return $this->render('get',['model'=>$model]);
+    }
+    
 }

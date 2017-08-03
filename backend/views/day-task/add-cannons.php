@@ -32,7 +32,7 @@
             <?php echo $form->field($model,'get')?>
             <?php echo $form->field($model,'lost')?>
             <?php echo $form->field($model,'enable')->dropDownList(\backend\models\OneCannonForm::$enables)?>
-            <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\OneCannonForm::$give)?>
+            <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\OneCannonForm::$give,['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

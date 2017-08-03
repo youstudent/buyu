@@ -24,7 +24,7 @@
                     ],
                 ])?>
                 <?php echo $form->field($model,'need_diamond')?>
-                <?php echo $form->field($model,'content',['inline'=>true])->checkboxList(\common\models\Diamonds::$give)?>
+                <?php echo $form->field($model,'content',['inline'=>true])->checkboxList(\common\models\Diamonds::$give,['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

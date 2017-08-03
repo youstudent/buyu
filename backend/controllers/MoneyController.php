@@ -26,25 +26,39 @@ class MoneyController extends ObjectController
         $model = Money::findOne($id);
         if(\Yii::$app->request->isPost)
         {
-            \Yii::$app->response->format = Response::FORMAT_JSON;
-            $model->manage_id    = \Yii::$app->session->get('manageId');
-            $model->manage_name  = \Yii::$app->session->get('manageName');
-            $model->updated_at=time();
-            if($model->load(\Yii::$app->request->post()) && $model->save())
+            if($model->edit(\Yii::$app->request->post()))
             {
                 return ['code'=>1,'message'=>'修改成功'];
             }
             $message = $model->getFirstErrors();
             $message = reset($message);
             return ['code'=>0,'message'=>$message];
-            
         }
         return $this->render('edit',['model'=>$model]);
     }
     
     
+    /**
+     *   导出 CSV格式数据
+     */
     public function actionTest(){
        theCsv::export('g_money');
+    }
+    
+    
+    /**
+     *   同步货币数据
+     */
+    public function actionGetMoney(){
+        $this->layout = false;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $code = Money::GetMoney();
+        if ($code ==1){
+            return ['code'=>1,'message'=>'同步成功'];
+        }
+        return ['code'=>0,'message'=>'同步失败'];
+        
+        
     }
 
 }

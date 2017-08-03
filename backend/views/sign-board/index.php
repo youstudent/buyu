@@ -23,8 +23,10 @@ $this->title = Yii::t('app', 'sign_board_index') . '-' . Yii::$app->params['appN
                         <div class="col-sm-3 text-left">
                             <a href="<?php echo \yii\helpers\Url::to(['sign-board/get-sign']) ?>"
                                onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
+                        </div>
+                        <div class=" text-right">
                             <a href="<?= \yii\helpers\Url::to(['sign-board/add']) ?>" class="btn btn-primary"
-                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>&nbsp;添加鱼任务</a>
+                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加鱼任务</a>
                         </div>
                     </div>
                     <!--                搜索结束          -->

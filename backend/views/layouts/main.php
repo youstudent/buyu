@@ -24,8 +24,10 @@ $config = [
         ['label' => '族长充值记录', 'url' => ['pay/agency-pay-log']],
         ['label' => '族长扣除记录', 'url' => ['pay/agency-out-log']],
     ]],
-    ['label' => '排行榜管理', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
-       // ['label' => '排行榜列表', 'url' => ['pay/agency-pay-log']],
+    ['label' => '排行榜管理', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['ranking/index'], 'items' => [
+       ['label' => '金币榜', 'url' => ['ranking/index','Ranking'=>['type'=>1,'province'=>'']]],
+       ['label' => '经验榜', 'url' => ['ranking/index','Ranking'=>['type'=>2,'province'=>'']]],
+       ['label' => '会员榜', 'url' => ['ranking/index','Ranking'=>['type'=>3,'province'=>'']]],
     ]],
     ['label' => '监控中心', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
         // ['label' => '排行榜列表', 'url' => ['pay/agency-pay-log']],
@@ -46,20 +48,17 @@ if (Yii::$app->params['distribution']) {
     ]];*/
 }
 $config[] = ['label' => '公告管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
-    ['label' => '公告管理', 'url' => ['notice/index', 'show' => '']]
+    ['label' => '公告管理', 'url' => ['notice/index', 'show' => '2']]
 ]];
 $config[] = ['label' => '充值商城管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
     ['label' => '充值商城货币设置', 'url' => ['currency-pay/index']]
-]];
-$config[] = ['label' => '排行榜', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
-    ['label' => '排行榜列表', 'url' => ['currency-pay/index']]
 ]];
 $config[] = ['label' => '兑换管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
     ['label' => '兑换列表', 'url' => ['redeem-code/index','show'=>'']],
     ['label' => '兑换记录', 'url' => ['redeem-code/record']],
 ]];
 $config[] = ['label' => '钻石等级管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['diamonds/index'], 'items' => [
-    ['label' => '钻石管理列表', 'url' => ['diamonds/index','show'=>'']]
+    ['label' => '钻石管理列表', 'url' => ['diamonds/index']]
 ]];
 $config[] = ['label' => '大厅设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['touch/index'], 'items' => [
     ['label' => '联系客户', 'url' => ['touch/index']],
@@ -86,7 +85,7 @@ $config[] = ['label' => '每日任务管理', 'icon' => 'fa fa-bullhorn icon', '
     ['label' => '持之以恒', 'url' => ['day-task/game-index']],
 ]];
 $config[] = ['label' => '基础设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-info', 'url' => ['manage/index'], 'items' => [
-    ['label' => '聊天内容设置', 'url' => ['chat/index','show'=>'']],
+    ['label' => '聊天内容设置', 'url' => ['chat/index','show'=>'3']],
     ['label' => '商店道具设置', 'url' => ['shop/index']],
     ['label' => '管理员列表', 'url' => ['manage/index', 'id' => 1]],
 ]];
@@ -257,6 +256,8 @@ $config[] = ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg
     function clickTimeSelect(_this,time=true,statr,end) {
         if (time){
             $(_this).daterangepicker({
+                timePicker24Hour: true,
+                showDropdowns: true,
                 timePicker: true,
                 startDate: statr?statr:$('#startTime').val(),
                 endDate: end?end:$('#endTime').val(),
@@ -296,6 +297,8 @@ $config[] = ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg
                
             }
             $(_this).daterangepicker({
+                timePicker24Hour: true,
+                showDropdowns: true,
                 timePicker: true,
                 singleDatePicker: true,
                 startDate:start1?start1:$('#endTime').val(),

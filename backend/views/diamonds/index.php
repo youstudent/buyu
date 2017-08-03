@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2017 Double Software LLC
  * @license http://www.lrdouble.com/license/
  */
-$this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'];
+$this->title = Yii::t('app', 'diamonds_index') . '-' . Yii::$app->params['appName'];
 ?>
 <section id="content">
     <section class="vbox">
@@ -12,8 +12,8 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">公告管理</a></li>
-                <li class="active">公告管理详情</li>
+                <li><a href="#">钻石管理</a></li>
+                <li class="active">钻石管理详情</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">

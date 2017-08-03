@@ -26,28 +26,7 @@ $p = \common\models\DayTask::setFishing();
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'fish_number')->dropDownList(\common\models\DayTask::$fishing)?>
-                <div class="a">
-                <?php foreach ($datas as $k=>$v):?>
-                    <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\models\DayTask::$fishing[$k] ?></label>
-                        <div class="col-lg-9">
-                            <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="DayTask[fish_number][<?php echo $k?>]" value="<?php echo $v?>">
-                            <span class="help-block m-b-none"></span>
-                        </div>
-                    </div>
-                <?php endforeach;?>
-                </div>
-                <?php echo $form->field($model,'package',['inline'=>true])->checkboxList($p)?>
-                <?php foreach ($data as $k=>$v):?>
-                    <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo $p[$k] ?></label>
-                        <div class="col-lg-9">
-                            <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="DayTask[package][<?php echo $k?>]" value="<?php echo $v?>">
-                            <span class="help-block m-b-none"></span>
-                        </div>
-                    </div>
-                <?php endforeach;?>
+                <?php echo $form->field($model,'content')->dropDownList(\common\models\DayTask::$fishing)?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -124,22 +103,22 @@ $p = \common\models\DayTask::setFishing();
             }
         });
         
-        $("#daytask-fish_number").change(function(){
+        $("#daytask-content").change(function(){
          var thisVal = $(this).val();
-         var tempText = $('#daytask-fish_number').find('option[value='+ thisVal +']');
+         var tempText = $('#daytask-content').find('option[value='+ thisVal +']');
          var input_name = 'DayTask[fish_number]['+ thisVal+']';
-         tempText.remove();
+        // tempText.remove();
          var html = '';
          html+= '<div class="form-group field-redeemcode-end_time">';
          html+= '<label class="col-lg-3 control-label" for="redeemcode-end_time">'+ tempText.text() + '</label>';
-         html+= '<div class="col-lg-9">';
-         html+= '<input type="text" id="redeemcode-end_time" class="form-control" name="'+input_name+'>';
-         html+= '<span class="help-block m-b-none"></span></div></div>';
-         $('.a').append(html);
+         html+= '<div class="col-lg-10">';
+         html+= '<input type="text" id="redeemcode-end_time" style="width: 200px" class="form-control" name="'+input_name+' ->';
+         html+= '<span class="glyphicon glyphicon-minus">-</span></div></div>';
+         $('#payModalForm').append(html);
          });
-         $(".a").onclick(function () {
+         /*$("#payModalForm").onclick(function () {
          alert(1);
-         })
+         })*/
 
 
 
@@ -162,5 +141,14 @@ $p = \common\models\DayTask::setFishing();
 //                $('#'+input_id).remove();
 //            }
 //        })
+
+        function src(_this) {
+           alert(111);
+        }
+
+        $(".form-group").click(function(e){
+            $(this).remove(e);
+            //$("p").append(" <b>Hello world!</b>");
+        });
     })
 </script>

@@ -41,8 +41,8 @@ class VipUpdate extends Object
     {
         return [
             [['number','grade'],'required'],
-            [['number','burst'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
-            [['number','manage_id', 'updated_at'], 'integer'],
+            [['number','burst','alms_rate','alms_num'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
+            [['number','manage_id', 'updated_at','alms_rate','alms_num'], 'integer'],
             [['manage_name', 'grade'],'string', 'max' => 20],
             [['give_day','give_upgrade','type'],'safe']
         ];
@@ -64,6 +64,8 @@ class VipUpdate extends Object
             'grade' => 'Vip等级',
             'burst' => '爆率',
             'give_upgrade' =>'升级赠送',
+            'alms_num' =>'增加救济次数',
+            'alms_rate' =>'获得救济金比例',
         ];
     }
     
@@ -116,6 +118,8 @@ class VipUpdate extends Object
             $model->number=$attributes->vipEx;  //人民币
             $model->grade =$attributes->vipLevel; //等级
             $model->burst =$attributes->killrate; //等级
+            $model->alms_num =$attributes->almsNum; //等级
+            $model->alms_rate =$attributes->almsRate; //等级
             $model->updated_at =time(); // 同步时间
             $_model = clone $model;
             $_model->setAttributes($attributes);
@@ -213,7 +217,9 @@ class VipUpdate extends Object
             $pays['id'] = $this->id;  //等级
             $pays['vipLevel'] = $this->grade;  //等级
             $pays['vipEx'] = $this->number;   //人民币
-            $pays['killrate'] = $this->burst;   //暴力
+            $pays['killRate'] = $this->burst;   //暴力
+            $pays['almsNum'] = $this->alms_num; //领取次数
+            $pays['almsRate'] = $this->alms_rate; // 领取比例
     
             /**
              * 解析 升级

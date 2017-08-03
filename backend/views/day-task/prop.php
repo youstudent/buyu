@@ -30,7 +30,7 @@
                     <?php echo $form->field($model,'id')->hiddenInput()?>
                 </div>
                 <?php echo $form->field($model,'enable')->dropDownList(\backend\models\LandForm::$enables)?>
-                <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\LandForm::$give)?>
+                <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\LandForm::$give,['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \backend\models\LandForm::$give[$k]?></label>
