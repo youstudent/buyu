@@ -96,11 +96,17 @@ class UsersController extends ObjectController
      */
     public function actionList()
     {
+        Users::UpdateUsers();
         Users::automatic();
         $model = new Users();
         $data = $model->getList(Yii::$app->request->get());
         return $this->render('list',$data);
     }
+    
+    /**
+     *  跟新数据
+     */
+   
 
     /**
      * 显示用户的充值记录表
@@ -263,5 +269,6 @@ class UsersController extends ObjectController
         $model  = Ratio::find()->asArray()->all();
         return $this->render('ratio',['data'=>$model]);
     }
+    
    
 }

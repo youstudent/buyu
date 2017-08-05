@@ -10,6 +10,7 @@ namespace backend\controllers;
 
 
 use backend\models\Shop;
+use Behat\Gherkin\Loader\YamlFileLoader;
 use common\models\Test;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
@@ -41,6 +42,32 @@ class TestController extends ObjectController
         $model = new Shop();
     
         return $this->render('get',['model'=>$model]);
+    }
+    
+    public function actionT(){
+       
+       $v = Shop::find()->asArray()->all();
+        //$id ='name';
+       // $value = ['0'=>'琪琪',1=>'琪琪1'];
+       $new = serialize($v);
+       \Yii::$app->redis->set('shop',$new);
+       // \Yii::$app->redis->expire('name1',5);
+//        \Yii::$app->redis->set('user3','ccc');
+        //\Yii::$app->redis->set('user4','ddd');
+        //Redis->hmset($key, $value);
+      // $re =  \Yii::$app->redis->hmset('name111',$new);
+        $re1 =  \Yii::$app->redis->get('shop');//此时可以输出aaa
+// ($re1) {
+           var_dump(unserialize($re1));
+      // }else{
+      
+      // }
+       
+
+       // var_dump($re1);
+     
+       // var_dump($re,$re1);
+       // Yii::$app->redis->flushall();//删除redis中的所有数据
     }
     
 }

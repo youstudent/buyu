@@ -94,7 +94,6 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">编号</th>
                                 <th  class="text-center">礼包等级</th>
                                 <th  class="text-center">礼包类型</th>
-                                <th  class="text-center">赠送范围</th>
                                 <th  class="text-center">名称</th>
                                 <th  class="text-center">兑换码</th>
                                 <th  class="text-center">创建时间</th>
@@ -112,7 +111,7 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center"><?=$i?></td>
                                 <td  class="text-center"><?=\common\models\RedeemCode::$type[$value['type']]?></td>
                                 <td  class="text-center"><?=\common\models\RedeemCode::$add_type[$value['add_type']]?></td>
-                                <td  class="text-center"><?=\common\models\RedeemCode::$scope_type[$value['scope_type']]?></td>
+                               
                                 <td  class="text-center"><?=$value['name']?></td>
                                 <td  class="text-center"><?=$value['redeem_code']?></td>
                                 <td  class="text-center"><?=date('Y-m-d H:i:s',$value['created_at'])?></td>

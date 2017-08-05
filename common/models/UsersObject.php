@@ -52,7 +52,7 @@ class UsersObject extends Object
     public function rules()
     {
         return [
-            [['game_id', 'gold','reg_time','status','grade'], 'integer'],
+            [['game_id', 'gold','reg_time','status','grade','time_day','phone'], 'integer'],
             [['nickname'], 'string', 'max' => 32],
             [['jewel','unset_time','gem','vip_grade','time_online'],'safe']
         ];

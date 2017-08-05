@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1px" width="30%">
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+        </tr>
+        <tbody id="result"></tbody>
+    </table>
+</body>
+
+<script type="text/javascript">
+       $(function(){
+
+           window.setInterval(function(){
+
+                $.getJSON('l.php',function(rows){
+                    var html = '';
+                    $(rows).each(function(){
+                        html+='<tr><td>'+this.id+'</td><td>'+this.name+'</td></tr>';
+                    })
+
+
+                    $('#result').html(html);
+               });
+            console.debug(11);
+
+           },2000)
+
+
+
+       });
+</script>
+</html>

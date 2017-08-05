@@ -591,4 +591,30 @@ class Users extends UsersObject
             }
         }
     }
+    
+    
+    /**
+     *    更新用户数据
+     */
+    public static function UpdateUsers(){
+        $url = \Yii::$app->params['Api'].'/gameserver/control/getAllPlayers';
+        $data = \common\services\Request::request_post($url,['time'=>time()]);
+        //请求到数据,循环更新数据
+        foreach($data[0] as $K=>$v)
+        {
+            if ( $model = Users::findOne(['game_id'=>$v->playerid])){
+                $model->nickname=$v->name;
+                $model->grade=$v->level;
+                $model->gold=$v->gold;
+                $model->gem=$v->fishGold;
+                $model->jewel=$v->diamond;
+                $model->phone=$v->phone;
+                $model->vip_grade=$v->vipLevel;
+                $model->time_day=$v->onlineTime;
+                $model->time_online=$v->totalOnlineTime;
+                $model->save(false);
+            }
+        }
+       // return $data['code'];
+    }
 }

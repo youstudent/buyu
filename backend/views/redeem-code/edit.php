@@ -29,7 +29,6 @@
                 <div style="display: none"><?php echo $form->field($model,'start_time')->textInput()->hiddenInput(['id'=>'start'])->label(false)?></div>
                 <div style="display: none"><?php echo $form->field($model,'end_time')->hiddenInput(['id'=>'end'])->label(false)?></div>
                 <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\RedeemCode::$give,['style'=>'margin-left: 113px;'])?>
-                <?php echo $form->field($model,'scope_type')->dropDownList(\common\models\RedeemCode::$scope_type)?>
                 <?php echo $form->field($model,'type')->dropDownList(\common\models\RedeemCode::$type)?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-redeemcode-<?php  echo $k ?>" id=<?php echo $k?>>

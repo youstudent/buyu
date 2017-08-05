@@ -25,8 +25,7 @@
                 ])?>
                 <?php echo $form->field($model,'name')?>
                 <?php echo $form->field($model,'time')->textInput(['id'=>'IDIDID'])?>
-                <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\RedeemCode::$give)?>
-                <?php echo $form->field($model,'scope_type')->dropDownList(\common\models\RedeemCode::$scope_type)?>
+                <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\RedeemCode::$give,['style'=>'margin-left: 113px;'])?>
                 <?php echo $form->field($model,'type')->dropDownList(\common\models\RedeemCode::$type)?>
                <!-- <?php /*echo $form->field($model,'gold')*/?>
                 <?php /*echo $form->field($model,'diamond')*/?>

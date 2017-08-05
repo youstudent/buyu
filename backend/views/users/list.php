@@ -70,6 +70,7 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">编号</th>
                                 <th  class="text-center">用户ID</th>
                                 <th  class="text-center">用户昵称</th>
+                                <th  class="text-center">手机号</th>
                                 <th  class="text-center">经验等级</th>
                                 <th  class="text-center">Vip等级</th>
                                 <?php
@@ -79,6 +80,8 @@ use yii\bootstrap\ActiveForm;
                                 }
                                 ?>
                                 <th  class="text-center">注册时间</th>
+                                <th  class="text-center">今日在线时间</th>
+                                <th  class="text-center">总在线时间长</th>
                                 <th  class="text-center">解封时间</th>
                                 <th  class="text-center">状态</th>
                                 <th  class="text-center">操作</th>
@@ -92,6 +95,7 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center"><?=$i?></td>
                                 <td  class="text-center"><?=$value['game_id']?></td>
                                 <td  class="text-center"><?=$value['nickname']?></td>
+                                <td  class="text-center"><?=$value['phone']?></td>
                                 <td  class="text-center"><?=$value['grade']?></td>
                                 <td  class="text-center"><?=$value['vip_grade']?></td>
                                 <!--                                多货币修改-->
@@ -101,6 +105,8 @@ use yii\bootstrap\ActiveForm;
                                 <!--                                多货币修改-->
                                
                                 <td  class="text-center"><?=date('Y-m-d H:i:s',$value['reg_time'])?></td>
+                                <td  class="text-center"><?=$value['time_day']?></td>
+                                <td  class="text-center"><?=$value['time_online']?></td>
                                 <?php if (empty($value['unset_time'])):?>
                                     <td  class="text-center"><?=$value['unset_time']?></td>
                                 <?php else:?>
@@ -116,7 +122,7 @@ use yii\bootstrap\ActiveForm;
                                         <i class="fa fa-times text-danger text"></i>
                                     </a>
                                 </td>
-                                <td class="text-center" width="500px;">
+                                <td class="text-center" width="450px;">
                                     <?php if ($value['status']==0):?>
                                         <a onclick="return openAgency(this,'是否解锁该账号?')"
                                            href="<?php echo \yii\helpers\Url::to(['users/ban', 'id' => $value['id'],'status'=>$value['status']==0?1:0]) ?>"
