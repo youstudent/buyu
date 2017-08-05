@@ -9,11 +9,20 @@
 namespace common\models;
 
 
-use yii\base\Model;
+use yii\db\ActiveRecord;
 
 
-class Test extends Model
+class Test extends ActiveRecord
 {
+    public static function getDb()
+    {
+        return \Yii::$app->secondDb;  // 使用名为 "secondDb" 的应用组件  重新定义主键
+    }
+    
+    public static function tableName()
+    {
+        return 'player';
+    }
     
     /**
      * @param $data

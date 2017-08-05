@@ -4,8 +4,16 @@
  * @copyright Copyright (c) 2017 Double Software LLC
  * @license http://www.lrdouble.com/license/
  */
+/*$item = \common\models\GoldConfigObject::find()->all();
+                               foreach ($item as $key=>$value){
+                                   echo "<th class=\"text-center\">".$value['name']."</th>";
+                               }*/
+
 $this->title = Yii::t('app','users_list').'-'.Yii::$app->params['appName'];
 use yii\bootstrap\ActiveForm;
+/*<?php foreach ($value['gold'] as $keys=>$values):*/?><!--
+    <td class="text-center"><?/*= $values */?></td>
+--><?php /*endforeach;*/
 ?>
 <section id="content">
     <section class="vbox">
@@ -58,6 +66,8 @@ use yii\bootstrap\ActiveForm;
                                     </span>
                                 </div>
                             </div>
+                            <a href="<?php echo \yii\helpers\Url::to(['users/update-users']) ?>"
+                               onclick="return openAgency(this,'用户数量大确认同步请耐心等待?')" class="btn btn-primary btn-info">同步用户数据</a>
                         </div>
                     <?php ActiveForm::end()?>
                 </div>
@@ -70,15 +80,11 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">编号</th>
                                 <th  class="text-center">用户ID</th>
                                 <th  class="text-center">用户昵称</th>
-                                <th  class="text-center">手机号</th>
                                 <th  class="text-center">经验等级</th>
-                                <th  class="text-center">Vip等级</th>
-                                <?php
-                                $item = \common\models\GoldConfigObject::find()->all();
-                                foreach ($item as $key=>$value){
-                                    echo "<th class=\"text-center\">".$value['name']."</th>";
-                                }
-                                ?>
+                                <th  class="text-center">vip等级</th>
+                                <th  class="text-center">金币</th>
+                                <th  class="text-center">钻石</th>
+                                <th  class="text-center">鱼币</th>
                                 <th  class="text-center">注册时间</th>
                                 <th  class="text-center">今日在线时间</th>
                                 <th  class="text-center">总在线时间长</th>
@@ -95,15 +101,11 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center"><?=$i?></td>
                                 <td  class="text-center"><?=$value['game_id']?></td>
                                 <td  class="text-center"><?=$value['nickname']?></td>
-                                <td  class="text-center"><?=$value['phone']?></td>
                                 <td  class="text-center"><?=$value['grade']?></td>
                                 <td  class="text-center"><?=$value['vip_grade']?></td>
-                                <!--                                多货币修改-->
-                                    <?php foreach ($value['gold'] as $keys=>$values):?>
-                                    <td class="text-center"><?= $values ?></td>
-                                <?php endforeach;?>
-                                <!--                                多货币修改-->
-                               
+                                <td  class="text-center"><?=$value['gold']?></td>
+                                <td  class="text-center"><?=$value['jewel']?></td>
+                                <td  class="text-center"><?=$value['gem']?></td>
                                 <td  class="text-center"><?=date('Y-m-d H:i:s',$value['reg_time'])?></td>
                                 <td  class="text-center"><?=$value['time_day']?></td>
                                 <td  class="text-center"><?=$value['time_online']?></td>

@@ -9,6 +9,14 @@ return [
             'charset' => 'utf8',
             'tablePrefix' =>'g_',
         ],
+        'secondDb' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=39.108.86.157;dbname=fishing',
+            'username' => 'back',
+            'password' => '123456',
+            'charset' => 'utf8',
+            'tablePrefix' =>'',
+        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',

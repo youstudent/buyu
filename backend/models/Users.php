@@ -14,6 +14,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Symfony\Component\DomCrawler\Field\InputFormField;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
+use yii\web\ViewAction;
 
 /**
  * 平台玩家模型类、对外提供
@@ -320,10 +321,10 @@ class Users extends UsersObject
             ]
         );
 
-        $data  = $model->limit($pages->limit)->offset($pages->offset)->all();
-        foreach ($data as $key=>$value){
+        $data  = $model->limit($pages->limit)->offset($pages->offset)->orderBy('game_id ASC')->all();
+        /*foreach ($data as $key=>$value){
             $data[$key]['gold'] = $value->getGold();
-        }
+        }*/
         return ['data'=>$data,'pages'=>$pages,'model'=>$this];
     }
 
@@ -597,24 +598,59 @@ class Users extends UsersObject
      *    更新用户数据
      */
     public static function UpdateUsers(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getAllPlayers';
-        $data = \common\services\Request::request_post($url,['time'=>time()]);
+       // $url = \Yii::$app->params['Api'].'/gameserver/control/getAllPlayers';
+        //$data = \common\services\Request::request_post($url,['time'=>time()]);
+        $re = \common\models\Test::find()->asArray()->all();
+        //var_dump($re);EXIT;
         //请求到数据,循环更新数据
-        foreach($data[0] as $K=>$v)
+        foreach($re as $v)
         {
-            if ( $model = Users::findOne(['game_id'=>$v->playerid])){
-                $model->nickname=$v->name;
-                $model->grade=$v->level;
-                $model->gold=$v->gold;
-                $model->gem=$v->fishGold;
-                $model->jewel=$v->diamond;
-                $model->phone=$v->phone;
-                $model->vip_grade=$v->vipLevel;
-                $model->time_day=$v->onlineTime;
-                $model->time_online=$v->totalOnlineTime;
-                $model->save(false);
+            //var_dump($v['name']);EXIT;
+            if ($model = Users::findOne(['game_id'=>$v['id']])){
+                $model->nickname=$v['name'];
+                $model->grade=$v['level'];
+                $model->gold=$v['gold'];
+                $model->gem=$v['fishGold'];
+                $model->jewel=$v['diamond'];
+                //$model->phone=$v['phone'];
+                $model->vip_grade=$v['viplevel'];
+                $model->reg_time=strtotime($v['createdtime']);
+               // $model->time_day=$v->onlineTime;
+                //$model->time_online=$v->totalOnlineTime;
+               // var_dump($model);EXIT;
+                //var_dump($model);exit;
+               // exit;
+                
+                $model->update(false);
+            }else{
+                $user = new Users();
+                $user->game_id=$v['id'];
+                $user->nickname=$v['name'];
+                $user->grade=$v['level'];
+                $user->gold=$v['gold'];
+                $user->gem=$v['fishGold'];
+                $user->jewel=$v['diamond'];
+                $user->vip_grade=$v['viplevel'];
+                $user->reg_time=strtotime($v['createdtime']);
+               return  $user->save(false);
             }
         }
-       // return $data['code'];
+        return 1;
+    }
+    
+    /**
+     *  获取今日在线时间
+     */
+    public static function GetDayTime($id,$day=''){
+        if ($day){
+            $time = Time::find()->select('sum(num)')->andWhere(['typeid'=>10])->andWhere(['time'=>date('Y-m-d')])->andWhere(['playerid'=>$id])->asArray()->all();
+        }else{
+            $time = Time::find()->select('sum(num)')->andWhere(['typeid'=>10])->andWhere(['playerid'=>$id])->asArray()->all();
+        }
+        var_dump($time);exit;
+        
+        
+        
+        
     }
 }

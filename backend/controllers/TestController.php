@@ -70,4 +70,13 @@ class TestController extends ObjectController
        // Yii::$app->redis->flushall();//删除redis中的所有数据
     }
     
+    
+    /**
+     *  游戏服务器的用户表
+     */
+    public function actionGetUser(){
+      $re =  Test::find()->all();
+      var_dump($re);
+    }
+    
 }

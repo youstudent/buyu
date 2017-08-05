@@ -7,6 +7,7 @@
 namespace backend\controllers;
 
 use backend\models\AgencyDeduct;
+use backend\models\Time;
 use backend\models\Users;
 use common\models\Ratio;
 use common\services\Request;
@@ -96,7 +97,7 @@ class UsersController extends ObjectController
      */
     public function actionList()
     {
-        Users::UpdateUsers();
+        Users::GetDayTime(77);
         Users::automatic();
         $model = new Users();
         $data = $model->getList(Yii::$app->request->get());
@@ -268,6 +269,15 @@ class UsersController extends ObjectController
     public function actionRatio(){
         $model  = Ratio::find()->asArray()->all();
         return $this->render('ratio',['data'=>$model]);
+    }
+    
+    /**
+     *  一键同步数据
+     */
+    public function actionUpdateUsers(){
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $re = Users::UpdateUsers();
+        return ['code'=>$re,'message'=>'同步成功'];
     }
     
    
