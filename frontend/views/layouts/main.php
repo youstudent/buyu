@@ -8,10 +8,15 @@ $config = [
     ['label' => '首页中心', 'icon' => 'fa fa-dashboard icon', 'bg_color' => 'bg-danger', 'url' => ['site/index']],
     ['label' => '购买记录', 'icon' => 'fa fa-users icon', 'bg_color' => 'bg-success', 'url' => ['log/pay']],
     ['label' => '充值记录', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['log/user-pay']],
+    ['label' => '家族管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['family/manage']],
+    ['label' => '申请管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['family/list']],
+    ['label' => '提现列表', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['withdraw/list']],
+    ['label' => '个人信息', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['withdraw/get-person']],
+    ['label' => '家族公告', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['withdraw/get-person']],
    // ['label' => '返利记录', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['log/rebate']],
     //['label' => '扣除记录', 'icon' => 'fa fa-dollar icon', 'bg_color' => 'bg-primary', 'url' => ['log/deduct']],
     //['label' => '我的下级', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['log/agency']],
-    ['label' => '玩家充值', 'icon' => 'fa fa-mail-forward icon', 'bg_color' => 'bg-danger', 'url' => ['pay/pay']],
+   // ['label' => '玩家充值', 'icon' => 'fa fa-mail-forward icon', 'bg_color' => 'bg-danger', 'url' => ['pay/pay']],
     ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg_color' => 'bg-danger', 'url' => ['login/logout']],
 ];
 ?>

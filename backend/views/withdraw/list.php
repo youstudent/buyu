@@ -95,11 +95,11 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center"><?=date('Y-m-d H:i:s',$value['reg_time'])?></td>
                                 <td class="text-center">
                                     <?php if($value['status'] == 1):?>
-                                        <span class="label bg-success">提现完成</span>
+                                        <span class="label bg-success">提现通过</span>
                                     <?php elseif($value['status']==2):?>
                                         <span class="label bg-danger">拒绝</span>
                                     <?php else:?>
-                                        <span class="label bg-info">申请中</span>
+                                        <span class="label bg-info">等待审核</span>
                                      <?php endif;?>
                                     
                                 </td>

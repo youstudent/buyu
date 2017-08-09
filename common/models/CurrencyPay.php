@@ -117,9 +117,15 @@ class CurrencyPay extends Object
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
                         if (in_array($kk,$datas)){
+                            if ($VV<0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('give_prize','数量无效');
+                            }
                             $send[$kk]=$VV;
                         }
                         if (is_numeric($kk)){
+                            if ($VV<0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('give_prize','数量无效');
+                            }
                                 $tool['toolId']=$kk;
                                 $tool['toolNum']=$VV;
                                 $tools[$i]=$tool;
@@ -173,9 +179,15 @@ class CurrencyPay extends Object
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
                         if (in_array($kk,$datas)){
+                            if ($VV<0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('give_prize','数量无效');
+                            }
                             $send[$kk]=$VV;
                         }
                         if (is_numeric($kk)){
+                            if ($VV<0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('give_prize','数量无效');
+                            }
                             $tool['toolId']=$kk;
                             $tool['toolNum']=$VV;
                             $tools[$i]=$tool;

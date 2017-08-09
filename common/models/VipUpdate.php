@@ -233,9 +233,15 @@ class VipUpdate extends Object
                     $day = $data['VipUpdate']['day'];
                     foreach ($day as $key => $value) {
                         if (in_array($key,$datas)) {
+                            if ($value<0 || $value==null || !is_numeric($value)){
+                                return $this->addError('give_upgrade','数量无效');
+                            }
                             $sign[$key] = $value;
                         }
                         if (is_numeric($key)) {
+                            if ($value<0 || $value==null || !is_numeric($value)){
+                                return $this->addError('give_upgrade','数量无效');
+                            }
                             $tool['toolId'] = $key;
                             $tool['toolNum'] = $value;
                             $tools[$i] = $tool;

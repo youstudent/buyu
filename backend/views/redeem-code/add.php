@@ -18,7 +18,7 @@ use yii\web\View;
             <h4 class="modal-title" id="myModalLabel">发布兑换码</h4>
         </div>
         <div class="modal-body">
-            <div class="col-xs-12">
+            <div class="col-xs-11">
             <?php $form = \yii\bootstrap\ActiveForm::begin([
                     'id'=>'payModalForm',
                     'action'=>['redeem-code/add'],

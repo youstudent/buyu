@@ -164,9 +164,9 @@ class Agency extends AgencyObject
     {
         $arr=[
             'recode' => '推荐码',
-            'pay_gold'=>'充值数量',
+            'pay_gold'=>'人民币',
             'pay_money'=>'收款金额',
-            'deduct_gold' =>'扣除数量',
+            'deduct_gold' =>'人民币',
             'deduct_notes'=>'扣除备注',
             'deduct_money'  =>'人民币',
             'pay_gold_config'=>'充值类型',
@@ -374,7 +374,7 @@ class Agency extends AgencyObject
             }else{
                 $data[$key]['pName'] = '平台';
             }
-            $data[$key]['gold']  = $val->getGold();
+            //$data[$key]['gold']  = $val->getGold();
         }
         return ['data'=>$data,'pages'=>$pages,'model'=>$this];
     }

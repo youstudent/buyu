@@ -15,13 +15,13 @@
 
             <div class="col-xs-11">
             <?php $form = \yii\bootstrap\ActiveForm::begin([
-                    'id'=>'payModalForm',
-                    'action'=>['redeem-code/add-one'],
-                    'options'=>['class'=>'form-horizontal'],
-                    'fieldConfig' => [
-                        'template' => "{label}<div class=\"col-lg-9\">{input}<span class=\"help-block m-b-none\"></span></div>",
-                        'labelOptions'  => ['class'=>'col-lg-3 control-label'],
-                    ],
+                'id'=>'payModalForm',
+                'action'=>['redeem-code/add-one'],
+                'options'=>['class'=>'form-horizontal'],
+                'fieldConfig' => [
+                    'template' => "{label}<div class=\"col-lg-9\">{input}<span class=\"help-block m-b-none\"></span></div>",
+                    'labelOptions'  => ['class'=>'col-lg-3 control-label'],
+                ],
                 ])?>
                 <?php echo $form->field($model,'name')?>
                 <?php echo $form->field($model,'time')->textInput(['id'=>'IDIDID'])?>

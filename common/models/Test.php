@@ -16,7 +16,7 @@ class Test extends ActiveRecord
 {
     public static function getDb()
     {
-        return \Yii::$app->secondDb;  // 使用名为 "secondDb" 的应用组件  重新定义主键
+        return \Yii::$app->db;  // 使用名为 "secondDb" 的应用组件  重新定义主键
     }
     
     public static function tableName()
@@ -41,9 +41,16 @@ class Test extends ActiveRecord
         $tool = [];
         foreach ($data as $K=>$v){
                     if (in_array($K,$datas)){
+                        if ($v<0 || $v==null || !is_numeric($v)){
+                            return false;
+                        }
                         $send[$K]=$v;
                     }
                     if (is_numeric($K)){
+                        if ($v<0 || $v==null || !is_numeric($v)){
+                            return false;
+                           // return ['code'=>0,'message'=>'数量无效'];
+                        }
                         $tool['toolId']=$K;
                         $tool['toolNum']=$v;
                         $tools[$i]=$tool;

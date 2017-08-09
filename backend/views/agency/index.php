@@ -119,22 +119,25 @@ use yii\bootstrap\ActiveForm;
                         <thead>
                         <tr>
                             <th class="text-center" style="border-left: 0px;">编号</th>
-                            <?php if (Yii::$app->params['distribution']): ?>
-                                <th class="text-center" style="width: 80px;">代理ID</th>
-                               <!--<th class="text-center">上级代理姓名</th>-->
-                            <?php endif; ?>
                             <th class="text-center">手机号</th>
-                            <th class="text-center">用户名</th>
+                            <th class="text-center">家族名称</th>
+                            <th class="text-center">族长名字</th>
+                            <th class="text-center">金币</th>
+                            <th class="text-center">钻石</th>
+                            <th class="text-center">鱼币</th>
+                            <th class="text-center">组员人数</th>
+                            <th class="text-center">保险箱总金币</th>
+                            <th class="text-center">保险箱总钻石</th>
                             <th class="text-center">注册时间</th>
 
 <!--                            多货币修改代码-->
-                            <?php
-                                $item = \common\models\GoldConfigObject::find()->all();
+                           <!-- --><?php
+/*                                $item = \common\models\GoldConfigObject::find()->all();
                                 foreach ($item as $key=>$value){
                                    echo "<th class=\"text-center\">".$value['name']."</th>";
                                   
                                 }
-                            ?>
+                            */?>
 <!--                            多货币修改代码-->
 
                             <th class="text-center">身份证号</th>
@@ -149,19 +152,26 @@ use yii\bootstrap\ActiveForm;
                         <?php foreach ($data as $key => $value): ?>
                             <tr>
                                 <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                <?php if (Yii::$app->params['distribution']): ?>
-                                    <td class="text-center"><?= $value['pid'] ?></td>
+                               <!-- <?php /*if (Yii::$app->params['distribution']): */?>
+                                    <td class="text-center"><?/*= $value['pid'] */?></td>
                                    
-                                <?php endif; ?>
+                                --><?php /*endif; */?>
                                 <td class="text-center"><?= $value['phone'] ?></td>
                                 <td class="text-center"><?= $value['name'] ?></td>
+                                <td class="text-center"><?= $value['family_name'] ?></td>
+                                <td class="text-center"><?= $value['gold']?></td>
+                                <td class="text-center"><?= $value['diamond']?></td>
+                                <td class="text-center"><?= $value['fishGold']?></td>
+                                <td class="text-center"><?= $value['number_num']?></td>
+                                <td class="text-center"><?= $value['gold_all']?></td>
+                                <td class="text-center"><?= $value['diamond_all']?></td>
                                 <td class="text-center"><?= date("Y-m-d H:i:s", $value['reg_time']) ?></td>
 <!--                                多货币修改-->
-                                <?php foreach ($value['gold'] as $keys=>$values):?>
+                                <?php /*foreach ($value['gold'] as $keys=>$values):*/?><!--
                                    
-                                   <td class="text-center"><?= $values ?></td>;
+                                   <td class="text-center"><?/*= $values */?></td>;
                                    
-                                <?php endforeach;?>
+                                --><?php /*endforeach;*/?>
 <!--                                多货币修改-->
                                 <td class="text-center"><?= $value['identity'] ?></td>
                                 
@@ -199,6 +209,9 @@ use yii\bootstrap\ActiveForm;
                                            data-toggle="modal" data-target="#myModal"
                                            class="btn btn-xs btn-success">&nbsp;编 辑&nbsp;</a>
                                         
+                                        <a href="<?php echo \yii\helpers\Url::to(['agency/edit', 'id' => $value['id']]) ?>"
+                                           data-toggle="modal" data-target="#myModal"
+                                           class="btn btn-xs btn-success">&nbsp;族员&nbsp;</a>
                                     <?php elseif ($value['status'] == 2 || $value['status'] == 4): ?>
 
                                         <a onclick="return openAgency(this,'是否开启账号?')"

@@ -102,9 +102,15 @@ class ExpertForm extends Model
             if ($this->type){
             foreach ($this->type as $key => $value) {
                 if (in_array($key,$datas)) {
+                    if ($value<0 || $value==null || !is_numeric($value)){
+                        return $this->addError('gives','数量无效');
+                    }
                     $send[$key] = $value;
                 }
                 if (is_numeric($key)) {
+                    if ($value<0 || $value==null || !is_numeric($value)){
+                        return $this->addError('gives','数量无效');
+                    }
                     $tool['toolId'] = $key;
                     $tool['toolNum'] = $value;
                     $tools[$i] = $tool;
@@ -161,9 +167,15 @@ class ExpertForm extends Model
             if ($this->type){
                 foreach ($this->type as $key => $value) {
                     if (in_array($key,$datas)) {
+                        if ($value<0 || $value==null || !is_numeric($value)){
+                            return $this->addError('gives','数量无效');
+                        }
                         $send[$key] = $value;
                     }
                     if (is_numeric($key)) {
+                        if ($value<0 || $value==null || !is_numeric($value)){
+                            return $this->addError('gives','数量无效');
+                        }
                         $tool['toolId'] = $key;
                         $tool['toolNum'] = $value;
                         $tools[$i] = $tool;

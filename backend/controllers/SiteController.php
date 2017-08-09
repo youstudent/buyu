@@ -9,6 +9,7 @@ namespace backend\controllers;
 
 use backend\models\Manage;
 use backend\models\Shop;
+use backend\models\Users;
 use Yii;
 use backend\models\AgencyPay;
 use backend\models\UserPay;
@@ -37,6 +38,8 @@ class SiteController extends ObjectController
      */
     public function actionIndex()
     {
+        // Users::automatic();// 查找解封时间超过当前时间的用户进行清理
+        Users::automatic();
         //Shop::GetShop();
         $year       = date('Y');
         $month      = date('m');

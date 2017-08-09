@@ -27,19 +27,12 @@
                 <?php echo $form->field($model,'phone')->textInput(['readonly'=>true])?>
                 <?php echo $form->field($model,'name')->textInput(['readonly'=>true])?>
                 <?php echo $form->field($model,'identity')->textInput(['readonly'=>true])?>
+                <?php echo $form->field($model,'gold')->textInput(['readonly'=>true])?>
+                <?php echo $form->field($model,'diamond')->textInput(['readonly'=>true])?>
 
                 <!--                升级版本的多货币改动-->
-                <?php foreach ($model->goldArr as $key=>$value):?>
-                    <div class="form-group field-agency-name required">
-                        <label class="col-lg-3 control-label" for="agency-name"><?=$key?></label>
-                        <div class="col-lg-9">
-                            <input type="text" id="agency-name" class="form-control" name="" value="<?=$value?>" readonly="" aria-required="true">
-                            <span class="help-block m-b-none"></span>
-                        </div>
-                    </div>
-                    <?php $pay_config_gold[$key] = $key?>
-                <?php endforeach;?>
-                <?php echo $form->field($model,'pay_gold_config')->dropDownList(['金币'=>'金币','钻石'=>'钻石','鱼币'=>'鱼币'])?>
+                
+                <?php echo $form->field($model,'pay_gold_config')->dropDownList([1=>'金币',2=>'钻石'])?>
                 <!--                升级版本的多货币改动-->
 
                 <?php echo $form->field($model,'deduct_gold')->textInput([])?>

@@ -30,10 +30,10 @@ $config = [
        ['label' => '会员榜', 'url' => ['ranking/index','Ranking'=>['type'=>3,'province'=>'']]],
     ]],
     ['label' => '监控中心', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
-        // ['label' => '排行榜列表', 'url' => ['pay/agency-pay-log']],
+        ['label' => '监控列表', 'url' => ['monitoring/index']],
     ]],
     ['label' => '机器人管理', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
-        // ['label' => '排行榜列表', 'url' => ['pay/agency-pay-log']],
+        ['label' => '机器人列表', 'url' => ['robot/index']],
     ]],
     /*['label' => '游戏设置', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['game/index'], 'items' => [
         ['label' => '设置列表', 'url' => ['game/index']],

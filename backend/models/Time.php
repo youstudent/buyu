@@ -21,7 +21,7 @@ class Time extends ActiveRecord
      */
     public static function getDb()
     {
-        return \Yii::$app->secondDb;  // 使用名为 "secondDb" 的应用组件  重新定义主键
+        return \Yii::$app->db;  // 使用名为 "secondDb" 的应用组件  重新定义主键
     }
     
     public static function tableName()

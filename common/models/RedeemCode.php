@@ -100,6 +100,7 @@ class RedeemCode extends Object
     public function rules()
     {
         return [
+            [['name'],'required'],
             [['type', 'created_at','number','status'], 'integer'],
             [['description'], 'string'],
             [['redeem_code', 'name'], 'string','max' => 50],
@@ -247,6 +248,15 @@ class RedeemCode extends Object
                 }
         
             }
+            if (empty($this->name)){
+                $this->addError('name','名字不能为空');
+                return false;
+            }
+            if ($this->number<1 || empty($this->number) || !is_numeric($this->number)){
+            $this->addError('number','数量无效');
+            return false;
+            }
+           
             if (empty($vv)){
                 $this->addError('give_type','请选择类型');
                 return false;
@@ -261,103 +271,7 @@ class RedeemCode extends Object
                     return false;
                 }
             }
-            /*if ($this->give_type){
-                if (in_array('gold',$this->give_type)){
-                    if ($this->gold==null || $this->gold==0 ){
-                        $this->addError('gold','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('diamond',$this->give_type)){
-                    if ($this->diamond==null || $this->diamond==0){
-                        $this->addError('diamond','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('fishGold',$this->give_type)){
-                    if ($this->fishGold==null || $this->fishGold==0){
-                        $this->addError('fishGold','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('1',$this->give_type)){
-                    if ($this->one==null || $this->one==0){
-                        $this->addError('one','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('2',$this->give_type)){
-                    if ($this->tow==null || $this->tow==0){
-                        $this->addError('tow','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('3',$this->give_type)){
-                    if ($this->three==null || $this->three==0){
-                        $this->addError('three','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('4',$this->give_type)){
-                    if ($this->four==null || $this->four==0){
-                        $this->addError('four','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('5',$this->give_type)){
-                    if ($this->five==null || $this->five==0){
-                        $this->addError('five','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('6',$this->give_type)){
-                    if ($this->six==null || $this->six==0){
-                        $this->addError('six','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-            }else{
-                $this->addError('give_type','请选择类型');
-                return false;
-            }
-                if ($this->one || $this->tow || $this->three || $this->four || $this->five ||$this->six || $this->gold || $this->fishGold ||$this->diamond){
-                    if (!$this->give_type){
-                        $this->addError('one','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-           
-                $data = [];
-                foreach ($this->give_type as $key=>$value){
-                    if ($value==1){
-                        $data[$value]=$this->one;
-                    }
-                    if ($value==2){
-                        $data[$value]=$this->tow;
-                    }
-                    if ($value==3){
-                        $data[$value]=$this->three;
-                    }
-                    if ($value==4){
-                        $data[$value]=$this->four;
-                    }
-                    if ($value==5){
-                        $data[$value]=$this->five;
-                    }
-                    if ($value==6){
-                        $data[$value]=$this->six;
-                    }
-                    if ($value=='gold'){
-                        $data[$value]=$this->gold;
-                    }
-                    if ($value=='fishGold'){
-                        $data[$value]=$this->fishGold;
-                    }
-                    if ($value=='diamond'){
-                        $data[$value]=$this->diamond;
-                    }
-        
-                }*/
+            
                 //截取时间
                 $start ='';
                 $end = '';
@@ -382,7 +296,7 @@ class RedeemCode extends Object
                 }
             
             }
-            return true;
+            return false;
         
     }
     
@@ -424,106 +338,6 @@ class RedeemCode extends Object
                     return false;
                 }
             }
-            
-            //var_dump($data);exit;
-            /*if ($this->give_type){
-                if (in_array('gold',$this->give_type)){
-                    if ($this->gold==null || $this->gold==0 ){
-                        $this->addError('gold','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('diamond',$this->give_type)){
-                    if ($this->diamond==null || $this->diamond==0){
-                        $this->addError('diamond','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('fishGold',$this->give_type)){
-                    if ($this->fishGold==null || $this->fishGold==0){
-                        $this->addError('fishGold','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('1',$this->give_type)){
-                    if ($this->one==null || $this->one==0){
-                        $this->addError('one','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('2',$this->give_type)){
-                    if ($this->tow==null || $this->tow==0){
-                        $this->addError('tow','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('3',$this->give_type)){
-                    if ($this->three==null || $this->three==0){
-                        $this->addError('three','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('4',$this->give_type)){
-                    if ($this->four==null || $this->four==0){
-                        $this->addError('four','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('5',$this->give_type)){
-                    if ($this->five==null || $this->five==0){
-                        $this->addError('five','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-                if (in_array('6',$this->give_type)){
-                    if ($this->six==null || $this->six==0){
-                        $this->addError('six','请选择对应类型的数量');
-                        return false;
-                    }
-                }
-            }else{
-                $this->addError('give_type','请选择类型');
-                return false;
-            }
-            
-            if ($this->one || $this->tow || $this->three || $this->four || $this->five ||$this->six || $this->gold || $this->fishGold ||$this->diamond){
-                if (!$this->give_type){
-                    $this->addError('one','请选择对应类型的数量');
-                    return false;
-                }
-            }
-            
-            $data = [];
-            foreach ($this->give_type as $key=>$value){
-                if ($value==1){
-                    $data[$value]=$this->one;
-                }
-                if ($value==2){
-                    $data[$value]=$this->tow;
-                }
-                if ($value==3){
-                    $data[$value]=$this->three;
-                }
-                if ($value==4){
-                    $data[$value]=$this->four;
-                }
-                if ($value==5){
-                    $data[$value]=$this->five;
-                }
-                if ($value==6){
-                    $data[$value]=$this->six;
-                }
-                if ($value=='gold'){
-                    $data[$value]=$this->gold;
-                }
-                if ($value=='fishGold'){
-                    $data[$value]=$this->fishGold;
-                }
-                if ($value=='diamond'){
-                    $data[$value]=$this->diamond;
-                }
-                
-            }*/
             //截取时间
             $start ='';
             $end = '';

@@ -110,9 +110,15 @@ class Diamonds extends \yii\db\ActiveRecord
             if ($this->contents){
                 foreach ($this->contents as $key => $value) {
                     if (in_array($key,$datas)) {
+                        if ($value<0 || $value==null || !is_numeric($value)){
+                            return $this->addError('content','数量无效');
+                        }
                         $send[$key] = $value;
                     }
                     if (is_numeric($key)) {
+                        if ($value<0 || $value==null || !is_numeric($value)){
+                            return $this->addError('content','数量无效');
+                        }
                         $tool['toolId'] = $key;
                         $tool['toolNum'] = $value;
                         $tools[$i] = $tool;
@@ -170,9 +176,15 @@ class Diamonds extends \yii\db\ActiveRecord
             if ($this->contents){
                 foreach ($this->contents as $key => $value) {
                     if (in_array($key,$datas)) {
+                        if ($value<0 || $value==null || !is_numeric($value)){
+                            return $this->addError('content','数量无效');
+                        }
                         $send[$key] = $value;
                     }
                     if (is_numeric($key)) {
+                        if ($value<0 || $value==null || !is_numeric($value)){
+                            return $this->addError('content','数量无效');
+                        }
                         $tool['toolId'] = $key;
                         $tool['toolNum'] = $value;
                         $tools[$i] = $tool;

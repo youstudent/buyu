@@ -27,7 +27,10 @@
                 <?php echo $form->field($model,'location')->dropDownList([1=>'登录公告',2=>'大厅公告',3=>'滚动公告'])?>
                 <?php echo $form->field($model,'content')->textarea()?>
                 <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
+                <div class="dis" style="display: block">
                 <?php echo $form->field($model,'get_type',['inline'=>true])->checkboxList(\backend\models\Notice::$give,['style'=>'margin-left: 113px;'])?>
+                </div>
+                <div class="for">
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \backend\models\Notice::$give[$k] ?></label>
@@ -37,6 +40,7 @@
                         </div>
                     </div>
                 <?php endforeach;?>
+                </div>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -61,7 +65,9 @@
             var tempText = $('#notice-location').find('option[value='+ thisVal +']');
             if(thisVal==2){
                 $(".dis").attr("style","");
+                $(".for").attr("style","");
             }else{
+                $(".for").attr("style","display: none");
                 $(".dis").attr("style","display: none");
 
             }

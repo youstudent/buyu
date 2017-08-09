@@ -97,8 +97,8 @@ class UsersController extends ObjectController
      */
     public function actionList()
     {
-        Users::GetDayTime(77);
-        Users::automatic();
+       // Users::GetDayTime(77);
+        Users::automatic();// 查找解封时间超过当前时间的用户进行清理
         $model = new Users();
         $data = $model->getList(Yii::$app->request->get());
         return $this->render('list',$data);

@@ -2,12 +2,18 @@
 
 namespace backend\controllers;
 
+use backend\models\Users;
+use common\models\OnLine;
+use spec\Prophecy\Exception\Prophecy\ObjectProphecyExceptionSpec;
+
 class MonitoringController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $this->layout=false;
-        return $this->render('index');
+        //$model = new Users();
+        //$data = $model->getUsers(\Yii::$app->request->get());
+        $model = OnLine::find()->all();
+        return $this->render('index',['data'=>$model]);
     }
     
     
@@ -38,5 +44,20 @@ class MonitoringController extends \yii\web\Controller
         echo json_encode($students);
         
     }
+    
+    
+    /**
+     *  机器人指派
+     */
+     public function actionRobot($room_id,$game_id){
+        $data = OnLine::find()->where(['room_id'=>$room_id])->all();
+        $datas=[];
+        foreach ($data as $k=>$v){
+            $datas[$v->users->game_id]=$v->users->nickname;
+        }
+        return $this->render('robot');
+        //var_dump($datas);EXIT;
+     
+     }
 
 }

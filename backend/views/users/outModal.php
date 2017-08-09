@@ -24,16 +24,19 @@
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'game_id')->textInput(['readonly'=>true])?>
                 <?php echo $form->field($model,'nickname')->textInput(['readonly'=>true])?>
+                <?php echo $form->field($model,'gold')->textInput(['readonly'=>true])?>
+                <?php echo $form->field($model,'jewel')->textInput(['readonly'=>true])?>
+                <?php echo $form->field($model,'gem')->textInput(['readonly'=>true])?>
 
 <!--                升级版本的多货币改动-->
-                <?php foreach ($model->goldArr as $key=>$value):?>
-                    <?php $pay_config_gold[$key] = $key?>
+               <!-- <?php /*foreach ($model->goldArr as $key=>$value):*/?>
+                    <?php /*$pay_config_gold[$key] = $key*/?>
                     <div class="form-group field-users-gold">
-                        <label class="control-label" for="users-gold"><?=$key?></label>
-                        <input type="text" id="users-gold" class="form-control" name="" value="<?=$value?>" readonly="">
+                        <label class="control-label" for="users-gold"><?/*=$key*/?></label>
+                        <input type="text" id="users-gold" class="form-control" name="" value="<?/*=$value*/?>" readonly="">
                     </div>
-                <?php endforeach;?>
-                <?php echo $form->field($model,'pay_gold_config')->dropDownList($pay_config_gold)?>
+                --><?php /*endforeach;*/?>
+                <?php echo $form->field($model,'pay_gold_config')->dropDownList(['金币'=>'金币','钻石'=>'钻石','鱼币'=>'鱼币'])?>
 <!--                升级版本的多货币改动-->
                 <?php echo $form->field($model,'pay_money')->textInput([])?>
             <?php \yii\bootstrap\ActiveForm::end()?>

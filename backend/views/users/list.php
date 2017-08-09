@@ -86,8 +86,8 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">钻石</th>
                                 <th  class="text-center">鱼币</th>
                                 <th  class="text-center">注册时间</th>
-                                <th  class="text-center">今日在线时间</th>
-                                <th  class="text-center">总在线时间长</th>
+                                <th  class="text-center">今日在线分钟</th>
+                                <th  class="text-center">总在线小时</th>
                                 <th  class="text-center">解封时间</th>
                                 <th  class="text-center">状态</th>
                                 <th  class="text-center">操作</th>
@@ -107,8 +107,8 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center"><?=$value['jewel']?></td>
                                 <td  class="text-center"><?=$value['gem']?></td>
                                 <td  class="text-center"><?=date('Y-m-d H:i:s',$value['reg_time'])?></td>
-                                <td  class="text-center"><?=$value['time_day']?></td>
-                                <td  class="text-center"><?=$value['time_online']?></td>
+                                <td  class="text-center"><?=\backend\models\Users::GetDayTime($value['game_id'],'sum')?></td>
+                                <td  class="text-center"><?=\backend\models\Users::GetDayTime($value['game_id'])?></td>
                                 <?php if (empty($value['unset_time'])):?>
                                     <td  class="text-center"><?=$value['unset_time']?></td>
                                 <?php else:?>

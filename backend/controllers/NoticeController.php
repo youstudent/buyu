@@ -112,7 +112,7 @@ class NoticeController extends ObjectController
         if ($model->location == 2 ){
             return $this->render('edit2',['model'=>$model,'data'=>$data]);
         }
-        return $this->render('edit',['model'=>$model,'data'=>$data]);
+            return $this->render('edit',['model'=>$model,'data'=>$data]);
     }
 
     /**

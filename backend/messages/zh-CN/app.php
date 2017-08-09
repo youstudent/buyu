@@ -64,9 +64,9 @@ return [
     'agency_select_search_ok' => '正常',
     'agency_select_search_colse' => '封停',
     'agency_select_search_audit' => '待审核',
-    'agency_add_but' => '添加新的代理商',
-    'agency_add_ret' => '添加新的代理商成功',
-    'agency_add_new_title' => '添加代理商',
+    'agency_add_but' => '添加族长',
+    'agency_add_ret' => '添加成功',
+    'agency_add_new_title' => '添加族长',
     'but_submit_add' => '确认添加',
     'recode_no_exist' => '推荐人不存在',
     'phone_no_exist' => '手机号已经存在',
@@ -107,6 +107,7 @@ return [
     'day_task_index'=>'每日捕鱼任务',
     'diamonds_index'=>'钻石管理',
     'ranking_index'=>'排行榜',
+    'robot_index'=>'机器人管理',
 ];
 
 /**

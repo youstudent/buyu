@@ -55,7 +55,7 @@ class AgencyObject extends Object
     public function rules()
     {
         return [
-            [['pid', 'reg_time',  'gold_all', 'status', 'code'], 'integer'],
+            [['pid', 'reg_time','status',], 'integer'],
             [['phone'], 'string', 'max' => 12],
             [['password'], 'string', 'max' => 64],
             [['name', 'identity'], 'string', 'max' => 32],
@@ -78,7 +78,8 @@ class AgencyObject extends Object
             'gold' => '金币余额',
             'identity' => '身份证',
             'status' => '状态',
-            'code' => '推荐码',
+            'fishGold' => '鱼币余额',
+            'diamond' => '钻石余额',
         ];
     }
 

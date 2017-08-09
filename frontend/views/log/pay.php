@@ -58,7 +58,7 @@ use yii\bootstrap\ActiveForm;
                         <tr>
                             <th  class="text-center" style="border-left: 0px;">编号</th>
                             <th  class="text-center">用户</th>
-                            <th  class="text-center">数量</th>
+                            <th  class="text-center">人民币</th>
                             <th  class="text-center">类型</th>
                             <th  class="text-center">时间</th>
                            <!-- <th  class="text-center">收款人民币</th>-->

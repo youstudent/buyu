@@ -7,6 +7,7 @@
 namespace backend\models;
 
 use common\models\GoldConfigObject;
+use common\models\OnLine;
 use common\models\UsersGoldObject;
 use common\models\UsersObject;
 use common\services\Request;
@@ -82,7 +83,7 @@ class Users extends UsersObject
     {
         $arr = [
                 'pay_gold_num'    =>'数量',
-                'pay_money'       =>'充值人民币',
+                'pay_money'       =>'人民币',
                 'pay_gold_config' =>'充值类型',
                 'detail'=>'详情',
                 'type'=>'类型'
@@ -108,16 +109,6 @@ class Users extends UsersObject
             $model = self::findOne($data['id']);
             if($model)
             {
-                /*if ($this->pay_gold_num ==0){
-                    return $this->addError('pay_gold_num',"数量不能为0");
-                }
-                
-                if ($this->pay_gold_num < 0){
-                    $gold = UsersGoldObject::find()->Where(['users_id'=>$data['id']])->andWhere(['gold_config'=>$this->pay_gold_config])->one();
-                    if ($gold->gold <= abs($this->pay_gold_num)){
-                        return $this->addError('pay_gold_num',"玩家.$this->pay_gold_config.不足！");
-                    }
-                }*/
                 /**
                  * 请求游戏服务器、并判断返回值进行逻辑处理
                  */
@@ -129,7 +120,7 @@ class Users extends UsersObject
                 }else{
                     $config=3;
                 }
-                $data = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/deposit',['game_id'=>$model->game_id,'pay_gold_config'=>$config,'pay_money'=>$this->pay_money]);
+               // $data = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/deposit',['game_id'=>$model->game_id,'pay_gold_config'=>$config,'pay_money'=>$this->pay_money]);
                 /*if($this->pay_gold_config == '金币'){
                     $url = \Yii::$app->params['ApiUserPay']."?mod=gm&act=chargeCard&uid=".$model->game_id."&card=".$this->pay_gold_num;
                 }elseif($this->pay_gold_config == '钻石'){
@@ -147,15 +138,38 @@ class Users extends UsersObject
                      */
                     $transaction = \Yii::$app->db->beginTransaction();
                     try {
+                        $test = \common\models\Test::findOne(['id'=>$model->game_id]);
+                            $model->gold=$test->gold;
+                            $model->gem=$test->fishGold;
+                            $model->jewel=$test->diamond;
+                            //$model->phone=$v['phone'];
+                           // $model->vip_grade=$v['viplevel'];
+                            //->reg_time=strtotime($v['createdtime']);
+                            // $model->time_day=$v->onlineTime;
+                            //$model->time_online=$v->totalOnlineTime;
+                            // var_dump($model);EXIT;
+                            //var_dump($model);exit;
+                            // exit;
+        
+                           // $model->update(false);
 
 //                        $goldConfig = $model->getGold();
 //                        foreach ($goldConfig as $key=>$val){
 //
 //                        }
-                        $this->pay_gold_num=$this->pay_money*50;
-                        $data = $model->payGold($this->pay_gold_config,$this->pay_gold_num);
+                        //人民币
+                       // $this->pay_gold_num=$this->pay_money*50;
+                        //$data = $model->payGold($this->pay_gold_config,$this->pay_gold_num);
+                       /* if ($this->pay_gold_config== '金币'){
+                          $model->gold=($model->gold+$this->pay_gold_num);
+                        }
+                        if ($this->pay_gold_num=='钻石'){
+                          $model->jewel=($model->jewel+$this->pay_gold_num);
+                        }else{
+                          $model->gem=($model->gem+$this->pay_gold_num);  //鱼币
+                        }*/
                         
-                        if (!$data)
+                        if (!$model->save(false))
                             throw new \Exception('save error 101023'); /* 保存失败抛出异常 */
 
                         /**
@@ -232,7 +246,7 @@ class Users extends UsersObject
                 }else{
                     $config=3;
                 }
-                $data = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/undeposit',['game_id'=>$model->game_id,'pay_gold_config'=>$config,'pay_money'=>$this->pay_money]);
+                //$data = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/undeposit',['game_id'=>$model->game_id,'pay_gold_config'=>$config,'pay_money'=>$this->pay_money]);
                 //$data = Request::request_post(\Yii::$app->params['ApiUserPay'],['game_id'=>$model->game_id,'pay_gold_config'=>$config,'pay_money'=>$this->pay_money]);
                 /**
                  * 请求游戏服务器、并判断返回值进行逻辑处理
@@ -255,18 +269,34 @@ class Users extends UsersObject
                      */
                     $transaction = \Yii::$app->db->beginTransaction();
                     try {
+                        $test = \common\models\Test::findOne(['id'=>$model->game_id]);
+                        $model->gold=$test->gold;
+                        $model->gem=$test->fishGold;
+                        $model->jewel=$test->diamond;
+                       // $this->pay_gold_num=$this->pay_money*50;
+                        //$data = $model->payGold($this->pay_gold_config,$this->pay_gold_num);
+                        /*if ($this->pay_gold_config== '金币'){
+                            $model->gold=($model->gold-$this->pay_gold_num);
+                        }
+                        if ($this->pay_gold_num=='钻石'){
+                            $model->jewel=($model->jewel-$this->pay_gold_num);
+                        }else{
+                            $model->gem=($model->gem-$this->pay_gold_num);  //鱼币
+                        }*/
+                        if (!$model->save(false))
+                            throw new \Exception('save error 101023'); /* 保存失败抛出异常 */
 
 //                        $goldConfig = $model->getGold();
 //                        foreach ($goldConfig as $key=>$val){
 //
 //                        }
-                        $this->pay_gold_num=$this->pay_money*50;
-                        $data = $model->payOut($this->pay_gold_config,$this->pay_gold_num);
+                       // $this->pay_gold_num=$this->pay_money*50;
+                        //$data = $model->payOut($this->pay_gold_config,$this->pay_gold_num);
                         
-                        if (!$data)
+                        //if (!$data)
                            // $this->addError('pay_gold_num',"玩家.$this->pay_gold_config.不足");
                            // return false;
-                           throw new \Exception('save error 101023'); /* 保存失败抛出异常 */
+                           //throw new \Exception('save error 101023'); /* 保存失败抛出异常 */
                         
                         /**
                          * 保存用户充值记录
@@ -622,7 +652,7 @@ class Users extends UsersObject
                // exit;
                 
                 $model->update(false);
-            }else{
+            }/*else{
                 $user = new Users();
                 $user->game_id=$v['id'];
                 $user->nickname=$v['name'];
@@ -633,7 +663,7 @@ class Users extends UsersObject
                 $user->vip_grade=$v['viplevel'];
                 $user->reg_time=strtotime($v['createdtime']);
                return  $user->save(false);
-            }
+            }*/
         }
         return 1;
     }
@@ -644,13 +674,13 @@ class Users extends UsersObject
     public static function GetDayTime($id,$day=''){
         if ($day){
             $time = Time::find()->select('sum(num)')->andWhere(['typeid'=>10])->andWhere(['time'=>date('Y-m-d')])->andWhere(['playerid'=>$id])->asArray()->all();
+            $times =   ceil($time[0]['sum(num)']/1000/60);
         }else{
             $time = Time::find()->select('sum(num)')->andWhere(['typeid'=>10])->andWhere(['playerid'=>$id])->asArray()->all();
+            $times =   ceil($time[0]['sum(num)']/1000/60/24);
         }
-        var_dump($time);exit;
-        
-        
-        
+        return $times;
         
     }
+    
 }
