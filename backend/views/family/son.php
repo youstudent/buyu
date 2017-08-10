@@ -13,8 +13,8 @@ use yii\bootstrap\ActiveForm;
 <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="<?=\yii\helpers\Url::to(['site/index'])?>"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">提现管理</a></li>
-                <li class="active">提现列表</li>
+                <li><a href="#">族员列表管理</a></li>
+                <li class="active">族员列表</li>
             </ul>
 <!--            面包屑结束            -->
             <section class="panel panel-default">
@@ -43,20 +43,17 @@ use yii\bootstrap\ActiveForm;
                             <?= $form->field($model,'starttime')->hiddenInput(['id'=>'startTime'])?>
                             <?= $form->field($model,'endtime')->hiddenInput(['id'=>'endTime'])?>
 
-                            <div class="form-group">
-                                <?=$form->field($model,'select')
-                                        ->dropDownList(["1"=>Yii::t('app','user_select_search_all'),
-                                                        "nickname"=>'族长名',
-                                                        "phone"=>Yii::t('app','agency_select_search_phone')])?>
-                            </div>
+                           
 
                             <div class="form-group">
                                 <div class="input-group">
-                                    <?php echo $form->field($model,'keyword')->textInput(['class'=>'form-control','placeholder'=>Yii::t('app','search_input')])?>
                                     <span class="input-group-btn">
-                                         <button class="btn btn-default" type="submit"><i class="fa fa-search"></i>&nbsp;<?=Yii::t('app','search')?></button>
-                                    </span>
+                                         <button class="btn btn-default" type="submit"><i class="fa fa-search"></i>&nbsp;<?=Yii::t('app','搜索')?></button>
+                                    </span>&nbsp;
                                 </div>
+                           
+                                
+
                             </div>
                         </div>
                     <?php ActiveForm::end()?>
@@ -68,16 +65,16 @@ use yii\bootstrap\ActiveForm;
                         <thead>
                             <tr style="border-top: 1px solid #ebebeb;border-bottom: 1px solid #ebebeb">
                                 <th  class="text-center">编号</th>
-                                <th  class="text-center">族长昵称</th>
-                                <th  class="text-center">数量</th>
-                                <th  class="text-center">类型</th>
-                                <th  class="text-center">手机号码</th>
-                                <th  class="text-center">银行卡</th>
-                                <th  class="text-center">银行卡户名</th>
-                                <th  class="text-center">银行卡开户行</th>
+                                <th  class="text-center">玩家昵称</th>
+                                <th  class="text-center">金币</th>
+                                <th  class="text-center">钻石</th>
+                                <th  class="text-center">鱼币</th>
+                                <th  class="text-center">保险箱金币</th>
+                                <th  class="text-center">保险箱钻石</th>
+                                <th  class="text-center">保险箱鱼币</th>
                                 <th  class="text-center">申请时间</th>
-                                <th  class="text-center">状态</th>
-                                <th  class="text-center">操作</th>
+                                <th  class="text-center">通过时间</th>
+                               
                             </tr>
                         </thead>
                         <tbody>
@@ -85,36 +82,17 @@ use yii\bootstrap\ActiveForm;
                         <?php foreach ($data as $key => $value):?>
                             <tr>
                                 <td  class="text-center"><?=$i?></td>
-                                <td  class="text-center"><?=$value['nickname']?></td>
-                                <td  class="text-center"><?=$value['gold']?></td>
-                                <td  class="text-center"><?=$value['type']==1?'金币':'钻石'?></td>
-                                <td  class="text-center"><?=$value['phone']?></td>
-                                <td  class="text-center"><?=$value['bank_card']?></td>
-                                <td  class="text-center"><?=$value['bank_name']?></td>
-                                <td  class="text-center"><?=$value['bank_opening']?></td>
-                                <td  class="text-center"><?=date('Y-m-d H:i:s',$value['reg_time'])?></td>
-                                <td class="text-center">
-                                    <?php if($value['status'] == 1):?>
-                                        <span class="label bg-success">提现通过</span>
-                                    <?php elseif($value['status']==2):?>
-                                        <span class="label bg-danger">拒绝</span>
-                                    <?php else:?>
-                                        <span class="label bg-info">等待审核</span>
-                                     <?php endif;?>
-                                    
-                                </td>
-                                <td class="text-center" width="200px;">
-                                    <?php if ($value['status']==0):?>
-                                        <a onclick="return openAgency(this,'是否通过该族长提现?')"
-                                           href="<?php echo \yii\helpers\Url::to(['withdraw/pass', 'id' => $value['id'],'status'=>1]) ?>"
-                                           class="btn btn-xs btn-success">通过</a>
-                                        <a onclick="return openAgency(this,'是否拒绝该族长提现?')"
-                                           href="<?php echo \yii\helpers\Url::to(['withdraw/pass', 'id' => $value['id'],'status'=>2]) ?>"
-                                           class="btn btn-xs btn-danger">拒绝</a>
-                                    <?php else:?>
-                                        <span class="label bg-success">已处理</span>
-                                    <?php endif;?>
-                                </td>
+                                <td  class="text-center"><?=$value->son->name?></td>
+                                <td  class="text-center"><?=$value->son->gold?></td>
+                                <td  class="text-center"><?=$value->son->diamond?></td>
+                                <td  class="text-center"><?=$value->son->fishGold?></td>
+                                <td  class="text-center"><?=$value->gold?></td>
+                                <td  class="text-center"><?=$value->diamond?></td>
+                                <td  class="text-center"><?=$value->fishgold?></td>
+                                <td  class="text-center"><?=date('Y-m-d H:i:s',$value['applytime'])?></td>
+                                <td  class="text-center"><?=date('Y-m-d H:i:s',$value['agreetime'])?></td>
+                                
+                                
                             </tr>
                         <?php $i++?>
                         <?php endforeach;?>
@@ -123,7 +101,7 @@ use yii\bootstrap\ActiveForm;
                     <?php if(empty($data)):?>
                         <div class="text-center m-t-lg clearfix wrapper-lg animated fadeInRightBig" id="galleryLoading">
                             <h1><i class="fa fa-warning" style="color: red;font-size: 40px"></i></h1>
-                            <h4 class="text-muted">对不起、未能找到"<?=$model->keyword?>"相关的任何数据</h4>
+                            <h4 class="text-muted">对不起、未能找到""相关的任何数据</h4>
                             <p class="m-t-lg"></p>
                         </div>
                     <?php endif;?>

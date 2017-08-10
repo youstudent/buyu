@@ -124,7 +124,7 @@ use yii\bootstrap\ActiveForm;
                                         <i class="fa fa-times text-danger text"></i>
                                     </a>
                                 </td>
-                                <td class="text-center" width="450px;">
+                                <td class="text-center" width="300px;">
                                     <?php if ($value['status']==0):?>
                                         <a onclick="return openAgency(this,'是否解锁该账号?')"
                                            href="<?php echo \yii\helpers\Url::to(['users/ban', 'id' => $value['id'],'status'=>$value['status']==0?1:0]) ?>"
@@ -136,20 +136,10 @@ use yii\bootstrap\ActiveForm;
                                     <a onclick="return openAgency(this,'是否将该账号加入黑名单?')"
                                        href="<?php echo \yii\helpers\Url::to(['users/black', 'id' => $value['id'],'status'=>2]) ?>"
                                        class="btn btn-xs btn-danger">&nbsp;加入黑名单</a>
-                                    <a href="<?=\yii\helpers\Url::to(['users/pay-log',
-                                        'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-primary">充值记录</a>
-                                    <a href="<?=\yii\helpers\Url::to(['users/pay-out',
-                                        'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-primary">扣除记录</a>
-                                    <a href="<?=\yii\helpers\Url::to(['users/out-log',
-                                        'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-success">消费记录</a>
                                     <a href="<?=\yii\helpers\Url::to(['redeem-code/record',
                                         'RedeemRecord'=>['select'=>'game_id','keyword'=>$value['game_id']]])?>" class="btn btn-xs btn-success">兑换记录</a>
                                    <!-- <a href="<?/*=\yii\helpers\Url::to(['users/exploits',
                                         'Users'=>['select'=>'game_id','keyword'=>$value['game_id']]])*/?>" class="btn btn-xs btn-info">&nbsp; 战绩&nbsp; </a>-->
-                                    <?php if(Yii::$app->params['backendPayUser']):?>
-                                    <a href="<?=\yii\helpers\Url::to(['users/pay','id'=>$value['id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal">&nbsp;充值&nbsp;</a>
-                                    <a href="<?=\yii\helpers\Url::to(['users/out','id'=>$value['id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal"> 扣除</a>
-                                    <?php endif;?>
                                 </td>
                             </tr>
                         <?php $i++?>

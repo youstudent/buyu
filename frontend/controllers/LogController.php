@@ -24,7 +24,7 @@ class LogController extends ObjectController
     {
         $startTime = \Yii::$app->request->get('startTime');
         $endTime   = \Yii::$app->request->get('endTime');
-        $model = AgencyPay::find()->andWhere(['agency_id'=>\Yii::$app->session->get('agencyId')]);
+        $model = AgencyPay::find()->andWhere(['agency_id'=>\Yii::$app->session->get('familyId')])->andWhere(['type'=>'充值']);
         if($startTime)
             $model = $model->andWhere(['>=','time',strtotime($startTime)]);
         else

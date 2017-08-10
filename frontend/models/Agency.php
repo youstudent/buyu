@@ -7,6 +7,7 @@
 namespace frontend\models;
 
 use common\models\AgencyObject;
+use common\models\Player;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 
@@ -49,17 +50,17 @@ class Agency extends AgencyObject{
         return [
 //            [['password'],'min'=>6],
             [['phone','password'],'required','on'=>'login'],
-            [['phone','password','reppassword','name','identity'],'required','on'=>'add'],
-            [['pid', 'reg_time',  'diamond', 'status', 'fishGold'], 'integer'],
+            [['phone','password','reppassword','name'],'required','on'=>'add'],
+            //[['pid', 'reg_time',  'diamond', 'status', 'fishGold'], 'integer'],
             [['phone'], 'string', 'max' => 12],
             [['phone'],'unique','on'=>'add'],
             [['password'], 'string', 'max' => 64],
-            [['name', 'identity'], 'string', 'max' => 32],
+            [['name', ], 'string', 'max' => 32],
             [['gold','select','keyword'],'safe'],
             [['reppassword'],'vlidatePassword','on'=>'add'],
-            [['phone'],'match','pattern'=>'/^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$/'],
+           // [['phone'],'match','pattern'=>'/^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$/'],
 //            [['identity'],'match','pattern'=>'/(^\d{15}$)|(^\d{6}[1|2]\d{10}(\d|X|x)$)/'],
-            [['identity'],'match','pattern'=>'/(^\d{15}$)|\d{6}(18|19|20)\d{2}(0[1-9]|1[1-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])\d{3}(\d{1}|X)$/'],
+           // [['identity'],'match','pattern'=>'/(^\d{15}$)|\d{6}(18|19|20)\d{2}(0[1-9]|1[1-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])\d{3}(\d{1}|X)$/'],
             [['recode'],'validateCodeExist','on'=>'add'],
             [['used_password','new_password','repeat_password'],'required','on'=>['editPassword','editSave']],
             [['used_password'],'validatePassword','on'=>'editPassword'],
@@ -212,9 +213,11 @@ class Agency extends AgencyObject{
             else
             {
                 \Yii::$app->session->set('agencyId',$data->id);
+                \Yii::$app->session->set('gameId',$data->game_id);
+                \Yii::$app->session->set('familyId',$data->family_id);
                 \Yii::$app->session->set('agencyName',$data->name);
                 \Yii::$app->session->set('status',$data->status);
-
+            
                 return $data->status;
             }
         }
@@ -314,5 +317,14 @@ class Agency extends AgencyObject{
         if($data)
             $code = $this->createCode();
         return $code;
+    }
+    
+    
+    
+    /**
+     *  和玩家建立一对一的关系
+     */
+    public function getUsers(){
+        return $this->hasOne(Player::className(),['id'=>'game_id']);
     }
 }

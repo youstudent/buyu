@@ -58,7 +58,7 @@ use yii\bootstrap\ActiveForm;
                         <tr>
                             <th  class="text-center" style="border-left: 0px;">编号</th>
                             <th  class="text-center">用户</th>
-                            <th  class="text-center">人民币</th>
+                            <th  class="text-center">数量</th>
                             <th  class="text-center">类型</th>
                             <th  class="text-center">时间</th>
                            <!-- <th  class="text-center">收款人民币</th>-->
@@ -75,7 +75,7 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center" style="border-left: 0px;"><?=$i?></td>
                                 <td  class="text-center"><?=$value['name']?></td>
                                 <td  class="text-center"><?=$value['gold']?></td>
-                                <td  class="text-center"><?=$value['gold_config']?></td>
+                                <td  class="text-center"><?=$value['gold_config']==1?'金币':'钻石'?></td>
                                 <td  class="text-center"><?=date("Y-m-d H:i:s",$value['time'])?></td>
                                <!-- <td  class="text-center"><?/*=$value['money']*/?></td>-->
                                 <td  class="text-center"><?=$value['manage_name']?></td>

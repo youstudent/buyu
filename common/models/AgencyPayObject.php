@@ -39,12 +39,11 @@ class AgencyPayObject extends Object
     public function rules()
     {
         return [
-            [['agency_id', 'time', 'gold', 'status'], 'integer'],
-            [['money'], 'number'],
-            [['notes','gold_config'], 'string'],
+            [['time', 'gold', 'status'], 'integer'],
+            [['gold_config'], 'string'],
             [['name'], 'string', 'max' => 32],
-            [['agency_id'], 'exist', 'skipOnError' => true, 'targetClass' => AgencyObject::className(), 'targetAttribute' => ['agency_id' => 'id']],
-            [['type'],'safe']
+            //[['agency_id'], 'exist', 'skipOnError' => true, 'targetClass' => AgencyObject::className(), 'targetAttribute' => ['agency_id' => 'id']],
+            [['agency_id'],'safe']
         ];
     }
 
@@ -59,18 +58,15 @@ class AgencyPayObject extends Object
             'name' => 'Name',
             'time' => 'Time',
             'gold' => 'Gold',
-            'money' => 'Money',
-            'notes' => 'Notes',
             'status' => 'Status',
-            'type' => 'type',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAgency()
+   /* public function getAgency()
     {
         return $this->hasOne(AgencyObject::className(), ['id' => 'agency_id']);
-    }
+    }*/
 }

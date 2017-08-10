@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use common\models\Object;
+use common\models\Player;
 use Yii;
 use yii\data\Pagination;
 
@@ -115,7 +116,7 @@ class Withdraw extends Object
         $this->initTime();
         $model   = self::find()->andWhere($this->searchWhere())
             ->andWhere(['>=','reg_time',strtotime($this->starttime)])
-            ->andWhere(['<=','reg_time',strtotime($this->endtime)])->andWhere(['game_id'=>\Yii::$app->session->get('agencyId')]);
+            ->andWhere(['<=','reg_time',strtotime($this->endtime)])->andWhere(['game_id'=>\Yii::$app->session->get('familyId')]);
         $pages = new Pagination(
             [
                 'totalCount' =>$model->count(),
@@ -181,11 +182,24 @@ class Withdraw extends Object
     
     public function add($data=[]){
         if($this->load($data) && $this->validate()){
+            $datas = Player::findOne(['id'=>Yii::$app->session->get('gameId')]);
+            if ($this->type ==1){
+               $num=$datas->gold;
+               $datas->gold=($datas->gold-$this->gold);
+            }else{
+                $num=$datas->diamond;
+                $datas->diamond=($datas->diamond-$this->gold);
+            }
+            if ($num<$this->gold){
+                return $this->addError('gold','数量不足');
+            }
             $this->status=0;
             $this->reg_time=time();
-            $this->game_id=\Yii::$app->session->get('agencyId');
+            $this->game_id=\Yii::$app->session->get('familyId');
             $this->nickname=\Yii::$app->session->get('agencyName');
-            return $this->save();
+            if ($this->save()){
+              return $datas->save(false);
+            }
         }
         
         

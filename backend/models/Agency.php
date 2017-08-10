@@ -95,22 +95,22 @@ class Agency extends AgencyObject
     public function rules()
     {
         return [
-            [['pid', 'reg_time',  'status', 'code','recode','pay_money'], 'integer'],
-            [['gold_all','pay_gold','deduct_money'],'number'],
+            [['reg_time',  'status','recode','pay_money'], 'integer'],
+            [['pay_gold','deduct_money'],'number'],
             [['phone'], 'string', 'max' => 12],
             [['password'], 'string', 'max' => 64],
-            [['name', 'identity'], 'string', 'max' => 32],
-            [['searchstatus','keyword','gold','select','deduct_notes','pay_gold_config'],'safe'],
-            [['phone','password','name','identity'],'required'],
-            [['phone'],'match','pattern'=>'/^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$/'],
+            [['name',], 'string', 'max' => 32],
+            [['searchstatus','keyword','select','deduct_notes','pay_gold_config'],'safe'],
+            [['phone','password','name'],'required'],
+           // [['phone'],'match','pattern'=>'/^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$/'],
 //            [['identity'],'match','pattern'=>'/(^\d{15}$)|(^\d{6}[1|2]\d{10}(\d|X|x)$)/'],
-            [['identity'],'match','pattern'=>'/(^\d{15}$)|\d{6}(18|19|20)\d{2}(0[1-9]|1[1-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])\d{3}(\d{1}|X)$/'],
+           // [['identity'],'match','pattern'=>'/(^\d{15}$)|\d{6}(18|19|20)\d{2}(0[1-9]|1[1-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])\d{3}(\d{1}|X)$/'],
             ['recode','validateCodeExist'],
             ['phone','validatePhoneExist','on'=>'add'],
             ['pay_gold','match','pattern'=>'/^\+?[1-9][0-9]*$/','on'=>'pay'],
             ['deduct_gold','match','pattern'=>'/^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/','on'=>'deduct'],
             ['deduct_gold','validateDeduct','on'=>'deduct'],
-            [['starttime','endtime','detail'],'safe'],
+           // [['starttime','endtime','detail'],'safe'],
         ];
     }
 

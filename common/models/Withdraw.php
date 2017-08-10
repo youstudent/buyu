@@ -148,12 +148,12 @@ class Withdraw extends Object
         if (!empty($this->select) && !empty($this->keyword))
         {
             
-            if ($this->select == 'game_id')
-                return ['game_id'=>$this->keyword];
+            if ($this->select == 'nickname')
+                return ['like','nickname'=>$this->keyword];
             elseif ($this->select == 'phone')
                 return ['like','phone',$this->keyword];
             else
-                return ['or',['game_id'=>$this->keyword],['like','phone',$this->keyword]];
+                return ['or',['nickname'=>$this->keyword],['like','phone',$this->keyword]];
         }
         return [];
     }
@@ -166,6 +166,19 @@ class Withdraw extends Object
         $data = self::findOne(['id'=>$id]);
         if (!$data){
             return ['code'=>0,'message'=>'账号不存在!'];
+        }
+        if ($status == 2){
+            $family = Family::findOne(['id'=>$data->game_id]);
+            $pa = Player::findOne(['id'=>$family->ownerid]);
+            if ($pa ==false || $pa ==null){
+               return ['code'=>0,'message'=>'玩家未找到!'];
+            }
+            if ( $data->type ==1){
+                $pa->gold = $pa->gold+$data->gold;
+            }else{
+                $pa->diamond = $pa->diamond+$data->gold;
+            }
+            $pa->save();
         }
         $data->status=$status;
         if ($data->save()){

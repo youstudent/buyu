@@ -55,11 +55,12 @@ class AgencyObject extends Object
     public function rules()
     {
         return [
-            [['pid', 'reg_time','status',], 'integer'],
+            [['reg_time','status','family_id','game_id'], 'integer'],
             [['phone'], 'string', 'max' => 12],
             [['password'], 'string', 'max' => 64],
-            [['name', 'identity'], 'string', 'max' => 32],
-            ['gold','safe'],
+            [['name'], 'string', 'max' => 32],
+            [['select','keyword'], 'safe'],
+            //['gold','safe'],
         ];
     }
 
@@ -70,16 +71,17 @@ class AgencyObject extends Object
     {
         return [
             'id' => 'ID',
-            'pid' => '代理ID',
+            //'pid' => '代理ID',
             'phone' => '手机号',
+            'family_id' => '家族ID',
             'password' => '操作密码',
             'name' => '用户名',
             'reg_time' => '注册时间',
-            'gold' => '金币余额',
-            'identity' => '身份证',
+            //'gold' => '金币余额',
+           // 'identity' => '身份证',
             'status' => '状态',
-            'fishGold' => '鱼币余额',
-            'diamond' => '钻石余额',
+            //'fishGold' => '鱼币余额',
+            //'diamond' => '钻石余额',
         ];
     }
 
@@ -121,8 +123,8 @@ class AgencyObject extends Object
                 return ['phone'=>$this->keyword];
             elseif($this->select == 'identity')
                 return ['identity'=>$this->keyword];
-            elseif($this->select == 'id')
-                return ['id'=>$this->keyword];
+            elseif($this->select == 'game_id')
+                return ['family_id'=>$this->keyword];
             else
                 return ['or',['name'=>$this->keyword],['phone'=>$this->keyword],['identity'=>$this->keyword]];
         }

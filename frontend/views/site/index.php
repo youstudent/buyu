@@ -18,11 +18,14 @@ $agency = \backend\models\Agency::find();
                                 class="fa fa-male fa-stack-1x text-white"></i> </span>
                         <a class="clear" href="#">
                                 <span class="h3 block m-t-xs">
-                                    <?php
-                                        $data = $model->getGold();
+                                    <?=
+                                        /*$data = $model->getGold();
                                         foreach ($data as $key=>$value){
                                             echo $key.":".$value."\t";
-                                        }
+                                        }*/
+                                     '金币'. $model->users->gold.'&nbsp'.
+                                     '钻石'. $model->users->diamond.'&nbsp'.
+                                     '鱼币'. $model->users->fishGold;
                                     ?>
                                 </span>
                             <small class="text-muted text-uc">我的余额</small>
@@ -33,7 +36,7 @@ $agency = \backend\models\Agency::find();
                                 class="fa fa-circle fa-stack-2x text-warning"></i> <i
                                 class="fa fa-briefcase fa-stack-1x text-white"></i> </span>
                         <a class="clear" href="#"> <span
-                                    class="h3 block m-t-xs"><strong><?php echo $model->gold_all ?></strong></span>
+                                    class="h3 block m-t-xs"><strong><?php echo $model->id ?></strong></span>
                             <small class="text-muted text-uc">我的消费总计</small>
                         </a>
                     </div>

@@ -7,6 +7,7 @@ use frontend\models\Agency;
 use frontend\models\AgencyPay;
 use frontend\models\UserPay;
 use frontend\models\Users;
+use yii\web\Controller;
 use yii\web\Response;
 
 /**
@@ -25,7 +26,6 @@ class SiteController extends ObjectController
 
         #获取用户基本资料
         $model = Agency::findOne(\Yii::$app->session->get('agencyId'));
-
         $year       = date('Y');
         $month      = date('m');
         $dayNum     = cal_days_in_month(CAL_GREGORIAN,$month,$year);//算当前月份的天数
@@ -87,7 +87,7 @@ class SiteController extends ObjectController
                 }
             }
         }
-
+        
         return $this->render('index',['model'=>$model,'monthOrderToDay'=>$orderMonth,'userOrderToDay'=>$userOrder]);
     }
 

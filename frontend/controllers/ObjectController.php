@@ -17,7 +17,6 @@ class ObjectController extends Controller
      */
     public function beforeAction($action)
     {
-
         if(!empty(\Yii::$app->session->get('agencyId')) && \Yii::$app->session->get('status') == 1)
         {
             return true;

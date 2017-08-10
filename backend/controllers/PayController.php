@@ -42,11 +42,12 @@ class PayController extends ObjectController
         if($agency->keyword != ''){
             $agencyInfo = Agency::find()->where($agency->searchWhere())->one();
             //查询代理是否存在
-            if(isset($agencyInfo->id)) {
-                $model = AgencyPay::find()->andWhere(['agency_id' => $agencyInfo->id]);
+            if(isset($agencyInfo->family_id)) {
+                
+                $model = AgencyPay::find()->andWhere(['agency_id' =>$agencyInfo->family_id]);
             } else{
                 //不存在查询一个不存在代理充值记录
-                $model = AgencyPay::find()->where(['id'=>-10]);
+               // $model = AgencyPay::find()->where(['id'=>-10]);
             }
         }else {$model = AgencyPay::find();}//没有关键字查询所有
         // 添加查询的时间条件
@@ -73,8 +74,8 @@ class PayController extends ObjectController
         if($agency->keyword != ''){
             $agencyInfo = Agency::find()->where($agency->searchWhere())->one();
             //查询代理是否存在
-            if(isset($agencyInfo->id)) {
-                $model = AgencyPay::find()->andWhere(['agency_id' => $agencyInfo->id]);
+            if(isset($agencyInfo->family_id)) {
+                $model = AgencyPay::find()->andWhere(['agency_id' => $agencyInfo->family_id]);
             } else{
                 //不存在查询一个不存在代理充值记录
                 $model = AgencyPay::find()->where(['id'=>-10]);

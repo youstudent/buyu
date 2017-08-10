@@ -163,7 +163,7 @@ class AgencyController extends ObjectController
             $message = reset($message);
             return ['code'=>0,'message'=>$message];
         }
-        $model->goldArr = $model->getGold();
+        
         return $this->render('pay',['model'=>$model]);
     }
 

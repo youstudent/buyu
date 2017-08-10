@@ -7,11 +7,11 @@ $config = [
     ['label' => '首页中心', 'icon' => 'fa fa-dashboard icon', 'bg_color' => 'bg-danger', 'url' => ['site/index']],
     ['label' => '用户管理', 'icon' => 'fa fa-users icon', 'bg_color' => 'bg-success', 'url' => ['product/index'], 'items' => [
         ['label' => '玩家列表', 'url' => ['users/list']],
-        ['label' => '充值记录', 'url' => ['users/pay-log']],
-        ['label' => '扣除记录', 'url' => ['users/pay-out']],
-        ['label' => '消费记录', 'url' => ['users/out-log']],
+       // ['label' => '充值记录', 'url' => ['users/pay-log']],
+       // ['label' => '扣除记录', 'url' => ['users/pay-out']],
+       // ['label' => '消费记录', 'url' => ['users/out-log']],
         ['label' => '黑名单表', 'url' => ['users/blacklist']],
-        ['label' => '比例设置', 'url' => ['users/ratio']],
+       // ['label' => '比例设置', 'url' => ['users/ratio']],
     ]],
     ['label' => '提现管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['withdraw/list'], 'items' => [
         ['label' => '提现列表', 'url' => ['withdraw/list', 'id' => 1]],
@@ -20,7 +20,7 @@ $config = [
         ['label' => '鱼群列表', 'url' => ['fishing/index', 'show' => '']],
     ]],
     ['label' => '族长管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['agency/index'], 'items' => [
-        ['label' => '族长列表','url' => ['agency/index', 'id' => 1]],
+        ['label' => '族长列表','url' => ['family/index']],
         ['label' => '族长充值记录', 'url' => ['pay/agency-pay-log']],
         ['label' => '族长扣除记录', 'url' => ['pay/agency-out-log']],
     ]],

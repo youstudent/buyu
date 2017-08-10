@@ -14,7 +14,7 @@ use yii\bootstrap\ActiveForm;
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="<?= \yii\helpers\Url::to(['site/index']) ?>"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">代理充值/扣除</a></li>
+                <li><a href="#">代理扣除</a></li>
                 <li class="active">记录</li>
             </ul>
             <!--            面包屑结束            -->
@@ -82,10 +82,9 @@ use yii\bootstrap\ActiveForm;
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <th class="text-center">充值人</th>
+                                <th class="text-center">族长名字</th>
                                 <th class="text-center">数量</th>
                                 <th class="text-center">类型</th>
-                                <th class="text-center">充值/扣除</th>
                                 <!--<th class="text-center">收款人民币</th>
                                 <th class="text-center">备注</th>-->
                                 <th class="text-center">时间</th>
@@ -100,8 +99,7 @@ use yii\bootstrap\ActiveForm;
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['name'] ?></td>
                                     <td class="text-center"><?= $value['gold'] ?></td>
-                                    <td class="text-center"><?= $value['gold_config']?></td>
-                                    <td class="text-center"><?= $value['type']?></td>
+                                    <td class="text-center"><?= $value['gold_config']==1?'金币':'钻石'?></td>
                                    <!-- <td class="text-center"><?/*= $value['money'] */?></td>
                                     <td class="text-center"><?/*= $value['notes'] */?></td>-->
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['time']) ?></td>

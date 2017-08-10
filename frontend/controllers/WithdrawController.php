@@ -9,13 +9,14 @@
 namespace frontend\controllers;
 
 
+use common\models\Family;
 use frontend\models\Person;
 use frontend\models\Withdraw;
 use yii\web\Response;
 
 class WithdrawController extends ObjectController
 {
-    //族长列表
+    // 提现列表
     public function actionList()
     {
         $model = new Withdraw();
@@ -46,19 +47,20 @@ class WithdrawController extends ObjectController
         {
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if($model->add(\Yii::$app->request->post())){
-                return ['code'=>1,'message'=>'添加成功'];
+                return ['code'=>1,'message'=>'申请成功!等待平台审核'];
             }
             $message = $model->getFirstErrors();
             $message = reset($message);
             return ['code'=>0,'message'=>$message];
         }
-        $data = Person::findOne(['game_id'=>\Yii::$app->session->get('agencyId')]);
+        $data = Family::findOne(['id'=>\Yii::$app->session->get('familyId')]);
         if ($data){
             $model->phone=$data->phone;
-            $model->bank_card=$data->bank_card;
-            $model->bank_name=$data->bank_name;
-            $model->bank_opening=$data->bank_opening;
+            $model->bank_card=$data->bankcard;
+            $model->bank_name=$data->realname;
+            $model->bank_opening=$data->bank;
         }
+        //var_dump(\Yii::$app->session->get('gameId'));EXIT;
         return $this->render('add',['model'=>$model]);
         
     }
