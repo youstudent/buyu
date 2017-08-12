@@ -149,6 +149,9 @@ class Mail extends Object
             
             if ($this->select == 'title')
                 return ['like', 'title', $this->keyword];
+            else{
+                return ['like', 'title', $this->keyword];
+            }
         }
         return [];
     }

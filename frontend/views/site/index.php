@@ -36,8 +36,10 @@ $agency = \backend\models\Agency::find();
                                 class="fa fa-circle fa-stack-2x text-warning"></i> <i
                                 class="fa fa-briefcase fa-stack-1x text-white"></i> </span>
                         <a class="clear" href="#"> <span
-                                    class="h3 block m-t-xs"><strong><?php echo $model->id ?></strong></span>
-                            <small class="text-muted text-uc">我的消费总计</small>
+                                    class="h3 block m-t-xs">
+                                 <?='家族总金币'.$Family['gold']?>
+                            </span>
+                            <small class="text-muted text-uc">保险箱总金币</small>
                         </a>
                     </div>
                     <div class="col-sm-6 col-md-3 padder-v b-r b-light">
@@ -46,8 +48,10 @@ $agency = \backend\models\Agency::find();
                                 class="fa fa-legal fa-stack-1x text-white"></i> </span>
                         <a class="clear"
                            href="#">
-                            <span class="h3 block m-t-xs"><strong>#</strong></span>
-                            <small class="text-muted text-uc">返佣总计</small>
+                            <span class="h3 block m-t-xs">
+                                    <?='家族总钻石'.$Family['diamond']?>
+                            </span>
+                            <small class="text-muted text-uc">保险箱总钻石</small>
                         </a>
                     </div>
                     <div class="col-sm-6 col-md-3 padder-v b-r b-light lt">
@@ -55,8 +59,10 @@ $agency = \backend\models\Agency::find();
                                 class="fa fa-circle fa-stack-2x icon-muted"></i> <i
                                 class="fa fa-ban fa-stack-1x text-white"></i> </span>
                         <a class="clear">
-                            <span class="h3 block m-t-xs"><strong>#</strong></span>
-                            <small class="text-muted text-uc">我的邀请码</small>
+                            <span class="h3 block m-t-xs"><span class="h3 block m-t-xs">
+                                    <?='家族总鱼币'.$Family['fishgold']?>
+                            </span></span>
+                            <small class="text-muted text-uc">保险箱总鱼币</small>
                         </a>
                     </div>
                 </div>
@@ -105,7 +111,7 @@ $agency = \backend\models\Agency::find();
                                         ],
                                         series: [
                                             {
-                                                name: '自己充值',
+                                                name: '玩家上分(金币)',
                                                 type: 'bar',
                                                 barWidth: '45%',
                                                 data: [<?php $i = 0; foreach ($monthOrderToDay as $item) {
@@ -119,7 +125,7 @@ $agency = \backend\models\Agency::find();
                                             }
                                             ,
                                             {
-                                                name: '用户充值',
+                                                name: '玩家上分(钻石)',
                                                 type: 'bar',
                                                 barWidth: '45%',
                                                 data: [<?php $i = 0; foreach ($userOrderToDay as $item) {

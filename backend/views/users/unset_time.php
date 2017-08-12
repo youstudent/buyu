@@ -24,8 +24,8 @@ use kartik\datetime\DateTimePicker;
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'game_id')->textInput(['readonly'=>true])?>
-                <?php echo $form->field($model,'nickname')->textInput(['readonly'=>true])?>
+                <?php echo $form->field($model,'id')->textInput(['readonly'=>true])?>
+                <?php echo $form->field($model,'name')->textInput(['readonly'=>true])?>
                 <?php echo $form->field($model,'unset_time')->textInput(['id'=>'IDIDID'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>

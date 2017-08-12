@@ -8,6 +8,7 @@ namespace backend\models;
 
 use common\models\GoldConfigObject;
 use common\models\OnLine;
+use common\models\Player;
 use common\models\UsersGoldObject;
 use common\models\UsersObject;
 use common\services\Request;
@@ -341,9 +342,9 @@ class Users extends UsersObject
         
         $this->load($data);
         $this->initTime();
-        $model   = self::find()->andWhere($this->searchWhere())
-                               ->andWhere(['>=','reg_time',strtotime($this->starttime)])
-                               ->andWhere(['<=','reg_time',strtotime($this->endtime)])->andWhere(['status'=>[0,1]]);
+        $model   = Player::find()->andWhere($this->searchWhere())
+                               ->andWhere(['>=','createdtime',$this->starttime])
+                               ->andWhere(['<=','createdtime',$this->endtime]);
         $pages = new Pagination(
             [
                 'totalCount' =>$model->count(),
@@ -351,7 +352,7 @@ class Users extends UsersObject
             ]
         );
 
-        $data  = $model->limit($pages->limit)->offset($pages->offset)->orderBy('game_id ASC')->all();
+        $data  = $model->limit($pages->limit)->offset($pages->offset)->orderBy('id ASC')->all();
         /*foreach ($data as $key=>$value){
             $data[$key]['gold'] = $value->getGold();
         }*/
@@ -442,9 +443,9 @@ class Users extends UsersObject
     {
         $this->load($data);
         $this->initTime();
-        $model   = self::find()->andWhere($this->searchWhere())
-            ->andWhere(['>=','reg_time',strtotime($this->starttime)])
-            ->andWhere(['<=','reg_time',strtotime($this->endtime)])->andWhere(['status'=>2]);
+        $model   = Blacklist::find()->andWhere($this->searchWhere());
+           // ->andWhere(['>=','reg_time',strtotime($this->starttime)])
+           // ->andWhere(['<=','reg_time',strtotime($this->endtime)])->andWhere(['status'=>2]);
         $pages = new Pagination(
             [
                 'totalCount' =>$model->count(),
@@ -466,11 +467,11 @@ class Users extends UsersObject
         {
             
             if ($this->select == 'game_id')
-                return ['game_id'=>$this->keyword];
+                return ['id'=>$this->keyword];
             elseif ($this->select == 'nickname')
-                return ['like','nickname',$this->keyword];
+                return ['like','name',$this->keyword];
             else
-                return ['or',['game_id'=>$this->keyword],['like','nickname',$this->keyword]];
+                return ['or',['id'=>$this->keyword],['like','name',$this->keyword]];
         }
         return [];
     }
@@ -574,14 +575,10 @@ class Users extends UsersObject
     
     //取消封停
     public function ban($id){
-        
-        $data = self::findOne(['id'=>$id]);
-        $datas['playerId']=$data->game_id;
+        $datas['playerId']=$id;
         $result = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/unban',$datas);
-        if($result['code'] == 1){
-            $data->status=1;
-            $data->unset_time='';
-            return $data->save(false);  //更新数据变成添加有可能是对象不是之前的
+        if($result){
+             return UsersTime::deleteAll(['game_id'=>$id]);
         }
         $this->addError('status',$result['message']);
         return  false;
@@ -591,20 +588,21 @@ class Users extends UsersObject
     
     //加入黑名单
     public function black($id,$status){
-        $model = self::findOne(['id'=>$id]);
+        /*$model = self::findOne(['id'=>$id]);
         if(!$model){
             return ['code'=>0,'message'=>'账号不存在!'];
-        }
-        if ($model->status==2){
+        }*/
+        if ($status==2){
             $url = \Yii::$app->params['Api'].'/gameserver/control/removeblack';
         }else{
             $url = \Yii::$app->params['Api'].'/gameserver/control/addblack';
         }
-        $datas['playerId']=$model->game_id;
+        $datas['playerId']=$id;
         $result = Request::request_post($url,$datas);
         if($result['code'] == 1){
-            $model->status=$status;
-            return $model->save(false);  //更新数据变成添加有可能是对象不是之前的
+            return true;
+           // $model->status=$status;
+           // return $model->save(false);  //更新数据变成添加有可能是对象不是之前的
         }
         $this->addError('status',$result['message']);
         return  false;
@@ -614,13 +612,7 @@ class Users extends UsersObject
      * 查询用户超过解封时间的
      */
     public static function automatic(){
-        $data = self::find()->where(['<','unset_time',date('Y-m-d H:i:s')])->andWhere(['status'=>0])->all();
-        if ($data){
-            foreach ($data AS $K=>$v){
-                $v['status']=1;
-                $v->save();
-            }
-        }
+        UsersTime::deleteAll(['<','time',time()]);
     }
     
     
@@ -652,7 +644,7 @@ class Users extends UsersObject
                // exit;
                 
                 $model->update(false);
-            }/*else{
+            }else{
                 $user = new Users();
                 $user->game_id=$v['id'];
                 $user->nickname=$v['name'];
@@ -663,7 +655,7 @@ class Users extends UsersObject
                 $user->vip_grade=$v['viplevel'];
                 $user->reg_time=strtotime($v['createdtime']);
                return  $user->save(false);
-            }*/
+            }
         }
         return 1;
     }
@@ -681,6 +673,28 @@ class Users extends UsersObject
         }
         return $times;
         
+    }
+    
+    
+    /**
+     *  查询黑单用户
+     */
+    public static function GerBack($id){
+       return Blacklist::find()->andWhere(['playerId'=>$id])->exists();
+    }
+    
+    
+    /**
+     *  查询停封用户
+     *
+     */
+    public static function GetBan($id){
+       $data = UsersTime::findOne(['game_id'=>$id]);
+       if ($data){
+           return date('Y-m-d H:i:s',$data->time);
+       }else{
+           return '';
+       }
     }
     
 }

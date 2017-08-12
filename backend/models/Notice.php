@@ -107,12 +107,12 @@ class Notice extends NoticeObject
     public function edit($data = []){
         if($this->load($data) && $this->validate())
         {
-            if ( ($this->location == 1 || $this->location == 2) && $this->status ==1 ){
+            /*if ( ($this->location == 1 || $this->location == 2) && $this->status ==1 ){
                 if (Notice::find()->where(['location'=>$this->location,'status'=>1])->exists()){
                     $this->addError('status','登录公告和大厅公告只能显示一条');
                     return false;
                 }
-            }
+            }*/
             /**
              * 接收数据  拼装
              */
@@ -193,12 +193,27 @@ class Notice extends NoticeObject
             }
         }
         $new = $d[0];
-        Notice::deleteAll();
-        $model =  new Notice();
+        //Notice::deleteAll();
+        
         //请求到数据   循环保存到数据库
         foreach($new as $K=>$attributes)
         {
-            $model->number=Json::encode($attributes->send);  //赠送礼包
+            $data = Notice::findOne(['id'=>$attributes->id]);
+            if ($data){
+                $data->content =$attributes->content;  //  公告内容
+                $data->status =$attributes->useable;  //  公告状态
+                $data->location =$attributes->type;  //  公告位置
+                $data->save();
+            }else{
+                $model =  new Notice();
+                $model->id=$attributes->id;
+                $model->content =$attributes->content;  //  公告内容
+                $model->status =$attributes->useable;  //  公告状态
+                $model->location =$attributes->type;  //  公告位置
+                $model->time =time();  //  同步时间
+                $model->save();
+            }
+          /*  $model->number=Json::encode($attributes->send);  //赠送礼包
             $model->id=$attributes->id;
             $model->content =$attributes->content;  //  公告内容
             $model->status =$attributes->useable;  //  公告状态
@@ -206,8 +221,8 @@ class Notice extends NoticeObject
             $model->time =time();  //  同步时间
             $_model = clone $model;
             $_model->setAttributes($attributes);
-            $_model->save(false);
+            $_model->save(false);*/
         }
-        return $data['code'];
+        return 1;
     }
 }

@@ -38,9 +38,7 @@ class SiteController extends ObjectController
      */
     public function actionIndex()
     {
-        // Users::automatic();// 查找解封时间超过当前时间的用户进行清理
         Users::automatic();
-        //Shop::GetShop();
         $year       = date('Y');
         $month      = date('m');
         $dayNum     = cal_days_in_month(CAL_GREGORIAN,$month,$year);//算当前月份的天数
@@ -58,7 +56,7 @@ class SiteController extends ObjectController
          *          为当天并unset当前key、此操作为提高程序性能
          */
         $data = AgencyPay::find()->andWhere([">",'time',$startTime])
-                                 ->andWhere(["<","time",$endTime])
+                                 ->andWhere(["<","time",$endTime])->andWhere(['type'=>'充值','gold_config'=>1])
                                  ->orderBy("time ASC")->asArray()->all();
         for ($i=1;$i<=$dayNum;$i++){
             $oderNnm        = 0;
@@ -66,6 +64,7 @@ class SiteController extends ObjectController
             $orderMonth[$i] = 0;
             foreach ($data as $key=>$value)
             {
+                
                 if($value['time'] <= $endValueTime)
                 {
                     $orderMonth[$i] = ($oderNnm+$value['gold']);
@@ -76,16 +75,16 @@ class SiteController extends ObjectController
                 }
             }
         }
-
+       // var_dump($oderNnm);exit;
         /**
          * 算出平台给用户充值的数量
          * 算法思路 同上
          */
         if(Yii::$app->params['backendPayUser'])
         {
-            $data = UserPay::find()->andWhere([">",'time',$startTime])
+            $data = AgencyPay::find()->andWhere([">",'time',$startTime])
                                    ->andWhere(["<","time",$endTime])
-                                   ->andWhere(['agency_id'=>1])
+                                   ->andWhere(['type'=>'充值','gold_config'=>2])
                                    ->orderBy("time ASC")->asArray()->all();
             for ($i=1;$i<=$dayNum;$i++){
                 $oderNnm = 0;

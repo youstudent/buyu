@@ -72,8 +72,7 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">保险箱金币</th>
                                 <th  class="text-center">保险箱钻石</th>
                                 <th  class="text-center">保险箱鱼币</th>
-                                <th  class="text-center">申请时间</th>
-                                <th  class="text-center">通过时间</th>
+                                <th  class="text-center">职称</th>
                                
                             </tr>
                         </thead>
@@ -89,10 +88,7 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center"><?=$value->gold?></td>
                                 <td  class="text-center"><?=$value->diamond?></td>
                                 <td  class="text-center"><?=$value->fishgold?></td>
-                                <td  class="text-center"><?=date('Y-m-d H:i:s',$value['applytime'])?></td>
-                                <td  class="text-center"><?=date('Y-m-d H:i:s',$value['agreetime'])?></td>
-                                
-                                
+                                <td  class="text-center"><?=$value->position==9?'族长':'族员'?></td>
                             </tr>
                         <?php $i++?>
                         <?php endforeach;?>

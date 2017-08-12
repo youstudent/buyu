@@ -12,6 +12,8 @@ use common\models\UsersObject;
 
 class Users extends UsersObject
 {
+    public $fishGold;
+    public $diamond;
     /**
      * @inheritdoc
      */
@@ -21,7 +23,7 @@ class Users extends UsersObject
             [['game_id', 'gold','reg_time','status','vip_grade','grade'], 'integer'],
             [['nickname'], 'string', 'max' => 32],
             [['game_id'],'unique','on'=>'add'],
-            [['game_id','nickname','gold'],'required','on'=>'add'],
+            [['game_id','nickname','gold','diamond','fishGold'],'required','on'=>'add'],
 
         ];
     }
@@ -38,10 +40,12 @@ class Users extends UsersObject
         {
 
             $this->reg_time = time();
+            $this->gem = $this->fishGold;
+            $this->jewel = $this->diamond;
             $this->status   = 1;
             $this->gold_all = 0;
-            if($this->save())
-            {
+            return $this->save();
+          /* {
                 $datas = GoldConfigObject::find()->asArray()->all();
 
                 foreach ($datas as $key=>$value)
@@ -59,7 +63,7 @@ class Users extends UsersObject
                     }
                 }
                 return true;
-            }
+            }*/
         }
     }
 }

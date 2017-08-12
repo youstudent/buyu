@@ -74,8 +74,6 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">钻石</th>
                                 <th  class="text-center">宝石</th>
                                 <th  class="text-center">注册时间</th>
-                                <th  class="text-center">解封时间</th>
-                                <th  class="text-center">状态</th>
                                 <th  class="text-center">操作</th>
 
                             </tr>
@@ -85,30 +83,15 @@ use yii\bootstrap\ActiveForm;
                         <?php foreach ($data as $key => $value):?>
                             <tr>
                                 <td  class="text-center"><?=$i?></td>
-                                <td  class="text-center"><?=$value['game_id']?></td>
-                                <td  class="text-center"><?=$value['nickname']?></td>
-                                <td  class="text-center"><?=$value['gold']?></td>
-                                <td  class="text-center"><?=$value['jewel']?></td>
-                                <td  class="text-center"><?=$value['gem']?></td>
-                                <td  class="text-center"><?=date('Y-m-d H:i:s',$value['reg_time'])?></td>
-                                <?php if (empty($value['unset_time'])):?>
-                                    <td  class="text-center"><?=$value['unset_time']?></td>
-                                <?php else:?>
-                                <td  class="text-center"><?=$value['unset_time']?></td>
-                                <?php endif;?>
-                                <td class="text-center">
-                                    <?php if($value['status'] == 1):?>
-                                            <a href="#" class="active">
-                                    <?php else:?>
-                                            <a href="#" class="">
-                                     <?php endif;?>
-                                        <i class="fa fa-check text-success text-active"></i>
-                                        <i class="fa fa-times text-danger text"></i>
-                                    </a>
-                                </td>
+                                <td  class="text-center"><?=$value['playerId']?></td>
+                                <td  class="text-center"><?=$value->users->name?></td>
+                                <td  class="text-center"><?=$value->users->gold?></td>
+                                <td  class="text-center"><?=$value->users->diamond?></td>
+                                <td  class="text-center"><?=$value->users->fishGold?></td>
+                                <td  class="text-center"><?=$value->users->createdtime?></td>
                                 <td class="text-center" width="300px;">
                                     <a onclick="return openAgency(this,'是否将该账号取消黑名单?')"
-                                       href="<?php echo \yii\helpers\Url::to(['users/black', 'id' => $value['id'],'status'=>1]) ?>"
+                                       href="<?php echo \yii\helpers\Url::to(['users/black', 'id' => $value['playerId'],'status'=>2]) ?>"
                                        class="btn btn-xs btn-danger">取消黑名单</a>
                                 </td>
                             </tr>

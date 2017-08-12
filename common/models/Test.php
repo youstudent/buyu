@@ -16,7 +16,7 @@ class Test extends ActiveRecord
 {
     public static function getDb()
     {
-        return \Yii::$app->db;  // 使用名为 "secondDb" 的应用组件  重新定义主键
+        return \Yii::$app->commondb;  // 使用名为 "secondDb" 的应用组件  重新定义主键
     }
     
     public static function tableName()

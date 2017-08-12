@@ -6,4 +6,8 @@ return[
     'login_form_title'  => '用户登录',
     'but_close'         => '关闭',
     'but_close_ret' => '返回修改',
+    'down_index' => '上下分记录',
+    'family_list' => '家族列表',
+    'withdraw_list' => '玩家申请管理',
+    'withdraw' => '提现管理',
 ];

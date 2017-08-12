@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\AddFamily;
 use common\models\Family;
 use common\models\Familyplayer;
+use common\models\Familyrecord;
 use common\models\Updowninfo;
 use yii\data\Pagination;
 use yii\web\Response;
@@ -18,9 +19,9 @@ class FamilyController extends \yii\web\Controller
      */
     public function actionList()
     {
-        $model = new AddFamily();
-        $data = $model->getList(\Yii::$app->request->get());
-        return $this->render('list',$data);
+        $model = new Familyplayer();
+        $data = $model->getApply(\Yii::$app->request->get());
+        return $this->render('apply',$data);
     }
     
     
@@ -73,23 +74,26 @@ class FamilyController extends \yii\web\Controller
     
     
     /**
-     *  玩家上下分
+     *  玩家上下分,查看
      */
     public function actionUpAndDown(){
        
-        $data= new Updowninfo();
+        $data= new Familyrecord();
         $updown = \Yii::$app->request->get();
         $model = $data::find()->andWhere(['familyid'=>\Yii::$app->session->get('familyId')]);
-        /*if (\Yii::$app->request->get('show') == 1) {
-            $model->andWhere(["updown"=>1]);
+        if (\Yii::$app->request->get('show') == 1) {
+            $model->andWhere(['type'=>6]);
+        }elseif (\Yii::$app->request->get('show') == 0){
+            $model->andWhere(['type'=>5]);
+        }else{
+            $model->andWhere(['type'=>[5,6]]);
         }
-         if (\Yii::$app->request->get('show') == 0) {
-            $model->andWhere(["updown"=>0]);
-        }
+        
+        
        if (array_key_exists('playerid',$updown)){
           $model->andWhere(['playerid'=>$updown['playerid']]);
         }
-        */
+        
         $pages = new Pagination(
             [
                 'totalCount' =>$model->count(),
@@ -97,8 +101,41 @@ class FamilyController extends \yii\web\Controller
             ]
         );
         $data  = $model->limit($pages->limit)->offset($pages->offset)->all();
-        var_dump($data->users);exit;
-        return $this->render('up-and-down',['data'=>$data,'pages'=>$pages]);
+        //玩家总上分
+        $rows = Familyrecord::find()->select(['sum(gold)','sum(diamond)'])->andWhere(['familyid'=>\Yii::$app->session->get('familyId')])->andWhere(['type'=>6])->asArray()->one();
+        
+        //玩家总下分
+        $row = Familyrecord::find()->select(['sum(gold)','sum(diamond)'])->andWhere(['familyid'=>\Yii::$app->session->get('familyId')])->andWhere(['type'=>5])->asArray()->one();
+        return $this->render('up-and-down',['data'=>$data,'pages'=>$pages,'rows'=>$rows,'row'=>$row]);
     }
-
+    
+    /**
+     *  玩家加入家族通过还是拒绝
+     */
+        public function actionPass(){
+            \Yii::$app->response->format = Response::FORMAT_JSON;
+            $model = new Familyplayer();
+            if ($model->pass(\Yii::$app->request->get('id'),\Yii::$app->request->get('status'))){
+                return ['code'=>1,'message'=>\Yii::t('app','操作成功')];
+            }
+            $message = $model->getFirstErrors();
+            $message = reset($message);
+            return ['code'=>0,'message'=>$message];
+        }
+ 
+     /**
+      * 踢出该玩家
+      */
+     public function actionKick(){
+         \Yii::$app->response->format = Response::FORMAT_JSON;
+         $model = new Familyplayer();
+         if ($model->kickOut(\Yii::$app->request->get('id'),\Yii::$app->request->get('status'))){
+             return ['code'=>1,'message'=>\Yii::t('app','操作成功')];
+         }
+         $message = $model->getFirstErrors();
+         $message = reset($message);
+         return ['code'=>0,'message'=>$message];
+         
+         
+     }
 }

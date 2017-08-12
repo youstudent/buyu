@@ -9,7 +9,7 @@ $config = [
     ['label' => '购买记录', 'icon' => 'fa fa-users icon', 'bg_color' => 'bg-success', 'url' => ['log/pay']],
     ['label' => '上下分记录', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['family/up-and-down','show'=>2]],
     ['label' => '家族管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['family/get-son']],
-    ['label' => '申请管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['family/list']],
+    ['label' => '申请管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['family/list','Familyplayer'=>['status'=>0]]],
     ['label' => '提现列表', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['withdraw/list']],
     ['label' => '个人信息', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['family/get-message']],
     ['label' => '家族公告', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['family/notice']],

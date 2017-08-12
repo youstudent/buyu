@@ -14,7 +14,7 @@ $config = [
        // ['label' => '比例设置', 'url' => ['users/ratio']],
     ]],
     ['label' => '提现管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['withdraw/list'], 'items' => [
-        ['label' => '提现列表', 'url' => ['withdraw/list', 'id' => 1]],
+        ['label' => '提现列表', 'url' => ['withdraw/list']],
     ]],
     ['label' => '鱼群管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['fishing/index'], 'items' => [
         ['label' => '鱼群列表', 'url' => ['fishing/index', 'show' => '']],
@@ -107,7 +107,20 @@ $config[] = ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg
     <script src="/js/ie/respond.min.js" cache="false"></script>
     <script src="/js/ie/excanvas.js" cache="false"></script>
     <![endif]-->
-
+    <script src="/js/app.v2.js"></script> <!-- Bootstrap --> <!-- App -->
+    <script src="/js/charts/sparkline/jquery.sparkline.min.js" cache="false"></script>
+    <!--第三方插件导入-->
+    <!--alert插件-->
+    <link rel="stylesheet" href="/js/sweetalert-master/dist/sweetalert.css" type="text/css"/>
+    <script src="/js/sweetalert-master/dist/sweetalert.min.js"></script>
+    <!--报表插件-->
+    <script src="/js/echarts.min.js"></script>
+    <!--时间插件-->
+    <link rel="stylesheet" href="/js/datepicker/datepicker.css" type="text/css" cache="false">
+    <script src="/js/datepicker/bootstrap-datepicker.js" cache="false"></script>
+    <script src="/js/bootstrap-daterangepicker-master/moment.min.js" cache="false"></script>
+    <script type="text/javascript" src="/js/bootstrap-daterangepicker-master/daterangepicker.js" cache="false"></script>
+    <link rel="stylesheet" href="/js/bootstrap-daterangepicker-master/daterangepicker.css" cache="false">
 </head>
 <body>
 <section class="vbox">
@@ -191,20 +204,7 @@ $config[] = ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg
     </section>
     <div class="modal fade" id="editPasswordMoal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
 </section>
-<script src="/js/app.v2.js"></script> <!-- Bootstrap --> <!-- App -->
-<script src="/js/charts/sparkline/jquery.sparkline.min.js" cache="false"></script>
-<!--第三方插件导入-->
-<!--alert插件-->
-<link rel="stylesheet" href="/js/sweetalert-master/dist/sweetalert.css" type="text/css"/>
-<script src="/js/sweetalert-master/dist/sweetalert.min.js"></script>
-<!--报表插件-->
-<script src="/js/echarts.min.js"></script>
-<!--时间插件-->
-<link rel="stylesheet" href="/js/datepicker/datepicker.css" type="text/css" cache="false">
-<script src="/js/datepicker/bootstrap-datepicker.js" cache="false"></script>
-<script src="/js/bootstrap-daterangepicker-master/moment.min.js" cache="false"></script>
-<script type="text/javascript" src="/js/bootstrap-daterangepicker-master/daterangepicker.js" cache="false"></script>
-<link rel="stylesheet" href="/js/bootstrap-daterangepicker-master/daterangepicker.css" cache="false">
+
 
 <!--<script src="/js/datepicker/datepicker.css"></script>-->
 <script>

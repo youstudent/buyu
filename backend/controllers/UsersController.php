@@ -9,6 +9,8 @@ namespace backend\controllers;
 use backend\models\AgencyDeduct;
 use backend\models\Time;
 use backend\models\Users;
+use backend\models\UsersTime;
+use common\models\Player;
 use common\models\Ratio;
 use common\services\Request;
 use Yii;
@@ -97,7 +99,6 @@ class UsersController extends ObjectController
      */
     public function actionList()
     {
-       // Users::GetDayTime(77);
         Users::automatic();// 查找解封时间超过当前时间的用户进行清理
         $model = new Users();
         $data = $model->getList(Yii::$app->request->get());
@@ -179,43 +180,31 @@ class UsersController extends ObjectController
     //设置解封时间
     public function actionUnsetTime(){
         $this->layout = false;
-        $model= new Users();
-//        $data = Users::findOne(['id'=>Yii::$app->request->get('game_id')]);
-        $model = $model->set(Yii::$app->request->get('game_id'));
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $model = Player::findOne(['id'=>$id]);
+        
         if(Yii::$app->request->isPost)
         {
-            /**
-             * 设置返回为json格式
-             */
             Yii::$app->response->format = Response::FORMAT_JSON;
-            if(Yii::$app->request->post())
-            {
-                $data = Yii::$app->request->post();
-                $model = Users::findOne($data['id']);
-                $model->game_id = $data['Users']['game_id'];
-                $model->nickname = $data['Users']['nickname'];
-                $model->unset_time = $data['Users']['unset_time'];
-                $datas['playerId']=$data['Users']['game_id'];
-                $banTime=strtotime($data['Users']['unset_time']);
-                $time = $banTime-time();
-                if ($time<=0){
-                    return ['code'=>0,'message'=>'停封时间不能小于当前时间'];
-                }
-                $datas['banTime']=$time*1000;//将时间戳转化成毫秒
-                $result = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/ban',$datas);
-                if ($result['code'] == 1){
-                    $model->status=0;
-                    $model->save(false);
-                    return ['code'=>1,'message'=>Yii::t('app','操作成功')];
-                }
-                /**
-                 * 获取model返回的错误
-                 */
-                $message = $model->getFirstErrors();
-                $message = reset($message);
-                return ['code'=>0,'message'=>$message];
+            if ($model->load(Yii::$app->request->post())){
+                    $time = strtotime($model->unset_time);
+                    if ($time-time()<0){
+                        return ['code'=>0,'message'=>'停封时间不能小于当前时间'];
+                    }
+                    $UsersTime = new UsersTime();
+                    $UsersTime->game_id=$model->id;
+                    $UsersTime->time=$time;
+                    $UsersTime->save(false);
+                    $datas['playerId']=$model->id;
+                    $datas['banTime']=($time-time())*1000;//将时间戳转化成毫秒
+                    $result = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/ban',$datas);
+                    if ($result['code'] == 1){
+                        return ['code'=>1,'message'=>Yii::t('app','操作成功')];
+                    }
             }
-            
+        $message = $model->getFirstErrors();
+        $message = reset($message);
+        return ['code'=>0,'message'=>$message];
         }
         return $this->render('unset_time',['model'=>$model]);
     }
@@ -249,7 +238,6 @@ class UsersController extends ObjectController
     
     public function actionBan(){
         \Yii::$app->response->format = Response::FORMAT_JSON;
-        
         $model = new Users;
         if ($model->ban(\Yii::$app->request->get('id'))){
             return ['code'=>1,'message'=>'操作成功'];

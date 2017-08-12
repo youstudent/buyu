@@ -146,7 +146,7 @@ class VipUpdateController extends ObjectController
     
     
     //奖品内容的查看
-    public function actionPrize(){
+  /*  public function actionPrize(){
         $this->layout = false;
         // RedeemCode::setShop();
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
@@ -186,7 +186,7 @@ class VipUpdateController extends ObjectController
         }
     
         return $this->render('prize',['model'=>$model,'data'=>$data,'datas'=>$datas]);
-    }
+    }*/
     
     
     /**
@@ -201,6 +201,80 @@ class VipUpdateController extends ObjectController
         }
         return ['code'=>0,'message'=>'同步失败'];
         
+    }
+    
+    /**
+     *  修改 vip 升级所需钻石
+     * @return array|string
+     */
+    public function actionPrize()
+    {
+        $this->layout = false;
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $model = VipUpdate::findOne($id);
+        if(\Yii::$app->request->isPost)
+        {
+            \Yii::$app->response->format = Response::FORMAT_JSON;
+            if($model->edit(\Yii::$app->request->post()))
+            {
+                return ['code'=>1,'message'=>'修改成功'];
+            }
+            $message = $model->getFirstErrors();
+            $message = reset($message);
+            return ['code'=>0,'message'=>$message];
+            
+        }
+        $give_day = json_decode($model->give_day,true);  // 每日赠送礼包
+        $give_upgrade = json_decode($model->give_upgrade,true);  //升级礼包
+        $datas = [];
+        $data  =[];
+        $re = VipUpdate::$give;   //获取所有礼包
+        $res = VipUpdate::$give_day;   //获取所有礼包
+        /**
+         *  解析每日礼包
+         */
+        foreach ($give_day as $key=>$value){
+            if (array_key_exists($key,$re)){
+                $data[$key]=$value;
+            }
+            if(is_array($value)){
+                foreach ($value as $K=>$v){
+                    if (array_key_exists($v['toolId'],$re)){
+                        $data[$v['toolId']]=$v['toolNum'];
+                    }
+                }
+            }
+            
+        }
+        $type=[];  //取出礼包的 key值
+        foreach($data as $k=>$v) {
+            $type[] = $k;
+        }
+        $i = 9;
+        /**
+         *   解析升级礼包
+         */
         
+        foreach ($give_upgrade as $key=>$value){
+            if (array_key_exists($key.$i,$res)){
+                $datas[$key.$i]=$value;
+            }
+            if(is_array($value)){
+                
+                foreach ($value as $K=>$v){
+                    if (array_key_exists($v['toolId'].$i,$res)){
+                        $datas[$v['toolId'].$i]=$v['toolNum'];
+                    }
+                }
+            }
+            
+        }
+        $give_upgrade=[];
+        foreach($datas as $k=>$v){
+            $give_upgrade[]=$k;
+        }
+        $model->give_day=$type;  //每日礼包key值
+        $model->give_upgrade=$give_upgrade;  //升级礼包key值
+        return $this->render('Prize',['model'=>$model,'data'=>$data,'datas'=>$datas]);
     }
 }

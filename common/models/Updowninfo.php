@@ -67,4 +67,14 @@ class Updowninfo extends \yii\db\ActiveRecord
         
         return $this->hasOne(Player::className(),['id'=>'playerid']);
     }
+    
+    
+    /**
+     *  统计玩家上分下分数量
+     */
+    public static function getCount($type,$id,$updown,$playerid){
+        $data = self::find()->select('sum(num)')->andWhere(['type'=>$type])->andWhere(['updown'=>$updown])->andWhere(['playerid'=>$playerid])->andWhere(['familyid'=>Yii::$app->session->get('familyId')])->asArray()->one();
+        return $data['sum(num)'];
+        
+    }
 }

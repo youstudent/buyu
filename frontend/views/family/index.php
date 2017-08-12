@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2017 Double Software LLC
  * @license http://www.lrdouble.com/license/
  */
-$this->title = Yii::t('app','withdraw_list').'-'.Yii::$app->params['appName'];
+$this->title = Yii::t('app','family_list').'-'.Yii::$app->params['appName'];
 use yii\bootstrap\ActiveForm;
 ?>
 <section id="content">
@@ -65,15 +65,18 @@ use yii\bootstrap\ActiveForm;
                         <thead>
                             <tr style="border-top: 1px solid #ebebeb;border-bottom: 1px solid #ebebeb">
                                 <th  class="text-center">编号</th>
-                                <th  class="text-center">玩家昵称</th>
+                                <th  class="text-center">昵称</th>
                                 <th  class="text-center">金币</th>
                                 <th  class="text-center">钻石</th>
-                                <th  class="text-center">鱼币</th>
+                                <th  class="text-center">总上分金币</th>
+                                <th  class="text-center">总上分钻石</th>
+                                <th  class="text-center">总下分钻石</th>
+                                <th  class="text-center">总下分钻石</th>
                                 <th  class="text-center">保险箱金币</th>
                                 <th  class="text-center">保险箱钻石</th>
                                 <th  class="text-center">保险箱鱼币</th>
-                                <th  class="text-center">申请时间</th>
-                                <th  class="text-center">通过时间</th>
+                                <th  class="text-center">职位</th>
+                                <th  class="text-center">状态</th>
                                 <th  class="text-center">操作</th>
                             </tr>
                         </thead>
@@ -85,19 +88,37 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center"><?=$value->son->name?></td>
                                 <td  class="text-center"><?=$value->son->gold?></td>
                                 <td  class="text-center"><?=$value->son->diamond?></td>
-                                <td  class="text-center"><?=$value->son->fishGold?></td>
+                                <td  class="text-center"><?=\common\models\Familyrecord::GameGold($value->playerid,6)?></td>
+                                <td  class="text-center"><?=\common\models\Familyrecord::GameDiamond($value->playerid,6) ?></td>
+                                <td  class="text-center"><?=\common\models\Familyrecord::GameGold($value->playerid,5) ?></td>
+                                <td  class="text-center"><?=\common\models\Familyrecord::GameDiamond($value->playerid,5) ?></td>
                                 <td  class="text-center"><?=$value->gold?></td>
                                 <td  class="text-center"><?=$value->diamond?></td>
                                 <td  class="text-center"><?=$value->fishgold?></td>
-                                <td  class="text-center"><?=date('Y-m-d H:i:s',$value['applytime'])?></td>
-                                <td  class="text-center"><?=date('Y-m-d H:i:s',$value['agreetime'])?></td>
+                                <td  class="text-center"><?=$value->position==9?'族长':'族员'?></td>
+                                <td class="text-center">
+                                    <?php if($value['status'] == 1):?>
+                                    <a href="#" class="active">
+                                        <?php else:?>
+                                        <a href="#" class="">
+                                            <?php endif;?>
+                                            <i class="fa fa-check text-success text-active"></i>
+                                            <i class="fa fa-times text-danger text"></i>
+                                        </a>
+                                </td>
+                                <?php if (!$value->position==9):?>
                                 <td  class="text-center">
+                                    <a onclick="return openAgency(this,'踢出该玩家?')"
+                                       href="<?php echo \yii\helpers\Url::to(['family/kick', 'id' => $value['id'],'status'=>3]) ?>"
+                                       class="btn btn-xs btn-danger">踢出</a>
                                     <a href="<?=\yii\helpers\Url::to(['family/up-and-down','playerid'=>$value->son->id,'updown'=>1,'show'=>1])?>" class="btn btn-xs btn-success">上分记录</a>
                                     <a href="<?=\yii\helpers\Url::to(['family/up-and-down','playerid'=>$value->son->id,'updown'=>0,'show'=>0])?>" class="btn btn-xs btn-success">下分记录</a>
-                                    
-                                    
                                 </td>
-                                
+                                <?php else:?>
+                                <td class="text-center">
+                                    <button class="btn btn-xs">族长</button>
+                                </td>
+                                <?php endif;?>
                             </tr>
                         <?php $i++?>
                         <?php endforeach;?>
@@ -106,7 +127,7 @@ use yii\bootstrap\ActiveForm;
                     <?php if(empty($data)):?>
                         <div class="text-center m-t-lg clearfix wrapper-lg animated fadeInRightBig" id="galleryLoading">
                             <h1><i class="fa fa-warning" style="color: red;font-size: 40px"></i></h1>
-                            <h4 class="text-muted">对不起、未能找到""相关的任何数据</h4>
+                            <h4 class="text-muted">对不起、未能找到"<?=Yii::t('app','family_list')?>"相关的任何数据</h4>
                             <p class="m-t-lg"></p>
                         </div>
                     <?php endif;?>

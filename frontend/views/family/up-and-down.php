@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2017 Double Software LLC
  * @license http://www.lrdouble.com/license/
  */
-$this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'];
+$this->title = Yii::t('app', 'down_index') . '-' . Yii::$app->params['appName'];
 ?>
 <section id="content">
     <section class="vbox">
@@ -12,8 +12,8 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">公告管理</a></li>
-                <li class="active">公告管理详情</li>
+                <li><a href="#">上下分管理</a></li>
+                <li class="active">上下分记录</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">
@@ -35,7 +35,12 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                                     echo "active";
                                 } ?> " onclick="setStatus(0)">
                                     <input type="radio" name="options" id="statusColose">下分</label>
+                                    <input type="text" disabled="disabled" style="height: 33px;margin-left: 20px; width: 200px" value="总上分金币:<?=$rows['sum(gold)']?>">
+                                    <input type="text" disabled="disabled" style="height: 33px;margin-left: 20px; width: 200px" value="总上分钻石:<?=$rows['sum(diamond)']?>">
+                                    <input type="text" disabled="disabled" style="height: 33px;margin-left: 20px; width: 200px" value="总下分金币:<?=$row['sum(gold)']?>">
+                                    <input type="text" disabled="disabled" style="height: 33px;margin-left: 20px; width: 200px" value="总下分钻石:<?=$row['sum(diamond)']?>">
                             </div>
+                            
                             <input type="hidden" name="Agency[searchstatus]" value="" id="status">
                             <!--筛选状态 全部|正常|封停 结束-->
                         </div>
@@ -51,8 +56,9 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">族员昵称</th>
                                 <th class="text-center">上下</th>
-                                <th class="text-center">货币类型</th>
-                                <th class="text-center">数量</th>
+                                <th class="text-center">金币</th>
+                                <th class="text-center">钻石</th>
+                                <th class="text-center">鱼币</th>
                                 <th class="text-center">时间</th>
                             </tr>
                             </thead>
@@ -62,19 +68,13 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?=$value->users['name']?></td>
-                                    <td class="text-center"><?=$value->updown==0?'下风':'上分'?></td>
-                                    <td class="text-center">
-                                    <?php if ($value->type == 1): ?>
-                                        <span class="text-center">金币</span>
-                                    <?php elseif ($value->type == 2): ?>
-                                        <span class="text-center">钻石</span>
-                                    <?php else:?>
-                                        <span class="text-center">鱼币</span>
-                                    <?php endif; ?>
-                                    </td>
-                                    <td class="text-center"><?= $value->num?></td>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value->time) ?></td>
+                                    <td class="text-center"><?=$value->users->name?></td>
+                                    <td class="text-center"><?=$value->type==5?'下分':'上分'?></td>
+                                    <td class="text-center"><?= $value->gold?></td>
+                                    <td class="text-center"><?= $value->diamond?></td>
+                                    <td class="text-center"><?= $value->fishgold?></td>
+                                   <!-- <td class="text-center"><?/*=\common\models\Updowninfo::getCount($value->type,$value->id,$value->updown,$value->playerid)*/?></td>-->
+                                    <td class="text-center"><?= $value->time ?></td>
                                 </tr>
                                 <?php $i++ ?>
                             <?php endforeach; ?>
@@ -83,7 +83,7 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                         <?php if(empty($data)):?>
                             <div class="text-center m-t-lg clearfix wrapper-lg animated fadeInRightBig" id="galleryLoading">
                                 <h1><i class="fa fa-warning" style="color: red;font-size: 40px"></i></h1>
-                                <h4 class="text-muted"><?php echo sprintf(Yii::t('app','search_null'),'公告管理')?></h4>
+                                <h4 class="text-muted">对不起、未能找到"<?=Yii::t('app','down_index')?>"相关的任何数据</h4>
                                 <p class="m-t-lg"></p>
                             </div>
                         <?php endif;?>

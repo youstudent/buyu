@@ -128,19 +128,9 @@ use yii\bootstrap\ActiveForm;
                             <th class="text-center">组员人数</th>
                             <th class="text-center">保险箱总金币</th>
                             <th class="text-center">保险箱总钻石</th>
-                            <th class="text-center">注册时间</th>
-
-<!--                            多货币修改代码-->
-                           <!-- --><?php
-/*                                $item = \common\models\GoldConfigObject::find()->all();
-                                foreach ($item as $key=>$value){
-                                   echo "<th class=\"text-center\">".$value['name']."</th>";
-                                  
-                                }
-                            */?>
-<!--                            多货币修改代码-->
-
                             <th class="text-center">身份证号</th>
+                            <th class="text-center">注册时间</th>
+                            <th class="text-center">状态</th>
                             <th class="text-center" style="border-right: 0px;">操作</th>
                         </tr>
                         </thead>
@@ -150,10 +140,6 @@ use yii\bootstrap\ActiveForm;
                         <?php foreach ($data as $key => $value): ?>
                             <tr>
                                 <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                               <!-- <?php /*if (Yii::$app->params['distribution']): */?>
-                                    <td class="text-center"><?/*= $value['pid'] */?></td>
-                                   
-                                --><?php /*endif; */?>
                                 <td class="text-center"><?= $value['phone'] ?></td>
                                 <td class="text-center"><?= $value['name'] ?></td>
                                 <td class="text-center"><?= $value['realname'] ?></td>
@@ -163,16 +149,29 @@ use yii\bootstrap\ActiveForm;
                                 <td class="text-center"><?=\common\models\Family::getSon($value['id'])?>/<?= $value['maxmenber']?></td>
                                 <td class="text-center"><?=\common\models\Family::getAll($value['id'],'gold')?></td>
                                 <td class="text-center"><?=\common\models\Family::getAll($value['id'],'diamond')?></td>
-                                <td class="text-center"><?= date("Y-m-d H:i:s", $value['cretetime']) ?></td>
-<!--                                多货币修改-->
-                                <?php /*foreach ($value['gold'] as $keys=>$values):*/?><!--
-                                   
-                                   <td class="text-center"><?/*= $values */?></td>;
-                                   
-                                --><?php /*endforeach;*/?>
-<!--                                多货币修改-->
                                 <td class="text-center"><?= $value['idcard'] ?></td>
-                                <td class="text-center" STYLE="width: 400px">
+                                <td class="text-center"><?= date("Y-m-d H:i:s", $value['createtime']) ?></td>
+                                <td class="text-center">
+                                    <?php if ($value->agency->status ==2):?>
+                                    <a href="#" class="">
+                                        <?php else:?>
+                                        <a href="#" class="active">
+                                            <?php endif;?>
+                                            <i class="fa fa-check text-success text-active"></i>
+                                            <i class="fa fa-times text-danger text"></i>
+                                        </a>
+                                </td>
+                                <td class="text-center" STYLE="width: 420px">
+                                
+                                   <?php if ($value->agency->status ==2):?>
+                                   <a onclick="return openAgency(this,'是否将该账号启用?')"
+                                   href="<?php echo \yii\helpers\Url::to(['family/stop', 'id' => $value['id'],'status'=>1]) ?>"
+                                   class="btn btn-xs btn-danger">启用</a>
+                                   <?php else:?>
+                                   <a onclick="return openAgency(this,'是否将该账号停封?')"
+                                   href="<?php echo \yii\helpers\Url::to(['family/stop', 'id' => $value['id'],'status'=>2]) ?>"
+                                    class="btn btn-xs btn-danger">停封</a>
+                                   <?php endif;?>
                                     <a href="<?php echo \yii\helpers\Url::to(['family/edit', 'id' => $value['id']])?>"
                                        data-toggle="modal" data-target="#myModal"
                                        class="btn btn-xs btn-success">&nbsp;编 辑&nbsp;</a>

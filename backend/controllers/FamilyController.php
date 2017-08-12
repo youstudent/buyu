@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\Agency;
 use common\models\Family;
 use common\models\Familyplayer;
 use yii\web\Response;
@@ -140,6 +141,20 @@ class FamilyController extends \yii\web\Controller
         $data = $model->son(\Yii::$app->request->get());
         return $this->render('son',$data);
         
+    }
+    
+    /**
+     *  停封 后台族长登录
+     */
+    public function actionStop(){
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $family_id =  \Yii::$app->request->get('id');
+        $status=  \Yii::$app->request->get('status');
+        if ($data = Agency::findOne(['family_id'=>$family_id])){
+           $data->status=$status;
+           return  $data->save(false)?['code'=>1,'message'=>"操作成功！"]:['code'=>0,'message'=>"操作成功！"];
+        }
+          return ['code'=>0,'message'=>'未找到后台族长登录账号'];
     }
 
 }

@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2017 Double Software LLC
  * @license http://www.lrdouble.com/license/
  */
-$this->title = Yii::t('app','withdraw_list').'-'.Yii::$app->params['appName'];
+$this->title = Yii::t('app','withdraw').'-'.Yii::$app->params['appName'];
 use yii\bootstrap\ActiveForm;
 ?>
 <section id="content">
@@ -99,7 +99,6 @@ use yii\bootstrap\ActiveForm;
                                     <?php else:?>
                                         <span class="label bg-info">等待审核</span>
                                      <?php endif;?>
-                                    
                                 </td>
                             </tr>
                         <?php $i++?>
@@ -109,7 +108,7 @@ use yii\bootstrap\ActiveForm;
                     <?php if(empty($data)):?>
                         <div class="text-center m-t-lg clearfix wrapper-lg animated fadeInRightBig" id="galleryLoading">
                             <h1><i class="fa fa-warning" style="color: red;font-size: 40px"></i></h1>
-                            <h4 class="text-muted">对不起、未能找到""相关的任何数据</h4>
+                            <h4 class="text-muted">对不起、未能找到"<?=Yii::t('app','withdraw')?>"相关的任何数据</h4>
                             <p class="m-t-lg"></p>
                         </div>
                     <?php endif;?>

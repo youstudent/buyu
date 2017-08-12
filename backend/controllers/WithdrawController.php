@@ -14,7 +14,7 @@ use yii\web\Response;
 
 class WithdrawController extends ObjectController
 {
-    //族长列表
+    // 提现列表
     public function actionList()
     {
         $model = new Withdraw();
@@ -27,6 +27,7 @@ class WithdrawController extends ObjectController
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $model = new Withdraw();
         if ($model->pass(\Yii::$app->request->get('id'),\Yii::$app->request->get('status'))){
+            
             return ['code'=>1,'message'=>\Yii::t('app','操作成功')];
         }
         $message = $model->getFirstErrors();

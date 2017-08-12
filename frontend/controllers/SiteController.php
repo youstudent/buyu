@@ -3,6 +3,9 @@
 
 namespace frontend\controllers;
 
+use common\models\Familyplayer;
+use common\models\Familyrecord;
+use common\models\Player;
 use frontend\models\Agency;
 use frontend\models\AgencyPay;
 use frontend\models\UserPay;
@@ -42,9 +45,9 @@ class SiteController extends ObjectController
          *      3.进入二次循环并判断时间是否为当天、
          *          为当天并unset当前key、此操作为提高程序性能
          */
-        $data = AgencyPay::find()->andWhere(['agency_id'=>\Yii::$app->session->get('agencyId')])
-            ->andWhere([">",'time',$startTime])
-            ->andWhere(["<","time",$endTime])
+        $data = Familyrecord::find()->andWhere(['familyid'=>\Yii::$app->session->get('familyId')])
+            ->andWhere([">",'time',date('Y-m-d H:i:s',$startTime)])
+            ->andWhere(["<","time",date('Y-m-d H:i:s',$endTime)])->andWhere(['type'=>6])
             ->orderBy("time ASC")->asArray()->all();
         for ($i=1;$i<=$dayNum;$i++){
             $oderNnm        = 0;
@@ -52,7 +55,7 @@ class SiteController extends ObjectController
             $orderMonth[$i] = 0;
             foreach ($data as $key=>$value)
             {
-                if($value['time'] <= $endValueTime)
+                if(strtotime($value['time']) <= $endValueTime)
                 {
                     $orderMonth[$i] = ($oderNnm+$value['gold']);
                     $oderNnm        = ($oderNnm+$value['gold']);
@@ -62,14 +65,15 @@ class SiteController extends ObjectController
                 }
             }
         }
+        
 
         /**
          * 算出平台给用户充值的数量
          * 算法思路 同上
          */
-        $data = UserPay::find()->andWhere(['agency_id'=>\Yii::$app->session->get('agencyId')])
-            ->andWhere([">",'time',$startTime])
-            ->andWhere(["<","time",$endTime])
+        $data = Familyrecord::find()->andWhere(['familyid'=>\Yii::$app->session->get('familyId')])
+            ->andWhere([">",'time',date('Y-m-d H:i:s',$startTime)])
+            ->andWhere(["<","time",date('Y-m-d H:i:s',$endTime)])->andWhere(['type'=>6])
             ->orderBy("time ASC")->asArray()->all();
         for ($i=1;$i<=$dayNum;$i++){
             $oderNnm = 0;
@@ -77,18 +81,29 @@ class SiteController extends ObjectController
             $userOrder[$i] = 0;
             foreach ($data as $key=>$value)
             {
-                if($value['time'] <= $endValueTime)
+               
+                if(strtotime($value['time']) <= $endValueTime)
                 {
-                    $userOrder[$i] = ($oderNnm+$value['gold']);
-                    $oderNnm       = ($oderNnm+$value['gold']);
+                    $userOrder[$i] = ($oderNnm+$value['diamond']);
+                    $oderNnm       = ($oderNnm+$value['diamond']);
                     unset($data[$key]);
                 }elseif($value['time'] > $endValueTime){
                     continue;
                 }
             }
         }
-        
-        return $this->render('index',['model'=>$model,'monthOrderToDay'=>$orderMonth,'userOrderToDay'=>$userOrder]);
+    
+        $family_id = \Yii::$app->session->get('familyId');
+        //查询组员表
+        $Family['gold']=0;
+        $Family['diamond']=0;
+        $Family['fishgold']=0;
+        if ($FamilyPlayer= Familyplayer::find()->select(['sum(gold)','sum(diamond)','sum(fishgold)'])->where(['familyid'=>$family_id])->asArray()->one()){
+            $Family['gold']=$FamilyPlayer['sum(gold)'];
+            $Family['diamond']=$FamilyPlayer['sum(diamond)'];
+            $Family['fishgold']=$FamilyPlayer['sum(fishgold)'];
+        }
+        return $this->render('index',['model'=>$model,'monthOrderToDay'=>$orderMonth,'userOrderToDay'=>$userOrder,'Family'=>$Family]);
     }
 
     /**
@@ -103,6 +118,7 @@ class SiteController extends ObjectController
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if ($model->editPassword(\Yii::$app->request->post()))
             {
+               
                 return ['code'=>1,'message'=>'修改成功'];
             }
             $message = $model->getFirstErrors();

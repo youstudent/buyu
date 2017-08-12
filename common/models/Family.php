@@ -135,7 +135,7 @@ class Family extends \yii\db\ActiveRecord
         return [
             ['pay_gold','match','pattern'=>'/^\+?[1-9][0-9]*$/','on'=>'pay'],
             [['name','realname', 'bankcard', 'bank', 'idcard', 'phone', 'maxmenber','password'], 'required','on'=>'add'],
-            [['ownerid', 'cretetime', 'maxmenber'], 'integer'],
+            [['owenerid', 'createtime', 'maxmenber'], 'integer'],
             [['name', 'realname', 'bankcard', 'bank', 'idcard', 'phone', 'notice','password'], 'string', 'max' => 255],
             [['notice'],'required','on'=>'edit'],
             [['pay_gold_config','pay_gold'],'safe'],
@@ -150,8 +150,8 @@ class Family extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => '家族名字',
-            'ownerid' => '玩家ID',
-            'cretetime' => '创建时间',
+            'owenerid' => '玩家ID',
+            'createtime' => '创建时间',
             'realname' => '银行卡名字',
             'bankcard' => '卡号',
             'bank' => '开户行',
@@ -178,8 +178,8 @@ class Family extends \yii\db\ActiveRecord
         $this->load($data);
         $this->initTime();
         $model = self::find()->where($this->searchWhereLike())
-            ->andWhere(['>=','cretetime',strtotime($this->starttime)])
-            ->andWhere(['<=','cretetime',strtotime($this->endtime)]);;
+            ->andWhere(['>=','createtime',strtotime($this->starttime)])
+            ->andWhere(['<=','createtime',strtotime($this->endtime)]);;
         
         $pages = new Pagination(['totalCount' =>$model->count(), 'pageSize' => \Yii::$app->params['pageSize']]);
         $data = $model->limit($pages->limit)->offset($pages->offset)->all();
@@ -239,8 +239,8 @@ class Family extends \yii\db\ActiveRecord
                 if ($player->save()==false){
                     throw  new Exception('创建文件失败');
                 }
-                $this->ownerid=$player->id;
-                $this->cretetime=time();
+                $this->owenerid=$player->id;
+                $this->createtime=time();
                 $this->notice='暂未公告信息';
                 if ($this->save() ==false){
                     throw  new \Exception("创建家族失败");
@@ -255,6 +255,14 @@ class Family extends \yii\db\ActiveRecord
                 $agency->name=$this->realname;
                 if ($agency->save()==false){
                     throw  new Exception('创建代理失败');
+                }
+                $Familyplayer = new Familyplayer();
+                $Familyplayer->playerid=$player->id;
+                $Familyplayer->familyid=$this->id;
+                $Familyplayer->status=1;
+                $Familyplayer->position=9;
+                if (!$Familyplayer->save()){
+                    throw  new Exception('加入家族管理');
                 }
                 $transaction->commit();
                 return true;
@@ -276,7 +284,7 @@ class Family extends \yii\db\ActiveRecord
                  if ($agency==false || $agency== null){
                      return $this->addError('id','族长未找到');
                  }
-                 $player=  Player::findOne(['id'=>$this->ownerid]);
+                 $player=  Player::findOne(['id'=>$this->owenerid]);
                  if ($player ==false || $player == null){
                      return $this->addError('id','玩家为找到');
                  }
@@ -311,7 +319,7 @@ class Family extends \yii\db\ActiveRecord
      *   家族表和玩家建立一对一的关系
      */
     public function getUsers(){
-        return $this->hasOne(Player::className(),['id'=>'ownerid']);
+        return $this->hasOne(Player::className(),['id'=>'owenerid']);
     }
     
     
@@ -325,6 +333,8 @@ class Family extends \yii\db\ActiveRecord
         }
             return 0;
     }
+    
+    
     public static function getAll($id,$type){
         $data = Familyplayer::find()->select("sum($type)")->where(['familyid'=>$id,'status'=>1])->asArray()->one();
         if ($data){
@@ -349,7 +359,7 @@ class Family extends \yii\db\ActiveRecord
             $transaction  = \Yii::$app->db->beginTransaction();
             try{
                 $model = self::findOne($this->id);
-                $player = Player::findOne(['id'=>$this->ownerid]);
+                $player = Player::findOne(['id'=>$this->owenerid]);
                 if ($player == false || $player ==null){
                     throw  new \Exception("玩家不存在");
                 }
@@ -397,7 +407,7 @@ class Family extends \yii\db\ActiveRecord
             $transaction  = \Yii::$app->db->beginTransaction();
             try{
                 $model = self::findOne($this->id);
-                $player = Player::findOne(['id'=>$this->ownerid]);
+                $player = Player::findOne(['id'=>$this->owenerid]);
                 if ($player == false || $player ==null){
                     throw  new \Exception("玩家不存在");
                 }
@@ -434,6 +444,14 @@ class Family extends \yii\db\ActiveRecord
                 throw $e;
             }
         }
+    }
+    
+    /**
+     *  族长和 登录账号建立一对一的关系
+     */
+    public function getAgency(){
+        
+        return $this->hasOne(Agency::className(),['family_id'=>'id']);
     }
     
 }

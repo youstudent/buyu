@@ -40,6 +40,8 @@ use Yii;
  */
 class Player extends \yii\db\ActiveRecord
 {
+    
+    public  $unset_time;  //保存时间
     /**
      * @inheritdoc
      */
@@ -65,7 +67,7 @@ class Player extends \yii\db\ActiveRecord
         return [
             [['sex', 'gold', 'diamond', 'fishGold', 'ex', 'deposit', 'battery', 'power', 'maxpower', 'level', 'viplevel', 'onlinetime', 'lastlogintime', 'trident', 'fishtrident', 'familyowner'], 'integer'],
             [['onlinetime'], 'required'],
-            [['createdtime'], 'safe'],
+            [['createdtime','unset_time'], 'safe'],
             [['name', 'head', 'openid', 'mac', 'uid', 'pwd', 'phonenumber', 'idcard', 'realname', 'province'], 'string', 'max' => 255],
         ];
     }
@@ -104,6 +106,7 @@ class Player extends \yii\db\ActiveRecord
             'trident' => 'Trident',
             'fishtrident' => 'Fishtrident',
             'familyowner' => 'Familyowner',
+            'unset_time' => '解封时间',
         ];
     }
 

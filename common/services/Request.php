@@ -67,7 +67,7 @@ class Request
         ));
         $data = curl_exec($ch);//运行curl
         curl_close($ch);
-       // var_dump($data);exit;
+       //var_dump($data);exit;
         $data = json_decode($data);
         if($data->code == 1)
         {

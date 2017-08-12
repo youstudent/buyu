@@ -16,7 +16,7 @@ $agency = \backend\models\Agency::find();
                                 class="fa fa-circle fa-stack-2x text-info"></i> <i
                                 class="fa fa-male fa-stack-1x text-white"></i> </span>
                         <a class="clear" href="<?= \yii\helpers\Url::to(["users/list"]) ?>"> <span
-                                    class="h3 block m-t-xs"><strong><?php echo \backend\models\Users::find()->count() ?></strong></span>
+                                    class="h3 block m-t-xs"><strong><?php echo \common\models\Player::find()->count() ?></strong></span>
                             <small class="text-muted text-uc"><?= Yii::t('app', 'index_game_num') ?></small>
                         </a>
                     </div>
@@ -24,7 +24,7 @@ $agency = \backend\models\Agency::find();
                     <span class="fa-stack fa-2x pull-left m-r-sm"> <i
                                 class="fa fa-circle fa-stack-2x text-warning"></i> <i
                                 class="fa fa-briefcase fa-stack-1x text-white"></i> </span>
-                        <a class="clear" href="<?= \yii\helpers\Url::to(["agency/index"]) ?>"> <span
+                        <a class="clear" href="<?= \yii\helpers\Url::to(["family/index"]) ?>"> <span
                                     class="h3 block m-t-xs"><strong><?php echo $agency->count()-1 ?></strong></span>
                             <small class="text-muted text-uc"><?= Yii::t('app', 'index_agency_num') ?></small>
                         </a>
@@ -94,7 +94,7 @@ $agency = \backend\models\Agency::find();
                                         ],
                                         series: [
                                             {
-                                                name: '<?=Yii::t('app', 'index_agency_series')?>',
+                                                name: '<?=Yii::t('app', 'index_agency_diamond')?>',
                                                 type: 'bar',
                                                 barWidth: '45%',
                                                 data: [<?php $i = 0; foreach ($monthOrderToDay as $item) {
@@ -109,7 +109,7 @@ $agency = \backend\models\Agency::find();
                                             <?php if(Yii::$app->params['backendPayUser']):?>
                                             ,
                                             {
-                                                name: '<?=Yii::t('app', 'index_users_series')?>',
+                                                name: '<?=Yii::t('app', 'index_agency_diamond')?>',
                                                 type: 'bar',
                                                 barWidth: '45%',
                                                 data: [<?php $i = 0; foreach ($userOrderToDay as $item) {

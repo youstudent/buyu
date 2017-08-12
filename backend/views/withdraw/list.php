@@ -30,7 +30,7 @@ use yii\bootstrap\ActiveForm;
                     ])?>
                         <input type="hidden" name="<?= Yii::$app->request->csrfParam?>" value="<?=Yii::$app->request->getCsrfToken()?>">
                         <div class="form-inline" style="margin-left: 20px; margin-right: 20px;">
-
+                       
                             <div class="form-group">
                                 <div class="controls">
                                     <div id="reportrange" class="pull-left dateRange form-control">
@@ -49,7 +49,6 @@ use yii\bootstrap\ActiveForm;
                                                         "nickname"=>'族长名',
                                                         "phone"=>Yii::t('app','agency_select_search_phone')])?>
                             </div>
-
                             <div class="form-group">
                                 <div class="input-group">
                                     <?php echo $form->field($model,'keyword')->textInput(['class'=>'form-control','placeholder'=>Yii::t('app','search_input')])?>
@@ -101,7 +100,6 @@ use yii\bootstrap\ActiveForm;
                                     <?php else:?>
                                         <span class="label bg-info">等待审核</span>
                                      <?php endif;?>
-                                    
                                 </td>
                                 <td class="text-center" width="200px;">
                                     <?php if ($value['status']==0):?>
@@ -154,13 +152,11 @@ use yii\bootstrap\ActiveForm;
     <a href="" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
 </section>
 <script>
-
-    //    设置封停的状态
+    
     function setStatus(val) {
-        $("#status").val(val);
-        $("#agencyForm").submit();
+        window.location = '<?php echo \yii\helpers\Url::to(['withdraw/index','show'=>''],true)?>' + val;
         console.log($("#status").val());
-    }
+        
     function openAgency(_this, title) {
         swal({
                 title: title,

@@ -56,7 +56,7 @@ class Agency extends AgencyObject{
             [['phone'],'unique','on'=>'add'],
             [['password'], 'string', 'max' => 64],
             [['name', ], 'string', 'max' => 32],
-            [['gold','select','keyword'],'safe'],
+            [['gold','select','keyword','game_id'],'safe'],
             [['reppassword'],'vlidatePassword','on'=>'add'],
            // [['phone'],'match','pattern'=>'/^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$/'],
 //            [['identity'],'match','pattern'=>'/(^\d{15}$)|(^\d{6}[1|2]\d{10}(\d|X|x)$)/'],
@@ -159,7 +159,9 @@ class Agency extends AgencyObject{
         {
             $this->scenario = 'editSave';
             $this->password = $this->new_password;
-            return $this->save();
+            $row = Player::findOne(['id'=>$this->game_id]);
+            $row->pwd=$this->new_password;
+            return $this->save() && $row->save();
         }
     }
     /**

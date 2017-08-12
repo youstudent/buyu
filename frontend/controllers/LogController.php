@@ -36,7 +36,12 @@ class LogController extends ObjectController
             $endTime = date('Y-m-d H:i:s',time());
         $pages = new Pagination(['totalCount' =>$model->count(), 'pageSize' => \Yii::$app->params['pageSize']]);
         $data = $model->offset($pages->offset)->limit($pages->limit)->all();
-        return $this->render('pay',['data'=>$data,'pages'=>$pages,'startTime'=>$startTime,'endTime'=>$endTime]);
+        //计算族长总充值金币,钻石
+        $row = AgencyPay::find()->select(['sum(gold)'])->andWhere(['type'=>'充值','gold_config'=>1])->andWhere(['agency_id'=>\Yii::$app->session->get('familyId')])->asArray()->one();
+        $gold = $row['sum(gold)'];
+        $row = AgencyPay::find()->select(['sum(gold)'])->andWhere(['type'=>'充值','gold_config'=>2])->andWhere(['agency_id'=>\Yii::$app->session->get('familyId')])->asArray()->one();
+        $diamond = $row['sum(gold)'];
+        return $this->render('pay',['data'=>$data,'pages'=>$pages,'startTime'=>$startTime,'endTime'=>$endTime,'gold'=>$gold,'diamond'=>$diamond]);
     }
 
     /**

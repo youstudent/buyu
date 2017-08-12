@@ -36,8 +36,12 @@ use yii\bootstrap\ActiveForm;
                                         </div>
                                         <input class="form-control" name="startTime" value="<?=$startTime?>"  size="16" type="hidden" id="startTime">
                                         <input class="form-control" name="endTime" value="<?=$endTime?>" type="hidden" id="endTime">
+                                    
+                                       
 
                                         <input type="submit" value="查询" class="btn btn-default">
+                                        <input class="form-control" value="总购买金币:<?=$gold?>" disabled="disabled" style="width:300px">
+                                        <input class="form-control" value="总购买钻石:<?=$diamond?>" disabled="disabled" style="width:300px" >
                                     </form>
                                 </div>
                             </div>

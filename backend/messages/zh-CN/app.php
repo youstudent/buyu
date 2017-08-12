@@ -31,6 +31,7 @@ return [
     'index_map_time'           =>'号',
     'index_agency_series'       =>'销售给代理金币',
     'index_users_series'       =>'平台给用户充值金币',
+    'index_agency_diamond'       =>'平台给族长充值钻石',
 
     'users_pay_success'         =>'充值成功',
 

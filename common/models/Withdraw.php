@@ -169,7 +169,7 @@ class Withdraw extends Object
         }
         if ($status == 2){
             $family = Family::findOne(['id'=>$data->game_id]);
-            $pa = Player::findOne(['id'=>$family->ownerid]);
+            $pa = Player::findOne(['id'=>$family->owenerid]);
             if ($pa ==false || $pa ==null){
                return ['code'=>0,'message'=>'玩家未找到!'];
             }
