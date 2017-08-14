@@ -82,7 +82,7 @@ class Withdraw extends Object
         return [
             [['phone','bank_card','bank_name','bank_opening','gold'],'required'],
             [['game_id', 'phone', 'gold', 'status', 'bank_card', 'reg_time'], 'integer'],
-            [['gold'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
+            [['gold'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'数量无效'],
             [['nickname', 'bank_name', 'bank_opening'], 'string', 'max' => 20],
             [['select','keyword','pay_gold_num','pay_gold_config'],'safe'],
             [['starttime','endtime','type'],'safe'],

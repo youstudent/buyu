@@ -74,7 +74,9 @@ class Dissolve extends \yii\db\ActiveRecord
             $dissolve->manage_name=\Yii::$app->session->get('manageName');
             $dissolve->time=time();
             $dissolve->status=1;
-            if ($dissolve->save()==false) throw new Exception('状态改变失败');
+            if ($dissolve->save(false)==false){
+                throw new Exception('状态改变失败');
+            }
             //家族宝箱箱的钱退给玩家
             $family =Familyplayer::find()->where(['familyid'=>$dissolve->family_id,'status'=>1])->asArray()->all();
             foreach ($family as $value){
@@ -84,25 +86,39 @@ class Dissolve extends \yii\db\ActiveRecord
                     $Player->gold=$Player->gold+$value['gold'];
                     $Player->diamond=$Player->diamond+$value['diamond'];
                     $Player->fishGold=$Player->fishGold+$value['fishgold'];
-                   if ($Player->save()==false) throw new Exception('退换玩家货币失败');
+                    if ($Player->save()==false){
+                       throw new Exception('退换玩家货币失败');
+                   }
                 }
             }
             //删除族员与族长管理信息
-            if (Familyplayer::deleteAll(['familyid'=>$dissolve->family_id])==false) throw new Exception('族长和族员关系删除失败');
+            if (!Familyplayer::deleteAll(['familyid'=>$dissolve->family_id])){
+                throw new Exception('族长和族员关系删除失败');
+            }
             //删除家族动态
-            if (Familyrecord::deleteAll(['familyid'=>$dissolve->family_id])==false) throw  new Exception('删除我的动态失败');
+            if (!Familyrecord::deleteAll(['familyid'=>$dissolve->family_id])){
+                throw  new Exception('删除我的动态失败');
+            }
             //找出族长列表
             $Family = Family::findOne(['id'=>$dissolve->family_id]);
             if ($Family ==null) throw  new Exception('未找到族长');
             //删除玩家族长关联的玩家
-            $Players = Player::findOne(['id'=>$Family->ownerid]);
+            $Players = Player::findOne(['id'=>$Family->owenerid]);
             if ($Players == null) throw new Exception('族长管理玩家未找到');
             //删除玩家
-            if ($Players->delete()==false) throw new Exception('族长关联玩家删除失败');
+            if (!$Players->delete()){
+                throw new Exception('族长关联玩家删除失败');
+            }
             //删除族长
-            if ($Family->delete() ==false) throw new Exception('删除族长失败');
+            if (!$Family->delete()){
+                throw new Exception('删除族长失败');
+            }
             //处理代理登录账号
-            if (Agency::deleteAll(['family'=>$dissolve->family_id])==false) throw new Exception('删除后台代理账号失败');
+            if (!Agency::deleteAll(['family_id'=>$dissolve->family_id])){
+                throw new Exception('删除后台代理账号失败');
+            }
+           // throw new Exception('抛出异常');
+            
             $transaction->commit();//提交事务
             return true;
         }catch (\Exception $e){

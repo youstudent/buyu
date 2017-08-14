@@ -229,6 +229,9 @@ class Family extends \yii\db\ActiveRecord
         if ($this->load($data) && $this->validate()){
            $transaction  = \Yii::$app->commondb->beginTransaction();
             try {
+                if (Player::find()->where(['uid'=>$this->phone])->exists()){
+                  return $this->addError('phone','手机号已存在');
+                }
                 $player = new Player();
                 $player->familyowner=1;
                 $player->uid=$this->phone;
@@ -237,7 +240,7 @@ class Family extends \yii\db\ActiveRecord
                 $player->onlinetime=0;
                 $player->createdtime=date('Y-m-d H:i:s');
                 if ($player->save()==false){
-                    throw  new Exception('创建文件失败');
+                    throw  new Exception('创建玩家失败');
                 }
                 $this->owenerid=$player->id;
                 $this->createtime=time();
