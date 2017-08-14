@@ -4,7 +4,9 @@ namespace backend\controllers;
 
 use backend\models\Users;
 use common\models\OnLine;
+use common\services\Request;
 use spec\Prophecy\Exception\Prophecy\ObjectProphecyExceptionSpec;
+use yii\web\Response;
 
 class MonitoringController extends ObjectController
 {
@@ -56,8 +58,33 @@ class MonitoringController extends ObjectController
             $datas[$v->users->game_id]=$v->users->nickname;
         }
         return $this->render('robot');
-        //var_dump($datas);EXIT;
+        
+     }
      
+     
+     
+     /**
+      *  监控中心掉线接口
+      */
+     public function actionLostConnection(){
+     
+     
+     
+     }
+    
+    
+    /**
+     * 监控中心停封玩家
+     */
+     public function actionStop(){
+         \Yii::$app->response->format = Response::FORMAT_JSON;
+         $id = \Yii::$app->request->get('id');
+         $datas['playerId']=$id;
+         $datas['banTime']=86400*1000;//将时间戳转化成毫秒
+         $result = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/ban',$datas);
+         if ($result['code'] == 1){
+             return ['code'=>1,'message'=>\Yii::t('app','操作成功')];
+         }
      }
 
 }

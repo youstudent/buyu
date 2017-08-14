@@ -87,6 +87,7 @@ $config[] = ['label' => '每日任务管理', 'icon' => 'fa fa-bullhorn icon', '
 ]];
 $config[] = ['label' => '基础设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-info', 'url' => ['manage/index'], 'items' => [
     ['label' => '聊天内容设置', 'url' => ['chat/index','show'=>'3']],
+    ['label' => '货币设置', 'url' => ['configurine/index']],
     ['label' => '商店道具设置', 'url' => ['shop/index']],
     ['label' => '管理员列表', 'url' => ['manage/index', 'id' => 1]],
 ]];
