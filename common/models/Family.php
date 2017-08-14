@@ -138,7 +138,7 @@ class Family extends \yii\db\ActiveRecord
             [['owenerid', 'createtime', 'maxmenber'], 'integer'],
             [['name', 'realname', 'bankcard', 'bank', 'idcard', 'phone', 'notice','password'], 'string', 'max' => 255],
             [['notice'],'required','on'=>'edit'],
-            [['pay_gold_config','pay_gold'],'safe'],
+            [['pay_gold_config','pay_gold','password'],'safe'],
         ];
     }
 
@@ -452,6 +452,39 @@ class Family extends \yii\db\ActiveRecord
     public function getAgency(){
         
         return $this->hasOne(Agency::className(),['family_id'=>'id']);
+    }
+    
+    
+    /**
+     *  解散家族
+     */
+    public function dissolve($data=[]){
+        if ($this->load($data) && $this->validate()){
+            if ($this->password == null){
+                return $this->addError('password','密码不能为空');
+            }
+            //验证密码是否正确
+            $aen = Agency::findOne(['id'=>Yii::$app->session->get('agencyId')]);
+            if ($aen->password !=$this->password){
+                return $this->addError('password','密码错误');
+            }
+            //查询族长是否已经申请过
+            //$dis = Dissolve::findOne(['family_id'=>Yii::$app->session->get('familyId')]);
+            $dis = Dissolve::find()->where(['family_id'=>Yii::$app->session->get('familyId'),'status'=>0])->exists();
+            if ($dis){
+                return $this->addError('password','你已经提交过申请了,请等待平台审核!!');
+            }
+            
+            //密码通过提出申请
+            $dissolve = new Dissolve();
+            $dissolve->family_id =$aen->family_id;
+            $dissolve->re_name =$aen->name;
+            $dissolve->name =$this->name;
+            $dissolve->status =0;
+            $dissolve->time =time();
+            return $dissolve->save();
+        }
+        
     }
     
 }

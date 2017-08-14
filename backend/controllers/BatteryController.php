@@ -8,7 +8,7 @@ use yii\data\Pagination;
 use yii\helpers\Json;
 use yii\web\Response;
 
-class BatteryController extends \yii\web\Controller
+class BatteryController extends ObjectController
 {
     public function actionIndex()
     {

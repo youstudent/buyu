@@ -6,7 +6,7 @@ use backend\models\Users;
 use common\models\OnLine;
 use spec\Prophecy\Exception\Prophecy\ObjectProphecyExceptionSpec;
 
-class MonitoringController extends \yii\web\Controller
+class MonitoringController extends ObjectController
 {
     public function actionIndex()
     {

@@ -14,7 +14,7 @@ use common\services\Request;
 use yii\helpers\Json;
 use yii\web\Response;
 
-class DayTaskController extends \yii\web\Controller
+class DayTaskController extends ObjectController
 {
     /**
      *  捕鱼每日任务列表

@@ -8,7 +8,7 @@ use yii\data\Pagination;
 use yii\helpers\Json;
 use yii\web\Response;
 
-class DiamondsController extends \yii\web\Controller
+class DiamondsController extends ObjectController
 {
     /**
      *  钻石等级 列表

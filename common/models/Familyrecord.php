@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\data\Pagination;
 
 /**
  * This is the model class for table "familyrecord".
@@ -18,6 +19,12 @@ use Yii;
  */
 class Familyrecord extends \yii\db\ActiveRecord
 {
+    //保存开始时间
+    public $starttime;
+    
+    //保存结束时间
+    public $endtime;
+    
     /**
      * @inheritdoc
      */
@@ -43,7 +50,7 @@ class Familyrecord extends \yii\db\ActiveRecord
         return [
            // [['familyid', 'playerid', 'type', 'gold', 'diamond', 'fishgold'], 'required'],
             [['familyid', 'playerid', 'type', 'gold', 'diamond', 'fishgold'], 'integer'],
-            [['time'], 'safe'],
+            [['time','starttime','endtime'],'safe'],
         ];
     }
 
@@ -98,5 +105,37 @@ class Familyrecord extends \yii\db\ActiveRecord
         $row = self::find()->select(['sum(diamond)'])->andWhere(['type'=>$type,'playerid'=>$playerid])->asArray()->one();
         return $row['sum(diamond)']?$row['sum(diamond)']:0;
         
+    }
+    
+    //查询动态
+    public function Trends($data=[]){
+        $this->load($data);
+        $this->initTime();
+        $model   = self::find()->andWhere(['>=','time',$this->starttime])->andWhere(['<=','time',$this->endtime])->andWhere(['familyid'=>\Yii::$app->session->get('familyId')]);
+        $pages = new Pagination(
+            [
+                'totalCount' =>$model->count(),
+                'pageSize' => \Yii::$app->params['pageSize']
+            ]
+        );
+    
+        $data  = $model->limit($pages->limit)->offset($pages->offset)->all();
+        return ['data'=>$data,'pages'=>$pages,'model'=>$this];
+        
+    }
+    
+    
+    /**
+     * 检查筛选条件时间时间
+     * 方法不是判断是否有错 是初始化时间
+     */
+    public function initTime()
+    {
+        if($this->starttime == '') {
+            $this->starttime = \Yii::$app->params['startTime'];
+        }
+        if($this->endtime == '') {
+            $this->endtime = date('Y-m-d H:i:s');
+        }
     }
 }

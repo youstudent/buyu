@@ -6,7 +6,7 @@ use common\models\Fishing;
 use yii\data\Pagination;
 use yii\web\Response;
 
-class FishingController extends \yii\web\Controller
+class FishingController extends ObjectController
 {
     /**
      * 初始化显示列表

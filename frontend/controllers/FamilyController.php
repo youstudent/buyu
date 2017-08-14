@@ -10,7 +10,7 @@ use common\models\Updowninfo;
 use yii\data\Pagination;
 use yii\web\Response;
 
-class FamilyController extends \yii\web\Controller
+class FamilyController extends ObjectController
 {
     
     /**
@@ -136,6 +136,39 @@ class FamilyController extends \yii\web\Controller
          $message = reset($message);
          return ['code'=>0,'message'=>$message];
          
+     }
+     
+     /**
+      *  家族动态
+      */
+     public function actionTrends(){
+         $model = new Familyrecord();
+         $data = $model->Trends(\Yii::$app->request->get());
+        return $this->render('trends',$data);
+     }
+     
+     
+     /**
+      *  解散家族
+      */
+     public function actionDissolve(){
+         $this->layout = false;
+         $data = Family::findOne(['id'=>\Yii::$app->session->get('familyId')]);
+         if(\Yii::$app->request->isPost)
+         {
+             \Yii::$app->response->format = Response::FORMAT_JSON;
+             if($data->dissolve(\Yii::$app->request->post())){
+                 return ['code'=>1,'message'=>'申请成功!等待后台审核'];
+             }
+             $message = $data->getFirstErrors();
+             $message = reset($message);
+             return ['code'=>0,'message'=>$message];
+         }
+         return $this->render('dissolve',['model'=>$data]);
+         
+         
+         
          
      }
+    
 }

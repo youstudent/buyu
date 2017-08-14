@@ -21,7 +21,7 @@ use yii\bootstrap\ActiveForm;
 <!--                搜索开始          -->
                 <div class="row text-sm wrapper">
                     <?php $form = ActiveForm::begin([
-                            'action'=>['withdraw/list'],
+                            'action'=>['family/get-son'],
                             'method'=>'get',
                             'id'    =>'lr_form',
                             'fieldConfig' => [

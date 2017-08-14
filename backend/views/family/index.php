@@ -25,7 +25,7 @@ use yii\bootstrap\ActiveForm;
                         <div class="col-sm-9">
                             <?php $form = ActiveForm::begin([
                                 'id' => 'agencyForm',
-                                'action' => ['agency/index'],
+                                'action' => ['family/index'],
                                 'method' => 'get',
                                 'fieldConfig' => [
                                     'template' => "{input}",

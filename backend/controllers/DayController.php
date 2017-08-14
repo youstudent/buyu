@@ -8,7 +8,7 @@ use Symfony\Component\DomCrawler\Tests\Field\InputFormFieldTest;
 use yii\helpers\Json;
 use yii\web\Response;
 
-class DayController extends \yii\web\Controller
+class DayController extends ObjectController
 {
     //每日签到首页
     public function actionIndex()

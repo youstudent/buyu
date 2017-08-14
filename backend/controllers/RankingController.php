@@ -5,7 +5,7 @@ namespace backend\controllers;
 use backend\models\Ranking;
 use yii\web\ViewAction;
 
-class RankingController extends \yii\web\Controller
+class RankingController extends ObjectController
 {
     /**
      * @return string

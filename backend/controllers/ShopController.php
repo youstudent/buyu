@@ -5,7 +5,7 @@ namespace backend\controllers;
 use backend\models\Shop;
 use yii\web\Response;
 
-class ShopController extends \yii\web\Controller
+class ShopController extends ObjectController
 {
     public function actionIndex()
     {

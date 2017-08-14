@@ -9,7 +9,8 @@ namespace frontend\controllers;
 use frontend\models\Agency;
 use yii\web\Controller;
 
-class RegisterController extends Controller{
+class RegisterController extends ObjectController
+{
 
     public $layout = false;
 

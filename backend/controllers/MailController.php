@@ -5,7 +5,7 @@ namespace backend\controllers;
 use common\models\Mail;
 use yii\web\Response;
 
-class MailController extends \yii\web\Controller
+class MailController extends ObjectController
 {
     /**
      * 显示用户列表

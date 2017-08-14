@@ -10,4 +10,5 @@ return[
     'family_list' => '家族列表',
     'withdraw_list' => '玩家申请管理',
     'withdraw' => '提现管理',
+    'trends_list' => '家族动态',
 ];

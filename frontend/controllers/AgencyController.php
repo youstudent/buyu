@@ -2,7 +2,7 @@
 
 namespace frontend\controllers;
 
-class AgencyController extends \yii\web\Controller
+class AgencyController extends ObjectController
 {
     public function actionIndex()
     {

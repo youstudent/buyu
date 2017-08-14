@@ -23,6 +23,7 @@ $config = [
         ['label' => '族长列表','url' => ['family/index']],
         ['label' => '族长充值记录', 'url' => ['pay/agency-pay-log']],
         ['label' => '族长扣除记录', 'url' => ['pay/agency-out-log']],
+        ['label' => '家族解散管理', 'url' => ['family/dissolve-index']],
     ]],
     ['label' => '排行榜管理', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['ranking/index'], 'items' => [
        ['label' => '金币榜', 'url' => ['ranking/index','Ranking'=>['type'=>1,'province'=>'']]],

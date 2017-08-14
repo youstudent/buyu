@@ -7,7 +7,7 @@ use common\services\Request;
 use yii\helpers\Json;
 use yii\web\Response;
 
-class RobotController extends \yii\web\Controller
+class RobotController extends ObjectController
 {
     
     /**

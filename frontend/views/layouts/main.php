@@ -13,6 +13,7 @@ $config = [
     ['label' => '提现列表', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['withdraw/list']],
     ['label' => '个人信息', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['family/get-message']],
     ['label' => '家族公告', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['family/notice']],
+    ['label' => '家族动态', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['family/trends']],
    // ['label' => '返利记录', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['log/rebate']],
     //['label' => '扣除记录', 'icon' => 'fa fa-dollar icon', 'bg_color' => 'bg-primary', 'url' => ['log/deduct']],
     //['label' => '我的下级', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['log/agency']],
