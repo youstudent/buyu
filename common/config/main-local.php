@@ -39,12 +39,14 @@ return [
             'showScriptName' => false,
 //            'urlSuffix'      =>'html',
         ],
-        /*'redis' => [
+        'redis' => [
             'class' => 'yii\redis\Connection',
-            'hostname' => 'localhost',
+            //'hostname' => '192.168.2.235',
+            'hostname' => '192.168.2.222',
+            //'hostname' => '127.0.0.1',
             'port' => 6379,
             'database' => 0,
-        ],*/
+        ],
        
     ],
     'timeZone'=>'Asia/Chongqing',

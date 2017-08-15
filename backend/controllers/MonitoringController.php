@@ -67,7 +67,14 @@ class MonitoringController extends ObjectController
       *  监控中心掉线接口
       */
      public function actionLostConnection(){
-     
+         \Yii::$app->response->format = Response::FORMAT_JSON;
+         $id = \Yii::$app->request->get('id');
+         $datas['playerId']=$id;
+         //掉线的接口
+         $result = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/ban',$datas);
+         if ($result['code'] == 1){
+             return ['code'=>1,'message'=>\Yii::t('app','操作成功')];
+         }
      
      
      }

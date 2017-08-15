@@ -109,6 +109,8 @@ return [
     'diamonds_index'=>'钻石管理',
     'ranking_index'=>'排行榜',
     'robot_index'=>'机器人管理',
+    'batteryrate_index'=>'炮台命中率',
+    'room_index'=>'房间命中率',
 ];
 
 /**

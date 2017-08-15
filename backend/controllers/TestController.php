@@ -46,19 +46,19 @@ class TestController extends ObjectController
     
     public function actionT(){
        
-       $v = Shop::find()->asArray()->all();
+      // $v = Shop::find()->asArray()->all();
         //$id ='name';
        // $value = ['0'=>'琪琪',1=>'琪琪1'];
-       $new = serialize($v);
-       \Yii::$app->redis->set('shop',$new);
+      // $new = serialize($v);
+       var_dump(\Yii::$app->redis->set('aaa','四川'));
        // \Yii::$app->redis->expire('name1',5);
 //        \Yii::$app->redis->set('user3','ccc');
         //\Yii::$app->redis->set('user4','ddd');
         //Redis->hmset($key, $value);
       // $re =  \Yii::$app->redis->hmset('name111',$new);
-        $re1 =  \Yii::$app->redis->get('shop');//此时可以输出aaa
+    $re1 =  \Yii::$app->redis->get('aaa');//此时可以输出aaa
 // ($re1) {
-           var_dump(unserialize($re1));
+          var_dump($re1);
       // }else{
       
       // }
