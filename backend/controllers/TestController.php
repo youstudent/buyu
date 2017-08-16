@@ -44,32 +44,49 @@ class TestController extends ObjectController
         return $this->render('get',['model'=>$model]);
     }
     
-    public function actionT(){
-       
-      // $v = Shop::find()->asArray()->all();
+    public function actionT()
+    {
+        // var_dump(\Yii::$app->redis->KEYS);
+        $ip = "192.168.2.235";
+        $port = 6379;
+        $redis = new \Redis();
+        $redis->pconnect($ip, $port, 1);
+        var_dump($redis->SMEMBERS ('onlinePlayer'));exit;
+        // var_dump($redis->keys('*'));
+        // $key = "test";
+        // $value = "this is test";
+        // $redis->set($key, $value);
+        //$d = $redis->get($key);
+        //var_dump($d);
+        // $rdie = new \Redis();
+        //var_dump($rdie->get('s1'));exit;
+        // $v = Shop::find()->asArray()->all();
         //$id ='name';
-       // $value = ['0'=>'琪琪',1=>'琪琪1'];
-      // $new = serialize($v);
-       var_dump(\Yii::$app->redis->set('aaa','四川'));
-       // \Yii::$app->redis->expire('name1',5);
+        // $value = ['0'=>'琪琪',1=>'琪琪1'];
+        // $new = serialize($v);
+        $data = [['name' => '四川', 'age' => '20'], ['name' => '琪琪', 'age' => 29]];
+        $datas = serialize($data);
+        $redis->set('data', $datas);
+        //  var_dump($redis->mset($data));
+        //var_dump($redis->mget(['data']));
+        // var_dump(\Yii::$app->redis->mset($data));
+        // \Yii::$app->redis->expire('name1',5);
 //        \Yii::$app->redis->set('user3','ccc');
         //\Yii::$app->redis->set('user4','ddd');
         //Redis->hmset($key, $value);
-      // $re =  \Yii::$app->redis->hmset('name111',$new);
-    $re1 =  \Yii::$app->redis->get('aaa');//此时可以输出aaa
+        // $re =  \Yii::$app->redis->hmset('name111',$new);
+        // $re1 =  \Yii::$app->redis->get('data');//此时可以输出aaa
 // ($re1) {
-          var_dump($re1);
-      // }else{
-      
-      // }
-       
-
-       // var_dump($re1);
-     
-       // var_dump($re,$re1);
-       // Yii::$app->redis->flushall();//删除redis中的所有数据
-    }
+        // var_dump(unserialize($re1));
+        // foreach (unserialize($re1) as $key=>$value){
+        //var_dump($value['age']);
     
+        // var_dump($re1);
+    
+        // var_dump($re,$re1);
+        //\Yii::$app->redis->flushall();//删除redis中的所有数据
+    
+    }
     
     /**
      *  游戏服务器的用户表

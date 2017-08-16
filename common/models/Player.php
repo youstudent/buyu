@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\data\Pagination;
 
 /**
  * This is the model class for table "player".
@@ -117,4 +118,27 @@ class Player extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Messageboard::className(), ['playerid' => 'id']);
     }*/
+    
+    
+    /**
+     *  查询在线的玩家
+     */
+    public function GetOnLine(){
+        $ip = "192.168.2.235";
+        $port = 6379;
+        $redis = new \Redis();
+        $redis->pconnect($ip, $port, 1);
+        //查询在线玩家
+        $Player  = $redis->SMEMBERS ('onlinePlayer');
+        $model = self::find();
+        $model->andWhere(['id'=>22]);
+        $pages = new Pagination(
+            [
+                'totalCount' => $model->count(),
+                'pageSize' => \Yii::$app->params['pageSize']
+            ]
+        );
+        $data = $model->limit($pages->limit)->offset($pages->offset)->all();
+        return $data;
+    }
 }

@@ -54,4 +54,41 @@ class OnLine extends \yii\db\ActiveRecord
         return $this->hasOne(Users::className(),['game_id'=>'game_id']);
     
     }
+    
+    
+    /**
+     * @param $id
+     * @return mixed
+     * 获取玩家房间号
+     */
+    public static function getRoom($id){
+        $redis = self::getReids();
+        $data =$redis->HGETALL('playerRoom')[$id];
+        return $data;
+    }
+    
+    
+    /**
+     * @param $room
+     * @return mixed
+     * 获取玩家房间人数
+     */
+    public static function getRoomNmu($room){
+        $redis = self::getReids();
+        $data =$redis->HGETALL('roomPlayerNum')[$room];
+        return $data;
+    }
+    
+    
+    /**
+     * @return \Redis
+     *  连接redis
+     */
+    public static function getReids(){
+        $ip = "192.168.2.235";
+        $port = 6379;
+        $redis = new \Redis();
+        $redis->pconnect($ip, $port, 1);
+        return $redis;
+    }
 }
