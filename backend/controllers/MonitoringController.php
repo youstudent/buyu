@@ -2,6 +2,10 @@
 
 namespace backend\controllers;
 
+use backend\models\PrewarningValue;
+use backend\models\RateForm;
+use backend\models\RobotForm;
+use backend\models\Roomrate;
 use backend\models\Users;
 use backend\models\UsersTime;
 use common\helps\players;
@@ -13,6 +17,7 @@ use Symfony\Component\DomCrawler\Field\InputFormField;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\data\Pagination;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\web\ViewAction;
@@ -24,65 +29,54 @@ class MonitoringController extends ObjectController
      */
     public function actionIndex()
     {
-        //var_dump(\Yii::$app->redis->HGETALL('playerRoom'));exit;
-        //$model = new Player();
-        //$data = $model->GetOnLine();//获取在线的玩家
-       /* $ip = "192.168.2.235";
-        $port = 6379;
-        $redis = new \Redis();
-        $redis->pconnect($ip, $port, 1);*/
-       // $redis = OnLine::getReids();
-       // $D = $redis->HGETALL('playerRoom');
-        //查询在线玩家   HGETALL roomPlayerNumR人家人数
-        
-        //HGETALL playerRoom 玩家在那个房间
-        //HGETALL roomPlayerNum 房间有多少人
-        //SMEMBERS onlinePlayer 在线玩家
+        return $this->render('index');
+    }
     
-        //$D = $redis->HGETALL('playerRoom');
-       // $D = \Yii::$app->redis->HGETALL('roomPlayerNum');
-        //var_dump($D[251]);exit;
-       // $D = $redis->HGETALL('roomPlayerNum');
-       // print_r($D["\"251\""]);EXIT;
-        //$Player  = $redis->SMEMBERS ('onlinePlayer');
+    /**
+     * @return string
+     * 用户数据
+     */
+    public function actionNew()
+    {
         $redis = players::getReids();
-        $Player =$redis->SMEMBERS('onlinePlayer');
-        $model = Player::find();
-        $model->andWhere(['id'=>$Player]);
+        $Player = $redis->SMEMBERS('onlinePlayer');//获取在线的人数
+        $datas=[2,60,254];
+        $filed = 'GREATEST(`gold`,`diamond`,`fishGold`) as t,id,name,gold,diamond,fishGold';
+        $model = Player::find()->select($filed)->orderBy(['t'=> SORT_DESC]);
+        $model->andWhere(['id' => $datas]);
         $pages = new Pagination(
             [
                 'totalCount' => $model->count(),
-                'pageSize' => 1
+                'defaultPageSize' => 1,
+                'route' => 'monitoring/index',
             ]
         );
         $data = $model->limit($pages->limit)->offset($pages->offset)->asArray()->all();
-        return $this->render('index', ['data' => $data,'pages'=>$pages]);
+        return $this->renderAjax('new-index', ['data' => $data, 'pages' => $pages]);
     }
     
     
-    
-    public function actionNew(){
-       // $ip = "192.168.2.235";
-       // $port = 6379;
-       // $redis = new \Redis();
-       // $redis->pconnect($ip, $port, 1);
-        //查询在线玩家
-        //$D = $redis->HGETALL('playerRoom');
-        
-        // print_r($D["\"251\""]);EXIT;
-       // $Player  = $redis->SMEMBERS ('onlinePlayer');
+    /**
+     * @return string
+     * 用户分页
+     */
+    public function actionPages()
+    {
         $redis = players::getReids();
-        $Player =$redis->SMEMBERS('onlinePlayer');
-        $model = Player::find();
-        $model->andWhere(['id'=>$Player]);
+        $Player = $redis->SMEMBERS('onlinePlayer');//获取在线的人数
+        $datas=[2,60,254];
+        $filed = 'GREATEST(`gold`,`diamond`,`fishGold`) as t,id,name,gold,diamond,fishGold';
+        $model = Player::find()->select($filed)->orderBy(['t'=> SORT_DESC]);
+        $model->andWhere(['id' => $datas]);
+        
         $pages = new Pagination(
             [
                 'totalCount' => $model->count(),
-                'pageSize' => 1
+                'pageSize' => 5
             ]
         );
         $data = $model->limit($pages->limit)->offset($pages->offset)->asArray()->all();
-        return $this->renderAjax('new-index', ['data' => $data,'pages'=>$pages]);
+        return $this->renderAjax('pages', ['data' => $data, 'pages' => $pages]);
     }
     
     
@@ -119,14 +113,26 @@ class MonitoringController extends ObjectController
     /**
      *  机器人指派
      */
-    public function actionRobot($room_id, $game_id)
+    public function actionRobot()
     {
-        $data = OnLine::find()->where(['room_id' => $room_id])->all();
-        $datas = [];
-        foreach ($data as $k => $v) {
-            $datas[$v->users->game_id] = $v->users->nickname;
+        $this->layout = false;
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $model = new RobotForm();
+        if (\Yii::$app->request->isPost) {
+            \Yii::$app->response->format = Response::FORMAT_JSON;
+            if ($model->editRate(\Yii::$app->request->post())) {
+                return ['code' => 1, 'message' => '修改成功'];
+            }
+            $message = $model->getFirstErrors();
+            $message = reset($message);
+            return ['code' => 0, 'message' => $message];
         }
-        return $this->render('robot');
+        //查询玩家在那个房间
+        //$room = players::getRoomPlayer($id);
+        //查询晚间房间的人数
+        
+        $model->id = $id;
+        return $this->render('robot', ['model' => $model]);
         
     }
     
@@ -172,8 +178,24 @@ class MonitoringController extends ObjectController
      */
     public function actionRate()
     {
-        
-        return $this->render('rate');
+        $this->layout = false;
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $model = new RateForm();
+        if (\Yii::$app->request->isPost) {
+            \Yii::$app->response->format = Response::FORMAT_JSON;
+            if ($model->editRate(\Yii::$app->request->post())) {
+                return ['code' => 1, 'message' => '修改成功'];
+            }
+            $message = $model->getFirstErrors();
+            $message = reset($message);
+            return ['code' => 0, 'message' => $message];
+        }
+        $model->vip_rate = players::getVipRate($id);
+        $model->battery_rate = players::getBatteryRate($id);
+        $model->player_rate = players::getPlayerRate($id);
+        $model->room_rate = players::getRoomRate(players::getRoom($id));
+        $model->id = $id;
+        return $this->render('rate', ['model' => $model]);
     }
     
     
@@ -182,9 +204,21 @@ class MonitoringController extends ObjectController
      */
     public function actionWarning()
     {
-    
-    
-    
+        
+        $this->layout = false;
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $model = PrewarningValue::findOne(['game_id' => $id]);
+        if (\Yii::$app->request->isPost) {
+            \Yii::$app->response->format = Response::FORMAT_JSON;
+            if ($model->editRate(\Yii::$app->request->post())) {
+                return ['code' => 1, 'message' => '修改成功'];
+            }
+            $message = $model->getFirstErrors();
+            $message = reset($message);
+            return ['code' => 0, 'message' => $message];
+        }
+        return $this->render('warning', ['model' => $model]);
+        
     }
     
     
@@ -198,24 +232,25 @@ class MonitoringController extends ObjectController
     }
     
     
-    public function actionPage(){
+    public function actionPage()
+    {
         $rawData = array(
-            array('id'=>1,'username'=>'aa','password'=>'aaaaaa'),
-            array('id'=>2,'username'=>'bb','password'=>'aaaaaa'),
-            array('id'=>3,'username'=>'cc','password'=>'aaaaaa'),
-            array('id'=>4,'username'=>'dd','password'=>'aaaaaa'),
-            array('id'=>5,'username'=>'ee','password'=>'aaaaaa'),
-            array('id'=>6,'username'=>'ff','password'=>'aaaaaa'),
-            array('id'=>7,'username'=>'gg','password'=>'aaaaaa'),
-            array('id'=>8,'username'=>'hh','password'=>'aaaaaa'),
-            array('id'=>9,'username'=>'jj','password'=>'aaaaaa'),
-            array('id'=>10,'username'=>'qq','password'=>'aaaaaa'),
-            array('id'=>11,'username'=>'www','password'=>'aaaaaa'),
-            array('id'=>12,'username'=>'xx','password'=>'aaaaaa'),
-            array('id'=>13,'username'=>'zz','password'=>'aaaaaa'),
+            array('id' => 1, 'username' => 'aa', 'password' => 'aaaaaa'),
+            array('id' => 2, 'username' => 'bb', 'password' => 'aaaaaa'),
+            array('id' => 3, 'username' => 'cc', 'password' => 'aaaaaa'),
+            array('id' => 4, 'username' => 'dd', 'password' => 'aaaaaa'),
+            array('id' => 5, 'username' => 'ee', 'password' => 'aaaaaa'),
+            array('id' => 6, 'username' => 'ff', 'password' => 'aaaaaa'),
+            array('id' => 7, 'username' => 'gg', 'password' => 'aaaaaa'),
+            array('id' => 8, 'username' => 'hh', 'password' => 'aaaaaa'),
+            array('id' => 9, 'username' => 'jj', 'password' => 'aaaaaa'),
+            array('id' => 10, 'username' => 'qq', 'password' => 'aaaaaa'),
+            array('id' => 11, 'username' => 'www', 'password' => 'aaaaaa'),
+            array('id' => 12, 'username' => 'xx', 'password' => 'aaaaaa'),
+            array('id' => 13, 'username' => 'zz', 'password' => 'aaaaaa'),
         );
-    
-    
+        
+        
         $provider = new ArrayDataProvider([
             'query' => $rawData,
             'pagination' => [
@@ -229,7 +264,7 @@ class MonitoringController extends ObjectController
             ],
         ]);
         
-       // var_dump($provider->pagination);exit;
+        // var_dump($provider->pagination);exit;
         /*$dataProvider = new ActiveDataProvider($rawData, array(
             'sort'=>array(
                 'attributes'=>array(
@@ -240,7 +275,251 @@ class MonitoringController extends ObjectController
                 'pageSize'=>10,
             ),
         ));*/
-      return $this->render('page',array('dataProvider'=>$provider));
+        return $this->render('page', array('dataProvider' => $provider));
+    }
+    
+    
+    /**
+     *  查询玩家获取的金币
+     */
+    public function actionGetGold()
+    {
+        $this->layout = false;
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $redis = players::getReids();
+        //$id = 160;
+        
+        /**
+         *  获取金币的途径
+         */
+        $new_gold = null;
+        $gold = $redis->hGetAll('goldGet');
+        if (array_key_exists($id, $gold)) {
+            $new_gold = Json::decode($gold[$id], true);
+        }
+        $data = [];
+        foreach ($new_gold as $key => $value) {
+            if (array_key_exists('duihuan', $new_gold)) {
+                $data['兑换'] = $value;
+            }
+            if (array_key_exists('buyu', $new_gold)) {
+                $data['捕鱼'] = $value;
+            }
+            if (array_key_exists('buyusongbi', $new_gold)) {
+                $data['捕鱼送币'] = $value;
+            }
+            if (array_key_exists('chongzhi', $new_gold)) {
+                $data['充值'] = $value;
+            }
+            if (array_key_exists('cijiyouxi', $new_gold)) {
+                $data['刺激游戏'] = $value;
+            }
+            if (array_key_exists('duihuanma', $new_gold)) {
+                $data['兑换码'] = $value;
+            }
+            if (array_key_exists('gonggao', $new_gold)) {
+                $data['公告'] = $value;
+            }
+            if (array_key_exists('jiujijin', $new_gold)) {
+                $data['救济金'] = $value;
+            }
+            if (array_key_exists('meiriqiandao', $new_gold)) {
+                $data['每日签到'] = $value;
+            }
+            if (array_key_exists('meirirenwu', $new_gold)) {
+                $data['每日任务'] = $value;
+            }
+            if (array_key_exists('vipmeiri', $new_gold)) {
+                $data['vip任务'] = $value;
+            }
+            if (array_key_exists('youjian', $new_gold)) {
+                $data['邮件'] = $value;
+            }
+            
+        }
+        
+        /**
+         *  获取玩家,消费途径
+         */
+        $new_gold_lost = null;
+        $gold_lost = $redis->hGetAll('goldLost');
+        if (array_key_exists($id, $gold_lost)) {
+            $new_gold_lost = Json::decode($gold_lost[$id], true);
+        }
+        $datas = [];
+        foreach ($new_gold_lost as $key => $value) {
+            if (array_key_exists('buyuxiaohao', $new_gold_lost)) {
+                $datas['消耗'] = $value;
+            }
+            if (array_key_exists('cijiyouxi', $new_gold_lost)) {
+                $datas['刺激游戏'] = $value;
+            }
+            
+        }
+        return $this->render('gold', ['data' => $data, 'datas' => $datas]);
+    }
+    
+    
+    /**
+     *  查询玩家获取钻石
+     */
+    public function actionGetDiamond()
+    {
+        $this->layout = false;
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $redis = players::getReids();
+       // $id = 254;
+        
+        /**
+         *  获取金币的途径
+         */
+        $new_gold = null;
+        $gold = $redis->hGetAll('diamondGet');
+        if (array_key_exists($id, $gold)) {
+            $new_gold = Json::decode($gold[$id], true);
+        }
+        //  254 => string '{"@class":"com.sinysoft.gameserver.common.DiamondGet","buyu":0,"buyusongbi":0,"chongzhi":4011,"duihuanma":0,
+        //"gonggao":0,"meiriqiandao":0,"meirirenwu":0,"youjian":0}' (length=164)
+        $data = [];
+        foreach ($new_gold as $key => $value) {
+            if (array_key_exists('buyu', $new_gold)) {
+                $data['捕鱼'] = $value;
+            }
+            if (array_key_exists('buyusongbi', $new_gold)) {
+                $data['捕鱼送币'] = $value;
+            }
+            if (array_key_exists('chongzhi', $new_gold)) {
+                $data['充值'] = $value;
+            }
+            if (array_key_exists('duihuanma', $new_gold)) {
+                $data['兑换码'] = $value;
+            }
+            if (array_key_exists('gonggao', $new_gold)) {
+                $data['公告'] = $value;
+            }
+            if (array_key_exists('meiriqiandao', $new_gold)) {
+                $data['每日签到'] = $value;
+            }
+            if (array_key_exists('meirirenwu', $new_gold)) {
+                $data['每日任务'] = $value;
+            }
+            if (array_key_exists('youjian', $new_gold)) {
+                $data['邮件'] = $value;
+            }
+            
+        }
+        //"@class":"com.sinysoft.gameserver.common.DiamondLost","duihuanjinbi":0,"goumaidaoju":0,"
+        //liuyanban":0,"shengjipaobei":0,"shijielaba":5000}'
+        /**
+         *  获取玩家,消费途径
+         */
+        $new_gold_lost = null;
+        $gold_lost = $redis->hGetAll('diamondLost');
+        if (array_key_exists($id, $gold_lost)) {
+            $new_gold_lost = Json::decode($gold_lost[$id], true);
+        }
+        $datas = [];
+        foreach ($new_gold_lost as $key => $value) {
+            if (array_key_exists('duihuanjinbi', $new_gold_lost)) {
+                $datas['兑换金币'] = $value;
+            }
+            if (array_key_exists('goumaidaoju', $new_gold_lost)) {
+                $datas['购买道具'] = $value;
+            }
+            if (array_key_exists('liuyanban', $new_gold_lost)) {
+                $datas['留言板'] = $value;
+            }
+            if (array_key_exists('shengjipaobei', $new_gold_lost)) {
+                $datas['深海捕鱼'] = $value;
+            }
+            if (array_key_exists('shijielaba', $new_gold_lost)) {
+                $datas['世界喇叭'] = $value;
+            }
+        }
+        return $this->render('diamond', ['data' => $data, 'datas' => $datas]);
+    }
+    
+    
+    /**
+     *  查询玩家获取的金币
+     */
+    public function actionGetFishgold()
+    {
+        $this->layout = false;
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $redis = players::getReids();
+       // $id = 254;
+        
+        /**
+         *  获取金币的途径
+         */
+        $new_gold = null;
+        $gold = $redis->hGetAll('fishGoldGet');
+        if (array_key_exists($id, $gold)) {
+            $new_gold = Json::decode($gold[$id], true);
+        }
+        //  254 => string '{"@class":"com.sinysoft.gameserver.common.FishGoldGet","buyu":0,
+        //"buyusongbi":0,"chongzhizengsong":0,"cijiyouxi":0,"duihuanma":0,"gonggao":0,"jiujijin":0,
+        //"meiriqiandao":0,"meirirenwu":0,"vipmeiri":0,"youjian":0}' (len
+        $data = [];
+        foreach ($new_gold as $key => $value) {
+            if (array_key_exists('buyu', $new_gold)) {
+                $data['捕鱼'] = $value;
+            }
+            if (array_key_exists('buyusongbi', $new_gold)) {
+                $data['捕鱼送币'] = $value;
+            }
+            if (array_key_exists('chongzhizengsong', $new_gold)) {
+                $data['充值赠送'] = $value;
+            }
+            if (array_key_exists('cijiyouxi', $new_gold)) {
+                $data['刺激游戏'] = $value;
+            }
+            if (array_key_exists('duihuanma', $new_gold)) {
+                $data['兑换码'] = $value;
+            }
+            if (array_key_exists('gonggao', $new_gold)) {
+                $data['公告'] = $value;
+            }
+            if (array_key_exists('jiujijin', $new_gold)) {
+                $data['救济金'] = $value;
+            }
+            if (array_key_exists('meiriqiandao', $new_gold)) {
+                $data['每日签到'] = $value;
+            }
+            if (array_key_exists('meirirenwu', $new_gold)) {
+                $data['每日任务'] = $value;
+            }
+            if (array_key_exists('vipmeiri', $new_gold)) {
+                $data['vip任务'] = $value;
+            }
+            if (array_key_exists('youjian', $new_gold)) {
+                $data['邮件'] = $value;
+            }
+            
+        }
+        
+        /**
+         *  获取玩家,消费途径
+         */
+        $new_gold_lost = null;
+        $gold_lost = $redis->hGetAll('fishGoldLost');
+        if (array_key_exists($id, $gold_lost)) {
+            $new_gold_lost = Json::decode($gold_lost[$id], true);
+        }
+        //  254 => string '{"@class":"com.sinysoft.gameserver.common.FishGoldLost",
+        //"buyuxiaohao":200,"cijiyouxi":0}' (length=88)
+        $datas = [];
+        foreach ($new_gold_lost as $key => $value) {
+            if (array_key_exists('buyuxiaohao', $new_gold_lost)) {
+                $datas['捕鱼消耗'] = $value;
+            }
+            if (array_key_exists('cijiyouxi', $new_gold_lost)) {
+                $datas['刺激游戏'] = $value;
+            }
+            
+        }
+        return $this->render('fishgold', ['data' => $data, 'datas' => $datas]);
     }
     
 }

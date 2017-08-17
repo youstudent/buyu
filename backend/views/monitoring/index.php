@@ -29,7 +29,7 @@ use yii\bootstrap\ActiveForm;
                             <tr style="border-top: 1px solid #ebebeb;border-bottom: 1px solid #ebebeb">
                                 <th class="text-center">房间号</th>
                                 <th class="text-center">人数</th>
-                                <th class="text-center">倍率</th>
+                                <th class="text-center">房间命中率</th>
                                 <th class="text-center">用户名</th>
                                 <th class="text-center">用户ID</th>
                                 <th class="text-center">实时金币数量</th>
@@ -55,7 +55,10 @@ use yii\bootstrap\ActiveForm;
                 </div>
 <!--                表格结束          -->
 <!--                分页开始          -->
-
+                <div id="pages">
+                
+                
+                </div>
 <!--                分页结束          -->
             </section>
         </section>
@@ -69,11 +72,11 @@ use yii\bootstrap\ActiveForm;
                 url:'/monitoring/new',
                 type:'html',
                 success:function(res){
+                    console.log(res);
                     $('#table-data').html(res);
                 },
             }
         );
-
     },2000);
     console.log(11);
    
