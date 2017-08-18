@@ -469,9 +469,9 @@ class Users extends UsersObject
             if ($this->select == 'game_id')
                 return ['id'=>$this->keyword];
             elseif ($this->select == 'nickname')
-                return ['like','name',$this->keyword];
+                return ['like','uid',$this->keyword];
             else
-                return ['or',['id'=>$this->keyword],['like','name',$this->keyword]];
+                return ['or',['id'=>$this->keyword],['like','uid',$this->keyword],['like','name',$this->keyword]];
         }
         return [];
     }

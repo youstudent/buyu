@@ -221,17 +221,6 @@ class MonitoringController extends ObjectController
         
     }
     
-    
-    /**
-     *  玩家的钻石和宝石的消费详情
-     */
-    public function actionGameDetail()
-    {
-    
-    
-    }
-    
-    
     public function actionPage()
     {
         $rawData = array(

@@ -24,7 +24,8 @@
                     ],
                 ])?>
                 <?php echo $form->field($model,'id')->textInput(['readonly'=>true])?>
-                <?php echo $form->field($model,'name')->dropDownList(\common\helps\players::getRoomPlayer($model->id),['multiple'=>true])?>
+                <?php /*echo $form->field($model,'name')->dropDownList(\common\helps\players::getRoomPlayer($model->id),['multiple'=>true])*/?>
+                <?php echo $form->field($model,'name')->dropDownList([1=>'安吉',2=>'封'],['multiple'=>true])?>
                 <?php echo $form->field($model,'num')?>
                 <?php echo $form->field($model,'rate')?>
             <?php \yii\bootstrap\ActiveForm::end()?>

@@ -11,7 +11,9 @@ namespace backend\models;
 
 
 use common\helps\players;
+use common\services\Request;
 use yii\base\Model;
+use yii\helpers\Json;
 
 
 class RobotForm extends Model
@@ -26,7 +28,7 @@ class RobotForm extends Model
     public function rules()
     {
         return [
-            [['num','rate'],'required'],
+            [['name','num','rate'],'required'],
             [['num','rate','id'],'number']
         ];
     }
@@ -45,6 +47,10 @@ class RobotForm extends Model
     }
     
     
+    /**
+     * 指派机器人
+     * @param $data
+     */
     public function editRate($data)
     {
         if ($this->load($data) && $this->validate()) {
@@ -59,10 +65,15 @@ class RobotForm extends Model
              }*/
             $data=[];
             $data['playerId']=$this->id;
+            $data['kickOff']=$this->name;
             $data['robotRate']=$this->rate;
             $data['robotNum']=$this->num;
-            var_dump($data);exit;
-            // $value = $this->player_rate * 100;
+            $new_data = Json::encode($data);
+            $url = \Yii::$app->params['Api'].'/control/updateFishTask';
+            $re = Request::request_post_raw($url,$new_data);
+            if ($re['code']== 1){
+                return true;
+            }
             return $this->addError('id','修改数据失败');
         }
         

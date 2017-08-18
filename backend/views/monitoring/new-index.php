@@ -61,10 +61,6 @@
             <a href="<?=\yii\helpers\Url::to(['monitoring/robot','id'=>$value['id']])?>"
                data-toggle="modal" data-target="#myModal"
                class="btn btn-xs btn-primary">机器人</a>
-            
-            
-            <a href="<?=\yii\helpers\Url::to(['users/out-log',
-                'Users'=>['select'=>'game_id']])?>" class="btn btn-xs btn-success">详情</a>
         </td>
     
     </tr>

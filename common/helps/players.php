@@ -146,6 +146,7 @@ class players
         if ($data = PrewarningValue::find()->select($type)->andWhere(['game_id' => $id])->asArray()->one()) {
             return $data[$type];
         }
+        //如果没有给玩家加上预警值记录
         return 0;
         
     }

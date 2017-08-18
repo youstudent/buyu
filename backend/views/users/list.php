@@ -139,6 +139,8 @@ use yii\bootstrap\ActiveForm;
                                            href="<?php echo \yii\helpers\Url::to(['users/black', 'id' => $value['id'],'status'=>1]) ?>"
                                            class="btn btn-xs btn-danger">&nbsp;加入黑名单</a>
                                     <?php endif;?>
+                                    <?php else:?>
+                                        <span style="color: #00b3ee">族长玩家</span>
                                     <?php endif;?>
                                     <a href="<?=\yii\helpers\Url::to(['redeem-code/record',
                                         'RedeemRecord'=>['select'=>'game_id','keyword'=>$value['id']]])?>" class="btn btn-xs btn-success">兑换记录</a>
