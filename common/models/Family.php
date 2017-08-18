@@ -238,8 +238,13 @@ class Family extends \yii\db\ActiveRecord
                 $player->name=$this->realname;
                 $player->pwd=$this->password;
                 $player->onlinetime=0;
+                $player->head=1;
+                $player->sex=1;
+                $player->mac=1;
+                $player->lastlogintime=0;
                 $player->createdtime=date('Y-m-d H:i:s');
                 if ($player->save()==false){
+                    var_dump($player->getErrors());exit;
                     throw  new Exception('创建玩家失败');
                 }
                 $this->owenerid=$player->id;

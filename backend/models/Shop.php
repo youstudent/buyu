@@ -68,7 +68,7 @@ class Shop extends \yii\db\ActiveRecord
             $datas['level']=$this->level;
             $datas['cost']=$this->jewel_number;
             //$data = Request::request_post(\Yii::$app->params['ApiUserPay'],['game_id'=>$model->game_id,'gold'=>$this->pay_gold_num,'gold_config'=>GoldConfigObject::getNumCodeByName($this->pay_gold_config)]);
-            $result = Request::request_post(Yii::$app->params['Api'].'/gameserver/control/updatetool',$datas);
+            $result = Request::request_post(Yii::$app->params['Api'].'/control/updatetool',$datas);
             if($result['code'] == 1){
                 $this->updated_at=time();
                 return $this->save(false);
@@ -80,7 +80,7 @@ class Shop extends \yii\db\ActiveRecord
     
     //请求游戏服务器  道具列表
     public static function GetShop(){
-        $url = Yii::$app->params['Api'].'/gameserver/control/gettools';
+        $url = Yii::$app->params['Api'].'/control/gettools';
          $data = Request::request_post($url,['time'=>time()]);
          $d=[];
          foreach ($data as $key=>$v){

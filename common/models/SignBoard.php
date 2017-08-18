@@ -39,8 +39,9 @@ class SignBoard extends Object
     public function rules()
     {
         return [
+            [['number','probability','from_fishing'],'required'],
             [['number', 'manage_id', 'updated_at','fishing_id'], 'integer'],
-            [['number','probability'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
+            [['number','probability'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量无效'],
             [['name'], 'string'],
             [['manage_name'], 'string', 'max' => 20],
             [['give_number','type','from_fishing'],'safe']
@@ -60,7 +61,7 @@ class SignBoard extends Object
             'manage_name' => '修改人',
             'updated_at' => '更新时间',
             'give_number' => '礼包类型',
-            'probability' => '出现概率',
+            'probability' => '出现概率%',
             'name' => '鱼名字',
             'type' => '鱼类型',
             'from_fishing' => '任务鱼',
@@ -71,7 +72,7 @@ class SignBoard extends Object
     
     //请求游戏服务器  任务列表
     public static function GetSign(){
-        $url = Yii::$app->params['Api'].'/gameserver/control/getFishTask';
+        $url = Yii::$app->params['Api'].'/control/getFishTask';
         $data = Request::request_post($url,['time'=>time()]);
        
         $d=[];
@@ -128,20 +129,20 @@ class SignBoard extends Object
             $tool = [];
             $pays['fishId']=$this->fishing_id;
             $pays['fishNum']=$this->number;
-            $pays['rate']=$this->probability;
+            $pays['rate']=$this->probability*100;
             $pays['fromFish']=$this->from_fishing;
             foreach ($data as $K=>$v){
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
                         if (in_array($kk,$datas)){
                             if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('give_number','数量无效');
+                                return $this->addError('give_number','奖品数量无效');
                             }
                             $send[$kk]=$VV;
                         }
                         if (is_numeric($kk)){
                             if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('give_number','数量无效');
+                                return $this->addError('give_number','奖品数量无效');
                             }
                             $tool['toolId']=$kk;
                             $tool['toolNum']=$VV;
@@ -163,7 +164,7 @@ class SignBoard extends Object
              * 请求服务器地址 炮台倍数
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/addFishTask';
+            $url = \Yii::$app->params['Api'].'/control/addFishTask';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 SignBoard::GetSign();
@@ -202,20 +203,20 @@ class SignBoard extends Object
             $pays['id']=$this->id;
             $pays['fishId']=$this->fishing_id;
             $pays['fishNum']=$this->number;
-            $pays['rate']=$this->probability;
+            $pays['rate']=$this->probability*100;
             $pays['fromFish']=$this->from_fishing;
             foreach ($data as $K=>$v){
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
                         if (in_array($kk,$datas)){
                             if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('give_number','数量无效');
+                                return $this->addError('give_number','奖品数量无效');
                             }
                             $send[$kk]=$VV;
                         }
                         if (is_numeric($kk)){
                             if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('give_number','数量无效');
+                                return $this->addError('give_number','奖品数量无效');
                             }
                             $tool['toolId']=$kk;
                             $tool['toolNum']=$VV;
@@ -236,7 +237,7 @@ class SignBoard extends Object
              * 请求游戏服务端   修改数据
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateFishTask';
+            $url = \Yii::$app->params['Api'].'/control/updateFishTask';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 SignBoard::GetSign();

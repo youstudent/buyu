@@ -242,6 +242,9 @@ class RedeemCode extends Object
                 if (is_array($v)){
                     foreach ($v as $k=>$v2){
                         if (array_key_exists($k,$re)){
+                            if (empty($v2) || !is_numeric($v2) || $v2<=0){
+                                return $this->addError('name','奖品数量无效');
+                            }
                             $vv[$k]=$v2;
                         }
                     }
@@ -294,9 +297,10 @@ class RedeemCode extends Object
                     $model->status=0;
                     $model->save();
                 }
+                
+               return true;
             
             }
-            return false;
         
     }
     
@@ -317,6 +321,9 @@ class RedeemCode extends Object
                 if (is_array($v)){
                     foreach ($v as $k=>$v2){
                      if (array_key_exists($k,$re)){
+                         if (empty($v2) || !is_numeric($v2) || $v2<=0){
+                             return $this->addError('name','奖品数量无效');
+                         }
                        $vv[$k]=$v2;
                      }
                     }
@@ -474,6 +481,9 @@ class RedeemCode extends Object
                 if (is_array($v)){
                     foreach ($v as $k=>$v2){
                         if (array_key_exists($k,$re)){
+                            if (empty($v2) || !is_numeric($v2) || $v2<=0){
+                                return $this->addError('name','奖品数量无效');
+                            }
                             $vv[$k]=$v2;
                         }
                     }

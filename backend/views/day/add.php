@@ -24,7 +24,7 @@
                     ],
                 ])?>
                 <?php echo $form->field($model,'jewel_num')->dropDownList([1=>'首次',2=>'循环'])?>
-                <?php echo $form->field($model,'give_type',['inline'=>true])->radioList(['1'=>'是','0'=>'否'])?>
+                <?php echo $form->field($model,'give_type',['inline'=>true])->dropDownList(['1'=>'是','0'=>'否'])?>
                 <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\Day::$give,['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>

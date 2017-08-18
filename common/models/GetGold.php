@@ -73,7 +73,7 @@ class GetGold extends  Object
             /**
              * 请求游戏服务端   修改数据
              */
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateAlmsGold';
+            $url = \Yii::$app->params['Api'].'/control/updateAlmsGold';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->updated_at=time();
@@ -92,7 +92,7 @@ class GetGold extends  Object
      * 获取游戏服务端,救济金数据
      */
     public static function GetGold(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getAlmsGold';
+        $url = \Yii::$app->params['Api'].'/control/getAlmsGold';
         $data = \common\services\Request::request_post($url,['time'=>time()]);
         $d=[];
         foreach ($data as $key=>$v){

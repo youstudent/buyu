@@ -576,7 +576,7 @@ class Users extends UsersObject
     //取消封停
     public function ban($id){
         $datas['playerId']=$id;
-        $result = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/unban',$datas);
+        $result = Request::request_post(\Yii::$app->params['Api'].'/control/unban',$datas);
         if($result){
              return UsersTime::deleteAll(['game_id'=>$id]);
         }
@@ -593,9 +593,9 @@ class Users extends UsersObject
             return ['code'=>0,'message'=>'账号不存在!'];
         }*/
         if ($status==2){
-            $url = \Yii::$app->params['Api'].'/gameserver/control/removeblack';
+            $url = \Yii::$app->params['Api'].'/control/removeblack';
         }else{
-            $url = \Yii::$app->params['Api'].'/gameserver/control/addblack';
+            $url = \Yii::$app->params['Api'].'/control/addblack';
         }
         $datas['playerId']=$id;
         $result = Request::request_post($url,$datas);

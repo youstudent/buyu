@@ -110,7 +110,7 @@ class ExperienceController extends ObjectController
         $data =[];
         $data['id']=$model->id;
         $datas = Json::encode($data);
-        $url = \Yii::$app->params['Api'].'/gameserver/control/deleteLevel';
+        $url = \Yii::$app->params['Api'].'/control/deleteLevel';
         $re = Request::request_post_raw($url,$datas);
         if ($re['code']==1){
             $model->delete();

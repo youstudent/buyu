@@ -66,10 +66,10 @@ class Player extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['sex', 'gold', 'diamond', 'fishGold', 'ex', 'deposit', 'battery', 'power', 'maxpower', 'level', 'viplevel', 'onlinetime', 'lastlogintime', 'trident', 'fishtrident', 'familyowner'], 'integer'],
+            [['gold', 'diamond', 'fishGold', 'ex', 'deposit', 'battery', 'power', 'maxpower', 'level', 'viplevel', 'onlinetime', 'lastlogintime', 'trident', 'fishtrident', 'familyowner'], 'integer'],
             [['onlinetime'], 'required'],
-            [['createdtime','unset_time'], 'safe'],
-            [['name', 'head', 'openid', 'mac', 'uid', 'pwd', 'phonenumber', 'idcard', 'realname', 'province'], 'string', 'max' => 255],
+            [['createdtime','unset_time','sex','mac','head'], 'safe'],
+            [['name', 'openid', 'uid', 'pwd', 'phonenumber', 'idcard', 'realname', 'province'], 'string', 'max' => 255],
         ];
     }
 

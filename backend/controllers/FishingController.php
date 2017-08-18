@@ -60,6 +60,8 @@ class FishingController extends ObjectController
             return ['code'=>0,'message'=>$message];
             
         }
+        $model->rate=$model->rate/100;
+        $model->ariseRate=$model->ariseRate/100;
         return $this->render('edit',['model'=>$model]);
     }
     

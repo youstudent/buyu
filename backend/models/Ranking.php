@@ -39,7 +39,7 @@ class Ranking extends Model
         $data['type']=$type;
         $data['province']=$province;
         $JS = Json::encode($data);
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getList';
+        $url = \Yii::$app->params['Api'].'/control/getList';
         $re = Request::request_post_raw($url,$JS);
         $new_data=$re[0]->players;
         return $new_data;

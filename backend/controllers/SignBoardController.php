@@ -139,6 +139,7 @@ class SignBoardController extends ObjectController
         $c = explode(",", $b);
         $model->from_fishing=$c;
         $model->give_number=$type;
+        $model->probability=$model->probability/100;
         return $this->render('edit',['model'=>$model,'data'=>$data]);
     }
     
@@ -155,7 +156,7 @@ class SignBoardController extends ObjectController
         $data =[];
         $data['id']=$model->id;
         $datas = Json::encode($data);
-        $url = \Yii::$app->params['Api'].'/gameserver/control/deleteFishTask';
+        $url = \Yii::$app->params['Api'].'/control/deleteFishTask';
         $re = Request::request_post_raw($url,$datas);
         if ($re['code']==1){
             $model->delete();

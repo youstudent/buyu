@@ -62,7 +62,7 @@ class Diamonds extends \yii\db\ActiveRecord
      *    初始化游戏服务端 钻石等级数据
      */
     public static function GetDiamonds(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getExchangeGold';
+        $url = \Yii::$app->params['Api'].'/control/getExchangeGold';
         $data = \common\services\Request::request_post($url,['time'=>time()]);
         $d=[];
         foreach ($data as $key=>$v){
@@ -110,14 +110,14 @@ class Diamonds extends \yii\db\ActiveRecord
             if ($this->contents){
                 foreach ($this->contents as $key => $value) {
                     if (in_array($key,$datas)) {
-                        if ($value<0 || $value==null || !is_numeric($value)){
-                            return $this->addError('content','数量无效');
+                        if ($value<=0 || $value==null || !is_numeric($value)){
+                            return $this->addError('content','奖品数量无效');
                         }
                         $send[$key] = $value;
                     }
                     if (is_numeric($key)) {
-                        if ($value<0 || $value==null || !is_numeric($value)){
-                            return $this->addError('content','数量无效');
+                        if ($value<=0 || $value==null || !is_numeric($value)){
+                            return $this->addError('content','奖品数量无效');
                         }
                         $tool['toolId'] = $key;
                         $tool['toolNum'] = $value;
@@ -141,7 +141,7 @@ class Diamonds extends \yii\db\ActiveRecord
              * 请求服务器地址 炮台倍数
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/addExchangeGold';
+            $url = \Yii::$app->params['Api'].'/control/addExchangeGold';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->content=Json::encode($send);
@@ -177,13 +177,13 @@ class Diamonds extends \yii\db\ActiveRecord
                 foreach ($this->contents as $key => $value) {
                     if (in_array($key,$datas)) {
                         if ($value<0 || $value==null || !is_numeric($value)){
-                            return $this->addError('content','数量无效');
+                            return $this->addError('content','奖品数量无效');
                         }
                         $send[$key] = $value;
                     }
                     if (is_numeric($key)) {
                         if ($value<0 || $value==null || !is_numeric($value)){
-                            return $this->addError('content','数量无效');
+                            return $this->addError('content','奖品数量无效');
                         }
                         $tool['toolId'] = $key;
                         $tool['toolNum'] = $value;
@@ -208,7 +208,7 @@ class Diamonds extends \yii\db\ActiveRecord
              */
             $payss = Json::encode($pays);
            // var_dump($payss);EXIT;
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateExchangeGold';
+            $url = \Yii::$app->params['Api'].'/control/updateExchangeGold';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->content=Json::encode($send);

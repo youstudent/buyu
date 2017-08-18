@@ -42,7 +42,7 @@ class CurrencyPay extends Object
         return [
             [['money', 'manage_id', 'created_at', 'updated_at','fold'], 'integer'],
             [['money'],'required'],
-            [['fold'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'倍数必须大于0'],
+            [['fold','money'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'数量无效'],
             [['manage_name'], 'string', 'max' => 20],
             [['give_prize'],'safe'],
         ];
@@ -117,13 +117,13 @@ class CurrencyPay extends Object
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
                         if (in_array($kk,$datas)){
-                            if ($VV<0 || $VV==null || !is_numeric($VV)){
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
                                 return $this->addError('give_prize','数量无效');
                             }
                             $send[$kk]=$VV;
                         }
                         if (is_numeric($kk)){
-                            if ($VV<0 || $VV==null || !is_numeric($VV)){
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
                                 return $this->addError('give_prize','数量无效');
                             }
                                 $tool['toolId']=$kk;
@@ -145,7 +145,7 @@ class CurrencyPay extends Object
              * 请求服务器地址 充值商城添加
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/addPay';
+            $url = \Yii::$app->params['Api'].'/control/addPay';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->give_prize=Json::encode($send);
@@ -206,7 +206,7 @@ class CurrencyPay extends Object
              * 请求游戏服务端   修改数据
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updatePay';
+            $url = \Yii::$app->params['Api'].'/control/updatePay';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->give_prize=Json::encode($send);
@@ -223,7 +223,7 @@ class CurrencyPay extends Object
     
     //请求游戏服务器  货币
     public static function GetPay(){
-        $url = Yii::$app->params['Api'].'/gameserver/control/gettools';
+        $url = Yii::$app->params['Api'].'/control/gettools';
         $data = Request::request_post($url,['time'=>time()]);
         if ($data['code']==1){
             /*$d=[];
@@ -280,7 +280,7 @@ class CurrencyPay extends Object
      * 同步游戏服务端商城充值
      */
     public static function GetCurrency(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
+        $url = \Yii::$app->params['Api'].'/control/getpayinfo';
         $data = \common\services\Request::request_post_raw($url,time());
         $d=[];
         foreach ($data as $key=>$v){

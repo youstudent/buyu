@@ -59,13 +59,20 @@ class Notice extends NoticeObject
             $pays['content']=$this->content;
             $pays['type']=$this->location;
             $pays['useable']=$this->status;
+            
             foreach ($data as $K=>$v){
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
                         if (in_array($kk,$datas)){
+                            if (empty($VV) || !is_numeric($VV) || $VV<=0){
+                                return $this->addError('type','奖品数量无效');
+                            }
                             $send[$kk]=$VV;
                         }
                         if (is_numeric($kk)){
+                            if (empty($VV)  || !is_numeric($VV)  || $VV<=0){
+                                return $this->addError('type','奖品数量无效');
+                            }
                             $tool['toolId']=$kk;
                             $tool['toolNum']=$VV;
                             $tools[$i]=$tool;
@@ -86,7 +93,7 @@ class Notice extends NoticeObject
              * 请求服务器地址 炮台倍数
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/addNotice';
+            $url = \Yii::$app->params['Api'].'/control/addNotice';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->number=Json::encode($send);
@@ -130,9 +137,15 @@ class Notice extends NoticeObject
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
                         if (in_array($kk,$datas)){
+                            if (empty($VV) || !is_numeric($VV) || $VV<=0 ){
+                                return $this->addError('type','奖品数量无效');
+                            }
                             $send[$kk]=$VV;
                         }
                         if (is_numeric($kk)){
+                            if (empty($VV) || !is_numeric($VV) || $VV<=0 ){
+                                return $this->addError('type','奖品数量无效');
+                            }
                             $tool['toolId']=$kk;
                             $tool['toolNum']=$VV;
                             $tools[$i]=$tool;
@@ -151,7 +164,7 @@ class Notice extends NoticeObject
              * 请求游戏服务端   修改数据
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateNotice';
+            $url = \Yii::$app->params['Api'].'/control/updateNotice';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->number=Json::encode($send);
@@ -183,7 +196,7 @@ class Notice extends NoticeObject
      *    初始化游戏服务端 炮台倍数
      */
     public static function GetNotice(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getNotice';
+        $url = \Yii::$app->params['Api'].'/control/getNotice';
         $data = \common\services\Request::request_post($url,['time'=>time()]);
         $d=[];
         

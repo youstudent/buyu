@@ -69,7 +69,7 @@ class Chat extends Object
             $data['message']=$this->content;  //内容
             $data['useable']=$this->status;   //状态
             $payss = Json::encode($data);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/addChat';
+            $url = \Yii::$app->params['Api'].'/control/addChat';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->reg_time=time();
@@ -101,7 +101,7 @@ class Chat extends Object
             /**
              * 请求游戏服务端   修改数据
              */
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateChat';
+            $url = \Yii::$app->params['Api'].'/control/updateChat';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->reg_time=time();
@@ -121,7 +121,7 @@ class Chat extends Object
      *    初始化游戏服务端  聊天
      */
     public static function GetChat(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getChat';
+        $url = \Yii::$app->params['Api'].'/control/getChat';
         $data = \common\services\Request::request_post($url,['time'=>time()]);
         $d=[];
         foreach ($data as $key=>$v){

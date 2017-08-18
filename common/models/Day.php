@@ -141,7 +141,7 @@ class Day extends Object
              * 请求游戏服务端   修改数据
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateSign';
+            $url = \Yii::$app->params['Api'].'/control/updateSign';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->gold_num=Json::encode($send);
@@ -193,14 +193,14 @@ class Day extends Object
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
                         if (in_array($kk,$datas)){
-                            if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('type','数量无效');
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('type','奖品数量无效');
                             }
                             $send[$kk]=$VV;
                         }
                         if (is_numeric($kk)){
-                            if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('type','数量无效');
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('type','奖品数量无效');
                             }
                             $tool['toolId']=$kk;
                             $tool['toolNum']=$VV;
@@ -220,7 +220,7 @@ class Day extends Object
              * 请求服务器地址 炮台倍数
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/addSign';
+            $url = \Yii::$app->params['Api'].'/control/addSign';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->day=$days;
@@ -244,7 +244,7 @@ class Day extends Object
      * 获取游戏服务端,救济金数据
      */
     public static function GetDay(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getSign';
+        $url = \Yii::$app->params['Api'].'/control/getSign';
         $data = \common\services\Request::request_post($url,['time'=>time()]);
         $d=[];
         foreach ($data as $key=>$v){

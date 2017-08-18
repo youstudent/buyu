@@ -99,7 +99,6 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">创建时间</th>
                                 <th  class="text-center">开始时间</th>
                                 <th  class="text-center">结束时间</th>
-                                <th  class="text-center">描述</th>
                                 <th  class="text-center">状态</th>
                                 <th  class="text-center">操作</th>
                             </tr>
@@ -117,7 +116,6 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center"><?=date('Y-m-d H:i:s',$value['created_at'])?></td>
                                 <td  class="text-center"><?=$value['start_time']?></td>
                                 <td  class="text-center"><?=$value['end_time']?></td>
-                                <td  class="text-center"><?=$value['description']?></td>
                                 <td  class="text-center">
                                     <?php if ($value['status']==0):?>
                                         <span class="badge bg-success">未使用</span>

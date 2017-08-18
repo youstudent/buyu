@@ -90,7 +90,7 @@ class LandForm extends Model
             $arr['typeId']=$this->typeId;
             $arr['content']=$content;
             $JS = Json::encode($arr);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateEveryDayTask';
+            $url = \Yii::$app->params['Api'].'/control/updateEveryDayTask';
             $re = Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
                 $row= DayList::findOne(['type_id'=>$this->typeId]);
@@ -128,13 +128,13 @@ class LandForm extends Model
             if ($this->type){
                 foreach ($this->type as $key => $value) {
                     if (in_array($key,$datas)) {
-                        if ($value<0 || $value==null || !is_numeric($value)){
+                        if ($value<=0 || $value==null || !is_numeric($value)){
                             return $this->addError('types','数量无效');
                         }
                         $send[$key] = $value;
                     }
                     if (is_numeric($key)) {
-                        if ($value<0 || $value==null || !is_numeric($value)){
+                        if ($value<=0 || $value==null || !is_numeric($value)){
                             return $this->addError('types','数量无效');
                         }
                         $tool['toolId'] = $key;
@@ -160,7 +160,7 @@ class LandForm extends Model
             $arr['typeId']=$this->typeId;
             $arr['content']=$content;
             $JS = Json::encode($arr);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateEveryDayTask';
+            $url = \Yii::$app->params['Api'].'/control/updateEveryDayTask';
             $re = Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
                 $re= DayList::findOne(['type_id'=>$this->typeId]);

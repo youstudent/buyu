@@ -121,13 +121,13 @@ class OneCannonForm extends Model
             foreach ($this->type as $key => $value) {
                 if (in_array($key,$datas)) {
                     if ($value<0 || $value==null || !is_numeric($value)){
-                        return $this->addError('gives','数量无效');
+                        return $this->addError('gives','奖品数量无效');
                     }
                     $send[$key] = $value;
                 }
                 if (is_numeric($key)) {
                     if ($value<0 || $value==null || !is_numeric($value)){
-                        return $this->addError('gives','数量无效');
+                        return $this->addError('gives','奖品数量无效');
                     }
                     $tool['toolId'] = $key;
                     $tool['toolNum'] = $value;
@@ -156,7 +156,7 @@ class OneCannonForm extends Model
             /**
              * 请求游戏服务端   修改数据
              */
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateEveryDayTask';
+            $url = \Yii::$app->params['Api'].'/control/updateEveryDayTask';
             $re =Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
                 $model =DayTask::findOne(['id'=>$this->id]);
@@ -227,13 +227,13 @@ class OneCannonForm extends Model
             foreach ($this->type as $key => $value) {
                 if (in_array($key,$datas)) {
                     if ($value<0 || $value==null || !is_numeric($value)){
-                        return $this->addError('gives','数量无效');
+                        return $this->addError('gives','奖品数量无效');
                     }
                     $send[$key] = $value;
                 }
                 if (is_numeric($key)) {
                     if ($value<0 || $value==null || !is_numeric($value)){
-                        return $this->addError('gives','数量无效');
+                        return $this->addError('gives','奖品数量无效');
                     }
                     $tool['toolId'] = $key;
                     $tool['toolNum'] = $value;
@@ -259,7 +259,7 @@ class OneCannonForm extends Model
             /**
              * 请求游戏服务端   修改数据
              */
-            $url = \Yii::$app->params['Api'].'/gameserver/control/addEveryDayTask';
+            $url = \Yii::$app->params['Api'].'/control/addEveryDayTask';
             $re = Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
                 $model = new DayTask();

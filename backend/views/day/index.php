@@ -26,7 +26,7 @@ $this->title = Yii::t('app', 'day_index') . '-' . Yii::$app->params['appName'];
                     </div>
                     <div class=" text-right">
                         <a href="<?= \yii\helpers\Url::to(['day/add']) ?>" class="btn btn-primary"
-                           data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加经验等级</a>
+                           data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加经验等级天数</a>
                     </div>
                     </div>
                     <!--                搜索结束          -->
@@ -44,7 +44,6 @@ $this->title = Yii::t('app', 'day_index') . '-' . Yii::$app->params['appName'];
                                 <th class="text-center">金币数量</th>
                                 <th class="text-center">钻石数量</th>
                                 <th class="text-center">礼炮数量</th>-->
-                                <th class="text-center">修改人</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
@@ -60,7 +59,6 @@ $this->title = Yii::t('app', 'day_index') . '-' . Yii::$app->params['appName'];
                                     <td class="text-center"><?/*= $value['gold_num'] */?></td>
                                     <td class="text-center"><?/*= $value['jewel_num'] */?></td>
                                     <td class="text-center"><?/*= $value['salvo_num'] */?></td>-->
-                                    <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td class="text-center" style="width: 200px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['day/prize', 'id' => $value['id']]) ?>"
@@ -96,7 +94,7 @@ $this->title = Yii::t('app', 'day_index') . '-' . Yii::$app->params['appName'];
                                 <th class="text-center">金币数量</th>
                                 <th class="text-center">钻石数量</th>
                                 <th class="text-center">礼炮数量</th>-->
-                                <th class="text-center">修改人</th>
+                             
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
@@ -112,7 +110,7 @@ $this->title = Yii::t('app', 'day_index') . '-' . Yii::$app->params['appName'];
                                     <td class="text-center"><?/*= $value['gold_num'] */?></td>
                                     <td class="text-center"><?/*= $value['jewel_num'] */?></td>
                                     <td class="text-center"><?/*= $value['salvo_num'] */?></td>-->
-                                    <td class="text-center"><?= $value['manage_name'] ?></td>
+                               
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td class="text-center" style="width: 200px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['day/prize', 'id' => $value['id']]) ?>"

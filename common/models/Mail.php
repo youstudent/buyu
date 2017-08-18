@@ -195,14 +195,14 @@ class Mail extends Object
                 if (is_array($v)) {
                     foreach ($v as $kk => $VV) {
                         if (in_array($kk, $datas)) {
-                            if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('type','数量无效');
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('type','奖品数量无效');
                             }
                             $send[$kk] = $VV;
                         }
                         if (is_numeric($kk) ) {
-                            if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('type','数量无效');
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('type','奖品数量无效');
                             }
                             $tool['toolId'] = $kk;
                             $tool['toolNum'] = $VV;
@@ -218,7 +218,7 @@ class Mail extends Object
             /**
              * 请求服务器  添加邮件
              */
-            $url = \Yii::$app->params['Api'] . '/gameserver/control/addemail';
+            $url = \Yii::$app->params['Api'] . '/control/addemail';
             $re = Request::request_post_raw($url, $payss);
             if ($re['code'] == 1) {
                 //请求游戏服务器地址

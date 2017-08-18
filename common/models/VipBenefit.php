@@ -84,7 +84,7 @@ class VipBenefit extends Object
      *    初始化游戏服务端  vip等级每日福利
      */
     public static function GetVipBenefit(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getbatterypower';
+        $url = \Yii::$app->params['Api'].'/control/getbatterypower';
         $data = \common\services\Request::request_post($url,['time'=>time()]);
         $d=[];
         foreach ($data as $key=>$v){

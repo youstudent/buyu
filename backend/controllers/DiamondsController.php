@@ -123,7 +123,7 @@ class DiamondsController extends ObjectController
         $data =[];
         $data['id']=$model->id;
         $datas = Json::encode($data);
-        $url = \Yii::$app->params['Api'].'/gameserver/control/deleteExchangeGold';
+        $url = \Yii::$app->params['Api'].'/control/deleteExchangeGold';
         $re = Request::request_post_raw($url,$datas);
         if ($re['code']==1){
             $model->delete();

@@ -59,7 +59,6 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                                 <th class="text-center">内容</th>
                                 <th class="text-center">位置</th>
                                 <th class="text-center">时间</th>
-                                <th class="text-center">添加人</th>
                                 <th class="text-center">状态</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
@@ -84,7 +83,6 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                                     <?php endif; ?>
                                     </td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['time']) ?></td>
-                                    <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center" style="border-right: 0px;">
                                         <?php if ($value['status'] == 1): ?>
                                             <span class="badge bg-success">显示</span>

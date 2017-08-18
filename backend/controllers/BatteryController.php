@@ -105,7 +105,7 @@ class BatteryController extends ObjectController
          * 请求游戏服务端   删除数据
          */
       $model = Battery::findOne($id);
-      $url = \Yii::$app->params['Api'].'/gameserver/control/deletebatterypower';
+      $url = \Yii::$app->params['Api'].'/control/deletebatterypower';
       $data=[];
       $data['id']=$id;
       $datas = Json::encode($data);

@@ -61,7 +61,7 @@ class Fishing extends \yii\db\ActiveRecord
      *  获取鱼名字
      */
     public static function GetFishing(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getFishes';
+        $url = \Yii::$app->params['Api'].'/control/getFishes';
         $data = \common\services\Request::request_post($url,['time'=>time()]);
         $d=[];
         foreach ($data as $key=>$v){
@@ -104,22 +104,30 @@ class Fishing extends \yii\db\ActiveRecord
     public function edit($data = []){
         if($this->load($data) && $this->validate())
         {
+            if ($this->rate>100 || $this->rate<0){
+                return $this->addError('rate','击杀概率0-100之间');
+            }
+            if ($this->ariseRate>100 || $this->ariseRate<0){
+                return $this->addError('ariseRate','出现概率0-100之间');
+            }
             $data=[];
             $data['id']=$this->id;
             $data['type']=$this->type;  //  类型
-            $data['rate']=$this->rate;  //  击杀概率
+            $data['rate']=$this->rate*100;  //  击杀概率
             $data['ex']=$this->ex; //   经验值
             $data['groupNum']=$this->groupNum;  // 鱼群数量
             $data['aliveTime']=$this->aliveTime;  //存活时间
             $data['cost']=$this->cost;  // 价值
-            $data['ariseRate']=$this->ariseRate;  //出现概率
+            $data['ariseRate']=$this->ariseRate*100;  //出现概率
             $payss = Json::encode($data);
             /**
              * 请求游戏服务端   修改数据
              */
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateFish';
+            $url = \Yii::$app->params['Api'].'/control/updateFish';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
+                $this->rate=$this->rate*100;
+                $this->ariseRate=$this->ariseRate*100;
                 $this->updated_at=time();
                 $this->save(false);
                 return true;

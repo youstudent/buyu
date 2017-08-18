@@ -51,35 +51,18 @@ class RobotForm extends Model
             if ($this->rate <0  || $this->num <0 || $this->rate >100 || $this->num >3){
                 return $this->addError('rate','命中率在0-100之间,数量在1-3之间');
             }
-            // 当前玩家 加入多少机器人  并设置命中率
+            /*{
+                playerId: 1,
+                kickOff: [2,3],
+                robotRate: 6000,
+                robotNum: 2
+             }*/
+            $data=[];
+            $data['playerId']=$this->id;
+            $data['robotRate']=$this->rate;
+            $data['robotNum']=$this->num;
             var_dump($data);exit;
-            //修改玩家和房间的命中率
-            $redis = players::getReids();
-            $playerRate = $redis->hGetAll('playerRate');
-            //修改玩家的命中率
-            foreach ($playerRate as $k => &$value) {
-                if ($k == $this->id) {
-                    $value = $this->player_rate * 100;
-                }
-            }
-            //修改玩家的命中率
-           // $redis->hMset('playerRate', $playerRate);
-            
-            //修改玩家房间的命中率
-            //1. 根据玩家ID 查询玩家在那个房间,
-            $room = players::getRoom($this->id);
-            //2. 查询所有的房间,修改指定房间的命中率
-            $roomRate = $redis->hGetAll('roomRate');
-            //修改玩家所在房间的命中率
-            foreach ($roomRate as $k => &$value) {
-                if ($k == $room) {
-                    $value = $this->room_rate * 100;
-                }
-            }
-            if ($redis->hMset('playerRate', $playerRate) && $redis->hMset('roomRate', $roomRate)){
-                return true;
-            }
-            //$redis->hMset('roomRate', $roomRate);
+            // $value = $this->player_rate * 100;
             return $this->addError('id','修改数据失败');
         }
         

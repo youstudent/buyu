@@ -60,7 +60,7 @@ class Money extends Object
     
     //请求游戏服务器  道具列表
     public static function GetMoney(){
-        $url = Yii::$app->params['Api'].'/gameserver/control/gettools';
+        $url = Yii::$app->params['Api'].'/control/gettools';
         $data = Request::request_post($url,['time'=>time()]);
         Money::deleteAll();
         $model =  new Money();
@@ -95,7 +95,7 @@ class Money extends Object
              *  请求服务器修改 货币配置数据
              */
             $JS = Json::encode($arr);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateEveryDayTask';
+            $url = \Yii::$app->params['Api'].'/control/updateEveryDayTask';
             $re =Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
                 //修改数据

@@ -94,7 +94,7 @@ class RobotController extends ObjectController
         /**
          *  操作 发送请求到服务器
          */
-        $url = \Yii::$app->params['Api'] . '/gameserver/control/deleteNotice';
+        $url = \Yii::$app->params['Api'] . '/control/deleteNotice';
         $re = Request::request_post_raw($url, $datas);
         if ($re['code'] == 1) {
             $model->delete();

@@ -170,7 +170,7 @@ class DayTask extends Object
              * 请求游戏服务端   修改数据
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateFishTask';
+            $url = \Yii::$app->params['Api'].'/control/updateFishTask';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 //SignBoard::GetSign();
@@ -188,7 +188,7 @@ class DayTask extends Object
      *  获取游戏服务端的列表数据
      */
     public static function GetDay(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getEveryDayTask';
+        $url = \Yii::$app->params['Api'].'/control/getEveryDayTask';
         $data = \common\services\Request::request_post($url,['time'=>time()]);
        
         $d=[];

@@ -109,6 +109,9 @@ class VipUpdateController extends ObjectController
         foreach($datas as $k=>$v){
             $give_upgrade[]=$k;
         }
+        //burst    alms_num
+        $model->burst= $model->burst/100;
+        $model->alms_rate=$model->alms_rate/100;
         $model->give_day=$type;  //每日礼包key值
         $model->give_upgrade=$give_upgrade;  //升级礼包key值
         return $this->render('edit',['model'=>$model,'data'=>$data,'datas'=>$datas]);
@@ -126,7 +129,7 @@ class VipUpdateController extends ObjectController
         /**
          * 请求游戏服务端   删除数据
          */
-        $url = \Yii::$app->params['Api'].'/gameserver/control/deleteVIP';
+        $url = \Yii::$app->params['Api'].'/control/deleteVIP';
         $data=[];
         $data['id']=$id;
         $re = \common\services\Request::request_post($url,$data);

@@ -125,23 +125,14 @@ class NoticeController extends ObjectController
         $data = [];
         $data['id'] = $model->id;
         $datas = Json::encode($data);
-        $url = \Yii::$app->params['Api'] . '/gameserver/control/deleteNotice';
+        $url = \Yii::$app->params['Api'] . '/control/deleteNotice';
         $re = Request::request_post_raw($url, $datas);
         if ($re['code'] == 1) {
             $model->delete();
             return ['code' => 1, 'message' => '删除成功'];
         }
         return ['code' => 0, 'message' => '删除失败'];
-        /*   if($model)
-           {
-               if($model->delete()) {
-                   return ['code'=>1,'message'=>'删除成功'];
-               }
-               $messge = $model->getFirstErrors();
-               $messge = reset($messge);
-               return ['code'=>0,'message'=>$messge];
-           }
-           return ['code'=>0,'message'=>'删除的ID不存在'];*/
+        
     }
     
     

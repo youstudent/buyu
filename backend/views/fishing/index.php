@@ -86,8 +86,8 @@ $this->title = Yii::t('app', 'fishing_index') . '-' . Yii::$app->params['appName
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['name'] ?></td>
                                     <td class="text-center"><?= \common\models\Fishing::$give_type[$value['type']] ?></td>
-                                    <td class="text-center"><?= $value['rate'] ?>/10000</td>
-                                    <td class="text-center"><?= $value['ariseRate'] ?>/10000</td>
+                                    <td class="text-center"><?= $value['rate']/100 ?>%</td>
+                                    <td class="text-center"><?= $value['ariseRate']/100 ?>%</td>
                                     <td class="text-center"><?= $value['groupNum'] ?></td>
                                     <td class="text-center"><?= $value['aliveTime'] ?>秒</td>
                                     <td class="text-center"><?= $value['cost'] ?></td>

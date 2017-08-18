@@ -39,9 +39,10 @@ class Experience extends  Object
     public function rules()
     {
         return [
+            [['type'],'required'],
             [['grade', 'type','manage_id', 'created_at', 'updated_at'], 'integer'],
             [['grade'],'unique'],
-            [['grade'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
+            [['grade','type'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量无效'],
             [['manage_name'], 'string', 'max' => 20],
             [['number'], 'safe'],
         ];
@@ -87,14 +88,14 @@ class Experience extends  Object
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
                         if (in_array($kk,$datas)){
-                            if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('give','数量无效');
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('give','奖品数量无效');
                             }
                             $send[$kk]=$VV;
                         }
                         if (is_numeric($kk)){
-                            if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('give','数量无效');
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('give','奖品数量无效');
                             }
                             $tool['toolId']=$kk;
                             $tool['toolNum']=$VV;
@@ -115,7 +116,7 @@ class Experience extends  Object
              * 请求服务器地址 炮台倍数
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/addLevel';
+            $url = \Yii::$app->params['Api'].'/control/addLevel';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->number=Json::encode($send);
@@ -151,14 +152,14 @@ class Experience extends  Object
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
                         if (in_array($kk,$datas)){
-                            if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('give','数量无效');
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('give','奖品数量无效');
                             }
                             $send[$kk]=$VV;
                         }
                         if (is_numeric($kk)){
-                            if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('give','数量无效');
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('give','奖品数量无效');
                             }
                             $tool['toolId']=$kk;
                             $tool['toolNum']=$VV;
@@ -179,7 +180,7 @@ class Experience extends  Object
              * 请求游戏服务端   修改数据
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateLevel';
+            $url = \Yii::$app->params['Api'].'/control/updateLevel';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->number=Json::encode($send);
@@ -217,7 +218,7 @@ class Experience extends  Object
      *    初始化游戏服务端 炮台倍数
      */
     public static function GetExperience(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getLevels';
+        $url = \Yii::$app->params['Api'].'/control/getLevels';
         $data = \common\services\Request::request_post($url,['time'=>time()]);
         $d=[];
         foreach ($data as $key=>$v){

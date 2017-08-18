@@ -105,7 +105,7 @@ class CurrencyPayController extends ObjectController
          * 请求游戏服务端   删除数据
          */
         $model = CurrencyPay::findOne($id);
-        $url = \Yii::$app->params['Api'].'/gameserver/control/deletePay';
+        $url = \Yii::$app->params['Api'].'/control/deletePay';
         $data=[];
         $data['id']=$id;
         $datas = Json::encode($data);

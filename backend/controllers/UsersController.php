@@ -197,7 +197,7 @@ class UsersController extends ObjectController
                     $UsersTime->save(false);
                     $datas['playerId']=$model->id;
                     $datas['banTime']=($time-time())*1000;//将时间戳转化成毫秒
-                    $result = Request::request_post(\Yii::$app->params['Api'].'/gameserver/control/ban',$datas);
+                    $result = Request::request_post(\Yii::$app->params['Api'].'/control/ban',$datas);
                     if ($result['code'] == 1){
                         return ['code'=>1,'message'=>Yii::t('app','操作成功')];
                     }

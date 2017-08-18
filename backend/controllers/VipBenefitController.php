@@ -93,7 +93,7 @@ class VipBenefitController extends ObjectController
         /**
          * 请求游戏服务端   删除数据
          */
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getpayinfo';
+        $url = \Yii::$app->params['Api'].'/control/getpayinfo';
         $data=[];
         $data['id']=$id;
         $re = \common\services\Request::request_post($url,$data);

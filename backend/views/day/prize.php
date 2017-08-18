@@ -23,10 +23,13 @@
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'give_type',['inline'=>true])->radioList(['1'=>'是','0'=>'否'])?>
+                <?php echo $form->field($model,'give_type')->dropDownList(['1'=>'是','0'=>'否'])?>
                 <?php foreach ($data as $key=>$value):?>
-                    <label class="col-lg-3 control-label" for="redeemcode-diamond"><?php echo $key?></label>
-                    <div class="col-lg-9"><input type="text" id="redeemcode-diamond" class="form-control" name="RedeemCode[diamond]" value="<?php echo $value?>" readonly=""><span class="help-block m-b-none"></span></div>
+                    <label class="col-lg-3 control-label" for="notice-gold"><?php echo $key?></label>
+                    <div class="col-lg-9">
+                        <input type="text" id="notice-gold>" class="form-control" name="day[gold]" value="<?php echo $value?>">
+                        <span class="help-block m-b-none"></span>
+                    </div>
                 <?php endforeach;?>
                 
                <!-- <?php /*echo $form->field($model,'give_type')->checkboxList(\common\models\RedeemCode::$give)*/?>

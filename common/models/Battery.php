@@ -87,7 +87,7 @@ class Battery extends Object
      *    初始化游戏服务端 炮台倍数
      */
     public static function GetBattery(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getbatterypower';
+        $url = \Yii::$app->params['Api'].'/control/getbatterypower';
         $data = \common\services\Request::request_post($url,['time'=>time()]);
         $d=[];
         foreach ($data as $key=>$v){
@@ -139,14 +139,14 @@ class Battery extends Object
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
                         if (in_array($kk,$datas)){
-                            if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('give_gold_num','数量无效');
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('give_gold_num','奖品数量无效');
                             }
                             $send[$kk]=$VV;
                         }
                         if (is_numeric($kk)){
-                            if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('give_gold_num','数量无效');
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('give_gold_num','奖品数量无效');
                             }
                             $tool['toolId']=$kk;
                             $tool['toolNum']=$VV;
@@ -162,7 +162,7 @@ class Battery extends Object
              * 请求服务器地址 炮台倍数
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/addbatterypower';
+            $url = \Yii::$app->params['Api'].'/control/addbatterypower';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->give_gold_num=Json::encode($send);
@@ -205,13 +205,13 @@ class Battery extends Object
                     foreach ($v as $kk=>$VV){
                         if (in_array($kk,$datas)){
                             if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('give_gold_num','数量无效');
+                                return $this->addError('give_gold_num','奖品数量无效');
                             }
                             $send[$kk]=$VV;
                         }
                         if (is_numeric($kk)){
                             if ($VV<0 || $VV==null || !is_numeric($VV)){
-                                return $this->addError('give_gold_num','数量无效');
+                                return $this->addError('give_gold_num','奖品数量无效');
                             }
                             $tool['toolId']=$kk;
                             $tool['toolNum']=$VV;
@@ -227,7 +227,7 @@ class Battery extends Object
              * 请求游戏服务端   修改数据
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updatebatterypower';
+            $url = \Yii::$app->params['Api'].'/control/updatebatterypower';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 $this->give_gold_num=Json::encode($send);

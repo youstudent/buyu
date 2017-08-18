@@ -298,44 +298,48 @@ class MonitoringController extends ObjectController
             $new_gold = Json::decode($gold[$id], true);
         }
         $data = [];
-        foreach ($new_gold as $key => $value) {
-            if (array_key_exists('duihuan', $new_gold)) {
-                $data['兑换'] = $value;
+        if ($new_gold){
+            foreach ($new_gold as $key => $value) {
+                if (array_key_exists('duihuan', $new_gold)) {
+                    $data['兑换'] = $value;
+                }
+                if (array_key_exists('buyu', $new_gold)) {
+                    $data['捕鱼'] = $value;
+                }
+                if (array_key_exists('buyusongbi', $new_gold)) {
+                    $data['捕鱼送币'] = $value;
+                }
+                if (array_key_exists('chongzhi', $new_gold)) {
+                    $data['充值'] = $value;
+                }
+                if (array_key_exists('cijiyouxi', $new_gold)) {
+                    $data['刺激游戏'] = $value;
+                }
+                if (array_key_exists('duihuanma', $new_gold)) {
+                    $data['兑换码'] = $value;
+                }
+                if (array_key_exists('gonggao', $new_gold)) {
+                    $data['公告'] = $value;
+                }
+                if (array_key_exists('jiujijin', $new_gold)) {
+                    $data['救济金'] = $value;
+                }
+                if (array_key_exists('meiriqiandao', $new_gold)) {
+                    $data['每日签到'] = $value;
+                }
+                if (array_key_exists('meirirenwu', $new_gold)) {
+                    $data['每日任务'] = $value;
+                }
+                if (array_key_exists('vipmeiri', $new_gold)) {
+                    $data['vip任务'] = $value;
+                }
+                if (array_key_exists('youjian', $new_gold)) {
+                    $data['邮件'] = $value;
+                }
+        
+        
             }
-            if (array_key_exists('buyu', $new_gold)) {
-                $data['捕鱼'] = $value;
-            }
-            if (array_key_exists('buyusongbi', $new_gold)) {
-                $data['捕鱼送币'] = $value;
-            }
-            if (array_key_exists('chongzhi', $new_gold)) {
-                $data['充值'] = $value;
-            }
-            if (array_key_exists('cijiyouxi', $new_gold)) {
-                $data['刺激游戏'] = $value;
-            }
-            if (array_key_exists('duihuanma', $new_gold)) {
-                $data['兑换码'] = $value;
-            }
-            if (array_key_exists('gonggao', $new_gold)) {
-                $data['公告'] = $value;
-            }
-            if (array_key_exists('jiujijin', $new_gold)) {
-                $data['救济金'] = $value;
-            }
-            if (array_key_exists('meiriqiandao', $new_gold)) {
-                $data['每日签到'] = $value;
-            }
-            if (array_key_exists('meirirenwu', $new_gold)) {
-                $data['每日任务'] = $value;
-            }
-            if (array_key_exists('vipmeiri', $new_gold)) {
-                $data['vip任务'] = $value;
-            }
-            if (array_key_exists('youjian', $new_gold)) {
-                $data['邮件'] = $value;
-            }
-            
+       
         }
         
         /**
@@ -347,15 +351,19 @@ class MonitoringController extends ObjectController
             $new_gold_lost = Json::decode($gold_lost[$id], true);
         }
         $datas = [];
-        foreach ($new_gold_lost as $key => $value) {
-            if (array_key_exists('buyuxiaohao', $new_gold_lost)) {
-                $datas['消耗'] = $value;
-            }
-            if (array_key_exists('cijiyouxi', $new_gold_lost)) {
-                $datas['刺激游戏'] = $value;
+        if ($new_gold_lost){
+            foreach ($new_gold_lost as $key => $value) {
+                if (array_key_exists('buyuxiaohao', $new_gold_lost)) {
+                    $datas['消耗'] = $value;
+                }
+                if (array_key_exists('cijiyouxi', $new_gold_lost)) {
+                    $datas['刺激游戏'] = $value;
+                }
+        
             }
             
         }
+        
         return $this->render('gold', ['data' => $data, 'datas' => $datas]);
     }
     
@@ -381,31 +389,34 @@ class MonitoringController extends ObjectController
         //  254 => string '{"@class":"com.sinysoft.gameserver.common.DiamondGet","buyu":0,"buyusongbi":0,"chongzhi":4011,"duihuanma":0,
         //"gonggao":0,"meiriqiandao":0,"meirirenwu":0,"youjian":0}' (length=164)
         $data = [];
-        foreach ($new_gold as $key => $value) {
-            if (array_key_exists('buyu', $new_gold)) {
-                $data['捕鱼'] = $value;
-            }
-            if (array_key_exists('buyusongbi', $new_gold)) {
-                $data['捕鱼送币'] = $value;
-            }
-            if (array_key_exists('chongzhi', $new_gold)) {
-                $data['充值'] = $value;
-            }
-            if (array_key_exists('duihuanma', $new_gold)) {
-                $data['兑换码'] = $value;
-            }
-            if (array_key_exists('gonggao', $new_gold)) {
-                $data['公告'] = $value;
-            }
-            if (array_key_exists('meiriqiandao', $new_gold)) {
-                $data['每日签到'] = $value;
-            }
-            if (array_key_exists('meirirenwu', $new_gold)) {
-                $data['每日任务'] = $value;
-            }
-            if (array_key_exists('youjian', $new_gold)) {
-                $data['邮件'] = $value;
-            }
+        if ($new_gold){
+            foreach ($new_gold as $key => $value) {
+                if (array_key_exists('buyu', $new_gold)) {
+                    $data['捕鱼'] = $value;
+                }
+                if (array_key_exists('buyusongbi', $new_gold)) {
+                    $data['捕鱼送币'] = $value;
+                }
+                if (array_key_exists('chongzhi', $new_gold)) {
+                    $data['充值'] = $value;
+                }
+                if (array_key_exists('duihuanma', $new_gold)) {
+                    $data['兑换码'] = $value;
+                }
+                if (array_key_exists('gonggao', $new_gold)) {
+                    $data['公告'] = $value;
+                }
+                if (array_key_exists('meiriqiandao', $new_gold)) {
+                    $data['每日签到'] = $value;
+                }
+                if (array_key_exists('meirirenwu', $new_gold)) {
+                    $data['每日任务'] = $value;
+                }
+                if (array_key_exists('youjian', $new_gold)) {
+                    $data['邮件'] = $value;
+                }
+        }
+       
             
         }
         //"@class":"com.sinysoft.gameserver.common.DiamondLost","duihuanjinbi":0,"goumaidaoju":0,"
@@ -419,23 +430,26 @@ class MonitoringController extends ObjectController
             $new_gold_lost = Json::decode($gold_lost[$id], true);
         }
         $datas = [];
-        foreach ($new_gold_lost as $key => $value) {
-            if (array_key_exists('duihuanjinbi', $new_gold_lost)) {
-                $datas['兑换金币'] = $value;
-            }
-            if (array_key_exists('goumaidaoju', $new_gold_lost)) {
-                $datas['购买道具'] = $value;
-            }
-            if (array_key_exists('liuyanban', $new_gold_lost)) {
-                $datas['留言板'] = $value;
-            }
-            if (array_key_exists('shengjipaobei', $new_gold_lost)) {
-                $datas['深海捕鱼'] = $value;
-            }
-            if (array_key_exists('shijielaba', $new_gold_lost)) {
-                $datas['世界喇叭'] = $value;
+        if ($new_gold_lost){
+            foreach ($new_gold_lost as $key => $value) {
+                if (array_key_exists('duihuanjinbi', $new_gold_lost)) {
+                    $datas['兑换金币'] = $value;
+                }
+                if (array_key_exists('goumaidaoju', $new_gold_lost)) {
+                    $datas['购买道具'] = $value;
+                }
+                if (array_key_exists('liuyanban', $new_gold_lost)) {
+                    $datas['留言板'] = $value;
+                }
+                if (array_key_exists('shengjipaobei', $new_gold_lost)) {
+                    $datas['深海捕鱼'] = $value;
+                }
+                if (array_key_exists('shijielaba', $new_gold_lost)) {
+                    $datas['世界喇叭'] = $value;
+                }
             }
         }
+        
         return $this->render('diamond', ['data' => $data, 'datas' => $datas]);
     }
     
@@ -462,42 +476,45 @@ class MonitoringController extends ObjectController
         //"buyusongbi":0,"chongzhizengsong":0,"cijiyouxi":0,"duihuanma":0,"gonggao":0,"jiujijin":0,
         //"meiriqiandao":0,"meirirenwu":0,"vipmeiri":0,"youjian":0}' (len
         $data = [];
-        foreach ($new_gold as $key => $value) {
-            if (array_key_exists('buyu', $new_gold)) {
-                $data['捕鱼'] = $value;
+        if ($new_gold){
+            foreach ($new_gold as $key => $value) {
+                if (array_key_exists('buyu', $new_gold)) {
+                    $data['捕鱼'] = $value;
+                }
+                if (array_key_exists('buyusongbi', $new_gold)) {
+                    $data['捕鱼送币'] = $value;
+                }
+                if (array_key_exists('chongzhizengsong', $new_gold)) {
+                    $data['充值赠送'] = $value;
+                }
+                if (array_key_exists('cijiyouxi', $new_gold)) {
+                    $data['刺激游戏'] = $value;
+                }
+                if (array_key_exists('duihuanma', $new_gold)) {
+                    $data['兑换码'] = $value;
+                }
+                if (array_key_exists('gonggao', $new_gold)) {
+                    $data['公告'] = $value;
+                }
+                if (array_key_exists('jiujijin', $new_gold)) {
+                    $data['救济金'] = $value;
+                }
+                if (array_key_exists('meiriqiandao', $new_gold)) {
+                    $data['每日签到'] = $value;
+                }
+                if (array_key_exists('meirirenwu', $new_gold)) {
+                    $data['每日任务'] = $value;
+                }
+                if (array_key_exists('vipmeiri', $new_gold)) {
+                    $data['vip任务'] = $value;
+                }
+                if (array_key_exists('youjian', $new_gold)) {
+                    $data['邮件'] = $value;
+                }
+        
             }
-            if (array_key_exists('buyusongbi', $new_gold)) {
-                $data['捕鱼送币'] = $value;
-            }
-            if (array_key_exists('chongzhizengsong', $new_gold)) {
-                $data['充值赠送'] = $value;
-            }
-            if (array_key_exists('cijiyouxi', $new_gold)) {
-                $data['刺激游戏'] = $value;
-            }
-            if (array_key_exists('duihuanma', $new_gold)) {
-                $data['兑换码'] = $value;
-            }
-            if (array_key_exists('gonggao', $new_gold)) {
-                $data['公告'] = $value;
-            }
-            if (array_key_exists('jiujijin', $new_gold)) {
-                $data['救济金'] = $value;
-            }
-            if (array_key_exists('meiriqiandao', $new_gold)) {
-                $data['每日签到'] = $value;
-            }
-            if (array_key_exists('meirirenwu', $new_gold)) {
-                $data['每日任务'] = $value;
-            }
-            if (array_key_exists('vipmeiri', $new_gold)) {
-                $data['vip任务'] = $value;
-            }
-            if (array_key_exists('youjian', $new_gold)) {
-                $data['邮件'] = $value;
-            }
-            
         }
+        
         
         /**
          *  获取玩家,消费途径
@@ -510,14 +527,16 @@ class MonitoringController extends ObjectController
         //  254 => string '{"@class":"com.sinysoft.gameserver.common.FishGoldLost",
         //"buyuxiaohao":200,"cijiyouxi":0}' (length=88)
         $datas = [];
-        foreach ($new_gold_lost as $key => $value) {
-            if (array_key_exists('buyuxiaohao', $new_gold_lost)) {
-                $datas['捕鱼消耗'] = $value;
+        if ($new_gold_lost){
+            foreach ($new_gold_lost as $key => $value) {
+                if (array_key_exists('buyuxiaohao', $new_gold_lost)) {
+                    $datas['捕鱼消耗'] = $value;
+                }
+                if (array_key_exists('cijiyouxi', $new_gold_lost)) {
+                    $datas['刺激游戏'] = $value;
+                }
+        
             }
-            if (array_key_exists('cijiyouxi', $new_gold_lost)) {
-                $datas['刺激游戏'] = $value;
-            }
-            
         }
         return $this->render('fishgold', ['data' => $data, 'datas' => $datas]);
     }

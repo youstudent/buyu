@@ -41,7 +41,6 @@ $this->title = Yii::t('app', 'sign_board_index') . '-' . Yii::$app->params['appN
                                 <th class="text-center">鱼名字</th>
                                 <th class="text-center">击杀数量</th>
                                 <th class="text-center">任务出现概率</th>
-                                <th class="text-center">修改人</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
@@ -54,8 +53,7 @@ $this->title = Yii::t('app', 'sign_board_index') . '-' . Yii::$app->params['appN
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= \common\models\SignBoard::$fishing[$value['fishing_id']]?></td>
                                     <td class="text-center"><?= $value['number'] ?></td>
-                                    <td class="text-center"><?= $value['probability'] ?></td>
-                                    <td class="text-center"><?= $value['manage_name'] ?></td>
+                                    <td class="text-center"><?= $value['probability']/100 ?>%</td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td class="text-center" style="width: 200px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['sign-board/prize', 'id' => $value['id']]) ?>"

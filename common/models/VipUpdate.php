@@ -40,8 +40,8 @@ class VipUpdate extends Object
     public function rules()
     {
         return [
-            [['number','grade'],'required'],
-            [['number','burst','alms_rate','alms_num'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
+            [['number','grade','burst','alms_rate','alms_num'],'required'],
+            [['number','burst','alms_rate','alms_num'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量无效'],
             [['number','manage_id', 'updated_at','alms_rate','alms_num'], 'integer'],
             [['manage_name', 'grade'],'string', 'max' => 20],
             [['give_day','give_upgrade','type'],'safe']
@@ -97,7 +97,7 @@ class VipUpdate extends Object
      *    初始化游戏服务端  vip等级每日福利
      */
     public static function GetVipBenefit(){
-        $url = \Yii::$app->params['Api'].'/gameserver/control/getVIP';
+        $url = \Yii::$app->params['Api'].'/control/getVIP';
         $data = \common\services\Request::request_post($url,['time'=>time()]);
         $d=[];
         foreach ($data as $key=>$v){
@@ -180,7 +180,7 @@ class VipUpdate extends Object
              * 请求服务器地址 VIP升级福利
              */
             $payss = Json::encode($pays);
-            $url = \Yii::$app->params['Api'].'/gameserver/control/addVIP';
+            $url = \Yii::$app->params['Api'].'/control/addVIP';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
                 return true;
@@ -202,6 +202,9 @@ class VipUpdate extends Object
      */
     public function edit($data = []){
         if($this->load($data) && $this->validate()) {
+            if ($this->burst<0 || $this->alms_rate>100 || $this->burst>100 ||$this->alms_rate<0){
+                return $this->addError('alms_rate','爆率和救济金领取比例在0-100之间');
+            }
             /**
              * 接收数据  拼装
              */
@@ -217,9 +220,9 @@ class VipUpdate extends Object
             $pays['id'] = $this->id;  //等级
             $pays['vipLevel'] = $this->grade;  //等级
             $pays['vipEx'] = $this->number;   //人民币
-            $pays['killRate'] = $this->burst;   //暴力
+            $pays['killRate'] = $this->burst*100;   //暴力
             $pays['almsNum'] = $this->alms_num; //领取次数
-            $pays['almsRate'] = $this->alms_rate; // 领取比例
+            $pays['almsRate'] = $this->alms_rate*100; // 领取比例
     
             /**
              * 解析 升级
@@ -233,14 +236,14 @@ class VipUpdate extends Object
                     $day = $data['VipUpdate']['day'];
                     foreach ($day as $key => $value) {
                         if (in_array($key,$datas)) {
-                            if ($value<0 || $value==null || !is_numeric($value)){
-                                return $this->addError('give_upgrade','数量无效');
+                            if ($value<=0 || $value==null || !is_numeric($value)){
+                                return $this->addError('give_upgrade','奖品数量无效');
                             }
                             $sign[$key] = $value;
                         }
                         if (is_numeric($key)) {
-                            if ($value<0 || $value==null || !is_numeric($value)){
-                                return $this->addError('give_upgrade','数量无效');
+                            if ($value<=0 || $value==null || !is_numeric($value)){
+                                return $this->addError('give_upgrade','奖品数量无效');
                             }
                             $tool['toolId'] = $key;
                             $tool['toolNum'] = $value;
@@ -261,9 +264,15 @@ class VipUpdate extends Object
                     }
                     foreach ($updates as $key => $value) {
                         if (in_array($key,$datas)) {
+                            if ($value<=0 || $value==null || !is_numeric($value)){
+                                return $this->addError('give_upgrade','奖品数量无效');
+                            }
                             $levelUp[$key] = $value;
                         }
                         if (is_numeric($key)) {
+                            if ($value<=0 || $value==null || !is_numeric($value)){
+                                return $this->addError('give_upgrade','奖品数量无效');
+                            }
                             $tool['toolId'] = $key;
                             $tool['toolNum'] = $value;
                             $toolss[$i] = $tool;
@@ -271,8 +280,7 @@ class VipUpdate extends Object
                         }
                     }
                 }
-               
-            
+                
             }
     
             if (!empty($tools)) {
@@ -287,16 +295,18 @@ class VipUpdate extends Object
             if (!empty($sign)) {
                 $pays['sign'] = $sign;
             }
-    
+      
             $payss = Json::encode($pays);
            // var_dump($payss);exit;
             /**
              *
              * 请求游戏服务端  Vip升级福利
              */
-            $url = \Yii::$app->params['Api'].'/gameserver/control/updateVIP';
+            $url = \Yii::$app->params['Api'].'/control/updateVIP';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
+                $this->burst= $this->burst*100;
+                $this->alms_rate=$this->alms_rate*100;
                 $this->give_day=Json::encode($levelUp);
                 $this->give_upgrade=Json::encode($sign);
                 $this->manage_id    = \Yii::$app->session->get('manageId');
