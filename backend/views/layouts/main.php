@@ -31,7 +31,8 @@ $config = [
        ['label' => '会员榜', 'url' => ['ranking/index','Ranking'=>['type'=>3,'province'=>'']]],
     ]],
     ['label' => '监控中心', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
-        ['label' => '监控列表', 'url' => ['monitoring/index']],
+        ['label' => '报警列表', 'url' => ['monitoring/index']],
+        ['label' => '在线用户', 'url' => ['monitoring/on-index']],
     ]],
     /*['label' => '机器人管理', 'icon' => 'fa fa-ticket icon', 'bg_color' => 'bg-warning', 'url' => ['pay/index'], 'items' => [
         ['label' => '机器人列表', 'url' => ['robot/index']],

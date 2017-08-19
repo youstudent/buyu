@@ -69,7 +69,7 @@ use yii\bootstrap\ActiveForm;
 
     window.setInterval(function(){
         $.ajax({
-                url:'/monitoring/new',
+                url:'/monitoring/on-new',
                 type:'html',
                 success:function(res){
                    // $('#tb').remove();

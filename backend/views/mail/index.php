@@ -88,7 +88,10 @@ $this->title = Yii::t('app', 'mail_index') . '-' . Yii::$app->params['appName'];
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['title'] ?></td>
-                                    <td class="text-center"><?= $value['content'] ?></td>
+                                    <td class="text-center">
+                                        <a href="<?php echo \yii\helpers\Url::to(['mail/content', 'id' => $value['id']]) ?>"
+                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看内容</a>
+                                    </td>
                                     <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center"><?= $value['yes_no']==0?'否':'是'; ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['created_at']) ?></td>

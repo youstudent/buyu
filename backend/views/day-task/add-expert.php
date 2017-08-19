@@ -26,7 +26,7 @@
                     ],
                 ])?>
            
-            <?php echo $form->field($model,'fishings')->dropDownList(\backend\models\ExpertForm::$fishing)?>
+            <?php echo $form->field($model,'fishings')->dropDownList(\backend\models\ExpertForm::$boos)?>
             <?php echo $form->field($model,'num')?>
                 <div style="display: none">
         

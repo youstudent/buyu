@@ -69,7 +69,10 @@ class RobotForm extends Model
             $data['robotRate']=$this->rate;
             $data['robotNum']=$this->num;
             $new_data = Json::encode($data);
-            $url = \Yii::$app->params['Api'].'/control/updateFishTask';
+            /**
+             *  机指派机器人
+             */
+            $url = \Yii::$app->params['Api'].'/control/addRobot';
             $re = Request::request_post_raw($url,$new_data);
             if ($re['code']== 1){
                 return true;

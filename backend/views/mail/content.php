@@ -9,30 +9,25 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">指派机器人</h4>
+            <h4 class="modal-title" id="myModalLabel">查看内内容</h4>
         </div>
         <div class="modal-body">
 
             <div class="col-xs-11">
             <?php $form = \yii\bootstrap\ActiveForm::begin([
                     'id'=>'payModalForm',
-                    'action'=>['monitoring/robot'],
+                    'action'=>['redeem-code/add'],
                     'options'=>['class'=>'form-horizontal'],
                     'fieldConfig' => [
                         'template' => "{label}<div class=\"col-lg-9\">{input}<span class=\"help-block m-b-none\"></span></div>",
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'id')->textInput(['readonly'=>true])?>
-                <?php echo $form->field($model,'name')->dropDownList(\common\helps\players::getRoomPlayer($model->id),['multiple'=>true])?>
-                <?php echo $form->field($model,'num')?>
-                <?php echo $form->field($model,'rate')?>
+             <?php echo $form->field($model,'content')->textarea()?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times">&nbsp;</i><?=Yii::t('app','but_close')?></button>
-            <button type="button" id="payModalSubmit" class="btn btn-primary"><i class="fa fa-save"></i>确认指派</button>
         </div>
     </div>
 </div>

@@ -83,6 +83,9 @@ class ExpertForm extends Model
     }
     
     
+    
+    
+    
     /**
      * @param array $data
      * @return bool
@@ -156,6 +159,9 @@ class ExpertForm extends Model
     public function add($data = [])
     {
         if($this->load($data) && $this->validate()) {
+            if ($this->fishings<1){
+                return $this->addError('fishings','请选择鱼');
+            }
             $arr = [];
             $content['fishId']=$this->fishings;
             $content['num']=$this->num;

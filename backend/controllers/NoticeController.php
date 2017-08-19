@@ -25,6 +25,7 @@ class NoticeController extends ObjectController
      * @return string
      */
     public function actionIndex()
+    
     {
         $data = new Notice();
         $model = $data::find();

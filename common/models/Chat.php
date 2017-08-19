@@ -72,6 +72,8 @@ class Chat extends Object
             $url = \Yii::$app->params['Api'].'/control/addChat';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
+                $this->manage_id    = \Yii::$app->session->get('manageId');
+                $this->manage_name  = \Yii::$app->session->get('manageName');
                 $this->reg_time=time();
                 $this->save(false);
                 return true;
@@ -104,6 +106,8 @@ class Chat extends Object
             $url = \Yii::$app->params['Api'].'/control/updateChat';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
+                $this->manage_id    = \Yii::$app->session->get('manageId');
+                $this->manage_name  = \Yii::$app->session->get('manageName');
                 $this->reg_time=time();
                 $this->save(false);
                 return true;
@@ -130,7 +134,6 @@ class Chat extends Object
             }
             
         }
-        //var_dump($d);EXIT;
         $new = $d[0];
         Chat::deleteAll();
         $model =  new Chat();

@@ -27,16 +27,73 @@ class MonitoringController extends ObjectController
     /** 监控中心首页
      * @return string
      */
-    public function actionIndex()
+    /*public function actionIndex()
     {
-        return $this->render('index');
+        $redis = players::getReids();
+        $Player = $redis->SMEMBERS('onlinePlayer');//获取在线的人数
+        $datas=[2,60,254];
+        $filed = 'GREATEST(`gold`,`diamond`,`fishGold`) as t,id,name,gold,diamond,fishGold';
+        $model = Player::find()->select($filed)->orderBy(['t'=> SORT_DESC]);
+        $model->andWhere(['id' => $datas]);
+        $pages = new Pagination(
+            [
+                'totalCount' => $model->count(),
+                'defaultPageSize' => 2,
+                'route' => 'monitoring/index',
+            ]
+        );
+        $data = $model->limit($pages->limit)->offset($pages->offset)->asArray()->all();
+        
+        return $this->render('index',['data'=>$data,'pages'=>$pages]);
+    }*/
+    
+    
+    public function actionIndex(){
+    
+        $model = new OnLine();
+        $data = $model->getList(\Yii::$app->request->get());
+       
+        return $this->render('index',$data);
     }
+    
+    
+    /*
+     * 查询报警的人数
+     */
+    public function actionNew()
+    {
+        $model = new OnLine();
+        $data = $model->getList(\Yii::$app->request->get());
+        return $this->renderAjax('new-index',$data);
+    }
+    
+    
+    
+    
+    /*
+     * 查询在线用户
+     */
+    public function actionOnIndex(){
+        
+        $model = new OnLine();
+        $data = $model->getLists(\Yii::$app->request->get());
+        return $this->render('on-index',$data);
+    }
+    
+    
+    public function actionOnNew()
+    {
+        $model = new OnLine();
+        $data = $model->getLists(\Yii::$app->request->get());
+        return $this->renderAjax('on-new-index',$data);
+    }
+    
     
     /**
      * @return string
      * 用户数据
      */
-    public function actionNew()
+   /* public function actionNew()
     {
         $redis = players::getReids();
         $Player = $redis->SMEMBERS('onlinePlayer');//获取在线的人数
@@ -52,8 +109,12 @@ class MonitoringController extends ObjectController
             ]
         );
         $data = $model->limit($pages->limit)->offset($pages->offset)->asArray()->all();
-        return $this->renderAjax('new-index', ['data' => $data, 'pages' => $pages]);
-    }
+        
+        return $this->renderAjax('new-index', [
+            'data' => $data,
+            'pages' => $pages,
+        ]);
+    }*/
     
     
     /**
@@ -72,7 +133,7 @@ class MonitoringController extends ObjectController
         $pages = new Pagination(
             [
                 'totalCount' => $model->count(),
-                'pageSize' => 5
+                'pageSize' => 1
             ]
         );
         $data = $model->limit($pages->limit)->offset($pages->offset)->asArray()->all();
@@ -144,16 +205,20 @@ class MonitoringController extends ObjectController
     {
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $id = \Yii::$app->request->get('id');
+        $room_id = \common\helps\players::getRoom($id);
         $datas['playerId'] = $id;
+        if ($room_id!==0){
+            $datas['roomId'] = $room_id;
+        }
+        $new_data = Json::encode($datas);
         //掉线的接口
-        $result = Request::request_post(\Yii::$app->params['Api'] . '/gameserver/control/ban', $datas);
+        $url = \Yii::$app->params['Api'].'/control/kickOff';
+        $result = Request::request_post_raw($url,$new_data);
         if ($result['code'] == 1) {
             return ['code' => 1, 'message' => \Yii::t('app', '操作成功')];
         }
         
     }
-    
-    
     /**
      * 监控中心停封玩家
      */
@@ -289,40 +354,40 @@ class MonitoringController extends ObjectController
         $data = [];
         if ($new_gold){
             foreach ($new_gold as $key => $value) {
-                if (array_key_exists('duihuan', $new_gold)) {
-                    $data['兑换'] = $value;
+                if (array_key_exists('duihuan', $new_gold) && $value>0) {
+                        $data['兑换'] = $value;
                 }
-                if (array_key_exists('buyu', $new_gold)) {
-                    $data['捕鱼'] = $value;
+                if (array_key_exists('buyu', $new_gold) && $value>0) {
+                        $data['捕鱼'] = $value;
                 }
-                if (array_key_exists('buyusongbi', $new_gold)) {
-                    $data['捕鱼送币'] = $value;
+                if (array_key_exists('buyusongbi', $new_gold) && $value>0) {
+                        $data['捕鱼送币'] = $value;
                 }
-                if (array_key_exists('chongzhi', $new_gold)) {
-                    $data['充值'] = $value;
+                if (array_key_exists('chongzhi', $new_gold) && $value>0) {
+                        $data['充值'] = $value;
                 }
-                if (array_key_exists('cijiyouxi', $new_gold)) {
-                    $data['刺激游戏'] = $value;
+                if (array_key_exists('cijiyouxi', $new_gold) && $value>0) {
+                        $data['刺激游戏'] = $value;
                 }
-                if (array_key_exists('duihuanma', $new_gold)) {
-                    $data['兑换码'] = $value;
+                if (array_key_exists('duihuanma', $new_gold)  && $value>0) {
+                        $data['兑换码'] = $value;
                 }
-                if (array_key_exists('gonggao', $new_gold)) {
-                    $data['公告'] = $value;
+                if (array_key_exists('gonggao', $new_gold) && $value>0) {
+                        $data['公告'] = $value;
                 }
-                if (array_key_exists('jiujijin', $new_gold)) {
+                if (array_key_exists('jiujijin', $new_gold) && $value>0) {
                     $data['救济金'] = $value;
                 }
-                if (array_key_exists('meiriqiandao', $new_gold)) {
+                if (array_key_exists('meiriqiandao', $new_gold) && $value>0) {
                     $data['每日签到'] = $value;
                 }
-                if (array_key_exists('meirirenwu', $new_gold)) {
+                if (array_key_exists('meirirenwu', $new_gold) && $value>0) {
                     $data['每日任务'] = $value;
                 }
-                if (array_key_exists('vipmeiri', $new_gold)) {
+                if (array_key_exists('vipmeiri', $new_gold) && $value>0) {
                     $data['vip任务'] = $value;
                 }
-                if (array_key_exists('youjian', $new_gold)) {
+                if (array_key_exists('youjian', $new_gold) && $value>0) {
                     $data['邮件'] = $value;
                 }
         
@@ -342,10 +407,10 @@ class MonitoringController extends ObjectController
         $datas = [];
         if ($new_gold_lost){
             foreach ($new_gold_lost as $key => $value) {
-                if (array_key_exists('buyuxiaohao', $new_gold_lost)) {
+                if (array_key_exists('buyuxiaohao', $new_gold_lost) && $value>0) {
                     $datas['消耗'] = $value;
                 }
-                if (array_key_exists('cijiyouxi', $new_gold_lost)) {
+                if (array_key_exists('cijiyouxi', $new_gold_lost) && $value>0) {
                     $datas['刺激游戏'] = $value;
                 }
         
@@ -380,28 +445,28 @@ class MonitoringController extends ObjectController
         $data = [];
         if ($new_gold){
             foreach ($new_gold as $key => $value) {
-                if (array_key_exists('buyu', $new_gold)) {
+                if (array_key_exists('buyu', $new_gold) && $value>0) {
                     $data['捕鱼'] = $value;
                 }
-                if (array_key_exists('buyusongbi', $new_gold)) {
+                if (array_key_exists('buyusongbi', $new_gold) && $value>0) {
                     $data['捕鱼送币'] = $value;
                 }
-                if (array_key_exists('chongzhi', $new_gold)) {
+                if (array_key_exists('chongzhi', $new_gold) && $value>0) {
                     $data['充值'] = $value;
                 }
-                if (array_key_exists('duihuanma', $new_gold)) {
+                if (array_key_exists('duihuanma', $new_gold) && $value>0) {
                     $data['兑换码'] = $value;
                 }
-                if (array_key_exists('gonggao', $new_gold)) {
+                if (array_key_exists('gonggao', $new_gold) && $value>0) {
                     $data['公告'] = $value;
                 }
-                if (array_key_exists('meiriqiandao', $new_gold)) {
+                if (array_key_exists('meiriqiandao', $new_gold) && $value>0) {
                     $data['每日签到'] = $value;
                 }
-                if (array_key_exists('meirirenwu', $new_gold)) {
+                if (array_key_exists('meirirenwu', $new_gold) && $value>0) {
                     $data['每日任务'] = $value;
                 }
-                if (array_key_exists('youjian', $new_gold)) {
+                if (array_key_exists('youjian', $new_gold) && $value>0) {
                     $data['邮件'] = $value;
                 }
         }
@@ -421,19 +486,19 @@ class MonitoringController extends ObjectController
         $datas = [];
         if ($new_gold_lost){
             foreach ($new_gold_lost as $key => $value) {
-                if (array_key_exists('duihuanjinbi', $new_gold_lost)) {
+                if (array_key_exists('duihuanjinbi', $new_gold_lost) && $value>0) {
                     $datas['兑换金币'] = $value;
                 }
-                if (array_key_exists('goumaidaoju', $new_gold_lost)) {
+                if (array_key_exists('goumaidaoju', $new_gold_lost) && $value>0) {
                     $datas['购买道具'] = $value;
                 }
-                if (array_key_exists('liuyanban', $new_gold_lost)) {
+                if (array_key_exists('liuyanban', $new_gold_lost) && $value>0) {
                     $datas['留言板'] = $value;
                 }
-                if (array_key_exists('shengjipaobei', $new_gold_lost)) {
+                if (array_key_exists('shengjipaobei', $new_gold_lost) && $value>0) {
                     $datas['深海捕鱼'] = $value;
                 }
-                if (array_key_exists('shijielaba', $new_gold_lost)) {
+                if (array_key_exists('shijielaba', $new_gold_lost) && $value>0) {
                     $datas['世界喇叭'] = $value;
                 }
             }
@@ -467,37 +532,37 @@ class MonitoringController extends ObjectController
         $data = [];
         if ($new_gold){
             foreach ($new_gold as $key => $value) {
-                if (array_key_exists('buyu', $new_gold)) {
+                if (array_key_exists('buyu', $new_gold) && $value>0) {
                     $data['捕鱼'] = $value;
                 }
-                if (array_key_exists('buyusongbi', $new_gold)) {
+                if (array_key_exists('buyusongbi', $new_gold) && $value>0) {
                     $data['捕鱼送币'] = $value;
                 }
-                if (array_key_exists('chongzhizengsong', $new_gold)) {
+                if (array_key_exists('chongzhizengsong', $new_gold) && $value>0) {
                     $data['充值赠送'] = $value;
                 }
-                if (array_key_exists('cijiyouxi', $new_gold)) {
+                if (array_key_exists('cijiyouxi', $new_gold) && $value>0) {
                     $data['刺激游戏'] = $value;
                 }
-                if (array_key_exists('duihuanma', $new_gold)) {
+                if (array_key_exists('duihuanma', $new_gold) && $value>0) {
                     $data['兑换码'] = $value;
                 }
-                if (array_key_exists('gonggao', $new_gold)) {
+                if (array_key_exists('gonggao', $new_gold) && $value>0) {
                     $data['公告'] = $value;
                 }
-                if (array_key_exists('jiujijin', $new_gold)) {
+                if (array_key_exists('jiujijin', $new_gold) && $value>0) {
                     $data['救济金'] = $value;
                 }
-                if (array_key_exists('meiriqiandao', $new_gold)) {
+                if (array_key_exists('meiriqiandao', $new_gold) && $value>0) {
                     $data['每日签到'] = $value;
                 }
-                if (array_key_exists('meirirenwu', $new_gold)) {
+                if (array_key_exists('meirirenwu', $new_gold) && $value>0) {
                     $data['每日任务'] = $value;
                 }
-                if (array_key_exists('vipmeiri', $new_gold)) {
+                if (array_key_exists('vipmeiri', $new_gold) && $value>0) {
                     $data['vip任务'] = $value;
                 }
-                if (array_key_exists('youjian', $new_gold)) {
+                if (array_key_exists('youjian', $new_gold) && $value>0) {
                     $data['邮件'] = $value;
                 }
         
@@ -518,10 +583,10 @@ class MonitoringController extends ObjectController
         $datas = [];
         if ($new_gold_lost){
             foreach ($new_gold_lost as $key => $value) {
-                if (array_key_exists('buyuxiaohao', $new_gold_lost)) {
+                if (array_key_exists('buyuxiaohao', $new_gold_lost) && $value>0) {
                     $datas['捕鱼消耗'] = $value;
                 }
-                if (array_key_exists('cijiyouxi', $new_gold_lost)) {
+                if (array_key_exists('cijiyouxi', $new_gold_lost) && $value>0) {
                     $datas['刺激游戏'] = $value;
                 }
         

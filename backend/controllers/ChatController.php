@@ -11,8 +11,7 @@ class ChatController extends ObjectController
 {
     public function actionIndex($show)
     {
-       
-        //Chat::GetChat(); //请求游戏服端 聊天数据
+        
         if (\Yii::$app->request->get('show') == 1) {
             $data = Chat::find()->andWhere(["status" => 1])->asArray()->all();
         } elseif (\Yii::$app->request->get('show') == 0) {
@@ -24,8 +23,6 @@ class ChatController extends ObjectController
         
         return $this->render('index',['data'=>$data]);
     }
-    
-    
     
     /**
      * 添加 聊天设置
