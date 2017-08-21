@@ -22,6 +22,7 @@ class RobotForm extends Model
     public $name; // 玩家名字
     public $id;  //玩家ID
     public $rate;  // 机器人命中率
+    public static $option=[1=>'张三',222=>'李四'];
     /**
      * @inheritdoc
      */
@@ -54,8 +55,8 @@ class RobotForm extends Model
     public function editRate($data)
     {
         if ($this->load($data) && $this->validate()) {
-            if ($this->rate <0  || $this->num <0 || $this->rate >100 || $this->num >3){
-                return $this->addError('rate','命中率在0-100之间,数量在1-3之间');
+            if ($this->rate <=0  || $this->num <=0 || $this->rate >100 || $this->num >3){
+                return $this->addError('rate','命中率在1-100之间,数量在1-3之间');
             }
             /*{
                 playerId: 1,
@@ -66,7 +67,7 @@ class RobotForm extends Model
             $data=[];
             $data['playerId']=$this->id;
             $data['kickOff']=$this->name;
-            $data['robotRate']=$this->rate;
+            $data['robotRate']=$this->rate*100;
             $data['robotNum']=$this->num;
             $new_data = Json::encode($data);
             /**
