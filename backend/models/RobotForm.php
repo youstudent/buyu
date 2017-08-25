@@ -22,7 +22,7 @@ class RobotForm extends Model
     public $name; // 玩家名字
     public $id;  //玩家ID
     public $rate;  // 机器人命中率
-    public static $option=[1=>'张三',222=>'李四'];
+    public static $option=[263=>'张三'];
     /**
      * @inheritdoc
      */

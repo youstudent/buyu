@@ -38,10 +38,11 @@ class players
     public static function getRoomPlayer($id)
     {
         $Player_id=[];
-        $id = 162;
+        //$id = 162;
         $redis = self::getReids();
         $playerRoom = '';
         $data = $redis->HGETALL('playerRoom');
+       // var_dump($)
         if ($data) {
             if (array_key_exists($id, $data)) {
                 $playerRoom = $data[$id];
@@ -60,7 +61,7 @@ class players
        $Player = Player::find()->select(['name','id'])->where(['id'=>$Player_id])->asArray()->all();
         //格式化数据
        $Player_new = ArrayHelper::map($Player,'id','name');
-       
+      // var_dump($Player_new);exit;
        return $Player_new;
         
     }

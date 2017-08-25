@@ -150,9 +150,9 @@ class OnLine extends \yii\db\ActiveRecord
         $this->initTime();
         $redis = players::getReids();
         $Player = $redis->SMEMBERS('onlinePlayer');//获取在线的人数
-        $datas=[2,60,254,26,27,28];
+        //$datas=[2,60,254,26,27,28];
         $new_data=[];
-        foreach ($datas as $va){
+        foreach ($Player as $va){
             $re =  PrewarningValue::findOne(['game_id'=>$va]);
             $row = Player::findOne(['id'=>$va]);
             if (!$re){
@@ -187,9 +187,12 @@ class OnLine extends \yii\db\ActiveRecord
         $this->initTime();
         $redis = players::getReids();
         $Player = $redis->SMEMBERS('onlinePlayer');//获取在线的人数
-        $datas=[2,60,254,26,27,28];
+        //var_dump($Player);exit;
+       // var_dump($Player);EXIT;
+       // $datas=[2,60,254,26,27,28];
+      //  var_dump($Player);exit;
         $new_data=[];
-        foreach ($datas as $va){
+        foreach ($Player as $va){
            $re =  PrewarningValue::findOne(['game_id'=>$va]);
            if (!$re){
                $PrewarningValue = new PrewarningValue();

@@ -300,7 +300,7 @@ class RedeemCode extends Object
                 
                return true;
             
-            }
+        }
         
     }
     
@@ -361,9 +361,8 @@ class RedeemCode extends Object
                 $this->prize=$prize;
                 $this->status=2;
                 return $this->save();
-            }
-        
-        return false;
+        }
+        //return true;
         
     }
     

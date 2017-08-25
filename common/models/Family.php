@@ -138,7 +138,7 @@ class Family extends \yii\db\ActiveRecord
             [['owenerid', 'createtime', 'maxmenber'], 'integer'],
             [['name', 'realname', 'bankcard', 'bank', 'idcard', 'phone', 'notice','password'], 'string', 'max' => 255],
             [['notice'],'required','on'=>'edit'],
-            [['pay_gold_config','pay_gold','password'],'safe'],
+            [['pay_gold_config','pay_gold','password','searchstatus'],'safe'],
         ];
     }
 
@@ -177,10 +177,13 @@ class Family extends \yii\db\ActiveRecord
     {
         $this->load($data);
         $this->initTime();
+       // var_dump($this->searchstatus);
         $model = self::find()->where($this->searchWhereLike())
             ->andWhere(['>=','createtime',strtotime($this->starttime)])
             ->andWhere(['<=','createtime',strtotime($this->endtime)]);;
-        
+        /*if ($this->searchstatus){
+        $model->andWhere(['status'=>$this->searchstatus]);
+        }*/
         $pages = new Pagination(['totalCount' =>$model->count(), 'pageSize' => \Yii::$app->params['pageSize']]);
         $data = $model->limit($pages->limit)->offset($pages->offset)->all();
         return ['data'=>$data,'pages'=>$pages,'model'=>$this];
@@ -222,7 +225,9 @@ class Family extends \yii\db\ActiveRecord
     }
     
     /**
-     * 创建家族,创建玩家
+     * @param array $data
+     * @return bool
+     * @throws \Exception
      */
     public function add($data = []){
         $this->scenario='add';
@@ -234,6 +239,7 @@ class Family extends \yii\db\ActiveRecord
                 }
                 $player = new Player();
                 $player->familyowner=1;
+                $player->id=$this->getRandChar(8);
                 $player->uid=$this->phone;
                 $player->name=$this->realname;
                 $player->pwd=$this->password;
@@ -244,7 +250,7 @@ class Family extends \yii\db\ActiveRecord
                 $player->lastlogintime=0;
                 $player->createdtime=date('Y-m-d H:i:s');
                 if ($player->save()==false){
-                    var_dump($player->getErrors());exit;
+                   // var_dump($player->getErrors());exit;
                     throw  new Exception('创建玩家失败');
                 }
                 $this->owenerid=$player->id;
@@ -279,6 +285,17 @@ class Family extends \yii\db\ActiveRecord
                 throw $e;
             }
         }
+    }
+    
+    function getRandChar($length){
+        $str = null;
+        $strPol = "0123456789";
+        $max = strlen($strPol)-1;
+        for($i=0;$i<$length;$i++){
+            $str.=$strPol[rand(0,$max)];//rand($min,$max)生成介于min和max两个数之间的一个随机整数
+        }
+        
+        return $str;
     }
     
     /**
