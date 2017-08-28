@@ -9,10 +9,9 @@ namespace common\services;
 class Request
 {
     /**
-     * POST提交数据    form da
      * @param string $url
      * @param string $param
-     * @return bool|string
+     * @return array|bool
      */
     static function request_post($url = '', $param = '') {
 //        return ['code'=>1,'message'=>"游戏服务器相应失败"];
@@ -43,11 +42,11 @@ class Request
         }
         return ['code'=>0,'message'=>$data->message];
     }
+    
     /**
-     * POST提交数据
      * @param string $url
-     * @param string $param
-     * @return bool|string
+     * @param $raw
+     * @return array|bool
      */
     static function request_post_raw($url = '', $raw) {
 //        return ['code'=>1,'message'=>"游戏服务器相应失败"];
@@ -67,7 +66,7 @@ class Request
         ));
         $data = curl_exec($ch);//运行curl
         curl_close($ch);
-       //var_dump($data);exit;
+        //var_dump($data);exit;
         $data = json_decode($data);
         if($data->code == 1)
         {

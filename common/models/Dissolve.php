@@ -58,7 +58,9 @@ class Dissolve extends \yii\db\ActiveRecord
     
     
     /**
-     *  解散家族
+     * @param $id
+     * @return bool
+     * @throws \Exception
      */
     public function pass($id){
         $transaction  = \Yii::$app->db->beginTransaction();

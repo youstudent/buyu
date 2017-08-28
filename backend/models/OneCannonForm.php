@@ -41,6 +41,7 @@ class OneCannonForm extends Model
         return [
             [['num','enable','lost','get','number','out_gold','time'],'integer'],
             [['give','type','id','typeId','gives','type1'],'safe'],
+            //[['time'],'unique'],
         ];
     }
     

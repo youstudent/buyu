@@ -85,7 +85,7 @@ class ManageController extends ObjectController
                 }
 
                 if($model->save()){
-                    return ['code'=>1,'message'=>'添加成功'];
+                    return ['code'=>1,'message'=>'修改成功'];
                 }
             }
             $message = $model->getFirstErrors();

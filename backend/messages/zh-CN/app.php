@@ -111,6 +111,7 @@ return [
     'robot_index'=>'机器人管理',
     'batteryrate_index'=>'炮台命中率',
     'room_index'=>'房间命中率',
+    'but_edit'=>'确认修改',
 ];
 
 /**

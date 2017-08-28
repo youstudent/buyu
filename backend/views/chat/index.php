@@ -56,7 +56,6 @@ $this->title = Yii::t('app', 'chat_index') . '-' . Yii::$app->params['appName'];
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">内容</th>
-                                <th class="text-center">操作人</th>
                                 <th class="text-center">添加时间</th>
                                 <th class="text-center">状态</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
@@ -69,7 +68,6 @@ $this->title = Yii::t('app', 'chat_index') . '-' . Yii::$app->params['appName'];
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['content'] ?></td>
-                                    <td class="text-center"><?= $value['manage_name'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['reg_time']) ?></td>
                                     <td class="text-center" style="border-right: 0px;">
                                         <?php if ($value['status'] == 1): ?>

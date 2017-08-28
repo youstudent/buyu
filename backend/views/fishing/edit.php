@@ -26,7 +26,6 @@
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'name')->textInput(['readonly'=>true])?>
                 <?php echo $form->field($model,'type')->dropDownList(\common\models\Fishing::$give_type)?>
-                <h5 style="margin-left: 123px">注:<?=Yii::t('app','notes')?></h5 >
                 <?php echo $form->field($model,'rate')?>
                 <?php echo $form->field($model,'groupNum')?>
                 <?php echo $form->field($model,'aliveTime')?>

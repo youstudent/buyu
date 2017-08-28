@@ -12,8 +12,8 @@ $this->title = Yii::t('app', '管理员列表') . '-' . Yii::$app->params['appNa
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">公告管理</a></li>
-                <li class="active">公告管理详情</li>
+                <li><a href="#">管理员管理</a></li>
+                <li class="active">管理员详情</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">
@@ -36,7 +36,7 @@ $this->title = Yii::t('app', '管理员列表') . '-' . Yii::$app->params['appNa
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <th class="text-center">姓名</th>
+                                <th class="text-center">账号</th>
                                 <th class="text-center">手机号</th>
 
                                 <th class="text-center" style="border-right: 0px;">操作</th>

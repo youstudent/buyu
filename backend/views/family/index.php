@@ -38,25 +38,25 @@ use yii\bootstrap\ActiveForm;
                                 <div class="form-group">
 
                                     <!--筛选状态 全部|正常|封停 开始-->
-                                    <div class="btn-group" data-toggle="buttons" style="margin-right: 8px;">
-                                        <label class="btn btn-default <?php if ($model->searchstatus == '') {
+                                    <!--<div class="btn-group" data-toggle="buttons" style="margin-right: 8px;">
+                                        <label class="btn btn-default <?php /*if ($model->searchstatus == '') {
                                             echo "active";
-                                        } ?>" onclick="setStatus()">
+                                        } */?>" onclick="setStatus()">
                                             <input type="radio" name="options"
-                                                   id="statusAll"><?= Yii::t('app', 'agency_select_search_all') ?>
+                                                   id="statusAll"><?/*= Yii::t('app', 'agency_select_search_all') */?>
                                         </label>
-                                        <label class="btn btn-default <?php if ($model->searchstatus == 1) {
+                                        <label class="btn btn-default <?php /*if ($model->searchstatus == 1) {
                                             echo "active";
-                                        } ?>" onclick="setStatus(1)">
+                                        } */?>" onclick="setStatus(1)">
                                             <input type="radio" name="options"
-                                                   id="statusOk"><?= Yii::t('app', 'agency_select_search_ok') ?></label>
-                                        <label class="btn btn-default <?php if ($model->searchstatus == 2) {
+                                                   id="statusOk"><?/*= Yii::t('app', 'agency_select_search_ok') */?></label>
+                                        <label class="btn btn-default <?php /*if ($model->searchstatus == 2) {
                                             echo "active";
-                                        } ?>" onclick="setStatus(2)">
+                                        } */?>" onclick="setStatus(2)">
                                             <input type="radio" name="options"
-                                                   id="statusColose"><?= Yii::t('app', 'agency_select_search_colse') ?>
+                                                   id="statusColose"><?/*= Yii::t('app', 'agency_select_search_colse') */?>
                                         </label>
-                                    </div>
+                                    </div>-->
                                     <input type="hidden" name="Family[searchstatus]" value="<?= $model->searchstatus ?>"
                                            id="status">
                                     <!--筛选状态 全部|正常|封停 结束-->

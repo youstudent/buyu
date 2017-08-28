@@ -139,6 +139,7 @@ class Family extends \yii\db\ActiveRecord
             [['name', 'realname', 'bankcard', 'bank', 'idcard', 'phone', 'notice','password'], 'string', 'max' => 255],
             [['notice'],'required','on'=>'edit'],
             [['pay_gold_config','pay_gold','password','searchstatus'],'safe'],
+            [['phone'],'match','pattern'=>'/^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$/'],
         ];
     }
 
@@ -278,6 +279,15 @@ class Family extends \yii\db\ActiveRecord
                 if (!$Familyplayer->save()){
                     throw  new Exception('加入家族管理');
                 }
+                //添加家族动态信息
+                $Familyrecord = new Familyrecord();
+                $Familyrecord->familyid =$this->id;
+                $Familyrecord->playerid=$player->id;
+                $Familyrecord->type=99;
+                $Familyrecord->gold=0;
+                $Familyrecord->diamond=0;
+                $Familyrecord->fishgold=0;
+                if ($Familyrecord->save() ==false) throw new Exception('创建家族记录');
                 $transaction->commit();
                 return true;
             } catch (\Exception $e) {
