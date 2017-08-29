@@ -4,7 +4,7 @@
         <td  class="text-center"><?=$i?></td>
         <td  class="text-center"><?=\common\helps\players::getRoom($value['id'])?></td>
         <td  class="text-center"><?=\common\helps\players::getRoomNmu(\common\helps\players::getRoom($value['id']))?></td>
-        <td  class="text-center"><?=\common\helps\players::getRoomRate(\common\helps\players::getRoom($value['id']))?></td>
+        <td  class="text-center"><?=\common\helps\players::getRoomRate(\common\helps\players::getRoom($value['id']))?>%</td>
         <td  class="text-center"><?=$value['name']?></td>
         <td  class="text-center"><?=$value['id']?></td>
         <td  class="text-center">

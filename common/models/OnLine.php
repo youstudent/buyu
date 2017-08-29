@@ -23,7 +23,7 @@ class OnLine extends \yii\db\ActiveRecord
      * 搜索时使用的用于记住筛选
      * @var string
      */
-    public $select  = '';
+    public $select = '';
     
     /**
      * 搜索时使用的用于记住关键字
@@ -47,19 +47,19 @@ class OnLine extends \yii\db\ActiveRecord
      * 充值时候的金额
      * @var int
      */
-    public $pay_money    = 0;
+    public $pay_money = 0;
     
     /**
      * 时间筛选开始时间
      * @return array
      */
-    public $starttime     = '';
+    public $starttime = '';
     
     /**
      * 时间筛选开始时间
      * @return array
      */
-    public $endtime      = 0;
+    public $endtime = 0;
     
     /**
      * @inheritdoc
@@ -68,7 +68,7 @@ class OnLine extends \yii\db\ActiveRecord
     {
         return '{{%on_line}}';
     }
-
+    
     /**
      * @inheritdoc
      */
@@ -78,7 +78,7 @@ class OnLine extends \yii\db\ActiveRecord
             [['game_id', 'room_id', 'number_num'], 'integer'],
         ];
     }
-
+    
     /**
      * @inheritdoc
      */
@@ -95,10 +95,11 @@ class OnLine extends \yii\db\ActiveRecord
     /**
      *   在线用户和用户建立一对一的关系
      */
-    public function getUsers(){
-    
-        return $this->hasOne(Users::className(),['game_id'=>'game_id']);
-    
+    public function getUsers()
+    {
+        
+        return $this->hasOne(Users::className(), ['game_id' => 'game_id']);
+        
     }
     
     
@@ -107,9 +108,10 @@ class OnLine extends \yii\db\ActiveRecord
      * @return mixed
      * 获取玩家房间号
      */
-    public static function getRoom($id){
+    public static function getRoom($id)
+    {
         $redis = self::getReids();
-        $data =$redis->HGETALL('playerRoom')[$id];
+        $data = $redis->HGETALL('playerRoom')[$id];
         return $data;
     }
     
@@ -119,9 +121,10 @@ class OnLine extends \yii\db\ActiveRecord
      * @return mixed
      * 获取玩家房间人数
      */
-    public static function getRoomNmu($room){
+    public static function getRoomNmu($room)
+    {
         $redis = self::getReids();
-        $data =$redis->HGETALL('roomPlayerNum')[$room];
+        $data = $redis->HGETALL('roomPlayerNum')[$room];
         return $data;
     }
     
@@ -130,7 +133,8 @@ class OnLine extends \yii\db\ActiveRecord
      * @return \Redis
      *  连接redis
      */
-    public static function getReids(){
+    public static function getReids()
+    {
         $ip = "192.168.2.235";
         $port = 6379;
         $redis = new \Redis();
@@ -150,29 +154,30 @@ class OnLine extends \yii\db\ActiveRecord
         $this->initTime();
         $redis = players::getReids();
         $Player = $redis->SMEMBERS('onlinePlayer');//获取在线的人数
-        //$datas=[2,60,254,26,27,28];
-        $new_data=[];
-        foreach ($Player as $va){
-            $re =  PrewarningValue::findOne(['game_id'=>$va]);
-            $row = Player::findOne(['id'=>$va]);
-            if (!$re){
+        //$datas = [2, 60, 254, 26, 27, 28, 37, 38, 39, 50];
+        $new_data = [];
+        foreach ($Player as $va) {
+            $re = PrewarningValue::findOne(['game_id' => $va]);
+            $row = Player::findOne(['id' => $va]);
+            if (!$re) {
                 $PrewarningValue = new PrewarningValue();
-                $PrewarningValue->game_id=$va;
-                $PrewarningValue->fishgold=10000;
-                $PrewarningValue->gold=100000;
+                $PrewarningValue->game_id = $va;
+                $PrewarningValue->fishgold = 10000;
+                $PrewarningValue->gold = 100000;
                 $PrewarningValue->save(false);
-            }
-            if ($re->game_id == $row->id){
-                if ($row->gold > $re->gold || $row->fishGold > $re->fishgold){
-                    $new_data[]=$row->id;
+            } else {
+                if ($re->game_id == $row->id) {
+                    if ($row->gold > $re->gold || $row->fishGold > $re->fishgold) {
+                        $new_data[] = $row->id;
+                    }
                 }
             }
         }
         $filed = 'GREATEST(`gold`,`diamond`,`fishGold`) as t,id,name,gold,diamond,fishGold';
-        $model = Player::find()->select($filed)->orderBy(['t'=> SORT_DESC]);
-        $model->andWhere(['id' => $new_data])->andWhere($this->searchWhere())->andWhere(['>=','createdtime',$this->starttime])->andWhere(['<=','createdtime',$this->endtime]);
-        $data  = $model->all();
-        return ['data'=>$data,'model'=>$this];
+        $model = Player::find()->select($filed)->orderBy(['t' => SORT_DESC]);
+        $model->andWhere(['id' => $new_data])->andWhere($this->searchWhere())->andWhere(['>=', 'createdtime', $this->starttime])->andWhere(['<=', 'createdtime', $this->endtime]);
+        $data = $model->all();
+        return ['data' => $data, 'model' => $this];
     }
     
     
@@ -188,33 +193,34 @@ class OnLine extends \yii\db\ActiveRecord
         $redis = players::getReids();
         $Player = $redis->SMEMBERS('onlinePlayer');//获取在线的人数
         //var_dump($Player);exit;
-       // var_dump($Player);EXIT;
-       // $datas=[2,60,254,26,27,28];
-      //  var_dump($Player);exit;
-        $new_data=[];
-        foreach ($Player as $va){
-           $re =  PrewarningValue::findOne(['game_id'=>$va]);
-           if (!$re){
-               $PrewarningValue = new PrewarningValue();
-               $PrewarningValue->game_id=$va;
-               $PrewarningValue->fishgold=10000;
-               $PrewarningValue->gold=100000;
-               $PrewarningValue->save(false);
-           }
-           $row = Player::findOne(['id'=>$va]);
-           if ($re->game_id == $row->id){
-               if ($row->gold<=$re->gold && $row->fishGold<=$re->fishgold){
-                       $new_data[]=$row->id;
-               }
-               
-           }
+        // var_dump($Player);EXIT;
+        // $datas=[2,60,254,26,27,28];
+        //  var_dump($Player);exit;
+        //$datas = [2, 60, 254, 26, 27, 28, 37, 38, 39, 50];
+        $new_data = [];
+        foreach ($Player as $va) {
+            $re = PrewarningValue::findOne(['game_id' => $va]);
+            $row = Player::findOne(['id' => $va]);
+            if (!$re) {
+                $PrewarningValue = new PrewarningValue();
+                $PrewarningValue->game_id = $va;
+                $PrewarningValue->fishgold = 10000;
+                $PrewarningValue->gold = 100000;
+                $PrewarningValue->save(false);
+            } else {
+                if ($re->game_id == $row->id) {
+                    if ($row->gold <= $re->gold && $row->fishGold <= $re->fishgold) {
+                        $new_data[] = $row->id;
+                    }
+                }
+            }
         }
         //var_dump($new_data);exit;
         $filed = 'GREATEST(`gold`,`diamond`,`fishGold`) as t,id,name,gold,diamond,fishGold';
-        $model = Player::find()->select($filed)->orderBy(['t'=> SORT_DESC]);
-        $model->andWhere(['id' => $new_data])->andWhere($this->searchWhere())->andWhere(['>=','createdtime',$this->starttime])->andWhere(['<=','createdtime',$this->endtime]);
-        $data  = $model->all();
-        return ['data'=>$data,'model'=>$this];
+        $model = Player::find()->select($filed)->orderBy(['t' => SORT_DESC]);
+        $model->andWhere(['id' => $new_data])->andWhere($this->searchWhere())->andWhere(['>=', 'createdtime', $this->starttime])->andWhere(['<=', 'createdtime', $this->endtime]);
+        $data = $model->all();
+        return ['data' => $data, 'model' => $this];
     }
     
     
@@ -224,15 +230,14 @@ class OnLine extends \yii\db\ActiveRecord
      */
     private function searchWhere()
     {
-        if (!empty($this->select) && !empty($this->keyword))
-        {
+        if (!empty($this->select) && !empty($this->keyword)) {
             
             if ($this->select == 'game_id')
-                return ['id'=>$this->keyword];
-            elseif ($this->select == 'nickname')
-                return ['like','uid',$this->keyword];
+                return ['id' => $this->keyword];
+            else if ($this->select == 'nickname')
+                return ['like', 'uid', $this->keyword];
             else
-                return ['or',['id'=>$this->keyword],['like','uid',$this->keyword],['like','name',$this->keyword]];
+                return ['or', ['id' => $this->keyword], ['like', 'uid', $this->keyword], ['like', 'name', $this->keyword]];
         }
         return [];
     }
@@ -243,11 +248,11 @@ class OnLine extends \yii\db\ActiveRecord
      */
     public function initTime()
     {
-        if($this->starttime == '') {
+        if ($this->starttime == '') {
 //            $this->starttime = date('Y-m-d H:i:s',strtotime('-1 month'));
             $this->starttime = \Yii::$app->params['startTime'];//"2017-01-01 00:00:00";//date('Y-m-d H:i:s',strtotime('-1 month'));
         }
-        if($this->endtime == '') {
+        if ($this->endtime == '') {
             $this->endtime = date('Y-m-d H:i:s');
         }
     }

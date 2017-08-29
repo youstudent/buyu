@@ -94,10 +94,10 @@ class players
     public static function getRoomRate($room)
     {
         $redis = self::getReids();
-        //var_dump($redis->HGETALL('roomRate'));
+       // var_dump($redis->HGETALL('roomRate'));
         if ($data = $redis->HGETALL('roomRate')) {
             if (array_key_exists($room, $data)) {
-                return $data[$room];
+                return $data[$room]/100;
             }
             return 0;
         }
