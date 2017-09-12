@@ -20,14 +20,16 @@ $this->title = Yii::t('app', 'battery_index') . '-' . Yii::$app->params['appName
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-3 text-left">
-                            <a href="<?php echo \yii\helpers\Url::to(['battery/getbattery']) ?>"
-                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
-                        </div>
-                        <div class=" text-right">
-                        <a href="<?= \yii\helpers\Url::to(['battery/add'])?>" class="btn btn-primary"
-                           data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加炮台倍数</a>
-                        </div>
+                        <?php if (\common\helps\players::Permission()):?>
+                            <div class="col-sm-3 text-left">
+                                <a href="<?php echo \yii\helpers\Url::to(['battery/getbattery']) ?>"
+                                   onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
+                            </div>
+                            <div class=" text-right">
+                                <a href="<?= \yii\helpers\Url::to(['battery/add'])?>" class="btn btn-primary"
+                                   data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加炮台倍数</a>
+                            </div>
+                        <?php endif;?>
                     </div>
                     <!--                搜索结束          -->
                 </div>
@@ -56,10 +58,12 @@ $this->title = Yii::t('app', 'battery_index') . '-' . Yii::$app->params['appName
                                     <td  class="text-center" style="width: 200px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['battery/prize', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
-                                        <a href="<?php echo \yii\helpers\Url::to(['battery/edit', 'id' => $value['id']]) ?>"
-                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
-                                        <a href="<?php echo \yii\helpers\Url::to(['battery/del','id' => $value['id']])?>"
-                                           onclick="return openAgency(this,'是否确认删除?')" class="btn btn-xs btn-danger">删除</a>
+                                        <?php if(\common\helps\players::Permission()):?>
+                                            <a href="<?php echo \yii\helpers\Url::to(['battery/edit', 'id' => $value['id']]) ?>"
+                                               data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                            <a href="<?php echo \yii\helpers\Url::to(['battery/del','id' => $value['id']])?>"
+                                               onclick="return openAgency(this,'是否确认删除?')" class="btn btn-xs btn-danger">删除</a>
+                                        <?php endif;?>
                                     </td>
 
                                 </tr>

@@ -12,9 +12,12 @@ $config = [
        // ['label' => '消费记录', 'url' => ['users/out-log']],
         ['label' => '黑名单表', 'url' => ['users/blacklist']],
        // ['label' => '比例设置', 'url' => ['users/ratio']],
-    ]],
+    ]],//redpacket
     ['label' => '提现管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['withdraw/list'], 'items' => [
         ['label' => '提现列表', 'url' => ['withdraw/list']],
+    ]],
+    ['label' => '红包管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['redpacket/index'], 'items' => [
+        ['label' => '添加鱼红包', 'url' => ['redpacket/index']],
     ]],
     ['label' => '鱼群管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['fishing/index'], 'items' => [
         ['label' => '鱼群列表', 'url' => ['fishing/index', 'show' => '']],

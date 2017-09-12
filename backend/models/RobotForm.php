@@ -48,9 +48,9 @@ class RobotForm extends Model
     }
     
     
-    /**
-     * 指派机器人
+    /**\
      * @param $data
+     * @return bool|
      */
     public function editRate($data)
     {

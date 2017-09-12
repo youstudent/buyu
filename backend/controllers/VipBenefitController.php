@@ -2,11 +2,13 @@
 
 namespace backend\controllers;
 
+use common\helps\players;
 use common\models\VipBenefit;
 use yii\web\Response;
 
 class VipBenefitController extends ObjectController
 {
+    
     //vip首页
     public function actionIndex()
     {
@@ -18,7 +20,7 @@ class VipBenefitController extends ObjectController
      *  增加 Vip等级每日福利包
      * @return array|string
      */
-    public function actionAdd()
+    /*public function actionAdd()
     {
         $this->layout = false;
         $model = new VipBenefit();
@@ -33,7 +35,7 @@ class VipBenefitController extends ObjectController
             
         }
         return $this->render('add', ['model' => $model]);
-    }
+    }*/
     
     
     /**
@@ -42,6 +44,7 @@ class VipBenefitController extends ObjectController
      */
     public function actionEdit()
     {
+        players::Permission();
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
         $model = VipBenefit::findOne($id);
@@ -85,14 +88,12 @@ class VipBenefitController extends ObjectController
      *  删除 vip等级福利包
      * @return array
      */
-    public function actionDel()
+    /*public function actionDel()
     {
         $this->layout = false;
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $id = \Yii::$app->request->get('id');
-        /**
-         * 请求游戏服务端   删除数据
-         */
+       
         $url = \Yii::$app->params['Api'].'/control/getpayinfo';
         $data=[];
         $data['id']=$id;
@@ -100,7 +101,7 @@ class VipBenefitController extends ObjectController
         if ($re['code']== 1){
             return ['code'=>1,'message'=>'删除成功'];
         }
-        /*$model = VipBenefit::findOne($id);
+        $model = VipBenefit::findOne($id);
         if ($model) {
             if ($model->delete()){
                 return ['code' => 1, 'message' => '删除成功'];
@@ -108,8 +109,8 @@ class VipBenefitController extends ObjectController
             $messge = $model->getFirstErrors();
             $messge = reset($messge);
             return ['code' => 0, 'message' => $messge];
-        }*/
-    }
+        }
+    }*/
     
     
     //奖品内容的查看

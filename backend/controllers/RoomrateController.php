@@ -3,10 +3,11 @@
 namespace backend\controllers;
 
 use backend\models\Roomrate;
+use common\helps\players;
 use yii\web\Request;
 use yii\web\Response;
 
-class RoomrateController extends \yii\web\Controller
+class RoomrateController extends ObjectController
 {
     /**
      * @return string
@@ -25,6 +26,7 @@ class RoomrateController extends \yii\web\Controller
      */
     public function actionEdit()
     {
+        players::actionPermission();
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
         $model = Roomrate::findOne($id);

@@ -7,6 +7,7 @@
 namespace backend\controllers;
 
 use backend\models\Agency;
+use yii\filters\AccessControl;
 use yii\web\Response;
 
 /**
@@ -16,6 +17,7 @@ use yii\web\Response;
  */
 class AgencyController extends ObjectController
 {
+    
     /**
      * 首页初始化列表、带搜索功能的
      * @return string

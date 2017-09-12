@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\helps\players;
 use common\models\Battery;
 use common\models\GetGold;
 use yii\data\Pagination;
@@ -31,6 +32,7 @@ class BatteryController extends ObjectController
      */
     public function actionAdd()
     {
+        players::actionPermission();
         $this->layout = false;
         $model = new Battery();
         if (\Yii::$app->request->isPost) {
@@ -53,6 +55,7 @@ class BatteryController extends ObjectController
      */
     public function actionEdit()
     {
+        players::actionPermission();
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
         $model = Battery::findOne($id);
@@ -98,6 +101,7 @@ class BatteryController extends ObjectController
      */
     public function actionDel()
     {
+        players::actionPermission();
         $this->layout = false;
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $id = \Yii::$app->request->get('id');
@@ -156,6 +160,7 @@ class BatteryController extends ObjectController
      * 同步炮台数据
      */
     public function actionGetbattery(){
+        players::actionPermission();
         $this->layout = false;
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $code = Battery::GetBattery();

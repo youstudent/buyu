@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2017 Double Software LLC
  * @license http://www.lrdouble.com/license/
  */
-$this->title = Yii::t('app', 'room_index') . '-' . Yii::$app->params['appName'];
+$this->title = Yii::t('app', 'redpacket_index') . '-' . Yii::$app->params['appName'];
 ?>
 <section id="content">
     <section class="vbox">
@@ -12,15 +12,18 @@ $this->title = Yii::t('app', 'room_index') . '-' . Yii::$app->params['appName'];
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">房间中率管理</a></li>
-                <li class="active">房间设置详情</li>
+                <li><a href="#">红包管理</a></li>
+                <li class="active">绑定鱼和红包</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-3 text-right">
+                        <div class="col-sm-3 text-left">
+                            <a href="<?= \yii\helpers\Url::to(['redpacket/add']) ?>" class="btn btn-primary"
+                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>&nbsp;添加红包鱼</a>
+
                         </div>
                     </div>
                     <!--                搜索结束          -->
@@ -32,10 +35,10 @@ $this->title = Yii::t('app', 'room_index') . '-' . Yii::$app->params['appName'];
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <th class="text-center">房间倍数</th>
-                                <th class="text-center">最小命中率</th>
-                                <th class="text-center">最大命中率</th>
-                                <th class="text-center">修改时间</th>
+                                <th class="text-center">鱼名</th>
+                                <th class="text-center">红包掉落概率</th>
+                                <th class="text-center">小区间</th>
+                                <th class="text-center">大区间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
@@ -45,25 +48,15 @@ $this->title = Yii::t('app', 'room_index') . '-' . Yii::$app->params['appName'];
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center">
-                                        <?php if ($value['muti']==1):?>
-                                            1倍场
-                                        <?php elseif($value['muti']==2):?>
-                                            30倍场
-                                        <?php elseif($value['muti']==3):?>
-                                            40倍场
-                                        <?php elseif($value['muti']==4):?>
-                                            鱼币场
-                                        <?php endif;?>
-                                    </td>
-                                    <td class="text-center"><?= $value['minrate']/100?>%</td>
-                                    <td class="text-center"><?= $value['maxrate']/100?>%</td>
-                                    <td class="text-center"><?= $value['updatetime'] ?></td>
-                                    <td class="text-center" style="width: 120px;">
-                                        <?php if (\common\helps\players::Permission()):?>
-                                            <a href="<?php echo \yii\helpers\Url::to(['roomrate/edit', 'id' => $value['id']]) ?>"
-                                               data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
-                                        <?php endif;?>
+                                    <td class="text-center"><?=\common\helps\players::getFishing()[$value['fishid']]?></td>
+                                    <td class="text-center"><?=$value['rate']/100?>%</td>
+                                    <td class="text-center"><?=$value['minnum']/100?>%</td>
+                                    <td class="text-center"><?=$value['maxnum']/100?>%</td>
+                                    <td class="text-center" style="width: 300px;">
+                                        <a href="<?php echo \yii\helpers\Url::to(['redpacket/edit', 'id' => $value['id']]) ?>"
+                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                        <a href="<?php echo \yii\helpers\Url::to(['redpacket/del', 'id' => $value['id']]) ?>"
+                                           onclick="return openAgency(this,'是否确认删除?')" class="btn btn-xs btn-danger">删除</a>
                                     </td>
                                 </tr>
                                 <?php $i++ ?>
@@ -73,7 +66,7 @@ $this->title = Yii::t('app', 'room_index') . '-' . Yii::$app->params['appName'];
                         <?php if(empty($data)):?>
                             <div class="text-center m-t-lg clearfix wrapper-lg animated fadeInRightBig" id="galleryLoading">
                                 <h1><i class="fa fa-warning" style="color: red;font-size: 40px"></i></h1>
-                                <h4 class="text-muted"><?php echo sprintf(Yii::t('app','search_null'),'聊天管理')?></h4>
+                                <h4 class="text-muted"><?php echo sprintf(Yii::t('app','search_null'),'公告管理')?></h4>
                                 <p class="m-t-lg"></p>
                             </div>
                         <?php endif;?>
@@ -82,7 +75,20 @@ $this->title = Yii::t('app', 'room_index') . '-' . Yii::$app->params['appName'];
                 <!--                表格结束          -->
                 <!--                分页开始          -->
                 <footer class="panel-footer">
-
+                    <div class="row">
+                        <div class="col-sm-12 text-right text-center-xs">
+                            <?=\yii\widgets\LinkPager::widget([
+                                'pagination'=>$pages,
+                                'firstPageLabel' => '首页',
+                                'lastPageLabel' => '尾页',
+                                'nextPageLabel' => '下一页',
+                                'prevPageLabel' => '上一页',
+                                'options'   =>[
+                                    'class'=>'pagination pagination-sm m-t-none m-b-none',
+                                ]
+                            ])?>
+                        </div>
+                    </div>
                 </footer>
                 <!--                分页结束          -->
             </section>
@@ -95,7 +101,7 @@ $this->title = Yii::t('app', 'room_index') . '-' . Yii::$app->params['appName'];
 
     //    设置封停的状态
     function setStatus(val) {
-        window.location = '<?php echo \yii\helpers\Url::to(['chat/index','show'=>''],true)?>' + val;
+        window.location = '<?php echo \yii\helpers\Url::to(['notice/index','show'=>''],true)?>' + val;
         console.log($("#status").val());
     }
     function openAgency(_this, title) {

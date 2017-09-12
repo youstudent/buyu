@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use backend\models\Batteryrate;
+use common\helps\players;
 use yii\web\Response;
 
 class BatteryrateController extends ObjectController
@@ -24,6 +25,7 @@ class BatteryrateController extends ObjectController
      */
     public function actionEdit()
     {
+        players::actionPermission();
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
         $model = Batteryrate::findOne($id);

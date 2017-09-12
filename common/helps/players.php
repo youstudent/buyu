@@ -5,10 +5,15 @@ namespace common\helps;
 
 use backend\models\Batteryrate;
 use backend\models\PrewarningValue;
+use backend\models\Time;
 use Codeception\Lib\Generator\Helper;
+use common\models\Fishing;
 use common\models\Player;
 use common\models\VipUpdate;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+use phpDocumentor\Reflection\Types\Null_;
 use yii\helpers\ArrayHelper;
+use yii\web\ForbiddenHttpException;
 
 class players
 {
@@ -33,35 +38,28 @@ class players
     /**
      * @param $id
      * @return mixed
-     * 获取玩家房间号
+     * 根据当前玩家,该玩家房间号的其他人
      */
     public static function getRoomPlayer($id)
     {
         $Player_id=[];
-        //$id = 162;
         $redis = self::getReids();
-        $playerRoom = '';
+        $playerRoom = null;
         $data = $redis->HGETALL('playerRoom');
-       // var_dump($)
         if ($data) {
             if (array_key_exists($id, $data)) {
                 $playerRoom = $data[$id];
             }
             foreach ($data as $K=>$V){
-                if ($V == $playerRoom){
-                    if (!$K == $id){
-                        $Player_id[]=$K;
-                    }
-                   // $Player_id[]=$K;
+                if ($V == $playerRoom && (int)$id!==$K){
+                    $Player_id[]=$K;
                 }
-                
             }
         }
         //根据玩家查询 玩家信息
-       $Player = Player::find()->select(['name','id'])->where(['id'=>$Player_id])->asArray()->all();
+       $Player = Player::find()->select('name,id')->where(['id'=>$Player_id])->asArray()->all();
         //格式化数据
        $Player_new = ArrayHelper::map($Player,'id','name');
-      // var_dump($Player_new);exit;
        return $Player_new;
         
     }
@@ -197,6 +195,47 @@ class players
         var_dump($redis->hGetAll('goldGet'));
         
         
+    }
+    
+    /**
+     * 查看权限
+     */
+    public static function actionPermission(){
+        if (\Yii::$app->session->get('manageId')!== \Yii::$app->params['pa']->id && \Yii::$app->session->get('manageName')!==\Yii::$app->params['pa']->name)
+        {
+           throw new ForbiddenHttpException('没有该执行权限');
+        }
+    }
+    /**
+     *  根据登录用户显示按钮
+     */
+    public static function Permission(){
+        if (\Yii::$app->session->get('manageId')== \Yii::$app->params['pa']->id && \Yii::$app->session->get('manageName')==\Yii::$app->params['pa']->name)
+        {
+            return true;
+        }
+    }
+    
+    
+    /**
+     *  根据登录用户显示按钮
+     */
+    public static function EditPermission(){
+        if (\Yii::$app->session->get('manageId')== \Yii::$app->params['pa']->id && \Yii::$app->session->get('manageName')==\Yii::$app->params['pa']->name)
+        {
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
+    /**
+     * 获取鱼群(添加红包鱼)
+     * @return array
+     */
+    public static function getFishing(){
+        $data = Fishing::find()->where(['type'=>5])->asArray()->all();
+        return ArrayHelper::map($data,'id','name');
     }
     
 }

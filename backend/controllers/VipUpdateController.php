@@ -3,7 +3,9 @@
 namespace backend\controllers;
 
 
+use common\helps\players;
 use common\models\VipUpdate;
+use yii\filters\AccessControl;
 use yii\web\Response;
 
 class VipUpdateController extends ObjectController
@@ -23,6 +25,7 @@ class VipUpdateController extends ObjectController
      */
     public function actionAdd()
     {
+        
         $this->layout = false;
         $model = new VipUpdate();
         if (\Yii::$app->request->isPost) {
@@ -45,6 +48,7 @@ class VipUpdateController extends ObjectController
      */
     public function actionEdit()
     {
+        //players::actionPermission();
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
         $model = VipUpdate::findOne($id);

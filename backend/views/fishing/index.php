@@ -51,8 +51,10 @@ $this->title = Yii::t('app', 'fishing_index') . '-' . Yii::$app->params['appName
                             </div>
                             <input type="hidden" name="Agency[searchstatus]" value="" id="status">
                             <!--筛选状态 全部|正常|封停 结束-->
-                            <a href="<?php echo \yii\helpers\Url::to(['fishing/getfishing']) ?>"
-                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
+                            <?php if (\common\helps\players::Permission()):?>
+                                <a href="<?php echo \yii\helpers\Url::to(['fishing/getfishing']) ?>"
+                                   onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
+                            <?php endif;?>
                         </div>
                         <div class="col-sm-3 text-right">
                         </div>
@@ -94,8 +96,10 @@ $this->title = Yii::t('app', 'fishing_index') . '-' . Yii::$app->params['appName
                                     <td class="text-center"><?= $value['ex'] ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td class="text-center" style="width: 200px;">
-                                        <a href="<?php echo \yii\helpers\Url::to(['fishing/edit', 'id' => $value['id']]) ?>"
-                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                        <?php if (\common\helps\players::Permission()):?>
+                                            <a href="<?php echo \yii\helpers\Url::to(['fishing/edit', 'id' => $value['id']]) ?>"
+                                               data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                        <?php endif;?>
                                     </td>
                                 </tr>
                                 <?php $i++ ?>

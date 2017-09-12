@@ -2,12 +2,35 @@
 
 namespace backend\controllers;
 
+use common\helps\players;
 use common\models\Fishing;
 use yii\data\Pagination;
+use yii\filters\AccessControl;
+use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\Response;
 
 class FishingController extends ObjectController
 {
+  /* public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['edit','get-fishing'],
+                'rules' => [
+                    [
+                        'actions' => ['edit','get-fishing'],
+                        'allow' => true,
+                        'matchCallback' => function ($rule, $action) {
+                           return \Yii::$app->session->get('manageId')==\Yii::$app->params['pa']->id;
+                        }
+                    ],
+                    
+                ],
+            ],
+        ];
+    }*/
     /**
      * 初始化显示列表
      * @return string
@@ -45,6 +68,7 @@ class FishingController extends ObjectController
      */
     public function actionEdit()
     {
+        players::actionPermission();
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
         $model = Fishing::findOne($id);
@@ -68,6 +92,7 @@ class FishingController extends ObjectController
     
     //同步数据
     public function actionGetfishing(){
+        players::actionPermission();
         $this->layout = false;
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $code = Fishing::GetFishing();

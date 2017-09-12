@@ -48,8 +48,10 @@ $this->title = Yii::t('app', 'batteryrate_index') . '-' . Yii::$app->params['app
                                     <td class="text-center"><?= $value['rate']/100?>%</td>
                                     <td class="text-center"><?= $value['updatetime'] ?></td>
                                     <td class="text-center" style="width: 120px;">
-                                        <a href="<?php echo \yii\helpers\Url::to(['batteryrate/edit', 'id' => $value['id']]) ?>"
-                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                        <?php if (\common\helps\players::Permission()):?>
+                                            <a href="<?php echo \yii\helpers\Url::to(['batteryrate/edit', 'id' => $value['id']]) ?>"
+                                               data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                        <?php endif;?>
                                     </td>
                                 </tr>
                                 <?php $i++ ?>
@@ -59,7 +61,7 @@ $this->title = Yii::t('app', 'batteryrate_index') . '-' . Yii::$app->params['app
                         <?php if(empty($data)):?>
                             <div class="text-center m-t-lg clearfix wrapper-lg animated fadeInRightBig" id="galleryLoading">
                                 <h1><i class="fa fa-warning" style="color: red;font-size: 40px"></i></h1>
-                                <h4 class="text-muted"><?php echo sprintf(Yii::t('app','search_null'),'聊天管理')?></h4>
+                                <h4 class="text-muted"><?php echo sprintf(Yii::t('app','search_null'),'炮台命中率')?></h4>
                                 <p class="m-t-lg"></p>
                             </div>
                         <?php endif;?>

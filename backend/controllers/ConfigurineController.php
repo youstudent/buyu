@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use yii\web\Response;
 
-class ConfigurineController extends \yii\web\Controller
+class ConfigurineController extends  ObjectController
 {
     //配置货币
     public function actionIndex()

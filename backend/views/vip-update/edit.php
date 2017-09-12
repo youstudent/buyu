@@ -28,8 +28,8 @@ $i=1;
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'grade')->textInput(['readonly'=>true])?>
-                <?php echo $form->field($model,'number')?>
-                <?php echo $form->field($model,'burst')?>
+                <?php echo $form->field($model,'number')->textInput(['readonly'=>\common\helps\players::EditPermission()])?>
+                <?php echo $form->field($model,'burst')->textInput(['readonly'=>\common\helps\players::EditPermission()])?>
                 <?php echo $form->field($model,'alms_num')?>
                 <?php echo $form->field($model,'alms_rate')?>
                 <div id="a1">

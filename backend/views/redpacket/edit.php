@@ -9,14 +9,14 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">修改鱼群</h4>
+            <h4 class="modal-title" id="myModalLabel">修改红包鱼</h4>
         </div>
         <div class="modal-body">
 
             <div class="col-xs-11">
             <?php $form = \yii\bootstrap\ActiveForm::begin([
                     'id'=>'payModalForm',
-                    'action'=>['fishing/edit'],
+                    'action'=>['redpacket/edit'],
                     'options'=>['class'=>'form-horizontal'],
                     'fieldConfig' => [
                         'template' => "{label}<div class=\"col-lg-9\">{input}<span class=\"help-block m-b-none\"></span></div>",
@@ -24,14 +24,10 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'name')->textInput(['readonly'=>\common\helps\players::EditPermission()])?>
-                <?php echo $form->field($model,'type')->dropDownList(\common\models\Fishing::$give_type)?>
-                <?php echo $form->field($model,'rate')?>
-                <?php echo $form->field($model,'groupNum')?>
-                <?php echo $form->field($model,'aliveTime')?>
-                <?php echo $form->field($model,'cost')?>
-                <?php echo $form->field($model,'ariseRate')?>
-                <?php echo $form->field($model,'ex')?>
+                <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing())?>
+                <?php echo $form->field($model,'rate')->textInput(['placeholder'=>'出现概率1-100'])?>
+                <?php echo $form->field($model,'minnum')->textInput(['placeholder'=>'最小范围0.001'])?>
+                <?php echo $form->field($model,'maxnum')->textInput(['placeholder'=>'最大范围0.9'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -86,6 +82,17 @@
                     }
                 },
             });
+        });
+
+        $("#notice-location").change(function(){
+            var thisVal = $(this).val();
+            var tempText = $('#notice-location').find('option[value='+ thisVal +']');
+            if(thisVal==2){
+                $(".dis").attr("style","");
+            }else{
+                $(".dis").attr("style","display: none");
+
+            }
         });
 
         //checkbox选中添加对应输入框

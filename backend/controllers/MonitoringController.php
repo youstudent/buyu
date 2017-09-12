@@ -229,7 +229,7 @@ class MonitoringController extends ObjectController
         $id = \Yii::$app->request->get('id');
         $datas['playerId'] = $id;
         $datas['banTime'] = 86400 * 1000;//将时间戳转化成毫秒
-        $result = Request::request_post(\Yii::$app->params['Api'] . '/gameserver/control/ban', $datas);
+        $result = Request::request_post(\Yii::$app->params['Api'] . '/control/ban', $datas);
         if ($result['code'] == 1) {
             $user_time = new UsersTime();
             $user_time->game_id = $id;
