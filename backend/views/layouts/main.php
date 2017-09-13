@@ -18,6 +18,9 @@ $config = [
     ]],
     ['label' => '红包管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['redpacket/index'], 'items' => [
         ['label' => '添加鱼红包', 'url' => ['redpacket/index']],
+        ['label' => '红包兑换管理', 'url' => ['redpacketexchange/index']],
+        ['label' => '红包获得记录', 'url' => ['redpacketrecord/get']],
+        ['label' => '红包消耗记录', 'url' => ['redpacketrecord/lose']],
     ]],
     ['label' => '鱼群管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['fishing/index'], 'items' => [
         ['label' => '鱼群列表', 'url' => ['fishing/index', 'show' => '']],

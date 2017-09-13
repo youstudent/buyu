@@ -9,7 +9,7 @@
                                    echo "<th class=\"text-center\">".$value['name']."</th>";
                                }*/
 
-$this->title = Yii::t('app','users_list').'-'.Yii::$app->params['appName'];
+$this->title = Yii::t('app','redpacket_index').'-'.Yii::$app->params['appName'];
 use yii\bootstrap\ActiveForm;
 /*<?php foreach ($value['gold'] as $keys=>$values):*/?><!--
     <td class="text-center"><?/*= $values */?></td>
@@ -21,15 +21,16 @@ use yii\bootstrap\ActiveForm;
 <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="<?=\yii\helpers\Url::to(['site/index'])?>"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">用户管理</a></li>
-                <li class="active">玩家列表</li>
+                <li><a href="#">红包管理</a></li>
+                <li class="active">赠送红包</li>
             </ul>
 <!--            面包屑结束            -->
             <section class="panel panel-default">
+            
 <!--                搜索开始          -->
                 <div class="row text-sm wrapper">
                     <?php $form = ActiveForm::begin([
-                            'action'=>['users/list'],
+                            'action'=>['redpacketrecord/get'],
                             'method'=>'get',
                             'id'    =>'lr_form',
                             'fieldConfig' => [
@@ -38,7 +39,7 @@ use yii\bootstrap\ActiveForm;
                     ])?>
                         <input type="hidden" name="<?= Yii::$app->request->csrfParam?>" value="<?=Yii::$app->request->getCsrfToken()?>">
                         <div class="form-inline" style="margin-left: 20px; margin-right: 20px;">
-
+                            <!--筛选状态 全部|正常|封停 结束-->
                             <div class="form-group">
                                 <div class="controls">
                                     <div id="reportrange" class="pull-left dateRange form-control">
@@ -48,16 +49,14 @@ use yii\bootstrap\ActiveForm;
                                     </div>
                                 </div>
                             </div>
+                            
                             <?= $form->field($model,'starttime')->hiddenInput(['id'=>'startTime'])?>
                             <?= $form->field($model,'endtime')->hiddenInput(['id'=>'endTime'])?>
 
                             <div class="form-group">
                                 <?=$form->field($model,'select')
-                                        ->dropDownList(["1"=>Yii::t('app','user_select_search_all'),
-                                                        "game_id"=>Yii::t('app','user_select_search_game'),
-                                                        "nickname"=>Yii::t('app','user_select_search_nickname')])?>
+                                        ->dropDownList(["game_id"=>Yii::t('app','user_select_search_game')])?>
                             </div>
-
                             <div class="form-group">
                                 <div class="input-group">
                                     <?php echo $form->field($model,'keyword')->textInput(['class'=>'form-control','placeholder'=>Yii::t('app','search_input')])?>
@@ -66,6 +65,7 @@ use yii\bootstrap\ActiveForm;
                                     </span>
                                 </div>
                             </div>
+                            
                             <!--<a href="<?php /*echo \yii\helpers\Url::to(['users/update-users']) */?>"
                                onclick="return openAgency(this,'用户数量大确认同步请耐心等待?')" class="btn btn-primary btn-info">同步用户数据</a>-->
                         </div>
@@ -78,20 +78,10 @@ use yii\bootstrap\ActiveForm;
                         <thead>
                             <tr style="border-top: 1px solid #ebebeb;border-bottom: 1px solid #ebebeb">
                                 <th  class="text-center">编号</th>
-                                <th  class="text-center">用户ID</th>
-                                <th  class="text-center">用户昵称</th>
-                                <th  class="text-center">经验等级</th>
-                                <th  class="text-center">vip等级</th>
-                                <th  class="text-center">金币</th>
-                                <th  class="text-center">钻石</th>
-                                <th  class="text-center">鱼币</th>
-                                <th  class="text-center">注册时间</th>
-                                <th  class="text-center">今日在线分钟</th>
-                                <th  class="text-center">总在线小时</th>
-                                <th  class="text-center">解封时间</th>
-                                <th  class="text-center">状态</th>
-                                <th  class="text-center">操作</th>
-
+                                <th  class="text-center">玩家ID</th>
+                                <th  class="text-center">类型</th>
+                                <th  class="text-center">赠送人ID</th>
+                                <th  class="text-center">红包数量</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,56 +89,10 @@ use yii\bootstrap\ActiveForm;
                         <?php foreach ($data as $key => $value):?>
                             <tr>
                                 <td  class="text-center"><?=$i?></td>
-                                <td  class="text-center"><?=$value['id']?></td>
-                                <td  class="text-center"><?=$value['name']?></td>
-                                <td  class="text-center"><?=$value['level']?></td>
-                                <td  class="text-center"><?=$value['viplevel']?></td>
-                                <td  class="text-center"><?=$value['gold']?></td>
-                                <td  class="text-center"><?=$value['diamond']?></td>
-                                <td  class="text-center"><?=$value['fishGold']?></td>
-                                <td  class="text-center"><?=$value['createdtime']?></td>
-                                <td  class="text-center"><?=\backend\models\Users::GetDayTime($value['id'],'sum')?></td>
-                                <td  class="text-center"><?=\backend\models\Users::GetDayTime($value['id'])?></td>
-                                <td  class="text-center"><?=\backend\models\Users::GetBan($value['id'])?></td>
-                                <td  class="text-center">
-                                <?php if (\backend\models\Users::GerBack($value['id']) || \backend\models\Users::GetBan($value['id'])):?>
-                                    <a href="#" class="">
-                                
-                                    <?php else:?>
-                                        <a href="#" class="active">
-                                        <?php endif;?>
-                                        <i class="fa fa-check text-success text-active"></i>
-                                        <i class="fa fa-times text-danger text"></i>
-                                    </a>
-                               </td>
-                                <td class="text-center" width="350px;">
-                                    <?php if (!$value->familyowner==1):?>
-                                    <?php if (\backend\models\Users::GerBack($value['id'])):?>
-                                        <a onclick="return openAgency(this,'是否将该账号取消黑名单?')"
-                                           href="<?php echo \yii\helpers\Url::to(['users/black', 'id' => $value['id'],'status'=>2]) ?>"
-                                           class="btn btn-xs btn-danger">取消黑名单</a>
-                                    <?php elseif(\backend\models\Users::GetBan($value['id'])):?>
-                                        <a onclick="return openAgency(this,'是否解锁该账号?')"
-                                           href="<?php echo \yii\helpers\Url::to(['users/ban', 'id' => $value['id']]) ?>"
-                                           class="btn btn-xs btn-danger">启用</a>
-                                    <?php else:?>
-                                        <a href="<?=\yii\helpers\Url::to(['users/unset-time',
-                                            'id'=>$value['id']])?>" class="btn btn-xs btn-success" data-toggle="modal" data-target="#myModal">停封</a>
-                                        
-                                        <a onclick="return openAgency(this,'是否将该账号加入黑名单?')"
-                                           href="<?php echo \yii\helpers\Url::to(['users/black', 'id' => $value['id'],'status'=>1]) ?>"
-                                           class="btn btn-xs btn-danger">&nbsp;加入黑名单</a>
-                                    <?php endif;?>
-                                    <?php else:?>
-                                        <span style="color: #00b3ee">族长玩家</span>
-                                    <?php endif;?>
-                                    <a href="<?=\yii\helpers\Url::to(['redeem-code/record',
-                                        'RedeemRecord'=>['select'=>'game_id','keyword'=>$value['id']]])?>" class="btn btn-xs btn-success">兑换记录</a>
-                                    <a href="<?=\yii\helpers\Url::to(['redpacketrecord/get',
-                                        'Redpacketrecord'=>['select'=>'game_id','keyword'=>$value['id']]])?>" class="btn btn-xs btn-success">红包获得</a>
-                                    <a href="<?=\yii\helpers\Url::to(['redpacketrecord/lose',
-                                        'Redpacketrecord'=>['select'=>'game_id','keyword'=>$value['id']]])?>" class="btn btn-xs btn-success">兑换消耗</a>
-                                </td>
+                                <td  class="text-center"><?=$value['playerid']?></td>
+                                <td  class="text-center"><?=$value['type']==1?'捕鱼获得':'赠送获得'?></td>
+                                <td  class="text-center"><?=$value['fromplayerid']?></td>
+                                <td  class="text-center"><?=$value['num']?></td>
                             </tr>
                         <?php $i++?>
                         <?php endforeach;?>
@@ -191,10 +135,9 @@ use yii\bootstrap\ActiveForm;
 
     //    设置封停的状态
     function setStatus(val) {
-        $("#status").val(val);
-        $("#agencyForm").submit();
+        window.location = '<?php echo \yii\helpers\Url::to(['redpacketrecord/get','show'=>''],true)?>' + val;
         console.log($("#status").val());
-    }
+        
     function openAgency(_this, title) {
         swal({
                 title: title,
