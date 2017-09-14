@@ -26,15 +26,19 @@
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'money')?>
                 <?php echo $form->field($model,'fold')?>
+                <?php echo $form->field($model,'get_diamond')?>
+                <?php echo $form->field($model,'content')?>
                 <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\CurrencyPay::$give,['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
+                    <?php if ($v>0):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\models\CurrencyPay::$give[$k]?></label>
+                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>">赠送 <?php echo \common\models\CurrencyPay::$give[$k]?></label>
                         <div class="col-lg-9">
                             <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="Notice[<?php echo $k?>]" value="<?php echo $v?>">
                             <span class="help-block m-b-none"></span>
                         </div>
                     </div>
+                    <?php endif;?>
                 <?php endforeach;?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>

@@ -64,8 +64,11 @@ class Redpacket extends \yii\db\ActiveRecord
      */
     public function add($data=[]){
         if ($this->load($data) &&$this->validate()){
-            if ($this->rate<1 || $this->rate>100){
-                return $this->addError('rate','出现概率在1-100之间');
+            if ($this->_getFloatLength($this->rate)>2){
+                return $this->addError('rate','出现概率小数点后两位');
+            }
+            if ($this->rate<0.01 || $this->rate>100){
+                return $this->addError('rate','出现概率在0.01-100之间');
             }
             if ($this->minnum<0.001 || $this->minnum>0.9 || $this->maxnum<0.001 || $this->maxnum>0.9){
                 return $this->addError('minnum','区间在0.001-0.9之间');
@@ -75,6 +78,19 @@ class Redpacket extends \yii\db\ActiveRecord
             $this->maxnum=$this->maxnum*100;
             return $this->save();
         }
+    }
+    
+    private function _getFloatLength($num) {
+        $count = 0;
+        
+        $temp = explode ( '.', $num );
+        
+        if (sizeof ( $temp ) > 1) {
+            $decimal = end ( $temp );
+            $count = strlen ( $decimal );
+        }
+        
+        return $count;
     }
     
     

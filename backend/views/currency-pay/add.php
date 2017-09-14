@@ -25,6 +25,8 @@
                 ])?>
                 <?php echo $form->field($model,'money')?>
                 <?php echo $form->field($model,'fold')?>
+                <?php echo $form->field($model,'get_diamond')?>
+                <?php echo $form->field($model,'content')?>
                 <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\CurrencyPay::$give,['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
@@ -93,7 +95,7 @@
             if(_this.find('input').is(':checked')){
                 $('#'+input_id).remove();
                 html+= '<div class="form-group field-redeemcode-end_time" id="'+input_id+'">';
-                html+= '<label class="col-lg-3 control-label" for="redeemcode-end_time">'+ input_text + '</label>';
+                html+= '<label class="col-lg-3 control-label" for="redeemcode-end_time">赠送'+ input_text + '</label>';
                 html+= '<div class="col-lg-9">';
                 html+= '<input type="text" id="redeemcode-end_time" class="form-control" name="'+input_name+'">';
                 html+= '<span class="help-block m-b-none"></span></div></div>';

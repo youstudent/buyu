@@ -4,6 +4,7 @@ namespace common\models;
 
 use backend\models\Shop;
 use common\services\Request;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
@@ -40,11 +41,11 @@ class CurrencyPay extends Object
     public function rules()
     {
         return [
-            [['money', 'manage_id', 'created_at', 'updated_at','fold'], 'integer'],
+            [['money', 'manage_id', 'created_at', 'updated_at','fold','get_diamond'], 'integer'],
             [['money'],'required'],
             [['fold','money'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'数量无效'],
             [['manage_name'], 'string', 'max' => 20],
-            [['give_prize'],'safe'],
+            [['give_prize','content'],'safe'],
         ];
     }
 
@@ -61,11 +62,12 @@ class CurrencyPay extends Object
             'manage_name' => 'Manage Name',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'fold'=>'倍数',
-            'type'=>'赠送类型'
+            'fold'=>'首冲翻倍数',
+            'type'=>'赠送类型',
+            'get_diamond'=>'购买钻石数',
+            'content'=>'备注'
         ];
     }
-    
     
     /**
      * 添加充值货币
@@ -76,6 +78,10 @@ class CurrencyPay extends Object
     {
         if($this->load($data) && $this->validate())
         {
+            if (mb_strlen($this->content)>9){
+               return  $this->addError('content','备注字数长度小于9');
+              
+            }
             /**
              * pays": [
             {
@@ -112,6 +118,8 @@ class CurrencyPay extends Object
             $i = 0;
             $tool = [];
             $pays['money']=$this->money;
+            $pays['content']=$this->content;
+            $pays['getDiamond']=$this->get_diamond;
             $pays['firstDouble']=$this->fold;
             foreach ($data as $K=>$v){
                 if (is_array($v)){
@@ -161,8 +169,11 @@ class CurrencyPay extends Object
     
     //充值货币修改
     public function edit($data = []){
-        if($this->load($data) && $this->validate())
+        if($this->load($data))
         {
+            if (mb_strlen($this->content)>9){
+               return $this->addError('type','备注字数长度小于9');
+            }
             /**
              * 接收数据  拼装
              */
@@ -174,6 +185,8 @@ class CurrencyPay extends Object
             $tool = [];
             $pays['id']=$this->id;
             $pays['money']=$this->money;
+            $pays['content']=$this->content;
+            $pays['getDiamond']=$this->get_diamond;
             $pays['firstDouble']=$this->fold;
             foreach ($data as $K=>$v){
                 if (is_array($v)){
@@ -216,6 +229,7 @@ class CurrencyPay extends Object
                 $this->save(false);
                 return true;
             }
+            $this->addError('content',$re['message']);
             
         }
     }
@@ -297,6 +311,8 @@ class CurrencyPay extends Object
             $model->give_prize=Json::encode($attributes->send);
             $model->id=$attributes->id;
             $model->money =$attributes->money;
+            $model->content =$attributes->content;
+            $model->get_diamond =$attributes->getDiamond;
             $model->fold =$attributes->firstDouble;
             $model->created_at =time();
             $model->updated_at =time();

@@ -12,8 +12,8 @@ $this->title = Yii::t('app', 'diamonds_index') . '-' . Yii::$app->params['appNam
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">钻石管理</a></li>
-                <li class="active">钻石管理详情</li>
+                <li><a href="#">金币兑换管理</a></li>
+                <li class="active">金币兑换详情</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">
@@ -30,7 +30,7 @@ $this->title = Yii::t('app', 'diamonds_index') . '-' . Yii::$app->params['appNam
                         </div>
                         <div class="col-sm-3 text-right">
                             <a href="<?= \yii\helpers\Url::to(['diamonds/add']) ?>" class="btn btn-primary"
-                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加钻石等级</a>
+                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加金币兑换等级</a>
                             
                         </div>
                     </div>
@@ -43,7 +43,7 @@ $this->title = Yii::t('app', 'diamonds_index') . '-' . Yii::$app->params['appNam
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <th class="text-center">钻石等级</th>
+                                <th class="text-center">金币兑换等级</th>
                                 <th class="text-center">时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>

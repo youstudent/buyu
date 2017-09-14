@@ -30,11 +30,22 @@ class Fishing extends \yii\db\ActiveRecord
     {
         return [
             [['rate','groupNum','cost','ariseRate','ex','aliveTime'],'required'],
-            [['id','rate','groupNum','aliveTime','cost','ariseRate','ex','aliveTime'], 'integer'],
-            [['rate','groupNum','aliveTime','cost','ariseRate','ex'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'修改数据必须大于0'],
+            [['id','groupNum','aliveTime','cost','ex','aliveTime'], 'integer'],
+            [['groupNum','aliveTime','cost','ex'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'修改数据必须大于0'],
             [['name'], 'string', 'max' => 255],
             [['updated_at','type'],'safe'],
+            [['rate','ariseRate'],'number'],
+            [['rate','ariseRate'],'vanmuber']
         ];
+    }
+    
+    /**
+     *  验证 小数点
+     */
+    public function vanmuber(){
+        if ($this->rate<0.01 || $this->_getFloatLength($this->rate)>2 || $this->rate>100 || $this->ariseRate<0.01 || $this->_getFloatLength($this->ariseRate)>2 || $this->ariseRate>100 ){
+         return  $this->addError('rate','范围0.01-100小数点后两位');
+        }
     }
 
     /**
@@ -119,6 +130,7 @@ class Fishing extends \yii\db\ActiveRecord
             $data['aliveTime']=$this->aliveTime;  //存活时间
             $data['cost']=$this->cost;  // 价值
             $data['ariseRate']=$this->ariseRate*100;  //出现概率
+            $data['name']=$this->name;  //出现概率
             $payss = Json::encode($data);
             /**
              * 请求游戏服务端   修改数据
@@ -138,5 +150,19 @@ class Fishing extends \yii\db\ActiveRecord
             $this->updated_at         = time();
             return $this->save(false);*/
         }
+    }
+    
+    
+    private function _getFloatLength($num) {
+        $count = 0;
+        
+        $temp = explode ( '.', $num );
+        
+        if (sizeof ( $temp ) > 1) {
+            $decimal = end ( $temp );
+            $count = strlen ( $decimal );
+        }
+        
+        return $count;
     }
 }

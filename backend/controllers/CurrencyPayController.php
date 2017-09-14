@@ -86,7 +86,10 @@ class CurrencyPayController extends ObjectController
         }
         $type=[];
         foreach($data as $k=>$v){
-            $type[]=$k;
+            if ($v>0){
+                $type[]=$k;
+            }
+           
         }
         $model->type=$type;
         return $this->render('edit',['model'=>$model,'data'=>$data]);

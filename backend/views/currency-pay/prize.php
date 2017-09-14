@@ -24,8 +24,10 @@
                     ],
                 ])?>
                 <?php foreach ($data as $key=>$value):?>
+                    <?php if ($value>0):?>
                     <label class="col-lg-3 control-label" for="redeemcode-diamond"><?php echo $key?></label>
                     <div class="col-lg-9"><input type="text" id="redeemcode-diamond" class="form-control" name="RedeemCode[diamond]" value="<?php echo $value?>" readonly=""><span class="help-block m-b-none"></span></div>
+                     <?php endif;?>
                 <?php endforeach;?>
                 
                <!-- <?php /*echo $form->field($model,'give_type')->checkboxList(\common\models\RedeemCode::$give)*/?>

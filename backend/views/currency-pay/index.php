@@ -40,8 +40,10 @@ $this->title = Yii::t('app', 'currency_pay_index') . '-' . Yii::$app->params['ap
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <!--<th class="text-center">类型</th>-->
                                 <!--<th class="text-center">数量</th>-->
-                                <th class="text-center">钻石倍数</th>
+                                <th class="text-center">首冲翻倍数</th>
                                 <th class="text-center">人民币</th>
+                                <th class="text-center">购买钻石数</th>
+                                <th class="text-center">备注</th>
                                 <th class="text-center">添加时间</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
@@ -54,6 +56,8 @@ $this->title = Yii::t('app', 'currency_pay_index') . '-' . Yii::$app->params['ap
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['fold']?>倍</td>
                                     <td class="text-center"><?= $value['money']?>元</td>
+                                    <td class="text-center"><?= $value['get_diamond']?></td>
+                                    <td class="text-center"><?= $value['content']?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['created_at']) ?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td class="text-center" style="width: 200px;">

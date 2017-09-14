@@ -41,11 +41,20 @@ class VipUpdate extends Object
     {
         return [
             [['number','grade','burst','alms_rate','alms_num'],'required'],
-            [['number','burst','alms_rate','alms_num'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量无效'],
+            [['number','alms_rate','alms_num'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量无效'],
             [['number','manage_id', 'updated_at','alms_rate','alms_num'], 'integer'],
             [['manage_name', 'grade'],'string', 'max' => 20],
-            [['give_day','give_upgrade','type'],'safe']
+            [['give_day','give_upgrade','type'],'safe'],
+            [['burst'],'valeburst']
         ];
+    }
+    
+    
+    public function valeburst(){
+        if ($this->burst<0.01 || $this->burst>100){
+            return $this->addError('burst','爆率范围在0.01-100之间');
+        }
+        
     }
 
     /**

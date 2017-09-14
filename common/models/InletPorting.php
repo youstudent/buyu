@@ -30,7 +30,7 @@ class InletPorting extends Object
     public function rules()
     {
         return [
-            [['status', 'manage_id', 'updated_at'], 'integer'],
+            [['status', 'manage_id', 'updated_at','type'], 'integer'],
             [['name', 'manage_name'], 'string', 'max' => 20],
         ];
     }

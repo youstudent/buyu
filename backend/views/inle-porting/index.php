@@ -39,6 +39,7 @@ $this->title = Yii::t('app', 'inle_poring_index') . '-' . Yii::$app->params['app
                                 <th class="text-center">游戏名</th>
                                 <th class="text-center">修改人</th>
                                 <th class="text-center">修改时间</th>
+                                <th class="text-center">普通管理员</th>
                                 <th class="text-center">状态</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
@@ -48,6 +49,7 @@ $this->title = Yii::t('app', 'inle_poring_index') . '-' . Yii::$app->params['app
                             <?php $i = 1; ?>
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
+                                    <?php if ($value['type']==1):?>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['name'] ?></td>
                                     <td class="text-center"><?= $value['manage_name'] ?></td>
@@ -56,6 +58,7 @@ $this->title = Yii::t('app', 'inle_poring_index') . '-' . Yii::$app->params['app
                                     <?php else:?>
                                     <td class="text-center"><?= $value['updated_at'] ?></td>
                                     <?php endif;?>
+                                    <td class="text-center"><?= $value['type']==0?'隐藏':'显示'?></td>
                                     <td class="text-center">
                                     <?php if($value['status'] == 1):?>
                                     <a href="#" class="active">
@@ -66,7 +69,7 @@ $this->title = Yii::t('app', 'inle_poring_index') . '-' . Yii::$app->params['app
                                             <i class="fa fa-times text-danger text"></i>
                                         </a>
                                     </td>
-                                    <td class="text-center" style="width: 120px;">
+                                    <td class="text-center" style="width: 200px;">
                                         <?php if ($value['status']==0):?>
                                             <a onclick="return openAgency(this,'是否开启该入口?')"
                                                href="<?php echo \yii\helpers\Url::to(['inle-porting/status', 'id' => $value['id'],'status'=>1]) ?>"
@@ -76,7 +79,63 @@ $this->title = Yii::t('app', 'inle_poring_index') . '-' . Yii::$app->params['app
                                                href="<?php echo \yii\helpers\Url::to(['inle-porting/status', 'id' => $value['id'],'status'=>0]) ?>"
                                                class="btn btn-xs btn-info">&nbsp;关 闭&nbsp;</a>
                                         <?php endif;?>
+                                        <?php if (\common\helps\players::Permission()):?>
+                                            <?php if ($value['type']==0):?>
+                                                <a onclick="return openAgency(this,'是否显示该操作?')"
+                                                   href="<?php echo \yii\helpers\Url::to(['inle-porting/yes', 'id' => $value['id'],'type'=>1]) ?>"
+                                                   class="btn btn-xs btn-danger">&nbsp;显 示 操 作&nbsp;</a>
+                                            <?php else:?>
+                                                <a onclick="return openAgency(this,'是否隐藏该操作?')"
+                                                   href="<?php echo \yii\helpers\Url::to(['inle-porting/yes', 'id' => $value['id'],'type'=>0]) ?>"
+                                                   class="btn btn-xs btn-danger">&nbsp;隐 藏 操 作&nbsp;</a>
+                                            <?php endif;?>
+                                        <?php endif;?>
+                                        
                                     </td>
+                                    <?php elseif (\common\helps\players::Permission()):?>
+                                        <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
+                                        <td class="text-center"><?= $value['name'] ?></td>
+                                        <td class="text-center"><?= $value['manage_name'] ?></td>
+                                        <?php if (!empty($value['updated_at'])):?>
+                                            <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
+                                        <?php else:?>
+                                            <td class="text-center"><?= $value['updated_at'] ?></td>
+                                        <?php endif;?>
+                                        <td class="text-center"><?= $value['type']==0?'隐藏':'显示'?></td>
+                                        <td class="text-center">
+                                            <?php if($value['status'] == 1):?>
+                                            <a href="#" class="active">
+                                                <?php else:?>
+                                                <a href="#" class="">
+                                                    <?php endif;?>
+                                                    <i class="fa fa-check text-success text-active"></i>
+                                                    <i class="fa fa-times text-danger text"></i>
+                                                </a>
+                                        </td>
+                                        <td class="text-center" style="width: 200px;">
+                                            <?php if ($value['status']==0):?>
+                                                <a onclick="return openAgency(this,'是否开启该入口?')"
+                                                   href="<?php echo \yii\helpers\Url::to(['inle-porting/status', 'id' => $value['id'],'status'=>1]) ?>"
+                                                   class="btn btn-xs btn-success">&nbsp;开 启&nbsp;</a>
+                                            <?php else:?>
+                                                <a onclick="return openAgency(this,'是否关闭该入口?')"
+                                                   href="<?php echo \yii\helpers\Url::to(['inle-porting/status', 'id' => $value['id'],'status'=>0]) ?>"
+                                                   class="btn btn-xs btn-info">&nbsp;关 闭&nbsp;</a>
+                                            <?php endif;?>
+                                            <?php if (\common\helps\players::Permission()):?>
+                                                <?php if ($value['type']==0):?>
+                                                    <a onclick="return openAgency(this,'是否显示该操作?')"
+                                                       href="<?php echo \yii\helpers\Url::to(['inle-porting/yes', 'id' => $value['id'],'type'=>1]) ?>"
+                                                       class="btn btn-xs btn-danger">&nbsp;显 示 操 作&nbsp;</a>
+                                                <?php else:?>
+                                                    <a onclick="return openAgency(this,'是否隐藏该操作?')"
+                                                       href="<?php echo \yii\helpers\Url::to(['inle-porting/yes', 'id' => $value['id'],'type'=>0]) ?>"
+                                                       class="btn btn-xs btn-danger">&nbsp;隐 藏 操 作&nbsp;</a>
+                                                <?php endif;?>
+                                            <?php endif;?>
+
+                                        </td>
+                                    <?php endif;?>
                                 </tr>
                                 <?php $i++ ?>
                             <?php endforeach; ?>

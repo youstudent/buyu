@@ -21,7 +21,7 @@ class BatteryController extends ObjectController
                 'pageSize' =>\Yii::$app->params['pageSize']
             ]
         );
-        $data  = $model->limit($pages->limit)->offset($pages->offset)->asArray()->all();
+        $data  = $model->limit($pages->limit)->offset($pages->offset)->orderBy('multiple ASC')->asArray()->all();
         return $this->render('index',['data'=>$data,'pages'=>$pages]);
     }
     

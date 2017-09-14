@@ -58,15 +58,15 @@ if (Yii::$app->params['distribution']) {
 $config[] = ['label' => '公告管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
     ['label' => '公告管理', 'url' => ['notice/index', 'show' => '2']]
 ]];
-$config[] = ['label' => '充值商城管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
-    ['label' => '充值商城货币设置', 'url' => ['currency-pay/index']]
+$config[] = ['label' => '商城充值', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
+    ['label' => '商城充值货币设置', 'url' => ['currency-pay/index']]
 ]];
 $config[] = ['label' => '兑换管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
     ['label' => '兑换列表', 'url' => ['redeem-code/index','show'=>'']],
     ['label' => '兑换记录', 'url' => ['redeem-code/record']],
 ]];
-$config[] = ['label' => '钻石等级管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['diamonds/index'], 'items' => [
-    ['label' => '钻石管理列表', 'url' => ['diamonds/index']]
+$config[] = ['label' => '金币兑换管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['diamonds/index'], 'items' => [
+    ['label' => '金币兑换管理列表', 'url' => ['diamonds/index']]
 ]];
 $config[] = ['label' => '大厅设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['touch/index'], 'items' => [
     ['label' => '联系客户', 'url' => ['touch/index']],
