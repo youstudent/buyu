@@ -113,6 +113,7 @@ return [
     'room_index'=>'房间命中率',
     'but_edit'=>'确认修改',
     'redpacket_index'=>'红包管理',
+    'config_index'=>'系统基础数据',
 ];
 
 /**

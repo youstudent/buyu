@@ -70,7 +70,7 @@ $config[] = ['label' => '金币兑换管理', 'icon' => 'fa fa-bullhorn icon', '
 ]];
 $config[] = ['label' => '大厅设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['touch/index'], 'items' => [
     ['label' => '联系客户', 'url' => ['touch/index']],
-    ['label' => '游戏入口设置', 'url' => ['inle-porting/index']],
+    //['label' => '游戏入口设置', 'url' => ['inle-porting/index']],
     ['label' => '邮件设置', 'url' => ['mail/index']],
    // ['label' => '货币设置', 'url' => ['money/index']],
     ['label' => '炮台等级', 'url' => ['battery/index']],
@@ -95,10 +95,17 @@ $config[] = ['label' => '每日任务管理', 'icon' => 'fa fa-bullhorn icon', '
     ['label' => '持之以恒', 'url' => ['day-task/game-index']],
 ]];
 $config[] = ['label' => '基础设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-info', 'url' => ['manage/index'], 'items' => [
+    ['label' => '系统数据比例配置', 'url' => ['config/index']],
+    ['label' => '系统数据数量配置', 'url' => ['config/num-index']],
+   // ['label' => '', 'url' => ['Entryconfig/num-index']],
     ['label' => '聊天内容设置', 'url' => ['chat/index','show'=>'3']],
-    ['label' => '货币设置', 'url' => ['configurine/index']],
+    //['label' => '货币设置', 'url' => ['configurine/index']],
     ['label' => '商店道具设置', 'url' => ['shop/index']],
     ['label' => '管理员列表', 'url' => ['manage/index', 'id' => 1]],
+]];
+$config[] = ['label' => '开关管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
+    ['label' => '游戏入口设置', 'url' => ['entryconfig/index']],
+    ['label' => '功能开关设置', 'url' => ['entryconfig/feature']],
 ]];
 $config[] = ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg_color' => 'bg-danger', 'url' => ['login/logout']]
 ?>
