@@ -34,8 +34,8 @@ class Shop extends \yii\db\ActiveRecord
     {
         return [
             [['jewel_number'],'required'],
-            [['jewel_number'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
-            [['number','jewel_number','created_at','type','order_number','level','id'], 'integer'],
+            [['jewel_number','lastTime','coolDown'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
+            [['number','jewel_number','created_at','type','order_number','level','id','lastTime','coolDown'], 'integer'],
             [['name'],'string', 'max' => 20],
             
         ];
@@ -56,6 +56,8 @@ class Shop extends \yii\db\ActiveRecord
             'type' => '类型',
             'level' => '购买等级',
             'toolDescript' => '描述',
+            'lastTime' => '持续时间[秒]',
+            'coolDown' => '冷却时间[秒]',
         ];
     }
     
@@ -66,6 +68,8 @@ class Shop extends \yii\db\ActiveRecord
             $datas['num']=1;
            // $datas['name']=$this->name;
             $datas['level']=$this->level;
+            $datas['coolDown']=$this->coolDown;
+            $datas['lastTime']=$this->lastTime;
             $datas['cost']=$this->jewel_number;
             //$data = Request::request_post(\Yii::$app->params['ApiUserPay'],['game_id'=>$model->game_id,'gold'=>$this->pay_gold_num,'gold_config'=>GoldConfigObject::getNumCodeByName($this->pay_gold_config)]);
             $result = Request::request_post(Yii::$app->params['Api'].'/control/updatetool',$datas);
@@ -103,6 +107,7 @@ class Shop extends \yii\db\ActiveRecord
        $model =  new Shop();
         foreach($new as $K=>$attributes)
         {
+           // var_dump($attributes);EXIT;
             /*if (Shop::updateAllCounters(
                 ['name'=>'防辐射服'],
                 ['id'=>$attributes->toolId]
@@ -116,9 +121,11 @@ class Shop extends \yii\db\ActiveRecord
                 'toolDescript' => $attributes->toolDescript,
                 'jewel_number' => $attributes->unitPrice,
                 'level' => $attributes->minVip,
-            ];*/
+            ];*///coolDown冷却时间   lastTime持续时间
             $model->id=$attributes->toolId;
             $model->name =$attributes->toolName;
+            $model->coolDown =$attributes->coolDown;
+            $model->lastTime =$attributes->lastTime;
             $model->number =1;
             $model->toolDescript =$attributes->toolDescript;
             $model->jewel_number =$attributes->unitPrice;

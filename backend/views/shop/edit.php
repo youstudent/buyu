@@ -28,6 +28,8 @@
                 <?php echo $form->field($model,'number')?>
                 <?php echo $form->field($model,'jewel_number')?>
                 <?php echo $form->field($model,'level')?>
+                <?php echo $form->field($model,'coolDown')?>
+                <?php echo $form->field($model,'lastTime')?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

@@ -41,6 +41,8 @@ $this->title = Yii::t('app', 'shop_index') . '-' . Yii::$app->params['appName'];
                                 <th class="text-center">商品名</th>
                                 <th class="text-center">所需钻石</th>
                                 <th class="text-center">购买等级</th>
+                                <th class="text-center">冷却时间</th>
+                                <th class="text-center">持续时间</th>
                                 <th class="text-center">道具描述</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
@@ -55,6 +57,8 @@ $this->title = Yii::t('app', 'shop_index') . '-' . Yii::$app->params['appName'];
                                     <td class="text-center"><?= $value['name'] ?></td>
                                     <td class="text-center"><?= $value['jewel_number'] ?></td>
                                     <td class="text-center"><?= $value['level'] ?></td>
+                                    <td class="text-center"><?= $value['coolDown'] ?>秒</td>
+                                    <td class="text-center"><?= $value['lastTime'] ?>秒</td>
                                     <td class="text-center"><?= $value['toolDescript'] ?></td>
                                     <?php if (!empty($value['updated_at'])):?>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
