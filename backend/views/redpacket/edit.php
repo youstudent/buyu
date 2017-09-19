@@ -24,7 +24,24 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing())?>
+                <?php echo $form->field($model,'type')->dropDownList(\backend\models\Redpacket::$option)?>
+                <div>
+                    <div  id="type1" style="display: <?php echo $model->type!==1?'none':''?>">
+                        <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing(1),['name'=>$model->type!==1?'':'Redpacket[fishid]'])?>
+                    </div>
+                    <div style="display: <?php echo $model->type!==2?'none':''?>" id="type2">
+                        <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing(2),['name'=>$model->type!==2?'':'Redpacket[fishid]'])?>
+                    </div>
+                    <div style="display:<?php echo $model->type!==3?'none':''?>" id="type3">
+                        <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing(3),['name'=>$model->type!==3?'':'Redpacket[fishid]'])?>
+                    </div>
+                    <div style="display:<?php echo $model->type!==4?'none':''?>" id="type4">
+                        <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing(4),['name'=>$model->type!==4?'':'Redpacket[fishid]'])?>
+                    </div>
+                    <div style="display: <?php echo $model->type!==5?'none':''?>" id="type5">
+                        <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing(5),['name'=>$model->type!==5?'':'Redpacket[fishid]'])?>
+                    </div>
+                </div>
                 <?php echo $form->field($model,'rate')->textInput(['placeholder'=>'出现概率1-100'])?>
                 <?php echo $form->field($model,'minnum')->textInput(['placeholder'=>'最小范围0.001'])?>
                 <?php echo $form->field($model,'maxnum')->textInput(['placeholder'=>'最大范围0.9'])?>
@@ -83,8 +100,17 @@
                 },
             });
         });
+        $("#redpacket-type").change(function(){
+            var thisVal = $(this).val();
+            var tempText = $('#redpacket-type').find('option[value='+ thisVal +']');
 
-        $("#notice-location").change(function(){
+            $("#type" + thisVal).attr("style","").siblings().attr('style', 'display: none');
+
+            $("#type" + thisVal).find('select').attr("name","Redpacket[fishid]");
+            $("#type" + thisVal).siblings().find('select').attr('name', '')
+        });
+        
+       /* $("#notice-location").change(function(){
             var thisVal = $(this).val();
             var tempText = $('#notice-location').find('option[value='+ thisVal +']');
             if(thisVal==2){
@@ -93,7 +119,7 @@
                 $(".dis").attr("style","display: none");
 
             }
-        });
+        });*/
 
         //checkbox选中添加对应输入框
         var  checkbox_input =  $('#notice-get_type').find('.checkbox-inline');

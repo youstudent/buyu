@@ -17,22 +17,22 @@ return [
             'charset' => 'utf8',
             'tablePrefix' =>'',
         ],
-        /*'commondb' => [
+        'commondb' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=192.168.2.235;dbname=fishing',
             'username' => 'back',
             'password' => '123456',
             'charset' => 'utf8',
             'tablePrefix' =>'',
-        ],*/
-        'commondb' => [
+        ],
+       /* 'commondb' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=39.108.86.157;dbname=fishing',
             'username' => 'root',
             'password' => '90c0lv6hu4VFkmON',
             'charset' => 'utf8',
             'tablePrefix' =>'',
-        ],
+        ],*/
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',

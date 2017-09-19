@@ -233,9 +233,11 @@ class players
      * 获取鱼群(添加红包鱼)
      * @return array
      */
-    public static function getFishing(){
-        $data = Fishing::find()->where(['type'=>5])->asArray()->all();
-        return ArrayHelper::map($data,'id','name');
+    public static function getFishing($type){
+        $data = Fishing::find()->where(['type'=>$type])->asArray()->all();
+        //$da =[''=>'请选择'];
+        return  ArrayHelper::map($data,'id','name');
+       
     }
     
 }

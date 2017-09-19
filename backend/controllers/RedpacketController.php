@@ -23,6 +23,17 @@ class RedpacketController extends ObjectController
     {
         $data = new Redpacket();
         $model = $data::find();
+        if (\Yii::$app->request->get('show') == 1) {
+            $model->andWhere(["type"=>1]);
+        } elseif (\Yii::$app->request->get('show') == 2) {
+            $model->andWhere(["type"=>2]);
+        }elseif (\Yii::$app->request->get('show') == 3) {
+            $model->andWhere(["type"=>3]);
+        }elseif (\Yii::$app->request->get('show') == 4) {
+            $model->andWhere(["type"=>4]);
+        }elseif (\Yii::$app->request->get('show') == 5) {
+            $model->andWhere(["type"=>5]);
+        }
         $pages = new Pagination(
             [
                 'totalCount' => $model->count(),

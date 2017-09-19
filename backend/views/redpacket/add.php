@@ -23,7 +23,25 @@
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing())?>
+                
+                <?php echo $form->field($model,'type')->dropDownList(\backend\models\Redpacket::$option)?>
+                <div>
+                <div  id="type1">
+                    <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing(1))?>
+                </div>
+                <div style="display: none" id="type2">
+                    <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing(2),['name'=>''])?>
+                </div>
+                <div style="display: none" id="type3">
+                    <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing(3),['name'=>''])?>
+                </div>
+                <div style="display: none" id="type4">
+                    <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing(4),['name'=>''])?>
+                </div>
+                <div style="display: none" id="type5">
+                    <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishing(5),['name'=>''])?>
+                </div>
+                </div>
                 <?php echo $form->field($model,'rate')->textInput(['placeholder'=>'出现概率1-100'])?>
                 <?php echo $form->field($model,'minnum')->textInput(['placeholder'=>'最小范围0.001'])?>
                 <?php echo $form->field($model,'maxnum')->textInput(['placeholder'=>'最大范围0.9'])?>
@@ -83,15 +101,14 @@
             });
         });
         
-    $("#notice-location").change(function(){
+    $("#redpacket-type").change(function(){
      var thisVal = $(this).val();
-     var tempText = $('#notice-location').find('option[value='+ thisVal +']');
-     if(thisVal==2){
-        $(".dis").attr("style","");
-     }else{
-        $(".dis").attr("style","display: none");
-      
-     }
+     var tempText = $('#redpacket-type').find('option[value='+ thisVal +']');
+
+        $("#type" + thisVal).attr("style","").siblings().attr('style', 'display: none');
+        
+        $("#type" + thisVal).find('select').attr("name","Redpacket[fishid]");
+        $("#type" + thisVal).siblings().find('select').attr('name', '')
     });
         
         //checkbox选中添加对应输入框

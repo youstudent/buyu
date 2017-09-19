@@ -20,10 +20,40 @@ $this->title = Yii::t('app', 'redpacket_index') . '-' . Yii::$app->params['appNa
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-3 text-left">
-                            <a href="<?= \yii\helpers\Url::to(['redpacket/add']) ?>" class="btn btn-primary"
-                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>&nbsp;添加红包鱼</a>
-
+                        <div class="col-sm-6 text-left">
+                            <!--筛选状态 全部|正常|封停 开始-->
+                            <div class="btn-group" data-toggle="buttons" style="margin-right: 8px;">
+                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == '') {
+                                    echo "active";
+                                } ?>" onclick="setStatus('')">
+                                    <input type="radio" name="options" id="statusAll">全部</label>
+                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 1) {
+                                    echo "active";
+                                } ?>" onclick="setStatus(1)">
+                                    <input type="radio" name="options" id="statusAll">小鱼</label>
+                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 2) {
+                                    echo "active";
+                                } ?> " onclick="setStatus(2)">
+                                    <input type="radio" name="options" id="statusOk">中鱼</label>
+                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 3) {
+                                    echo "active";
+                                } ?> " onclick="setStatus(3)">
+                                    <input type="radio" name="options" id="statusColose">大鱼</label>
+                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 4) {
+                                    echo "active";
+                                } ?> " onclick="setStatus(4)">
+                                    <input type="radio" name="options" id="statusColose">金鱼</label>
+                                <label class="btn btn-default <?php if (Yii::$app->request->get('show') == 5) {
+                                    echo "active";
+                                } ?> " onclick="setStatus(5)">
+                                    <input type="radio" name="options" id="statusColose">BOSS</label>
+                                
+                                <a href="<?= \yii\helpers\Url::to(['redpacket/add']) ?>" class="btn btn-primary"
+                                   data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>&nbsp;添加红包鱼</a>
+                            </div>
+                            <input type="hidden" name="Agency[searchstatus]" value="" id="status">
+                            <!--筛选状态 全部|正常|封停 结束-->
+                            
                         </div>
                     </div>
                     <!--                搜索结束          -->
@@ -48,7 +78,7 @@ $this->title = Yii::t('app', 'redpacket_index') . '-' . Yii::$app->params['appNa
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?=\common\helps\players::getFishing()[$value['fishid']]?></td>
+                                    <td class="text-center"><?=\common\helps\players::getFishing($value)[$value['fishid']]?></td>
                                     <td class="text-center"><?=$value['rate']/100?>%</td>
                                     <td class="text-center"><?=$value['minnum']/100?>%</td>
                                     <td class="text-center"><?=$value['maxnum']/100?>%</td>
@@ -101,7 +131,7 @@ $this->title = Yii::t('app', 'redpacket_index') . '-' . Yii::$app->params['appNa
 
     //    设置封停的状态
     function setStatus(val) {
-        window.location = '<?php echo \yii\helpers\Url::to(['notice/index','show'=>''],true)?>' + val;
+        window.location = '<?php echo \yii\helpers\Url::to(['redpacket/index','show'=>''],true)?>' + val;
         console.log($("#status").val());
     }
     function openAgency(_this, title) {

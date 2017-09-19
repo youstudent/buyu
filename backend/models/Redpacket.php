@@ -16,6 +16,8 @@ use Yii;
  */
 class Redpacket extends \yii\db\ActiveRecord
 {
+    public $types;
+    public static $option=[1=>'小鱼',2=>'中鱼',3=>'大鱼',4=>'金鱼',5=>'BOSS'];
     /**
      * @inheritdoc
      */
@@ -40,7 +42,7 @@ class Redpacket extends \yii\db\ActiveRecord
     {
         return [
             [['fishid', 'rate', 'minnum', 'maxnum'], 'required'],
-            [['fishid', 'rate', 'minnum', 'maxnum'], 'number'],
+            [['fishid', 'rate', 'minnum', 'maxnum','type'], 'number'],
         ];
     }
 
@@ -55,6 +57,7 @@ class Redpacket extends \yii\db\ActiveRecord
             'rate' => '出现概率',
             'minnum' => '最小范围',
             'maxnum' => '最大范围',
+            'type' => '鱼类型',
         ];
     }
     
@@ -64,6 +67,7 @@ class Redpacket extends \yii\db\ActiveRecord
      */
     public function add($data=[]){
         if ($this->load($data) &&$this->validate()){
+           
             if ($this->_getFloatLength($this->rate)>2){
                 return $this->addError('rate','出现概率小数点后两位');
             }
