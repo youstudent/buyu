@@ -14,7 +14,7 @@ class EntryconfigController extends \yii\web\Controller
      */
     public function actionIndex()
     {
-        $data = Entryconfig::find()->select(['cjuseable','fishgolduseable','id'])->asArray()->one();
+        $data = Entryconfig::find()->asArray()->one();
         return $this->render('index',['data'=>$data]);
     }
     

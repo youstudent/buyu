@@ -318,6 +318,93 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                             <?php $i++ ?>
                             </tbody>
                         </table>
+                        <table class="table table-bordered table-hover" style="border: 0px; border-top: solid 1px #000;">
+                            <thead>
+                            <tr>
+                                <th class="text-center" style="border-left: 0px;">编号</th>
+                                <th class="text-center"  style="width: 600px">金币兑换</th>
+                                <th class="text-center" style="border-right: 0px;">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php $i = 1; ?>
+                            <tr>
+                                <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
+                                <td class="text-center"><?=$data['rpgcuseable']==1?'开启':'关闭'?></td>
+                                <td class="text-center" style="width: 300px;">
+                                    <?php if ($data['rpgcuseable']==1):?>
+                                        <a onclick="return openAgency(this,'是否关闭该入口?')"
+                                           href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>33,'status'=>0]) ?>"
+                                           class="btn btn-xs btn-danger">关闭</a>
+                                    <?php else:?>
+                                        <a onclick="return openAgency(this,'是否开启该入口?')"
+                                           href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>33,'status'=>1]) ?>"
+                                           class="btn btn-xs btn-danger">开启</a>
+                                    <?php endif;?>
+
+                                </td>
+                            </tr>
+                            <?php $i++ ?>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered table-hover" style="border: 0px; border-top: solid 1px #000;">
+                            <thead>
+                            <tr>
+                                <th class="text-center" style="border-left: 0px;">编号</th>
+                                <th class="text-center"  style="width: 600px">钻石</th>
+                                <th class="text-center" style="border-right: 0px;">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php $i = 1; ?>
+                            <tr>
+                                <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
+                                <td class="text-center"><?=$data['rpdcuseable']==1?'开启':'关闭'?></td>
+                                <td class="text-center" style="width: 300px;">
+                                    <?php if ($data['rpdcuseable']==1):?>
+                                        <a onclick="return openAgency(this,'是否关闭该入口?')"
+                                           href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>34,'status'=>0]) ?>"
+                                           class="btn btn-xs btn-danger">关闭</a>
+                                    <?php else:?>
+                                        <a onclick="return openAgency(this,'是否开启该入口?')"
+                                           href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>35,'status'=>1]) ?>"
+                                           class="btn btn-xs btn-danger">开启</a>
+                                    <?php endif;?>
+
+                                </td>
+                            </tr>
+                            <?php $i++ ?>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered table-hover" style="border: 0px; border-top: solid 1px #000;">
+                            <thead>
+                            <tr>
+                                <th class="text-center" style="border-left: 0px;">编号</th>
+                                <th class="text-center"  style="width: 600px">宝石</th>
+                                <th class="text-center" style="border-right: 0px;">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php $i = 1; ?>
+                            <tr>
+                                <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
+                                <td class="text-center"><?=$data['rpfcuseable']==1?'开启':'关闭'?></td>
+                                <td class="text-center" style="width: 300px;">
+                                    <?php if ($data['rpfcuseable']==1):?>
+                                        <a onclick="return openAgency(this,'是否关闭该入口?')"
+                                           href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>35,'status'=>0]) ?>"
+                                           class="btn btn-xs btn-danger">关闭</a>
+                                    <?php else:?>
+                                        <a onclick="return openAgency(this,'是否开启该入口?')"
+                                           href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>35,'status'=>1]) ?>"
+                                           class="btn btn-xs btn-danger">开启</a>
+                                    <?php endif;?>
+
+                                </td>
+                            </tr>
+                            <?php $i++ ?>
+                            </tbody>
+                        </table>
                         <?php if(empty($data)):?>
                             <div class="text-center m-t-lg clearfix wrapper-lg animated fadeInRightBig" id="galleryLoading">
                                 <h1><i class="fa fa-warning" style="color: red;font-size: 40px"></i></h1>

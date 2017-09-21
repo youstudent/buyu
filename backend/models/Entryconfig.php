@@ -46,8 +46,12 @@ class Entryconfig extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cjuseable', 'reduseable', 'fishgolduseable', 'tooloneuseable', 'tooltwouseable', 'toolthreeuseable', 'toolfouruseable', 'toolfiveuseable', 'toolsixuseable', 'familyuseable', 'shopuseable', 'vipuseable'], 'required'],
-            [['cjuseable', 'reduseable', 'fishgolduseable', 'tooloneuseable', 'tooltwouseable', 'toolthreeuseable', 'toolfouruseable', 'toolfiveuseable', 'toolsixuseable', 'familyuseable', 'shopuseable', 'vipuseable'], 'integer'],
+            [['cjuseable', 'reduseable', 'fishgolduseable', 'tooloneuseable', 'tooltwouseable', 'toolthreeuseable', 'toolfouruseable', 'toolfiveuseable', 'toolsixuseable', 'familyuseable', 'shopuseable', 'vipuseable'
+            ,'vipuseable','nnuseable','erlfduseable','rpgcuseable','rpdcuseable','rpfcuseable'
+            ], 'required'],
+            [['cjuseable', 'reduseable', 'fishgolduseable', 'tooloneuseable', 'tooltwouseable', 'toolthreeuseable', 'toolfouruseable', 'toolfiveuseable', 'toolsixuseable', 'familyuseable', 'shopuseable', 'vipuseable'
+            ,'vipuseable','nnuseable','erlfduseable','rpgcuseable','rpdcuseable','rpfcuseable'
+            ], 'integer'],
         ];
     }
 
@@ -69,7 +73,12 @@ class Entryconfig extends \yii\db\ActiveRecord
             'toolsixuseable' => '道具6是否启用',
             'familyuseable' => '家族是否启用',
             'shopuseable' => '商城是否启用',
-            'vipuseable' => 'vip是否启用',
+            'vipuseable' => '龙虎斗',
+            'nnUseable' => '牛牛',
+            'erlfduseable' => '二人龙虎斗',
+            'rpgcuseable' => '金币兑换',
+            'rpdcuseable' => '钻石兑换',
+            'rpfcuseable' => '宝石兑换',
         ];
     }
     
@@ -117,14 +126,41 @@ class Entryconfig extends \yii\db\ActiveRecord
         if ($data['type'] == 12) {
             $row->reduseable = $data['status'];
         }
+        if ($data['type'] == 30) {
+            $row->lfduseable = $data['status'];
+        }
+        if ($data['type'] == 31) {
+            $row->nnuseable = $data['status'];
+        }
+        if ($data['type'] == 32) {
+            $row->erlfduseable = $data['status'];
+        }
+        if ($data['type'] == 33) {
+            $row->rpgcuseable = $data['status'];
+        }
+        if ($data['type'] == 34) {
+            $row->rpdcuseable = $data['status'];
+        }
+        if ($data['type'] == 35) {
+            $row->rpfcuseable = $data['status'];
+        }
         return $row->save(false);
     }
     
+    /**
+     * @param $id
+     * @return string `lfduseable` int(11) DEFAULT NULL COMMENT '龙虎斗开关',
+    `nnuseable` int(11) DEFAULT NULL COMMENT '牛牛开关',
+    `erlfduseable`二人龙虎斗
+     * `rpgcuseable` int(11) DEFAULT NULL,
+    `rpdcuseable` int(11) DEFAULT NULL,
+    `rpfcuseable
+     */
     
     public static function getShop($id){
        if ($data = Shop::findOne(['id'=>$id])){
            return $data->name;
         }
-           return '位置道具名';
+           return '没查询到道具名';
     }
 }

@@ -27,7 +27,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                 </div>
                 <div class="panel-body">
                     <!--                表格开始          -->
-                    <div class="table-responsive" >
+                    <div class="table-responsive" style="border-bottom: solid 1px #000;" >
                         <table class="table table-bordered table-hover" style="border: 0px; margin-bottom:100px;border-top: solid 1px #000;">
                             <thead>
                             <tr>
@@ -51,10 +51,77 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                                                href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>1,'status'=>1]) ?>"
                                                class="btn btn-xs btn-danger">开启</a>
                                         <?php endif;?>
-
-                                    </td>
                                 </tr>
                                 <?php $i++ ?>
+                            </tbody>
+                            <thead>
+                            <tr>
+                                <th class="text-center" style="border-left: 0px;">编号</th>
+                                <th class="text-center">龙虎斗</th>
+                                <th class="text-center" style="border-right: 0px;">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
+                                <td class="text-center"><?=$data['lfduseable']==1?'开启':'关闭'?></td>
+                                <td class="text-center" style="width: 300px;">
+                                    <?php if ($data['lfduseable']==1):?>
+                                        <a onclick="return openAgency(this,'是否关闭该入口?')"
+                                           href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>30,'status'=>0]) ?>"
+                                           class="btn btn-xs btn-danger">关闭</a>
+                                    <?php else:?>
+                                        <a onclick="return openAgency(this,'是否开启该入口?')"
+                                           href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>30,'status'=>1]) ?>"
+                                           class="btn btn-xs btn-danger">开启</a>
+                                    <?php endif;?>
+                            </tr>
+                            </tbody>
+                            <thead>
+                            <tr>
+                                <th class="text-center" style="border-left: 0px;">编号</th>
+                                <th class="text-center">牛牛开关</th>
+                                <th class="text-center" style="border-right: 0px;">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
+                                <td class="text-center"><?=$data['nnuseable']==1?'开启':'关闭'?></td>
+                                <td class="text-center" style="width: 300px;">
+                                    <?php if ($data['nnuseable']==1):?>
+                                        <a onclick="return openAgency(this,'是否关闭该入口?')"
+                                           href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>31,'status'=>0]) ?>"
+                                           class="btn btn-xs btn-danger">关闭</a>
+                                    <?php else:?>
+                                        <a onclick="return openAgency(this,'是否开启该入口?')"
+                                           href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>31,'status'=>1]) ?>"
+                                           class="btn btn-xs btn-danger">开启</a>
+                                    <?php endif;?>
+                            </tr>
+                            </tbody>
+                            <thead>
+                            <tr>
+                                <th class="text-center" style="border-left: 0px;">编号</th>
+                                <th class="text-center">二人龙虎斗</th>
+                                <th class="text-center" style="border-right: 0px;">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
+                                <td class="text-center"><?=$data['erlfduseable']==1?'开启':'关闭'?></td>
+                                <td class="text-center" style="width: 300px;">
+                                    <?php if ($data['erlfduseable']==1):?>
+                                        <a onclick="return openAgency(this,'是否关闭该入口?')"
+                                           href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>32,'status'=>0]) ?>"
+                                           class="btn btn-xs btn-danger">关闭</a>
+                                    <?php else:?>
+                                        <a onclick="return openAgency(this,'是否开启该入口?')"
+                                           href="<?php echo \yii\helpers\Url::to(['entryconfig/status','id'=>$data['id'],'type'=>32,'status'=>1]) ?>"
+                                           class="btn btn-xs btn-danger">开启</a>
+                                    <?php endif;?>
+                            </tr>
                             </tbody>
                         </table>
                         <table class="table table-bordered table-hover" style="border: 0px; border-top: solid 1px #000;">

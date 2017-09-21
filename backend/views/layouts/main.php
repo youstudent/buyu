@@ -107,6 +107,9 @@ $config[] = ['label' => '开关管理', 'icon' => 'fa fa-bullhorn icon', 'bg_col
     ['label' => '游戏入口设置', 'url' => ['entryconfig/index']],
     ['label' => '功能开关设置', 'url' => ['entryconfig/feature']],
 ]];
+$config[] = ['label' => '二人对战场配置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
+    ['label' => '配置列表', 'url' => ['entryconfig/index']],
+]];
 $config[] = ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg_color' => 'bg-danger', 'url' => ['login/logout']]
 ?>
 <!DOCTYPE html>
