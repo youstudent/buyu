@@ -27,8 +27,8 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                 </div>
                 <div class="panel-body">
                     <!--                表格开始          -->
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover" style="border: 0px">
+                    <div class="table-responsive" style="border-bottom: solid 1px #000;">
+                        <table class="table table-bordered table-hover" style="border: 0px;border-top: solid 1px #000;">
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
@@ -57,7 +57,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                                 <?php $i++ ?>
                             </tbody>
                         </table>
-                        <table class="table table-bordered table-hover" style="border: 0px;">
+                        <table class="table table-bordered table-hover" style="border: 0px; border-top: solid 1px #000;">
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
@@ -86,7 +86,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                             <?php $i++ ?>
                             </tbody>
                         </table>
-                        <table class="table table-bordered table-hover" style="border: 0px;">
+                        <table class="table table-bordered table-hover" style="border: 0px;border-top: solid 1px #000;">
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
@@ -115,7 +115,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                             <?php $i++ ?>
                             </tbody>
                         </table>
-                        <table class="table table-bordered table-hover" style="border: 0px;">
+                        <table class="table table-bordered table-hover" style="border: 0px; border-top: solid 1px #000;">
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
@@ -144,7 +144,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                             <?php $i++ ?>
                             </tbody>
                         </table>
-                        <table class="table table-bordered table-hover" style="border: 0px;">
+                        <table class="table table-bordered table-hover" style="border: 0px; border-top: solid 1px #000;">
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
@@ -173,7 +173,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                             <?php $i++ ?>
                             </tbody>
                         </table>
-                        <table class="table table-bordered table-hover" style="border: 0px;">
+                        <table class="table table-bordered table-hover" style="border: 0px; border-top: solid 1px #000;">
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
@@ -202,7 +202,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                             <?php $i++ ?>
                             </tbody>
                         </table>
-                        <table class="table table-bordered table-hover" style="border: 0px;">
+                        <table class="table table-bordered table-hover" style="border: 0px; border-top: solid 1px #000;">
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
@@ -231,7 +231,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                             <?php $i++ ?>
                             </tbody>
                         </table>
-                        <table class="table table-bordered table-hover" style="border: 0px;">
+                        <table class="table table-bordered table-hover" style="border: 0px; border-top: solid 1px #000;">
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
@@ -260,7 +260,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                             <?php $i++ ?>
                             </tbody>
                         </table>
-                        <table class="table table-bordered table-hover" style="border: 0px;">
+                        <table class="table table-bordered table-hover" style="border: 0px; border-top: solid 1px #000;">
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
@@ -289,7 +289,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                             <?php $i++ ?>
                             </tbody>
                         </table>
-                        <table class="table table-bordered table-hover" style="border: 0px;">
+                        <table class="table table-bordered table-hover" style="border: 0px; border-top: solid 1px #000;">
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>

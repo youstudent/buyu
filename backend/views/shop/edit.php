@@ -30,6 +30,7 @@
                 <?php echo $form->field($model,'level')?>
                 <?php echo $form->field($model,'coolDown')?>
                 <?php echo $form->field($model,'lastTime')?>
+                <?php echo $form->field($model,'toolDescript')?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

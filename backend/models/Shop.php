@@ -55,7 +55,7 @@ class Shop extends \yii\db\ActiveRecord
             'updated_at' => '更新时间',
             'type' => '类型',
             'level' => '购买等级',
-            'toolDescript' => '描述',
+            'toolDescript' => '道具描述',
             'lastTime' => '持续时间[秒]',
             'coolDown' => '冷却时间[秒]',
         ];
@@ -71,6 +71,7 @@ class Shop extends \yii\db\ActiveRecord
             $datas['coolDown']=$this->coolDown;
             $datas['lastTime']=$this->lastTime;
             $datas['cost']=$this->jewel_number;
+            $datas['toolDescript']=$this->toolDescript;
             //$data = Request::request_post(\Yii::$app->params['ApiUserPay'],['game_id'=>$model->game_id,'gold'=>$this->pay_gold_num,'gold_config'=>GoldConfigObject::getNumCodeByName($this->pay_gold_config)]);
             $result = Request::request_post(Yii::$app->params['Api'].'/control/updatetool',$datas);
             if($result['code'] == 1){
