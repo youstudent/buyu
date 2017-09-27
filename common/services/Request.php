@@ -73,6 +73,38 @@ class Request
         }
         return ['code'=>0,'message'=>$data->message];
     }
+    
+    
+    /**
+     * @param string $url
+     * @param $raw
+     * @return array|bool
+     */
+    static function request_post_raws($url = '', $raw) {
+//        return ['code'=>1,'message'=>"游戏服务器相应失败"];
+        if (empty($url) || empty($raw)) {
+            return false;
+        }
+        $ch = curl_init();
+        curl_setopt_array($ch, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $raw
+        ));
+        $data = curl_exec($ch);//运行curl
+        curl_close($ch);
+        $data = json_decode($data);
+        if($data->code == 1)
+        {
+            return ['code'=>1,'id'=>$data->id];
+        }
+        return ['code'=>0,'message'=>$data->message];
+    }
     /**
      * get调用接口
      * @param string $url

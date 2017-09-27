@@ -83,6 +83,7 @@ class SignBoardController extends ObjectController
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if($model->add(\Yii::$app->request->post()))
             {
+                SignBoard::GetSign();
                 return ['code'=>1,'message'=>'添加成功'];
             }
             $message = $model->getFirstErrors();

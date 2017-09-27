@@ -50,11 +50,11 @@ class Config extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['gold', 'fishgold', 'diamond', 'sayworldcost', 'leavemessagecost', 'trident', 'shotspeed', 'diamondrate', 'unlockfishpower', 'goldrate', 'fishgoldrate', 'minrate', 'maxrate', 'useredpacket'], 'number'],
-            [[ 'sayworldcost','leavemessagecost', 'trident', 'shotspeed', 'diamondrate', 'unlockfishpower', 'goldrate', 'fishgoldrate', 'minrate', 'maxrate', 'useredpacket'], 'required'],
+            [['gold', 'fishgold', 'diamond', 'sayworldcost', 'leavemessagecost', 'trident', 'shotspeed', 'diamondrate', 'unlockfishpower', 'goldrate', 'fishgoldrate', 'minrate', 'maxrate', 'useredpacket','tip'], 'number'],
+            [[ 'sayworldcost','leavemessagecost', 'trident', 'shotspeed', 'diamondrate', 'unlockfishpower', 'goldrate', 'fishgoldrate', 'minrate', 'maxrate', 'useredpacket','tip'], 'required'],
             [['version', 'serverid'], 'string', 'max' => 255],
             [['maxrate', 'minrate','fishgoldrate','goldrate'], 'validateEdit', 'on' => 'edit'],
-            [['gold','fishgold','diamond','sayworldcost','leavemessagecost','trident','shotspeed','unlockfishpower'], 'validateNumedit', 'on' => 'numedit'],
+            [['gold','fishgold','diamond','sayworldcost','leavemessagecost','trident','shotspeed','unlockfishpower','tip'], 'validateNumedit', 'on' => 'numedit'],
             
         ];
     }
@@ -82,7 +82,7 @@ class Config extends \yii\db\ActiveRecord
      *  基础数据配置
      */
     public function validateNumedit(){
-        if ($this->gold<0 || $this->fishgold<0 ||$this->diamond<0 || $this->sayworldcost<0 ||$this->leavemessagecost<0 || $this->trident<0 ||$this->shotspeed<0 || $this->unlockfishpower<0){
+        if ($this->gold<0 || $this->fishgold<0 ||$this->diamond<0 || $this->sayworldcost<0 ||$this->leavemessagecost<0 || $this->trident<0 ||$this->shotspeed<0 || $this->unlockfishpower<0 || $this->tip<0){
             $this->addError('fishgoldrate','所有数量配置不能小于0');
         }
         
@@ -109,6 +109,7 @@ class Config extends \yii\db\ActiveRecord
             'fishgoldrate' => '兑换宝石所需钻石比例',
             'minrate' => '玩家最小命中率',
             'maxrate' => '玩家最大命中率',
+            'tip' => '金币数量',
         ];
     }
     

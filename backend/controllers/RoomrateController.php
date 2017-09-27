@@ -52,7 +52,7 @@ class RoomrateController extends ObjectController
         }elseif ($model->muti ==2){
             $model->number='30倍场';
         }elseif ($model->muti ==3){
-            $model->number='40倍场';
+            $model->number='300倍场';
         }else{
             $model->number='鱼币场';
         }

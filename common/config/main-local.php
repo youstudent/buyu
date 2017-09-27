@@ -9,6 +9,14 @@ return [
             'charset' => 'utf8',
             'tablePrefix' =>'g_',
         ],
+       /* 'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=39.108.86.157;dbname=game_2',
+            'username' => 'root',
+            'password' => '90c0lv6hu4VFkmON',
+            'charset' => 'utf8',
+            'tablePrefix' =>'g_',
+        ],*/
         'secondDb' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=39.108.86.157;dbname=fishing',
@@ -19,20 +27,20 @@ return [
         ],
         'commondb' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=192.168.2.235;dbname=fishing',
-            'username' => 'back',
+            'dsn' => 'mysql:host=192.168.2.140;dbname=fishing',
+            'username' => 'root',
             'password' => '123456',
             'charset' => 'utf8',
             'tablePrefix' =>'',
         ],
-       /* 'commondb' => [
+       'commondb' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=39.108.86.157;dbname=fishing',
             'username' => 'root',
             'password' => '90c0lv6hu4VFkmON',
             'charset' => 'utf8',
             'tablePrefix' =>'',
-        ],*/
+        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',

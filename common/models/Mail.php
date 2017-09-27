@@ -121,7 +121,7 @@ class Mail extends Object
         $this->initTime();
         $model = self::find()->andWhere($this->searchWhere())
             ->andWhere(['>=', 'created_at', strtotime($this->starttime)])
-            ->andWhere(['<=', 'created_at', strtotime($this->endtime)]);
+            ->andWhere(['<=', 'created_at', strtotime($this->endtime)])->orderBy('created_at DESC');
         $pages = new Pagination(
             [
                 'totalCount' => $model->count(),
@@ -219,10 +219,11 @@ class Mail extends Object
              * 请求服务器  添加邮件
              */
             $url = \Yii::$app->params['Api'] . '/control/addemail';
-            $re = Request::request_post_raw($url, $payss);
+            $re = Request::request_post_raws($url, $payss);
             if ($re['code'] == 1) {
                 //请求游戏服务器地址
                 $prize = json_encode($send);
+                $this->id = $re['id'];
                 $this->yes_no = $this->number ? 1 : 0;
                 $this->number = $prize;
                 $this->status = 1;

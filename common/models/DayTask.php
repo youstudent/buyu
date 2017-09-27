@@ -207,6 +207,7 @@ class DayTask extends Object
             $model->id=$attributes->id;
             $model->status=$attributes->enable;  //是否开启任务
             $model->type_id=$attributes->typeId;
+            $model->description=$attributes->description;
             $model->name =$attributes->taskName;  // 名字
             $model->updated_at =time();  //同步时间
             $_model = clone $model;
@@ -240,6 +241,6 @@ class DayTask extends Object
         if (array_key_exists('num',$JSON)){
             return $JSON['num'].'次';
         }
-            return '完成任赠送相应的礼品';
+            return '不存在次数';
     }
 }

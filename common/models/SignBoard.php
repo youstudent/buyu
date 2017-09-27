@@ -22,9 +22,11 @@ use yii\helpers\Json;
 class SignBoard extends Object
 {
     public $type;
+    public $from;
     public static $give;
     public static $fishing;
     public static $prize;
+    public static $option=[1=>'小鱼',2=>'中鱼',3=>'大鱼',4=>'金鱼',5=>'BOSS'];
     /**
      * @inheritdoc
      */
@@ -41,11 +43,19 @@ class SignBoard extends Object
         return [
             [['number','probability','from_fishing'],'required'],
             [['number', 'manage_id', 'updated_at','fishing_id'], 'integer'],
-            [['number','probability'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量无效'],
+            [['number','probability'],'value'],
             [['name'], 'string'],
             [['manage_name'], 'string', 'max' => 20],
-            [['give_number','type','from_fishing'],'safe']
+            [['give_number','type','from_fishing','from'],'safe']
         ];
+    }
+    
+    
+    public function value(){
+        if ($this->number<0 || $this->probability<0.01 || $this->probability>100){
+            $this->addError('number','数量无效');
+        }
+        
     }
 
     /**
@@ -64,6 +74,7 @@ class SignBoard extends Object
             'probability' => '出现概率%',
             'name' => '鱼名字',
             'type' => '鱼类型',
+            'from' => '任务鱼类型',
             'from_fishing' => '任务鱼',
         ];
     }

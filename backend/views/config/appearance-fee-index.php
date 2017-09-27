@@ -13,7 +13,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
                 <li><a href="#">系统基础设置</a></li>
-                <li class="active">系统基础设置列表</li>
+                <li class="active">二人对战服务费</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">
@@ -32,38 +32,21 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <th class="text-center">注册账号赠送金币</th>
-                                <th class="text-center">注册账号赠送宝石</th>
-                                <th class="text-center">注册账号赠送钻石数量</th>
-                                <th class="text-center">世界喇叭所需钻石数量</th>
-                                <th class="text-center">留言板消耗钻石数量</th>
-                                <th class="text-center">发动三叉戟的能量值</th>
-                                <th class="text-center">发射子弹数1秒发送个数</th>
-                                <th class="text-center">宝石炮倍上限（宝石/比率≤炮倍</th>
+                                <th class="text-center">金币数量</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
                             <tbody>
 
                             <?php $i = 1; ?>
-                            <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?=$value['gold']?></td>
-                                    <td class="text-center"><?=$value['fishgold']?></td>
-                                    <td class="text-center"><?=$value['diamond']?></td>
-                                    <td class="text-center"><?=$value['sayworldcost']?></td>
-                                    <td class="text-center"><?=$value['leavemessagecost']?></td>
-                                    <td class="text-center"><?=$value['trident']?></td>
-                                    <td class="text-center"><?=$value['shotspeed']?></td>
-                                    <td class="text-center"><?=$value['unlockfishpower']?></td>
+                                    <td class="text-center"><?=$data['tip']?></td>
                                     <td class="text-center" style="width: 69px;">
-                                        <a href="<?php echo \yii\helpers\Url::to(['config/num-edit', 'id' => $value['id']]) ?>"
+                                        <a href="<?php echo \yii\helpers\Url::to(['config/appearance-fee', 'id' => $data['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
                                     </td>
                                 </tr>
-                                <?php $i++ ?>
-                            <?php endforeach; ?>
                             </tbody>
                         </table>
                         <?php if(empty($data)):?>

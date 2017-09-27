@@ -39,6 +39,7 @@ class ExperienceController extends ObjectController
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if($model->add(\Yii::$app->request->post()))
             {
+                Experience::GetExperience();   // 添加成功同步数据
                 return ['code'=>1,'message'=>'添加成功'];
             }
             $message = $model->getFirstErrors();
@@ -46,7 +47,10 @@ class ExperienceController extends ObjectController
             return ['code'=>0,'message'=>$message];
             
         }
+        //FLOOR(((等级-1)^3+20)/5*((等级-1)*2+20)+30,30)
         $model->grade =  $model->getGrade();
+        $model->type = floor((($model->grade-1)^3+20)/5*(($model->grade-1)*2+20)+30);
+        //=FLOOR(((等级-1)^3+20)/5*((等级-1)*2+20)+30,30)
         return $this->render('add',['model'=>$model]);
     }
     

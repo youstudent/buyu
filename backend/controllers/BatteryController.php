@@ -76,12 +76,18 @@ class BatteryController extends ObjectController
         $re = Battery::$give;
         foreach ($JSON as $key=>$value){
             if (array_key_exists($key,$re)){
-                $data[$key]=$value;
+                if ($value>0){
+                    $data[$key]=$value;
+                }
+                
             }
             if(is_array($value)){
                 foreach ($value as $K=>$v){
                     if (array_key_exists($v['toolId'],$re)){
-                        $data[$v['toolId']]=$v['toolNum'];
+                        if ($v['toolNum']>0){
+                            $data[$v['toolId']]=$v['toolNum'];
+                        }
+                      
                     }
                 }
             }
@@ -119,15 +125,6 @@ class BatteryController extends ObjectController
           return ['code'=>1,'message'=>'删除成功'];
       }
       return ['code'=>0,'message'=>'删除失败'];
-      /*$model = Battery::findOne($id);
-      if ($model) {
-          if ($model->delete()){
-              return ['code' => 1, 'message' => '删除成功'];
-          }
-          $messge = $model->getFirstErrors();
-          $messge = reset($messge);
-          return ['code' => 0, 'message' => $messge];
-      }*/
     }
     
     
@@ -142,12 +139,17 @@ class BatteryController extends ObjectController
         $re = Battery::$give;
         foreach ($JSON as $key=>$value){
             if (array_key_exists($key,$re)){
-                $data[$re[$key]]=$value;
+                if ($value>0){
+                    $data[$re[$key]]=$value;
+                }
             }
             if(is_array($value)){
                 foreach ($value as $K=>$v){
                     if (array_key_exists($v['toolId'],$re)){
-                        $data[$re[$v['toolId']]]=$v['toolNum'];
+                        if ($v['toolNum']>0){
+                            $data[$re[$v['toolId']]]=$v['toolNum'];
+                        }
+                       
                     }
                 }
             }

@@ -57,6 +57,7 @@ class VipUpdateController extends ObjectController
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if($model->edit(\Yii::$app->request->post()))
             {
+                VipUpdate::GetVipBenefit();
                 return ['code'=>1,'message'=>'修改成功'];
             }
             $message = $model->getFirstErrors();

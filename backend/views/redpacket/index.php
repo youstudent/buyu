@@ -66,9 +66,11 @@ $this->title = Yii::t('app', 'redpacket_index') . '-' . Yii::$app->params['appNa
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">鱼名</th>
-                                <th class="text-center">红包掉落概率</th>
-                                <th class="text-center">小区间</th>
-                                <th class="text-center">大区间</th>
+                                <th class="text-center">出现概率</th>
+                                <th class="text-center">红包掉落小区间</th>
+                                <th class="text-center">红包掉落大区间</th>
+                                <th class="text-center">红包掉落个数小区间</th>
+                                <th class="text-center">红包掉落个数大区间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
@@ -82,6 +84,8 @@ $this->title = Yii::t('app', 'redpacket_index') . '-' . Yii::$app->params['appNa
                                     <td class="text-center"><?=$value['rate']/100?>%</td>
                                     <td class="text-center"><?=$value['minnum']/100?>%</td>
                                     <td class="text-center"><?=$value['maxnum']/100?>%</td>
+                                    <td class="text-center"><?=$value['floprateminnum']/100?>%</td>
+                                    <td class="text-center"><?=$value['flopratemaxnum']/100?>%</td>
                                     <td class="text-center" style="width: 300px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['redpacket/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
@@ -96,7 +100,7 @@ $this->title = Yii::t('app', 'redpacket_index') . '-' . Yii::$app->params['appNa
                         <?php if(empty($data)):?>
                             <div class="text-center m-t-lg clearfix wrapper-lg animated fadeInRightBig" id="galleryLoading">
                                 <h1><i class="fa fa-warning" style="color: red;font-size: 40px"></i></h1>
-                                <h4 class="text-muted"><?php echo sprintf(Yii::t('app','search_null'),'公告管理')?></h4>
+                                <h4 class="text-muted"><?php echo sprintf(Yii::t('app','search_null'),'红包鱼')?></h4>
                                 <p class="m-t-lg"></p>
                             </div>
                         <?php endif;?>

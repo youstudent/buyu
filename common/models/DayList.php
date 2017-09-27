@@ -33,7 +33,7 @@ class DayList extends \yii\db\ActiveRecord
         return [
             [['name', 'type_id','status'], 'string', 'max' => 20],
             [['url'], 'string', 'max' => 255],
-            [['content'],'safe']
+            [['content','description'],'safe']
         ];
     }
 

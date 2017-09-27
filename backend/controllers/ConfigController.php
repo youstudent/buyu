@@ -74,5 +74,42 @@ class ConfigController extends \yii\web\Controller
         }
         return $this->render('num-edit',['model'=>$model]);
     }
+    
+    /**
+     *  出场费金币
+     * @return string
+     */
+    public function actionFeeIndex()
+    {
+        $data = Config::find()->select('tip,id')->asArray()->one();
+        
+        return $this->render('appearance-fee-index',['data'=>$data]);
+    }
+    
+    
+    
+    /**
+     * 二人对战场   出场费修改
+     * @return array|string
+     */
+    public function actionAppearanceFee()
+    {
+        $this->layout = false;
+        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
+        $model = Config::findOne($id);
+        if(\Yii::$app->request->isPost)
+        {
+            \Yii::$app->response->format = Response::FORMAT_JSON;
+            if($model->numedit(\Yii::$app->request->post()))
+            {
+                return ['code'=>1,'message'=>'修改成功'];
+            }
+            $message = $model->getFirstErrors();
+            $message = reset($message);
+            return ['code'=>0,'message'=>$message];
+        }
+        return $this->render('appearance-fee',['model'=>$model]);
+    }
+    
 
 }

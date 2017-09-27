@@ -24,9 +24,45 @@
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-            
-                <?php echo $form->field($model,'fishing_id')->dropDownList(\common\models\SignBoard::$fishing)?>
-                <?php echo $form->field($model,'from_fishing')->dropDownList(\common\models\SignBoard::$fishing,['multiple'=>true])?>
+                <?php echo $form->field($model,'type')->dropDownList(\backend\models\Redpacket::$option)?>
+                <div>
+                    <div  id="type1">
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(1))?>
+                    </div>
+                    <div style="display: none" id="type2">
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(2),['name'=>''])?>
+                    </div>
+                    <div style="display: none" id="type3">
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(3),['name'=>''])?>
+                    </div>
+                    <div style="display: none" id="type4">
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(4),['name'=>''])?>
+                    </div>
+                    <div style="display: none" id="type5">
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(5),['name'=>''])?>
+                    </div>
+                </div>
+    
+                <?php echo $form->field($model,'from')->dropDownList(\backend\models\Redpacket::$option)?>
+                <div>
+               
+                <div id="from1">
+                    <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(1),['multiple'=>true])?>
+                </div>
+                <div id="from2" style="display: none">
+                    <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(2),['multiple'=>true,'name'=>''])?>
+                </div>
+                <div id="from3" style="display: none">
+                    <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(3),['multiple'=>true,'name'=>''])?>
+                </div>
+                <div id="from4" style="display: none">
+                    <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(4),['multiple'=>true,'name'=>''])?>
+                </div>
+                <div id="from5" style="display: none">
+                    <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(5),['multiple'=>true,'name'=>''])?>
+                </div>
+                </div>
+                
                 <?php echo $form->field($model,'number')?>
                 <?php echo $form->field($model,'probability')?>
                 <?php echo $form->field($model,'give_number',['inline'=>true])->checkboxList(\common\models\SignBoard::$give,['style'=>'margin-left: 113px;'])?>
@@ -85,6 +121,30 @@
                 },
             });
         });
+
+        $("#signboard-type").change(function(){
+            var thisVal = $(this).val();
+            var tempText = $('#signboard-type').find('option[value='+ thisVal +']');
+
+            $("#type" + thisVal).attr("style","").siblings().attr('style', 'display: none');
+
+            $("#type" + thisVal).find('select').attr("name","Rignboard[fishing_id]");
+            $("#type" + thisVal).siblings().find('select').attr('name', '')
+        });
+
+
+        $("#signboard-from").change(function(){
+            var thisVal = $(this).val();
+            console.log(thisVal)
+            var tempText = $('#signboard-from').find('option[value='+ thisVal +']');
+
+            $("#from" + thisVal).attr("style","").siblings().attr('style', 'display: none');
+
+            $("#from" + thisVal).find('select').attr("name","Rignboard[from_fishing]");
+            $("#from" + thisVal).siblings().find('select').attr('name', '')
+        });
+        
+        
         //checkbox选中添加对应输入框
         var  checkbox_input =  $('#signboard-give_number').find('.checkbox-inline');
         checkbox_input.click(function(){

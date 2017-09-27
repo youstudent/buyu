@@ -27,6 +27,7 @@ class LandForm extends Model
     public $typeId;
     public $enable;
     public $num;
+    public $description;
     public static $enables=[1=>'开启',0=>'关闭'];
     /**
      * @inheritdoc
@@ -34,7 +35,7 @@ class LandForm extends Model
     public function rules()
     {
         return [
-            [['give','type','id','gives','typeId','enable','num'],'safe']
+            [['give','type','id','gives','typeId','enable','num','description'],'safe']
         ];
     }
     
@@ -49,6 +50,7 @@ class LandForm extends Model
             'types' => '礼包',
             'num' => '次数',
             'enable' => '状态',
+            'description' => '描述',
         ];
     }
     
@@ -89,6 +91,7 @@ class LandForm extends Model
             $arr['id']=$this->id;
             $arr['typeId']=$this->typeId;
             $arr['content']=$content;
+            $arr['description']=$this->description;
             $JS = Json::encode($arr);
             $url = \Yii::$app->params['Api'].'/control/updateEveryDayTask';
             $re = Request::request_post_raw($url,$JS);
@@ -96,9 +99,11 @@ class LandForm extends Model
                 $row= DayList::findOne(['type_id'=>$this->typeId]);
                 $rows = DayTask::findOne(['type_id'=>$this->typeId]);
                 $rows->status =$this->enable;
+                $rows->description =$this->description;
                 $rows->content =Json::encode($content);
                 $rows->save(false);
                 $row->status=$this->enable;
+                $row->description=$this->description;
                 $row->content=Json::encode($content);
                 $row->save(false);
                 return true;

@@ -34,7 +34,6 @@ class DayTaskController extends ObjectController
     public function actionList()
     {
         $data = DayList::find()->asArray()->all();
-        
         return $this->render('list',['data'=>$data]);
     }
     
@@ -135,6 +134,7 @@ class DayTaskController extends ObjectController
         $modelForm->typeId= $model->type_id;
         $modelForm->gives=$rows['type'];
         $modelForm->enable=$model->status;
+        $modelForm->description=$model->description;
         if ($model->type_id ==1){
             return $this->render('land',['model'=>$modelForm,'data'=>$rows['data']]);
         }elseif ($model->type_id ==8){
@@ -881,12 +881,18 @@ class DayTaskController extends ObjectController
         $re = DayTask::$give;
         foreach ($JSON['send'] as $key => $value) {
             if (array_key_exists($key, $re)) {
-                $data[$key] = $value;
+                if ($value>0){
+                    $data[$key] = $value;
+                }
+                
             }
             if (is_array($value)) {
                 foreach ($value as $K => $v) {
                     if (array_key_exists($v['toolId'], $re)) {
-                        $data[$v['toolId']] = $v['toolNum'];
+                        if ($v['toolNum']>0){
+                            $data[$v['toolId']] = $v['toolNum'];
+                        }
+                        
                     }
                 }
             }

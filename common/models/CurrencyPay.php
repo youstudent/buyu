@@ -78,9 +78,8 @@ class CurrencyPay extends Object
     {
         if($this->load($data) && $this->validate())
         {
-            if (mb_strlen($this->content)>9){
-               return  $this->addError('content','备注字数长度小于9');
-              
+            if (mb_strlen($this->content,'UTF8')>9){
+                return $this->addError('type','备注字数长度小于9');
             }
             /**
              * pays": [
@@ -171,8 +170,8 @@ class CurrencyPay extends Object
     public function edit($data = []){
         if($this->load($data))
         {
-            if (mb_strlen($this->content)>9){
-               return $this->addError('type','备注字数长度小于9');
+            if (mb_strlen($this->content,'UTF8')>9){
+                return $this->addError('type','备注字数长度小于9');
             }
             /**
              * 接收数据  拼装

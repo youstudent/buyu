@@ -9,14 +9,14 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">修改每日登陆</h4>
+            <h4 class="modal-title" id="myModalLabel">机器人参数范围</h4>
         </div>
         <div class="modal-body">
 
             <div class="col-xs-11">
             <?php $form = \yii\bootstrap\ActiveForm::begin([
                     'id'=>'payModalForm',
-                    'action'=>['day-task/land'],
+                    'action'=>['robots-vip/edit'],
                     'options'=>['class'=>'form-horizontal'],
                     'fieldConfig' => [
                         'template' => "{label}<div class=\"col-lg-9\">{input}<span class=\"help-block m-b-none\"></span></div>",
@@ -24,23 +24,17 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <div style="display: none">
-        
-                    <?php echo $form->field($model,'typeId')->hiddenInput()?>
-                    <?php echo $form->field($model,'id')->hiddenInput()?>
-                </div>
-                <?php echo $form->field($model,'enable')->dropDownList(\backend\models\LandForm::$enables)?>
-                <?php echo $form->field($model,'description')?>
-                <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\LandForm::$give,['style'=>'margin-left: 113px;'])?>
-                <?php foreach ($data as $k=>$v):?>
-                    <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \backend\models\LandForm::$give[$k]?></label>
-                        <div class="col-lg-9">
-                            <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="LandForm[type][<?php echo $k?>]" value="<?php echo $v?>">
-                            <span class="help-block m-b-none"></span>
-                        </div>
-                    </div>
-                <?php endforeach;?>
+                <?php echo $form->field($model,'levelmin')?>
+                <?php echo $form->field($model,'levelmax')?>
+                <?php echo $form->field($model,'goldmin')?>
+                <?php echo $form->field($model,'goldmax')?>
+                <?php echo $form->field($model,'diamondmin')?>
+                <?php echo $form->field($model,'diamondmax')?>
+                <?php echo $form->field($model,'fishgoldmin')?>
+                <?php echo $form->field($model,'fishgoldmax')?>
+                <?php echo $form->field($model,'powermin')?>
+                <?php echo $form->field($model,'powermax')?>
+                <?php echo $form->field($model,'staytime')?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -98,11 +92,11 @@
         });
 
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#landform-gives').find('.checkbox-inline');
+        var  checkbox_input =  $('#notice-get_type').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'LandForm[type]['+ _this.find('input').val()+']';
+            var input_name = 'Notice['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){

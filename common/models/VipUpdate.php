@@ -51,8 +51,8 @@ class VipUpdate extends Object
     
     
     public function valeburst(){
-        if ($this->burst<0.01 || $this->burst>100){
-            return $this->addError('burst','爆率范围在0.01-100之间');
+        if ($this->burst<0 || $this->burst>100){
+            return $this->addError('burst','爆率范围在0-100之间');
         }
         
     }

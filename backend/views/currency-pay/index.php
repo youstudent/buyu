@@ -45,7 +45,6 @@ $this->title = Yii::t('app', 'currency_pay_index') . '-' . Yii::$app->params['ap
                                 <th class="text-center">购买钻石数</th>
                                 <th class="text-center">备注</th>
                                 <th class="text-center">添加时间</th>
-                                <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
@@ -59,7 +58,6 @@ $this->title = Yii::t('app', 'currency_pay_index') . '-' . Yii::$app->params['ap
                                     <td class="text-center"><?= $value['get_diamond']?></td>
                                     <td class="text-center"><?= $value['content']?></td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['created_at']) ?></td>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td class="text-center" style="width: 200px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['currency-pay/prize', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>

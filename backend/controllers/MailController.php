@@ -2,7 +2,10 @@
 
 namespace backend\controllers;
 
+use backend\models\Email;
 use common\models\Mail;
+use common\services\Request;
+use yii\helpers\Json;
 use yii\web\Response;
 
 class MailController extends ObjectController
@@ -73,6 +76,27 @@ class MailController extends ObjectController
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
         $model = Mail::findOne($id);
         return $this->render('content',['model'=>$model]);
+    }
+    
+    
+    /**
+     *  删除 邮件
+     * @return array
+     */
+    public function actionDel()
+    {
+        $this->layout = false;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $id = \Yii::$app->request->get('id');
+         $data =  Email::findOne(['id'=>$id]);
+        $model = Mail::findOne($data->id);
+        if ($data){
+            $data->delete();
+            $model->delete();
+            return ['code'=>1,'message'=>'删除成功'];
+        }
+        return ['code'=>0,'message'=>'数据不同步'];
+       
     }
 
 }

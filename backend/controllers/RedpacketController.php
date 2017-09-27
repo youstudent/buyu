@@ -88,6 +88,8 @@ class RedpacketController extends ObjectController
         $model->rate =$model->rate/100;
         $model->minnum=$model->minnum/100;
         $model->maxnum=$model->maxnum/100;
+        $model->flopratemaxnum=$model->flopratemaxnum/100;
+        $model->floprateminnum=$model->floprateminnum/100;
         return $this->render('edit', ['model' => $model]);
     }
     

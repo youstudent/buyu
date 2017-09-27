@@ -51,7 +51,7 @@ $this->title = Yii::t('app', 'room_index') . '-' . Yii::$app->params['appName'];
                                         <?php elseif($value['muti']==2):?>
                                             30倍场
                                         <?php elseif($value['muti']==3):?>
-                                            40倍场
+                                            300倍场
                                         <?php elseif($value['muti']==4):?>
                                             鱼币场
                                         <?php endif;?>

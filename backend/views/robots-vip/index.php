@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2017 Double Software LLC
  * @license http://www.lrdouble.com/license/
  */
-$this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'];
+$this->title = Yii::t('app', 'robots_index') . '-' . Yii::$app->params['appName'];
 ?>
 <section id="content">
     <section class="vbox">
@@ -12,17 +12,13 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">系统基础设置</a></li>
-                <li class="active">系统基础设置列表</li>
+                <li><a href="#">机器人参数范围管理</a></li>
+                <li class="active">Vip范围列表</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">
                 <div class="panel-heading">
                     <!--                搜索开始          -->
-                    <div class="row text-sm wrapper">
-                        <div class="col-sm-3 text-right">
-                        </div>
-                    </div>
                     <!--                搜索结束          -->
                 </div>
                 <div class="panel-body">
@@ -32,44 +28,47 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <th class="text-center">注册账号赠送金币</th>
-                                <th class="text-center">注册账号赠送宝石</th>
-                                <th class="text-center">注册账号赠送钻石数量</th>
-                                <th class="text-center">世界喇叭所需钻石数量</th>
-                                <th class="text-center">留言板消耗钻石数量</th>
-                                <th class="text-center">发动三叉戟的能量值</th>
-                                <th class="text-center">发射子弹数1秒发送个数</th>
-                                <th class="text-center">宝石炮倍上限（宝石/比率≤炮倍</th>
+                                <th class="text-center">vip最小</th>
+                                <th class="text-center">vip最大</th>
+                                <th class="text-center">金币最小</th>
+                                <th class="text-center">金币最大</th>
+                                <th class="text-center">钻石最小</th>
+                                <th class="text-center">钻石最大</th>
+                                <th class="text-center">宝石最小</th>
+                                <th class="text-center">宝石最大</th>
+                                <th class="text-center">炮倍最小</th>
+                                <th class="text-center">炮倍最大</th>
+                                <th class="text-center">停留时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
                             <tbody>
-
                             <?php $i = 1; ?>
-                            <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?=$value['gold']?></td>
-                                    <td class="text-center"><?=$value['fishgold']?></td>
-                                    <td class="text-center"><?=$value['diamond']?></td>
-                                    <td class="text-center"><?=$value['sayworldcost']?></td>
-                                    <td class="text-center"><?=$value['leavemessagecost']?></td>
-                                    <td class="text-center"><?=$value['trident']?></td>
-                                    <td class="text-center"><?=$value['shotspeed']?></td>
-                                    <td class="text-center"><?=$value['unlockfishpower']?></td>
-                                    <td class="text-center" style="width: 69px;">
-                                        <a href="<?php echo \yii\helpers\Url::to(['config/num-edit', 'id' => $value['id']]) ?>"
-                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                    <td class="text-center"><?= $value['levelmin'] ?></td>
+                                    <td class="text-center"><?= $value['levelmax']?></td>
+                                    <td class="text-center"><?= $value['goldmin']?></td>
+                                    <td class="text-center"><?= $value['goldmax']?></td>
+                                    <td class="text-center"><?= $value['diamondmin'] ?></td>
+                                    <td class="text-center"><?= $value['diamondmax'] ?></td>
+                                    <td class="text-center"><?= $value['fishgoldmin'] ?></td>
+                                    <td class="text-center"><?= $value['fishgoldmax'] ?></td>
+                                    <td class="text-center"><?= $value['powermin'] ?></td>
+                                    <td class="text-center"><?= $value['powermax'] ?></td>
+                                    <td class="text-center"><?= $value['staytime'] ?></td>
+                                    <td class="text-center" style="width: 200px;">
+                                            <a href="<?php echo \yii\helpers\Url::to(['robots-vip/edit', 'id' => $value['id']]) ?>"
+                                               data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
                                     </td>
                                 </tr>
                                 <?php $i++ ?>
-                            <?php endforeach; ?>
                             </tbody>
                         </table>
-                        <?php if(empty($data)):?>
+                        <?php if(empty($value)):?>
                             <div class="text-center m-t-lg clearfix wrapper-lg animated fadeInRightBig" id="galleryLoading">
                                 <h1><i class="fa fa-warning" style="color: red;font-size: 40px"></i></h1>
-                                <h4 class="text-muted"><?php echo sprintf(Yii::t('app','search_null'),'聊天管理')?></h4>
+                                <h4 class="text-muted"><?php echo sprintf(Yii::t('app','search_null'),'机器人参数配置')?></h4>
                                 <p class="m-t-lg"></p>
                             </div>
                         <?php endif;?>
@@ -77,9 +76,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
                 </div>
                 <!--                表格结束          -->
                 <!--                分页开始          -->
-                <footer class="panel-footer">
-
-                </footer>
+               
                 <!--                分页结束          -->
             </section>
         </section>
@@ -91,7 +88,7 @@ $this->title = Yii::t('app', 'config_index') . '-' . Yii::$app->params['appName'
 
     //    设置封停的状态
     function setStatus(val) {
-        window.location = '<?php echo \yii\helpers\Url::to(['chat/index','show'=>''],true)?>' + val;
+        window.location = '<?php echo \yii\helpers\Url::to(['fishing/index','show'=>''],true)?>' + val;
         console.log($("#status").val());
     }
     function openAgency(_this, title) {

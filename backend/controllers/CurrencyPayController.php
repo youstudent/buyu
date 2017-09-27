@@ -35,6 +35,7 @@ class CurrencyPayController extends ObjectController
         if (\Yii::$app->request->isPost) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if ($model->add(\Yii::$app->request->post())) {
+                CurrencyPay::GetCurrency();
                 return ['code' => 1, 'message' => '添加成功'];
             }
             $message = $model->getFirstErrors();

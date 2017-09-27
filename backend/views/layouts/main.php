@@ -56,7 +56,8 @@ if (Yii::$app->params['distribution']) {
     ]];*/
 }
 $config[] = ['label' => '公告管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
-    ['label' => '公告管理', 'url' => ['notice/index', 'show' => '2']]
+    ['label' => '公告管理', 'url' => ['notice/index', 'show' => '2']],
+    ['label' => '大赢家公告', 'url' => ['notice/index', 'show' => '2']]
 ]];
 $config[] = ['label' => '商城充值', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
     ['label' => '商城充值货币设置', 'url' => ['currency-pay/index']]
@@ -108,7 +109,10 @@ $config[] = ['label' => '开关管理', 'icon' => 'fa fa-bullhorn icon', 'bg_col
     ['label' => '功能开关设置', 'url' => ['entryconfig/feature']],
 ]];
 $config[] = ['label' => '二人对战场配置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
-    ['label' => '配置列表', 'url' => ['entryconfig/index']],
+    ['label' => '配置列表', 'url' => ['config/fee-index']],
+    
+]];$config[] = ['label' => '机器人参数配置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['robots-vip/index'], 'items' => [
+    ['label' => '机器人配置列表', 'url' => ['robots-vip/index']],
 ]];
 $config[] = ['label' => '退出登录', 'icon' => 'fa fa-mail-forward icon', 'bg_color' => 'bg-danger', 'url' => ['login/logout']]
 ?>

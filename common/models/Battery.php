@@ -41,7 +41,7 @@ class Battery extends Object
             [['multiple'],'unique'],
             [['number','multiple'],'required'],
             [['multiple', 'number','updated_at', 'manage_id'], 'integer'],
-            [['number','multiple'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
+            [['number','multiple'],'match','pattern'=>'/^$|^\+?[0-9]\d*$/','message'=>'数量不能是负数'],
             [['name', 'manage_name'], 'string', 'max' => 20],
             [['type','give_gold_num'],'safe']
         ];

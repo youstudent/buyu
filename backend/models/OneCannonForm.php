@@ -210,8 +210,8 @@ class OneCannonForm extends Model
                 $name='持之以恒';
                 $content['num']=($this->time*1000)*60;
             }else{
-                if (empty($this->time) || empty($this->lost)){
-                    $this->addError('get','货币不等为空');
+                if ($this->get<0 || $this->lost<0){
+                    $this->addError('get','数量不能小于0');
                     return  false;
                 }
                 $content['type']=$this->type1;

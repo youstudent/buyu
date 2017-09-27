@@ -36,7 +36,7 @@ class Shop extends \yii\db\ActiveRecord
             [['jewel_number'],'required'],
             [['jewel_number','lastTime','coolDown'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量不能是负数'],
             [['number','jewel_number','created_at','type','order_number','level','id','lastTime','coolDown'], 'integer'],
-            [['name'],'string', 'max' => 20],
+            [['name','toolDescript'],'string', 'max' => 20],
             
         ];
     }
