@@ -269,12 +269,18 @@ class DayTaskController extends ObjectController
         $re = DayTask::$give;
         foreach ($products['send'] as $key => $value) {
             if (array_key_exists($key, $re)) {
-                $data[$key] = $value;
+                if ($value>0){
+                    $data[$key] = $value;
+                }
+               
             }
             if (is_array($value)) {
                 foreach ($value as $K => $v) {
                     if (array_key_exists($v['toolId'], $re)) {
-                        $data[$v['toolId']] = $v['toolNum'];
+                        if ($v['toolNum']>0){
+                            $data[$v['toolId']] = $v['toolNum'];
+                        }
+                        
                     }
                 }
             }
@@ -291,6 +297,7 @@ class DayTaskController extends ObjectController
         $modelForm->num = $products['num'];
         $modelForm->gives = $type;
         $modelForm->fishings = $products['fishId'];
+        $modelForm->types = ExpertForm::getFishingType($modelForm->fishings);
         return $this->render('update-expert', ['model' => $modelForm, 'data' => $data]);
     
     }

@@ -49,7 +49,7 @@ class ExperienceController extends ObjectController
         }
         //FLOOR(((等级-1)^3+20)/5*((等级-1)*2+20)+30,30)
         $model->grade =  $model->getGrade();
-        $model->type = floor((($model->grade-1)^3+20)/5*(($model->grade-1)*2+20)+30);
+        $model->type = Experience::ex($model->grade);
         //=FLOOR(((等级-1)^3+20)/5*((等级-1)*2+20)+30,30)
         return $this->render('add',['model'=>$model]);
     }

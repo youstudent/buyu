@@ -47,19 +47,19 @@
                 <div>
                
                 <div id="from1">
-                    <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(1),['multiple'=>true])?>
+                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishing(1),['multiple'=>true])?>
                 </div>
                 <div id="from2" style="display: none">
-                    <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(2),['multiple'=>true,'name'=>''])?>
+                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishing(2),['multiple'=>true,'name'=>''])?>
                 </div>
                 <div id="from3" style="display: none">
-                    <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(3),['multiple'=>true,'name'=>''])?>
+                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishing(3),['multiple'=>true,'name'=>''])?>
                 </div>
                 <div id="from4" style="display: none">
-                    <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(4),['multiple'=>true,'name'=>''])?>
+                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishing(4),['multiple'=>true,'name'=>''])?>
                 </div>
                 <div id="from5" style="display: none">
-                    <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(5),['multiple'=>true,'name'=>''])?>
+                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishing(5),['multiple'=>true,'name'=>''])?>
                 </div>
                 </div>
                 
@@ -128,7 +128,7 @@
 
             $("#type" + thisVal).attr("style","").siblings().attr('style', 'display: none');
 
-            $("#type" + thisVal).find('select').attr("name","Rignboard[fishing_id]");
+            $("#type" + thisVal).find('select').attr("name","SignBoard[fishing_id]");
             $("#type" + thisVal).siblings().find('select').attr('name', '')
         });
 
@@ -140,7 +140,7 @@
 
             $("#from" + thisVal).attr("style","").siblings().attr('style', 'display: none');
 
-            $("#from" + thisVal).find('select').attr("name","Rignboard[from_fishing]");
+            $("#from" + thisVal).find('select').attr("name","SignBoard[from_fishing][]");
             $("#from" + thisVal).siblings().find('select').attr('name', '')
         });
         

@@ -12,6 +12,7 @@ namespace backend\models;
 use common\models\DayTask;
 use common\models\Fishing;
 use common\services\Request;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
@@ -24,6 +25,7 @@ class ExpertForm extends Model
     public $gives;
     public $num=0;
     public $type;
+    public $types;
     public static $boos;
     public $typeId;
     public $id;
@@ -38,7 +40,7 @@ class ExpertForm extends Model
             [['num'],'required'],
             [['num'], 'integer'],
             [['num'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'数量必须大于0'],
-            [['gives','num','fishings','type','typeId','id','enable'],'safe']
+            [['gives','num','fishings','type','typeId','id','enable','types'],'safe']
         ];
     }
     
@@ -51,7 +53,9 @@ class ExpertForm extends Model
             'gives' => '礼包',
             'fishings' => '选择鱼',
             'num' => '数量',
-            'enable'=>'状态'
+            'enable'=>'状态',
+            'type'=>'礼包',
+            'types'=>'类型',
         ];
     }
     
@@ -142,6 +146,7 @@ class ExpertForm extends Model
              */
             $url = \Yii::$app->params['Api'].'/control/updateEveryDayTask';
             $re = Request::request_post_raw($url,$JS);
+            
             if ($re['code']== 1){
                 $model =DayTask::findOne(['id'=>$this->id]);
                 $model->content=Json::encode($content);
@@ -159,6 +164,7 @@ class ExpertForm extends Model
     public function add($data = [])
     {
         if($this->load($data) && $this->validate()) {
+         
             if ($this->fishings<1){
                 return $this->addError('fishings','请选择鱼');
             }
@@ -224,6 +230,14 @@ class ExpertForm extends Model
                 return true;
             }
         }
+    }
+    
+    public static function getFishingType($data){
+      $datas =   Fishing::findOne(['id'=>$data]);
+      if($datas){
+          return $datas->type;
+      }
+          return 1;
     }
     
     

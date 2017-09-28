@@ -233,6 +233,31 @@ class DayTask extends Object
        return '';
     }
     
+    
+    public static function getFishingType($data){
+        $JSON = json_decode($data,true);
+        $fishing_id =$JSON['fishId'];
+        $re =  Fishing::findOne(['id'=>$fishing_id]);
+        if ($re){
+            if ($re->type ==1){
+               return '小鱼';
+            }
+            if ($re->type ==2){
+                return '中鱼';
+            }
+            if ($re->type ==3){
+                return '大鱼';
+            }
+            if ($re->type ==4){
+                return '金鱼';
+            }
+            if ($re->type ==5){
+                return 'BOOS';
+            }
+        }
+        return '';
+    }
+    
     /**
      *  基础任务详情
      */

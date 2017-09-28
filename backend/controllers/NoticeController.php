@@ -57,6 +57,7 @@ class NoticeController extends ObjectController
         if (\Yii::$app->request->isPost) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if ($model->add(\Yii::$app->request->post())) {
+                Notice::GetNotice();
                 return ['code' => 1, 'message' => '添加成功'];
             }
             $message = $model->getFirstErrors();
@@ -125,14 +126,15 @@ class NoticeController extends ObjectController
         $model = Notice::findOne($id);
         $data = [];
         $data['id'] = $model->id;
-        $datas = Json::encode($data);
-        $url = \Yii::$app->params['Api'] . '/control/deleteNotice';
-        $re = Request::request_post_raw($url, $datas);
-        if ($re['code'] == 1) {
-            $model->delete();
-            return ['code' => 1, 'message' => '删除成功'];
+        $re =  \common\models\Notice::findOne(['id'=>$model->id]);
+        if ($re){
+            $re->enable=0;
+            if ($re->save(false)){
+                $model->delete();
+                return ['code' => 1, 'message' => '删除成功'];
+            }
         }
-        return ['code' => 0, 'message' => '删除失败'];
+        return ['code' => 0, 'message' => '数据不同步'];
         
     }
     

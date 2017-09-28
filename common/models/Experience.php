@@ -254,4 +254,9 @@ class Experience extends  Object
        }
        return $grade+1;
     }
+    
+    public static function ex($m){
+       // floor((($model->grade-1)^3+20)/5*(($model->grade-1)*2+20)+30);
+       
+    }
 }

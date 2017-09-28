@@ -24,8 +24,44 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'fishing_id')->dropDownList(\common\models\SignBoard::$fishing)?>
-                <?php echo $form->field($model,'from_fishing')->dropDownList(\common\models\SignBoard::$fishing,['multiple'=>true])?>
+                <?php echo $form->field($model,'type')->dropDownList(\backend\models\Redpacket::$option)?>
+                <div>
+                    <div  id="type1" style="display: <?php echo $model->type!==1?'none':''?>">
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(1),['name'=>$model->type!==1?'':'SignBoard[fishing_id]'])?>
+                    </div>
+                    <div style="display: <?php echo $model->type!==2?'none':''?>" id="type2">
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(2),['name'=>$model->type!==2?'':'SignBoard[fishing_id]'])?>
+                    </div>
+                    <div style="display:<?php echo $model->type!==3?'none':''?>" id="type3">
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(3),['name'=>$model->type!==3?'':'SignBoard[fishing_id]'])?>
+                    </div>
+                    <div style="display:<?php echo $model->type!==4?'none':''?>" id="type4">
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(4),['name'=>$model->type!==4?'':'SignBoard[fishing_id]'])?>
+                    </div>
+                    <div style="display: <?php echo $model->type!==5?'none':''?>" id="type5">
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(5),['name'=>$model->type!==5?'':'SignBoard[fishing_id]'])?>
+                    </div>
+                </div>
+    
+                <?php echo $form->field($model,'from')->dropDownList(\backend\models\Redpacket::$option)?>
+                <div>
+
+                    <div id="from1" style="display: <?php echo $model->from!==1?'none':''?>">
+                        <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(1),['multiple'=>true,['name'=>$model->from!==1?'1':'SignBoard[from_fishing]']])?>
+                    </div>
+                    <div id="from2" style="display: <?php echo $model->from!==2?'none':''?>">
+                        <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(2),['multiple'=>true,['name'=>$model->from!==2?'1':'SignBoard[from_fishing]']])?>
+                    </div>
+                    <div id="from3" style="display: <?php echo $model->from!==3?'none':''?>">
+                        <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(3),['multiple'=>true,['name'=>$model->from!==3?'1':'SignBoard[from_fishing]']])?>
+                    </div>
+                    <div id="from4" style="display: <?php echo $model->from!==4?'none':''?>">
+                        <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(4),[['name'=>$model->from!==4?'1':'SignBoard[from_fishing]'],'multiple'=>true])?>
+                    </div>
+                    <div id="from5" style="display: <?php echo $model->from!==5?'none':''?>">
+                        <?php echo $form->field($model,'from_fishing')->dropDownList(\common\helps\players::getFishing(5),['multiple'=>true,['name'=>$model->from!==5?'1':'SignBoard[from_fishing]']])?>
+                    </div>
+                </div>
                 <?php echo $form->field($model,'number')?>
                 <?php echo $form->field($model,'probability')?>
                 <?php echo $form->field($model,'give_number',['inline'=>true])->checkboxList(\common\models\SignBoard::$give,['style'=>'margin-left: 113px;'])?>
@@ -93,6 +129,28 @@
             });
         });
 
+
+
+        $("#signboard-type").change(function(){
+            var thisVal = $(this).val();
+            var tempText = $('#signboard-type').find('option[value='+ thisVal +']');
+
+            $("#type" + thisVal).attr("style","").siblings().attr('style', 'display: none');
+
+            $("#type" + thisVal).find('select').attr("name","SignBoard[fishing_id]");
+            $("#type" + thisVal).siblings().find('select').attr('name', '')
+        });
+        
+        $("#signboard-from").change(function(){
+            var thisVal = $(this).val();
+            console.log(thisVal);
+            var tempText = $('#signboard-from').find('option[value='+ thisVal +']');
+
+            $("#from" + thisVal).attr("style","").siblings().attr('style', 'display: none');
+
+            $("#from" + thisVal).find('select').attr("name","SignBoard[from_fishing]");
+            $("#from" + thisVal).siblings().find('select').attr('name', '')
+        });
 
         //checkbox选中添加对应输入框
         var  checkbox_input =  $('#signboard-give_number').find('.checkbox-inline');

@@ -4,9 +4,12 @@ namespace common\models;
 
 use backend\models\Shop;
 use common\services\Request;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+use Symfony\Component\DomCrawler\Field\InputFormField;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use yii\web\ForbiddenHttpException;
 
 /**
  * This is the model class for table "{{%sign_board}}".
@@ -41,12 +44,12 @@ class SignBoard extends Object
     public function rules()
     {
         return [
-            [['number','probability','from_fishing'],'required'],
+            [['number','probability'],'required'],
             [['number', 'manage_id', 'updated_at','fishing_id'], 'integer'],
             [['number','probability'],'value'],
             [['name'], 'string'],
             [['manage_name'], 'string', 'max' => 20],
-            [['give_number','type','from_fishing','from'],'safe']
+            [['give_number','type','from_fishing','from','fishing_id'],'safe']
         ];
     }
     
@@ -178,7 +181,7 @@ class SignBoard extends Object
             $url = \Yii::$app->params['Api'].'/control/addFishTask';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
-                SignBoard::GetSign();
+               // SignBoard::GetSign();
                /* $this->from_fishing=Json::encode($this->from_fishing);
                 $this->give_number=Json::encode($send);
                 $this->updated_at        = time();
@@ -281,7 +284,42 @@ class SignBoard extends Object
         parent::__construct($config);
     }
     
-    public static function GetFishing(){
+    public static function GetFishtype($id){
+       $data =  Fishing::findOne(['id'=>$id]);
+       if ($data){
+           return $data->type;
+       }
+          return '';
+    }
     
+    
+    public static function GetFishfrom($c){
+        $data =  Fishing::findOne(['id'=>$c[0]]);
+        if ($data){
+            return $data->type;
+        }
+        return '';
+    }
+    
+    
+    public static function GetFishtypes($id){
+       $data = Fishing::findOne(['id'=>$id]);
+       if($data){
+           if ($data->type==1){
+               return '小鱼';
+           }
+           if ($data->type==2){
+               return '中鱼';
+           }
+           if ($data->type==3){
+               return '金鱼';
+           }
+           if ($data->type==4){
+               return '大鱼';
+           }
+           if ($data->type==5){
+               return 'BOOS';
+           }
+       }
     }
 }

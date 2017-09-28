@@ -45,8 +45,8 @@
                 <?php echo $form->field($model,'rate')->textInput(['placeholder'=>'出现概率0-100'])?>
                 <?php echo $form->field($model,'minnum')->textInput(['placeholder'=>'最小范围0.001'])?>
                 <?php echo $form->field($model,'maxnum')->textInput(['placeholder'=>'最大范围0.90'])?>
-                <?php echo $form->field($model,'floprateminnum')->textInput(['placeholder'=>'最小范围0.001'])?>
-                <?php echo $form->field($model,'flopratemaxnum')->textInput(['placeholder'=>'最大范围0.99'])?>
+                <?php echo $form->field($model,'dropmin')->textInput(['placeholder'=>'最小范围0.001'])?>
+                <?php echo $form->field($model,'dropmax')->textInput(['placeholder'=>'最大范围0.99'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

@@ -39,6 +39,7 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">任务名字</th>
+                                <th class="text-center">大小类型</th>
                                 <th class="text-center">内容</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center">状态</th>
@@ -52,6 +53,8 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i.'任务'?></td>
                                     <td class="text-center"><?= $value['name'] ?></td>
+                                  
+                                    <td class="text-center"><?= \common\models\DayTask::getFishingType($value['content'])?></td>
                                     <td class="text-center"><?= \common\models\DayTask::fishing($value['content'])?></td>
                                     <?php if (!empty($value['updated_at'])):?>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>

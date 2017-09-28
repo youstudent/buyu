@@ -25,8 +25,24 @@
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-           
-            <?php echo $form->field($model,'fishings')->dropDownList(\backend\models\ExpertForm::$boos)?>
+                <?php echo $form->field($model,'types')->dropDownList(\backend\models\Redpacket::$option)?>
+                <div>
+                    <div  id="type1">
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(1))?>
+                    </div>
+                    <div style="display: none" id="type2">
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(2),['name'=>''])?>
+                    </div>
+                    <div style="display: none" id="type3">
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(3),['name'=>''])?>
+                    </div>
+                    <div style="display: none" id="type4">
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(4),['name'=>''])?>
+                    </div>
+                    <div style="display: none" id="type5">
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(5),['name'=>''])?>
+                    </div>
+                </div>
             <?php echo $form->field($model,'num')?>
                 <div style="display: none">
         
@@ -88,6 +104,18 @@
                 },
             });
         });
+
+        $("#expertform-types").change(function(){
+            var thisVal = $(this).val();
+            var tempText = $('#expertform-types').find('option[value='+ thisVal +']');
+
+            $("#type" + thisVal).attr("style","").siblings().attr('style', 'display: none');
+
+            $("#type" + thisVal).find('select').attr("name","ExpertForm[fishings]");
+            $("#type" + thisVal).siblings().find('select').attr('name', '')
+        });
+        
+        
         //checkbox选中添加对应输入框
         var  checkbox_input =  $('#expertform-gives').find('.checkbox-inline');
         checkbox_input.click(function(){

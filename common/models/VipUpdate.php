@@ -304,8 +304,9 @@ class VipUpdate extends Object
             if (!empty($sign)) {
                 $pays['sign'] = $sign;
             }
-      
+            
             $payss = Json::encode($pays);
+            //var_dump($payss);EXIT;
            // var_dump($payss);exit;
             /**
              *

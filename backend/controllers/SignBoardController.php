@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\SignBoard;
 use common\services\Request;
+use Symfony\Component\DomCrawler\Field\InputFormField;
 use yii\data\Pagination;
 use yii\helpers\Json;
 use yii\web\Response;
@@ -120,12 +121,18 @@ class SignBoardController extends ObjectController
         $re = SignBoard::$give;
         foreach ($JSON as $key=>$value){
             if (array_key_exists($key,$re)){
-                $data[$key]=$value;
+                if ($value>0){
+                    $data[$key]=$value;
+                }
+               
             }
             if(is_array($value)){
                 foreach ($value as $K=>$v){
                     if (array_key_exists($v['toolId'],$re)){
-                        $data[$v['toolId']]=$v['toolNum'];
+                        if ($v['toolNum']>0){
+                            $data[$v['toolId']]=$v['toolNum'];
+                        }
+                        
                     }
                 }
             }
@@ -141,6 +148,8 @@ class SignBoardController extends ObjectController
         $model->from_fishing=$c;
         $model->give_number=$type;
         $model->probability=$model->probability/100;
+        $model->type = SignBoard::GetFishtype($model->fishing_id);
+        $model->from = SignBoard::GetFishfrom($c);
         return $this->render('edit',['model'=>$model,'data'=>$data]);
     }
     
@@ -188,12 +197,18 @@ class SignBoardController extends ObjectController
         $re = SignBoard::$give;
         foreach ($JSON as $key=>$value){
             if (array_key_exists($key,$re)){
-                $data[$re[$key]]=$value;
+                if ($value>0){
+                    $data[$re[$key]]=$value;
+                }
+                
             }
             if(is_array($value)){
                 foreach ($value as $K=>$v){
                     if (array_key_exists($v['toolId'],$re)){
-                        $data[$re[$v['toolId']]]=$v['toolNum'];
+                        if ($v['toolNum']>0){
+                            $data[$re[$v['toolId']]]=$v['toolNum'];
+                        }
+                       
                     }
                 }
             }

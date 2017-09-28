@@ -41,8 +41,8 @@ class Redpacket extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fishid', 'rate', 'minnum', 'maxnum','floprateminnum','flopratemaxnum'], 'required'],
-            [['fishid', 'rate', 'minnum', 'maxnum','type','floprateminnum','flopratemaxnum'], 'number'],
+            [['fishid', 'rate', 'minnum', 'maxnum','dropmin','dropmax'], 'required'],
+            [['fishid', 'rate', 'minnum', 'maxnum','type','dropmin','dropmax'], 'number'],
         ];
     }
 
@@ -58,8 +58,8 @@ class Redpacket extends \yii\db\ActiveRecord
             'minnum' => '掉落最小范围',
             'maxnum' => '掉落最大范围',
             'type' => '鱼类型',
-            'floprateminnum' => '掉落个数最小范围',
-            'flopratemaxnum' => '掉落个数最大范围',
+            'dropmin' => '掉落个数最小范围',
+            'dropmax' => '掉落个数最大范围',
         ];
     }
     
@@ -76,14 +76,14 @@ class Redpacket extends \yii\db\ActiveRecord
             if ($this->rate<0.01 || $this->rate>100){
                 return $this->addError('rate','出现概率在0.01-100之间');
             }
-            if ($this->minnum<0.001 || $this->minnum>1 || $this->maxnum<0.001 || $this->maxnum>1 || $this->floprateminnum<0.001 || $this->flopratemaxnum>1){
+            if ($this->minnum<0.001 || $this->minnum>1 || $this->maxnum<0.001 || $this->maxnum>1 || $this->dropmin<0.001 || $this->dropmax>1){
                 return $this->addError('minnum','区间在0.001-0.99之间');
             }
             $this->rate=$this->rate*100; //出现概率
             $this->minnum=$this->minnum*100;
             $this->maxnum=$this->maxnum*100;
-            $this->floprateminnum=$this->floprateminnum*100;
-            $this->flopratemaxnum=$this->flopratemaxnum*100;
+            $this->dropmin=$this->dropmin*100;
+            $this->dropmax=$this->dropmax*100;
             return $this->save();
         }
     }

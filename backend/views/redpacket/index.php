@@ -84,8 +84,8 @@ $this->title = Yii::t('app', 'redpacket_index') . '-' . Yii::$app->params['appNa
                                     <td class="text-center"><?=$value['rate']/100?>%</td>
                                     <td class="text-center"><?=$value['minnum']/100?>%</td>
                                     <td class="text-center"><?=$value['maxnum']/100?>%</td>
-                                    <td class="text-center"><?=$value['floprateminnum']/100?>%</td>
-                                    <td class="text-center"><?=$value['flopratemaxnum']/100?>%</td>
+                                    <td class="text-center"><?=$value['dropmin']/100?>%</td>
+                                    <td class="text-center"><?=$value['dropmax']/100?>%</td>
                                     <td class="text-center" style="width: 300px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['redpacket/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
