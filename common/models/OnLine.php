@@ -207,13 +207,11 @@ class OnLine extends \yii\db\ActiveRecord
                 $PrewarningValue->fishgold = 10000;
                 $PrewarningValue->gold = 100000;
                 $PrewarningValue->save(false);
-            } /*else {
+            }else {
                 if ($re->game_id == $row->id) {
-                    if ($row->gold <= $re->gold && $row->fishGold <= $re->fishgold) {
                         $new_data[] = $row->id;
-                    }
                 }
-            }*/
+            }
         }
         //var_dump($new_data);exit;
         $filed = 'GREATEST(`gold`,`diamond`,`fishGold`) as t,id,name,gold,diamond,fishGold';

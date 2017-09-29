@@ -151,6 +151,7 @@ class OneCannonForm extends Model
             $arr['id']=$this->id;
             $arr['typeId']=$this->typeId;
             $arr['content']=$content;
+            $arr['description']='';
             $JS = Json::encode($arr);
          
             

@@ -91,7 +91,7 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                         <?php if(empty($data)):?>
                             <div class="text-center m-t-lg clearfix wrapper-lg animated fadeInRightBig" id="galleryLoading">
                                 <h1><i class="fa fa-warning" style="color: red;font-size: 40px"></i></h1>
-                                <h4 class="text-muted"><?php echo sprintf(Yii::t('app','search_null'),'公告管理')?></h4>
+                                <h4 class="text-muted"><?php echo sprintf(Yii::t('app','search_null'),'解散管理')?></h4>
                                 <p class="m-t-lg"></p>
                             </div>
                         <?php endif;?>

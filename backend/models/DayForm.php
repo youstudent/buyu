@@ -122,6 +122,7 @@ class DayForm extends Model
             $arr['id']=$this->id;
             $arr['typeId']=$this->typeId;
             $arr['content']=$content;
+            $arr['description']='';
             $JS = Json::encode($arr);
             /**
              * 请求游戏服务端   修改数据

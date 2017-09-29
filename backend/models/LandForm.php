@@ -164,12 +164,14 @@ class LandForm extends Model
             $arr['id']=$this->id;
             $arr['typeId']=$this->typeId;
             $arr['content']=$content;
+            $arr['description']=$this->description;
             $JS = Json::encode($arr);
             $url = \Yii::$app->params['Api'].'/control/updateEveryDayTask';
             $re = Request::request_post_raw($url,$JS);
             if ($re['code']== 1){
                 $re= DayList::findOne(['type_id'=>$this->typeId]);
                 $re->status=$this->enable;
+                $re->description=$this->description;
                 $re->content=Json::encode($content);
                 $re->save(false);
                 return true;

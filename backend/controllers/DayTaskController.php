@@ -127,7 +127,6 @@ class DayTaskController extends ObjectController
             return ['code'=>0,'message'=>$message];
         
         }
-        
         $products = json_decode($model->content,true);
         $rows = Test::get($products['send']);
         $modelForm->id=$model->id;

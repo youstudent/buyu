@@ -5,6 +5,7 @@ namespace common\helps;
 
 use backend\models\Batteryrate;
 use backend\models\PrewarningValue;
+use backend\models\Redpacket;
 use backend\models\Time;
 use Codeception\Lib\Generator\Helper;
 use common\models\Fishing;
@@ -234,10 +235,46 @@ class players
      * @return array
      */
     public static function getFishing($type){
+        //根据类型查询所有的鱼
         $data = Fishing::find()->where(['type'=>$type])->asArray()->all();
-        //$da =[''=>'请选择'];
-        return  ArrayHelper::map($data,'id','name');
+        $data =  ArrayHelper::map($data,'id','name');
+        $datas =  Redpacket::find()->asArray()->all();
+        //查询所有已添加的鱼
+        $re  = ArrayHelper::map($datas,'fishid','fishid');
+        foreach ($re as $value){
+            //循环删除
+            if (array_key_exists($value,$data)){
+                unset($data[$value]);
+            }
+        }
+        return $data;
        
+    }
+    
+    
+    
+    /**
+     * 获取鱼群(添加红包鱼)
+     * @return array
+     */
+    public static function getFishingss($type){
+        //根据类型查询所有的鱼
+        $data = Fishing::find()->where(['type'=>$type])->asArray()->all();
+        $data =  ArrayHelper::map($data,'id','name');
+        return $data;
+        
+    }
+    
+    /**
+     * 根据 鱼的ID获取鱼的名字
+     * @param $id
+     * @return string
+     */
+    public static function getFishings($id){
+      $data =   Fishing::findOne(['id'=>$id]);
+      if ($data){
+          return $data->name;
+      }
     }
     
 }

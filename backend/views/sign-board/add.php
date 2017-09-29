@@ -27,19 +27,19 @@
                 <?php echo $form->field($model,'type')->dropDownList(\backend\models\Redpacket::$option)?>
                 <div>
                     <div  id="type1">
-                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(1))?>
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishingss(1))?>
                     </div>
                     <div style="display: none" id="type2">
-                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(2),['name'=>''])?>
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishingss(2),['name'=>''])?>
                     </div>
                     <div style="display: none" id="type3">
-                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(3),['name'=>''])?>
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishingss(3),['name'=>''])?>
                     </div>
                     <div style="display: none" id="type4">
-                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(4),['name'=>''])?>
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishingss(4),['name'=>''])?>
                     </div>
                     <div style="display: none" id="type5">
-                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishing(5),['name'=>''])?>
+                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishingss(5),['name'=>''])?>
                     </div>
                 </div>
     
@@ -47,19 +47,19 @@
                 <div>
                
                 <div id="from1">
-                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishing(1),['multiple'=>true])?>
+                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishingss(1))?>
                 </div>
                 <div id="from2" style="display: none">
-                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishing(2),['multiple'=>true,'name'=>''])?>
+                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishingss(2),['name'=>''])?>
                 </div>
                 <div id="from3" style="display: none">
-                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishing(3),['multiple'=>true,'name'=>''])?>
+                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishingss(3),['name'=>''])?>
                 </div>
                 <div id="from4" style="display: none">
-                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishing(4),['multiple'=>true,'name'=>''])?>
+                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishingss(4),['name'=>''])?>
                 </div>
                 <div id="from5" style="display: none">
-                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishing(5),['multiple'=>true,'name'=>''])?>
+                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishingss(5),['name'=>''])?>
                 </div>
                 </div>
                 

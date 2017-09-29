@@ -182,7 +182,7 @@ class MonitoringController extends ObjectController
         if (\Yii::$app->request->isPost) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if ($model->editRate(\Yii::$app->request->post())) {
-                return ['code' => 1, 'message' => '修改成功'];
+                return ['code' => 1, 'message' => '指派成功'];
             }
             $message = $model->getFirstErrors();
             $message = reset($message);

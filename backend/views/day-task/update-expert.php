@@ -33,19 +33,19 @@
                 <?php echo $form->field($model,'types')->dropDownList(\backend\models\Redpacket::$option)?>
                 <div>
                     <div  id="type1" style="display: <?php echo $model->types!==1?'none':''?>">
-                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(1),['name'=>$model->types!==1?'':'ExpertForm[fishings]'])?>
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishingss(1),['name'=>$model->types!==1?'':'ExpertForm[fishings]'])?>
                     </div>
                     <div style="display: <?php echo $model->types!==2?'none':''?>" id="type2">
-                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(2),['name'=>$model->types!==2?'':'ExpertForm[fishings]'])?>
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishingss(2),['name'=>$model->types!==2?'':'ExpertForm[fishings]'])?>
                     </div>
                     <div style="display:<?php echo $model->types!==3?'none':''?>" id="type3">
-                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(3),['name'=>$model->types!==3?'':'ExpertForm[fishings]'])?>
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishingss(3),['name'=>$model->types!==3?'':'ExpertForm[fishings]'])?>
                     </div>
                     <div style="display:<?php echo $model->types!==4?'none':''?>" id="type4">
-                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(4),['name'=>$model->types!==4?'':'ExpertForm[fishings]'])?>
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishingss(4),['name'=>$model->types!==4?'':'ExpertForm[fishings]'])?>
                     </div>
                     <div style="display: <?php echo $model->types!==5?'none':''?>" id="type5">
-                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(5),['name'=>$model->types!==5?'':'ExpertForm[fishings]'])?>
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishingss(5),['name'=>$model->types!==5?'':'ExpertForm[fishings]'])?>
                     </div>
                 </div>
                 <?php echo $form->field($model,'num')?>

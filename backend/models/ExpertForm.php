@@ -139,6 +139,7 @@ class ExpertForm extends Model
             $arr['enable']=$this->enable;
             $arr['id']=$this->id;
             $arr['typeId']=$this->typeId;
+            $arr['description']='';
             $arr['content']=$content;
             $JS = Json::encode($arr);
             /**

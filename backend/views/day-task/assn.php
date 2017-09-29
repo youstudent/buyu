@@ -29,6 +29,7 @@
                     <?php echo $form->field($model,'typeId')->hiddenInput()?>
                     <?php echo $form->field($model,'id')->hiddenInput()?>
                 </div>
+                <?php echo $form->field($model,'description')?>
                 <?php echo $form->field($model,'num')?>
                 <?php echo $form->field($model,'enable')->dropDownList(\backend\models\LandForm::$enables)?>
                 <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\LandForm::$give,['style'=>'margin-left: 113px;'])?>

@@ -135,6 +135,9 @@ class SignBoard extends Object
             /**
              *  将接收到的数据进行 拼装发送给游戏服务器
              */
+            if (empty($this->from_fishing)){
+                return $this->addError('from_fishing','任务鱼不能为空');
+            }
             $datas=['gold','diamond','fishGold'];
             $pays=[];
             $send=[];
@@ -208,6 +211,9 @@ class SignBoard extends Object
             /**
              * 接收数据  拼装
              */
+           /* if (empty($this->from_fishing)){
+                return $this->addError('from_fishing','任务鱼不能为空');
+            }*/
             $datas=['gold','diamond','fishGold'];
             $pays=[];
             $send=[];
@@ -218,7 +224,7 @@ class SignBoard extends Object
             $pays['fishId']=$this->fishing_id;
             $pays['fishNum']=$this->number;
             $pays['rate']=$this->probability*100;
-            $pays['fromFish']=$this->from_fishing;
+            $pays['fromFish']=[$this->from_fishing];
             foreach ($data as $K=>$v){
                 if (is_array($v)){
                     foreach ($v as $kk=>$VV){
@@ -246,7 +252,8 @@ class SignBoard extends Object
             if (!empty($send)){
                 $pays['send']=$send;
             }
-            
+            //D:\game_standard-master\common\models\SignBoard.php:184:string '{"fishId":"1","fishNum":"111","rate":100,"fromFish":["1"]}'
+            //D:\game_standard-master\common\models\SignBoard.php:261:string '{"id":"30","fishId":"1","fishNum":"111","rate":100,"fromFish":"18","description":""}'
             /**
              * 请求游戏服务端   修改数据
              */

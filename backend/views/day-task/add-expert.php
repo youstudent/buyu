@@ -28,19 +28,19 @@
                 <?php echo $form->field($model,'types')->dropDownList(\backend\models\Redpacket::$option)?>
                 <div>
                     <div  id="type1">
-                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(1))?>
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishingss(1))?>
                     </div>
                     <div style="display: none" id="type2">
-                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(2),['name'=>''])?>
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishingss(2),['name'=>''])?>
                     </div>
                     <div style="display: none" id="type3">
-                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(3),['name'=>''])?>
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishingss(3),['name'=>''])?>
                     </div>
                     <div style="display: none" id="type4">
-                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(4),['name'=>''])?>
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishingss(4),['name'=>''])?>
                     </div>
                     <div style="display: none" id="type5">
-                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishing(5),['name'=>''])?>
+                        <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishingss(5),['name'=>''])?>
                     </div>
                 </div>
             <?php echo $form->field($model,'num')?>

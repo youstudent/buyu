@@ -55,8 +55,8 @@ class RobotForm extends Model
     public function editRate($data)
     {
         if ($this->load($data) && $this->validate()) {
-            if ($this->rate <=0.01  || $this->num <=0.01 || $this->rate >100 || $this->num >3){
-                return $this->addError('rate','命中率在0.01-100之间,数量在1-3之间');
+            if ($this->rate <0.001  || $this->num <0.001 || $this->rate >100 || $this->num >3){
+                return $this->addError('rate','命中率在0.001-100之间,数量在1-3之间');
             }
             /*{
                 playerId: 1,

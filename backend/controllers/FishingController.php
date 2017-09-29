@@ -90,6 +90,7 @@ class FishingController extends ObjectController
     }
     
     
+    
     //同步数据
     public function actionGetfishing(){
         players::actionPermission();

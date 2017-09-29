@@ -236,7 +236,7 @@ class VipUpdate extends Object
             /**
              * 解析 升级
              */
-            
+           // "tools":[{"toolId":2,"toolNum":"1"},{"toolId":3,"toolNum":"1"}]},"sign":{"gold":"1000","fishGold":"1000"}}
             if (!empty($data['VipUpdate'])) {
                 /**
                  *  循环每日礼包
@@ -265,6 +265,7 @@ class VipUpdate extends Object
                 /**
                  *  循环升级礼包
                  */
+                $s=0;
                 if (array_key_exists('upgrade',$update= $data['VipUpdate'])){
                     $update= $data['VipUpdate']['upgrade'];
                     $updates =[];
@@ -284,14 +285,13 @@ class VipUpdate extends Object
                             }
                             $tool['toolId'] = $key;
                             $tool['toolNum'] = $value;
-                            $toolss[$i] = $tool;
-                            $i++;
+                            $toolss[$s] = $tool;
+                            $s++;
                         }
                     }
                 }
                 
             }
-    
             if (!empty($tools)) {
                 $sign['tools'] = $tools;
             }
@@ -301,13 +301,12 @@ class VipUpdate extends Object
             if (!empty($levelUp)) {
                 $pays['levelUp'] = $levelUp;
             }
+           
             if (!empty($sign)) {
                 $pays['sign'] = $sign;
             }
-            
             $payss = Json::encode($pays);
             //var_dump($payss);EXIT;
-           // var_dump($payss);exit;
             /**
              *
              * 请求游戏服务端  Vip升级福利

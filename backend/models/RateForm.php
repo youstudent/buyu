@@ -50,8 +50,12 @@ class RateForm extends Model
     public function editRate($data)
     {
         if ($this->load($data) && $this->validate()) {
-            if ($this->player_rate <0  || $this->room_rate <0 || $this->player_rate >100 || $this->room_rate >100){
-                return $this->addError('player_rate','命中率在0-100之间');
+            if ((int)$this->room_rate >100){
+                return $this->addError('player_rate','房间命中率在0.001-100之间');
+            }
+            
+            if ((int)$this->player_rate >100){
+                return $this->addError('player_rate','命中率在0.001-100之间');
             }
             //修改玩家和房间的命中率
             $redis = players::getReids();

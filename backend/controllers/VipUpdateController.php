@@ -5,6 +5,7 @@ namespace backend\controllers;
 
 use common\helps\players;
 use common\models\VipUpdate;
+use Symfony\Component\DomCrawler\Field\InputFormField;
 use yii\filters\AccessControl;
 use yii\web\Response;
 
@@ -221,18 +222,6 @@ class VipUpdateController extends ObjectController
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
         $model = VipUpdate::findOne($id);
-        if(\Yii::$app->request->isPost)
-        {
-            \Yii::$app->response->format = Response::FORMAT_JSON;
-            if($model->edit(\Yii::$app->request->post()))
-            {
-                return ['code'=>1,'message'=>'修改成功'];
-            }
-            $message = $model->getFirstErrors();
-            $message = reset($message);
-            return ['code'=>0,'message'=>$message];
-            
-        }
         $give_day = json_decode($model->give_day,true);  // 每日赠送礼包
         $give_upgrade = json_decode($model->give_upgrade,true);  //升级礼包
         $datas = [];
@@ -244,12 +233,18 @@ class VipUpdateController extends ObjectController
          */
         foreach ($give_day as $key=>$value){
             if (array_key_exists($key,$re)){
-                $data[$key]=$value;
+                if ($value>0){
+                    $data[$key]=$value;
+                }
+               
             }
             if(is_array($value)){
                 foreach ($value as $K=>$v){
                     if (array_key_exists($v['toolId'],$re)){
-                        $data[$v['toolId']]=$v['toolNum'];
+                        if ($v['toolNum']>0){
+                            $data[$v['toolId']]=$v['toolNum'];
+                        }
+                       
                     }
                 }
             }
@@ -266,13 +261,19 @@ class VipUpdateController extends ObjectController
         
         foreach ($give_upgrade as $key=>$value){
             if (array_key_exists($key.$i,$res)){
-                $datas[$key.$i]=$value;
+                if ($value>0){
+                    $datas[$key.$i]=$value;
+                }
+               
             }
             if(is_array($value)){
                 
                 foreach ($value as $K=>$v){
                     if (array_key_exists($v['toolId'].$i,$res)){
-                        $datas[$v['toolId'].$i]=$v['toolNum'];
+                        if ($v['toolNum']>0){
+                            $datas[$v['toolId'].$i]=$v['toolNum'];
+                        }
+                        
                     }
                 }
             }
@@ -284,6 +285,6 @@ class VipUpdateController extends ObjectController
         }
         $model->give_day=$type;  //每日礼包key值
         $model->give_upgrade=$give_upgrade;  //升级礼包key值
-        return $this->render('Prize',['model'=>$model,'data'=>$data,'datas'=>$datas]);
+        return $this->render('prize',['model'=>$model,'data'=>$data,'datas'=>$datas]);
     }
 }

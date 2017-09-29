@@ -80,7 +80,7 @@ $this->title = Yii::t('app', 'redpacket_index') . '-' . Yii::$app->params['appNa
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?=\common\helps\players::getFishing($value)[$value['fishid']]?></td>
+                                    <td class="text-center"><?=\common\helps\players::getFishings($value['fishid'])?></td>
                                     <td class="text-center"><?=$value['rate']/100?>%</td>
                                     <td class="text-center"><?=$value['minnum']/100?>%</td>
                                     <td class="text-center"><?=$value['maxnum']/100?>%</td>

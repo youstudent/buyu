@@ -76,8 +76,17 @@ class Redpacket extends \yii\db\ActiveRecord
             if ($this->rate<0.01 || $this->rate>100){
                 return $this->addError('rate','出现概率在0.01-100之间');
             }
-            if ($this->minnum<0.001 || $this->minnum>1 || $this->maxnum<0.001 || $this->maxnum>1 || $this->dropmin<0.001 || $this->dropmax>1){
-                return $this->addError('minnum','区间在0.001-0.99之间');
+            if ($this->minnum<0.01 || $this->minnum>100 || $this->maxnum<0.01 || $this->maxnum>100 ){
+                return $this->addError('minnum','掉落区间在0.01-100之间');
+            }
+            if ($this->dropmin<0.001 || $this->dropmax>100 || $this->dropmin>100 || $this->dropmax<0.001){
+                return $this->addError('minnum','个数区间在0.001-100之间');
+            }
+            if ($this->minnum>$this->maxnum){
+                return $this->addError('minnum','掉落最小区间小于大区间');
+            }
+            if ($this->dropmin>$this->dropmax){
+                return $this->addError('minnum','个数最小区间小于大区间');
             }
             $this->rate=$this->rate*100; //出现概率
             $this->minnum=$this->minnum*100;

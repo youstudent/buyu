@@ -31,7 +31,7 @@ class Fishing extends \yii\db\ActiveRecord
         return [
             [['rate','groupNum','cost','ariseRate','ex','aliveTime'],'required'],
             [['id','groupNum','aliveTime','cost','ex','aliveTime'], 'integer'],
-            [['groupNum','aliveTime','cost','ex'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'修改数据必须大于0'],
+            [['groupNum','aliveTime','ex'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'修改数据必须大于0'],
             [['name'], 'string', 'max' => 255],
             [['updated_at','type'],'safe'],
             [['rate','ariseRate'],'number'],
@@ -115,11 +115,14 @@ class Fishing extends \yii\db\ActiveRecord
     public function edit($data = []){
         if($this->load($data) && $this->validate())
         {
-            if ($this->rate>100 || $this->rate<0){
-                return $this->addError('rate','击杀概率0-100之间');
+            if ($this->rate>100 || $this->rate<0.01){
+                return $this->addError('rate','击杀概率0.01-100之间');
             }
-            if ($this->ariseRate>100 || $this->ariseRate<0){
-                return $this->addError('ariseRate','出现概率0-100之间');
+            if ($this->ariseRate>100 || $this->ariseRate<0.01){
+                return $this->addError('ariseRate','出现概率0.01-100之间');
+            }
+            if ($this->rate>10000 || $this->rate<0.01){
+                return $this->addError('rate','价值0.01-10000之间');
             }
             $data=[];
             $data['id']=$this->id;
