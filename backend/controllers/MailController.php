@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use backend\models\Email;
+use common\helps\getgift;
 use common\models\Mail;
 use common\services\Request;
 use yii\helpers\Json;
@@ -16,7 +17,7 @@ class MailController extends ObjectController
      */
     public function actionIndex()
     {
-        $model = new Mail();
+        $model = new Email();
         $data = $model->getList(\Yii::$app->request->get());
         return $this->render('index',$data);
     }
@@ -29,7 +30,7 @@ class MailController extends ObjectController
     public function actionAdd()
     {
         $this->layout = false;
-        $model = new Mail();
+        $model = new Email();
         if(\Yii::$app->request->isPost)
         {
             \Yii::$app->response->format = Response::FORMAT_JSON;
@@ -46,35 +47,26 @@ class MailController extends ObjectController
     }
     
     
-    //奖品内容的查看
+    /**
+     * @return string
+     */
     public function actionPrize(){
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = Mail::findOne($id);
-        $JSON = json_decode($model->number,true);
-        $data  =[];
-        $re = Mail::$give;
-        foreach ($JSON as $key=>$value){
-            if (array_key_exists($key,$re)){
-                $data[$re[$key]]=$value;
-            }
-            if(is_array($value)){
-                foreach ($value as $K=>$v){
-                    if (array_key_exists($v['toolId'],$re)){
-                        $data[$re[$v['toolId']]]=$v['toolNum'];
-                    }
-                }
-            }
-        
-        }
+        $model = Email::findOne($id);
+        $data =  getgift::prize($model);
         return $this->render('prize',['model'=>$model,'data'=>$data]);
     }
     
     
+    /**
+     * 查看邮件内容
+     * @return string
+     */
     public function actionContent(){
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = Mail::findOne($id);
+        $model = Email::findOne($id);
         return $this->render('content',['model'=>$model]);
     }
     
@@ -89,13 +81,11 @@ class MailController extends ObjectController
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $id = \Yii::$app->request->get('id');
          $data =  Email::findOne(['id'=>$id]);
-        $model = Mail::findOne($data->id);
         if ($data){
             $data->delete();
-            $model->delete();
             return ['code'=>1,'message'=>'删除成功'];
         }
-        return ['code'=>0,'message'=>'数据不同步'];
+        return ['code'=>0,'message'=>'数据异常'];
        
     }
 

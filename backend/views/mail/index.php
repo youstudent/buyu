@@ -75,9 +75,7 @@ $this->title = Yii::t('app', 'mail_index') . '-' . Yii::$app->params['appName'];
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">标题</th>
                                 <th class="text-center">内容</th>
-                                <th class="text-center">是否有奖励</th>
                                 <th class="text-center">发布时间</th>
-                                <th class="text-center">状态</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -91,15 +89,7 @@ $this->title = Yii::t('app', 'mail_index') . '-' . Yii::$app->params['appName'];
                                         <a href="<?php echo \yii\helpers\Url::to(['mail/content', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看内容</a>
                                     </td>
-                                    <td class="text-center"><?= $value['yes_no']==0?'否':'是'; ?></td>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['created_at']) ?></td>
-                                    <td class="text-center" style="border-right: 0px;">
-                                        <?php if ($value['status'] == 1): ?>
-                                            <span class="badge bg-success">成功</span>
-                                        <?php elseif ($value['status'] == 0): ?>
-                                            <span class="badge bg-danger">失败</span>
-                                        <?php endif; ?>
-                                    </td>
+                                    <td class="text-center"><?= $value['createDate'] ?></td>
                                     <td class="text-center" style="width: 200px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['mail/prize', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>

@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\Fish;
 use common\helps\players;
 use common\models\Fishing;
 use yii\data\Pagination;
@@ -12,44 +13,24 @@ use yii\web\Response;
 
 class FishingController extends ObjectController
 {
-  /* public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['edit','get-fishing'],
-                'rules' => [
-                    [
-                        'actions' => ['edit','get-fishing'],
-                        'allow' => true,
-                        'matchCallback' => function ($rule, $action) {
-                           return \Yii::$app->session->get('manageId')==\Yii::$app->params['pa']->id;
-                        }
-                    ],
-                    
-                ],
-            ],
-        ];
-    }*/
     /**
      * 初始化显示列表
      * @return string
      */
     public function actionIndex()
     {
-        // Fishing::GetFishing();
-        $data = new Fishing();
+        $data = new Fish();
         $model = $data::find();
         if (\Yii::$app->request->get('show') == 1) {
-            $model->andWhere(["type"=>1]);
+            $model->andWhere(["fishtype"=>1]);
         } elseif (\Yii::$app->request->get('show') == 2) {
-            $model->andWhere(["type"=>2]);
+            $model->andWhere(["fishtype"=>2]);
         }elseif (\Yii::$app->request->get('show') == 3) {
-            $model->andWhere(["type"=>3]);
+            $model->andWhere(["fishtype"=>3]);
         }elseif (\Yii::$app->request->get('show') == 4) {
-            $model->andWhere(["type"=>4]);
+            $model->andWhere(["fishtype"=>4]);
         }elseif (\Yii::$app->request->get('show') == 5) {
-            $model->andWhere(["type"=>5]);
+            $model->andWhere(["fishtype"=>5]);
         }
         $pages = new Pagination(
             [
@@ -71,7 +52,7 @@ class FishingController extends ObjectController
         players::actionPermission();
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = Fishing::findOne($id);
+        $model = Fish::findOne($id);
         if(\Yii::$app->request->isPost)
         {
             \Yii::$app->response->format = Response::FORMAT_JSON;
@@ -85,7 +66,7 @@ class FishingController extends ObjectController
             
         }
         $model->rate=$model->rate/100;
-        $model->ariseRate=$model->ariseRate/100;
+        $model->ariserate=$model->ariserate/100;
         return $this->render('edit',['model'=>$model]);
     }
     

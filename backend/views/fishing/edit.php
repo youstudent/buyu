@@ -25,12 +25,12 @@
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'name')->textInput(['readonly'=>\common\helps\players::EditPermission()])?>
-                <?php echo $form->field($model,'type')->dropDownList(\common\models\Fishing::$give_type)?>
+                <?php echo $form->field($model,'fishtype')->dropDownList(\backend\models\Fish::$give_type)?>
                 <?php echo $form->field($model,'rate')?>
-                <?php echo $form->field($model,'groupNum')?>
+                <?php echo $form->field($model,'groupnum')?>
                 <?php echo $form->field($model,'aliveTime')?>
                 <?php echo $form->field($model,'cost')?>
-                <?php echo $form->field($model,'ariseRate')?>
+                <?php echo $form->field($model,'ariserate')?>
                 <?php echo $form->field($model,'ex')?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>

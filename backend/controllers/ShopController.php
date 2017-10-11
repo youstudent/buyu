@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use backend\models\Shop;
+use backend\models\Toolinfo;
 use yii\web\Response;
 
 class ShopController extends ObjectController
@@ -10,7 +11,7 @@ class ShopController extends ObjectController
     public function actionIndex()
     {
         
-        $data = Shop::find()->orderBy('jewel_number ASC')->asArray()->all();
+        $data = Toolinfo::find()->orderBy('unitprice ASC')->asArray()->all();
         
         return $this->render('index', ['data' => $data]);
     }
@@ -24,7 +25,7 @@ class ShopController extends ObjectController
     {
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = Shop::findOne($id);
+        $model = Toolinfo::findOne($id);
         if (\Yii::$app->request->isPost) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if ($model->edit(\Yii::$app->request->post())) {
@@ -36,19 +37,6 @@ class ShopController extends ObjectController
             
         }
         return $this->render('edit', ['model' => $model]);
-    }
-    
-    
-    //同步数据
-    public function actionGetshop()
-    {
-        $this->layout = false;
-        \Yii::$app->response->format = Response::FORMAT_JSON;
-        $code = Shop::GetShop();
-        if ($code == 1) {
-            return ['code' => 1, 'message' => '同步成功'];
-        }
-        return ['code' => 0, 'message' => '同步失败'];
     }
     
 }

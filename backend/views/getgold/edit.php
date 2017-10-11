@@ -24,9 +24,9 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'lowest')?>
-                <?php echo $form->field($model,'number')?>
-                <?php echo $form->field($model,'count')?>
+                <?php echo $form->field($model,'mingold')?>
+                <?php echo $form->field($model,'gold')?>
+                <?php echo $form->field($model,'receivednum')?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

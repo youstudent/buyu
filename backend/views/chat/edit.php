@@ -24,8 +24,8 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'content')->textarea(['placeholder'=>'内容'])?>
-                <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
+                <?php echo $form->field($model,'message')->textarea(['placeholder'=>'内容'])?>
+                <?php echo $form->field($model,'useable')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

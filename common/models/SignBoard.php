@@ -329,4 +329,13 @@ class SignBoard extends Object
            }
        }
     }
+    
+    
+    public static function fromfishing($id){
+      $data   =  Fishing::findOne(['id'=>$id]);
+      if ($data){
+          return $data->name;
+      }
+          return '';
+    }
 }

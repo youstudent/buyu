@@ -35,7 +35,7 @@ class Fishing extends \yii\db\ActiveRecord
             [['name'], 'string', 'max' => 255],
             [['updated_at','type'],'safe'],
             [['rate','ariseRate'],'number'],
-            [['rate','ariseRate'],'vanmuber']
+            
         ];
     }
     

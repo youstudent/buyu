@@ -24,13 +24,12 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'name')->textInput(['readonly'=>true])?>
-                <?php echo $form->field($model,'number')?>
-                <?php echo $form->field($model,'jewel_number')?>
-                <?php echo $form->field($model,'level')?>
-                <?php echo $form->field($model,'coolDown')?>
+                <?php echo $form->field($model,'toolname')->textInput(['readonly'=>true])?>
+                <?php echo $form->field($model,'unitprice')?>
+                <?php echo $form->field($model,'minvip')?>
+                <?php echo $form->field($model,'cooldown')?>
                 <?php echo $form->field($model,'lastTime')?>
-                <?php echo $form->field($model,'toolDescript')?>
+                <?php echo $form->field($model,'tooldescript')?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

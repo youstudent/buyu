@@ -38,8 +38,6 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                             </div>
                             <input type="hidden" name="Agency[searchstatus]" value="" id="status">
                             <!--筛选状态 全部|正常|封停 结束-->
-                            <a href="<?php echo \yii\helpers\Url::to(['notice/getnotice']) ?>"
-                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
                         </div>
                         <div class="col-sm-3 text-right">
                             <a href="<?= \yii\helpers\Url::to(['notice/add']) ?>" class="btn btn-primary"
@@ -74,24 +72,24 @@ $this->title = Yii::t('app', 'notice_index') . '-' . Yii::$app->params['appName'
                                         data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-info">查看内容</a>
                                     </td>
                                     <td class="text-center">
-                                    <?php if ($value['location'] == 1): ?>
+                                    <?php if ($value['noticetype'] == 1): ?>
                                         <span class="text-center">登录公告</span>
-                                    <?php elseif ($value['location'] == 2): ?>
+                                    <?php elseif ($value['noticetype'] == 2): ?>
                                         <span class="text-center">大厅公告</span>
                                     <?php else:?>
                                         <span class="text-center">滚动公告</span>
                                     <?php endif; ?>
                                     </td>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['time']) ?></td>
+                                    <td class="text-center"><?php echo $value['createDate']?></td>
                                     <td class="text-center" style="border-right: 0px;">
-                                        <?php if ($value['status'] == 1): ?>
+                                        <?php if ($value['enable'] == 1): ?>
                                             <span class="badge bg-success">显示</span>
-                                        <?php elseif ($value['status'] == 0): ?>
+                                        <?php elseif ($value['enable'] == 0): ?>
                                             <span class="badge bg-danger">隐藏</span>
                                         <?php endif; ?>
                                     </td>
                                     <td class="text-center" style="width: 300px;">
-                                        <?php if ($value['location']==2):?>
+                                        <?php if ($value['noticetype']==2):?>
                                         <a href="<?php echo \yii\helpers\Url::to(['notice/prize', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
                                         <?php endif?>

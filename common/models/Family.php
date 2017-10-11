@@ -163,7 +163,7 @@ class Family extends \yii\db\ActiveRecord
             'password' => '密码',
             'gold' => '金币',
             'diamond' => '钻石',
-            'fishGold' => '鱼币',
+            'fishGold' => '宝石',
             'pay_gold_config' => '类型',
             'pay_gold' => '数量',
         ];
@@ -313,9 +313,14 @@ class Family extends \yii\db\ActiveRecord
      */
      public function edit($data = []){
          if ($this->load($data) && $this->validate()){
+             $agency = Agency::findOne(['family_id'=>$this->id]);
+             if ($this->password){
+                 $agency->password=$this->password;
+             }
+             $agency->save(false);
              $transaction  = \Yii::$app->commondb->beginTransaction();
              try{
-                 $agency = Agency::findOne(['family_id'=>$this->id]);
+                
                  if ($agency==false || $agency== null){
                      return $this->addError('id','族长未找到');
                  }
@@ -324,7 +329,6 @@ class Family extends \yii\db\ActiveRecord
                      return $this->addError('id','玩家为找到');
                  }
                  if ($this->password){
-                     $agency->password=$this->password;
                      $player->pwd=$this->password;
                  }
                  $agency->phone=$this->phone;
@@ -400,9 +404,12 @@ class Family extends \yii\db\ActiveRecord
                 }
                 if ($this->pay_gold_config ==1){
                    $player->gold=($player->gold+$this->pay_gold);
+                }elseif ($this->pay_gold_config==2){
+                    $player->diamond=($player->diamond+$this->pay_gold);
                 }else{
-                   $player->diamond=($player->diamond+$this->pay_gold);
+                    $player->fishGold=($player->fishGold+$this->pay_gold);
                 }
+               
                 if ($player->save() ==false){
                     throw  new \Exception("充值失败");
                 }
@@ -451,12 +458,20 @@ class Family extends \yii\db\ActiveRecord
                         return $this->addError('pay_gold','玩家金币不足');
                     }
                     $player->gold=($player->gold-$this->pay_gold);
-                }else{
+                }else if ($this->pay_gold_config ==2){
                     if ($player->diamond<$this->pay_gold){
                         return $this->addError('pay_gold','玩家钻石不足');
                     }
                     $player->diamond=($player->diamond-$this->pay_gold);
+                }else{
+                    if ($player->fishGold<$this->pay_gold){
+                        return $this->addError('pay_gold','玩家钻石不足');
+                    }
+                    $player->fishGold=($player->fishGold-$this->pay_gold);
                 }
+                
+                
+                
                 if ($player->save() ==false){
                     throw  new \Exception("扣除失败");
                 }

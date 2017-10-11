@@ -23,11 +23,11 @@
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'location')->dropDownList([1=>'登录公告',2=>'大厅公告',3=>'滚动公告'])?>
+                <?php echo $form->field($model,'noticetype')->dropDownList([1=>'登录公告',2=>'大厅公告',3=>'滚动公告'])?>
                 <?php echo $form->field($model,'content')->textarea(['placeholder'=>'内容'])?>
-                <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
+                <?php echo $form->field($model,'enable')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
             <div class="dis" style="display: none">
-                <?php echo $form->field($model,'get_type',['inline'=>true])->checkboxList(\backend\models\Notice::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'get_type',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
             </div>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
@@ -85,9 +85,9 @@
             });
         });
         
-    $("#notice-location").change(function(){
+    $("#notices-noticetype").change(function(){
      var thisVal = $(this).val();
-     var tempText = $('#notice-location').find('option[value='+ thisVal +']');
+     var tempText = $('#notices-noticetype').find('option[value='+ thisVal +']');
      if(thisVal==2){
         $(".dis").attr("style","");
      }else{
@@ -97,11 +97,11 @@
     });
         
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#notice-get_type').find('.checkbox-inline');
+        var  checkbox_input =  $('#notices-get_type').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'Notice['+ _this.find('input').val()+']';
+            var input_name = 'Notices[type]['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){

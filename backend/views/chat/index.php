@@ -38,8 +38,6 @@ $this->title = Yii::t('app', 'chat_index') . '-' . Yii::$app->params['appName'];
                             </div>
                             <input type="hidden" name="Agency[searchstatus]" value="" id="status">
                             <!--筛选状态 全部|正常|封停 结束-->
-                            <a href="<?php echo \yii\helpers\Url::to(['chat/getchat']) ?>"
-                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
                         </div>
                         <div class="col-sm-3 text-right">
                             <a href="<?= \yii\helpers\Url::to(['chat/add']) ?>" class="btn btn-primary"
@@ -56,7 +54,6 @@ $this->title = Yii::t('app', 'chat_index') . '-' . Yii::$app->params['appName'];
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">内容</th>
-                                <th class="text-center">添加时间</th>
                                 <th class="text-center">状态</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
@@ -67,12 +64,11 @@ $this->title = Yii::t('app', 'chat_index') . '-' . Yii::$app->params['appName'];
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?= $value['content'] ?></td>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['reg_time']) ?></td>
+                                    <td class="text-center"><?= $value['message'] ?></td>
                                     <td class="text-center" style="border-right: 0px;">
-                                        <?php if ($value['status'] == 1): ?>
+                                        <?php if ($value['useable'] == 1): ?>
                                             <span class="badge bg-success">显示</span>
-                                        <?php elseif ($value['status'] == 0): ?>
+                                        <?php elseif ($value['useable'] == 0): ?>
                                             <span class="badge bg-danger">隐藏</span>
                                         <?php endif; ?>
                                     </td>

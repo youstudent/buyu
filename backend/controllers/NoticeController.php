@@ -8,6 +8,7 @@
 namespace backend\controllers;
 
 use backend\models\Notice;
+use backend\models\Notices;
 use common\services\Request;
 use yii\data\Pagination;
 use yii\helpers\Json;
@@ -27,12 +28,12 @@ class NoticeController extends ObjectController
     public function actionIndex()
     
     {
-        $data = new Notice();
+        $data = new Notices();
         $model = $data::find();
         if (\Yii::$app->request->get('show') == 1) {
-            $model->andWhere(["status" => 1]);
+            $model->andWhere(["enable" => 1]);
         } else if (\Yii::$app->request->get('show') == 0) {
-            $model->andWhere(["status" => 0]);
+            $model->andWhere(["enable" => 0]);
         }
         $pages = new Pagination(
             [
@@ -40,7 +41,7 @@ class NoticeController extends ObjectController
                 'pageSize' => \Yii::$app->params['pageSize']
             ]
         );
-        $data = $model->limit($pages->limit)->offset($pages->offset)->asArray()->all();
+        $data = $model->limit($pages->limit)->offset($pages->offset)->asArray()->orderBy('id DESC')->all();
         
         return $this->render('index', ['data' => $data, 'pages' => $pages]);
     }
@@ -53,11 +54,11 @@ class NoticeController extends ObjectController
     public function actionAdd()
     {
         $this->layout = false;
-        $model = new Notice();
+        $model = new Notices();
         if (\Yii::$app->request->isPost) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if ($model->add(\Yii::$app->request->post())) {
-                Notice::GetNotice();
+                //Notice::GetNotice();
                 return ['code' => 1, 'message' => '添加成功'];
             }
             $message = $model->getFirstErrors();
@@ -188,7 +189,7 @@ class NoticeController extends ObjectController
     {
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = Notice::findOne($id);
+        $model = Notices::findOne($id);
         return $this->render('content', ['model' => $model]);
     }
     

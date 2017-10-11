@@ -113,7 +113,7 @@ use yii\bootstrap\ActiveForm;
                             <th class="text-center">族长名字</th>
                             <th class="text-center">金币</th>
                             <th class="text-center">钻石</th>
-                            <th class="text-center">鱼币</th>
+                            <th class="text-center">宝石</th>
                             <th class="text-center">组员人数</th>
                             <th class="text-center">保险箱总金币</th>
                             <th class="text-center">保险箱总钻石</th>

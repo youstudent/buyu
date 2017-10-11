@@ -99,7 +99,15 @@ use yii\bootstrap\ActiveForm;
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['name'] ?></td>
                                     <td class="text-center"><?= $value['gold'] ?></td>
-                                    <td class="text-center"><?= $value['gold_config']==1?'金币':'钻石'?></td>
+                                    <td class="text-center">
+                                        <?php if ($value['gold_config']==1):?>
+                                            <span class="badge bg-success">金币</span>
+                                        <?php elseif($value['gold_config']==2):?>
+                                            <span class="badge bg-success">钻石</span>
+                                        <?php else:?>
+                                            <span class="badge bg-success">宝石</span>
+                                        <?php endif;?>
+                                    </td>
                                    <!-- <td class="text-center"><?/*= $value['money'] */?></td>
                                     <td class="text-center"><?/*= $value['notes'] */?></td>-->
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['time']) ?></td>

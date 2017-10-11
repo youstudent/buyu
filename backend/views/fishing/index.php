@@ -51,10 +51,6 @@ $this->title = Yii::t('app', 'fishing_index') . '-' . Yii::$app->params['appName
                             </div>
                             <input type="hidden" name="Agency[searchstatus]" value="" id="status">
                             <!--筛选状态 全部|正常|封停 结束-->
-                            <?php if (\common\helps\players::Permission()):?>
-                                <a href="<?php echo \yii\helpers\Url::to(['fishing/getfishing']) ?>"
-                                   onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
-                            <?php endif;?>
                         </div>
                         <div class="col-sm-3 text-right">
                         </div>
@@ -76,7 +72,6 @@ $this->title = Yii::t('app', 'fishing_index') . '-' . Yii::$app->params['appName
                                 <th class="text-center">存活时间</th>
                                 <th class="text-center">价值</th>
                                 <th class="text-center">经验</th>
-                                <th class="text-center">时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
@@ -87,14 +82,13 @@ $this->title = Yii::t('app', 'fishing_index') . '-' . Yii::$app->params['appName
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= $value['name'] ?></td>
-                                    <td class="text-center"><?= \common\models\Fishing::$give_type[$value['type']] ?></td>
+                                    <td class="text-center"><?= \common\models\Fishing::$give_type[$value['fishtype']] ?></td>
                                     <td class="text-center"><?= $value['rate']/100 ?>%</td>
-                                    <td class="text-center"><?= $value['ariseRate']/100 ?>%</td>
-                                    <td class="text-center"><?= $value['groupNum'] ?></td>
+                                    <td class="text-center"><?= $value['ariserate']/100 ?>%</td>
+                                    <td class="text-center"><?= $value['groupnum'] ?></td>
                                     <td class="text-center"><?= $value['aliveTime'] ?>秒</td>
                                     <td class="text-center"><?= $value['cost'] ?></td>
                                     <td class="text-center"><?= $value['ex'] ?></td>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
                                     <td class="text-center" style="width: 200px;">
                                         <?php if (\common\helps\players::Permission()):?>
                                             <a href="<?php echo \yii\helpers\Url::to(['fishing/edit', 'id' => $value['id']]) ?>"

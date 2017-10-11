@@ -40,6 +40,7 @@ $this->title = Yii::t('app', 'sign_board_index') . '-' . Yii::$app->params['appN
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">鱼类型</th>
                                 <th class="text-center">鱼名字</th>
+                                <th class="text-center">任务鱼</th>
                                 <th class="text-center">击杀数量</th>
                                 <th class="text-center">任务出现概率</th>
                                 <th class="text-center">修改时间</th>
@@ -54,6 +55,7 @@ $this->title = Yii::t('app', 'sign_board_index') . '-' . Yii::$app->params['appN
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
                                     <td class="text-center"><?= \common\models\SignBoard::GetFishtypes([$value['fishing_id']]) ?></td>
                                     <td class="text-center"><?= \common\models\SignBoard::$fishing[$value['fishing_id']]?></td>
+                                    <td class="text-center"><?= \common\models\SignBoard::fromfishing([$value['from_fishing']])?></td>
                                     <td class="text-center"><?= $value['number'] ?></td>
                                     <td class="text-center"><?= $value['probability']/100 ?>%</td>
                                     <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>

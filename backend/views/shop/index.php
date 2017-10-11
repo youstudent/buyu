@@ -22,8 +22,6 @@ $this->title = Yii::t('app', 'shop_index') . '-' . Yii::$app->params['appName'];
                     <div class="row text-sm wrapper">
                         <div class="col-sm-9">
                             <!--筛选状态 全部|正常|封停 结束-->
-                            <a href="<?php echo \yii\helpers\Url::to(['shop/getshop']) ?>"
-                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
                         </div>
                         <div class="col-sm-3 text-right">
                         
@@ -44,7 +42,6 @@ $this->title = Yii::t('app', 'shop_index') . '-' . Yii::$app->params['appName'];
                                 <th class="text-center">冷却时间</th>
                                 <th class="text-center">持续时间</th>
                                 <th class="text-center">道具描述</th>
-                                <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
@@ -54,17 +51,12 @@ $this->title = Yii::t('app', 'shop_index') . '-' . Yii::$app->params['appName'];
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?= $value['name'] ?></td>
-                                    <td class="text-center"><?= $value['jewel_number'] ?></td>
-                                    <td class="text-center"><?= $value['level'] ?></td>
-                                    <td class="text-center"><?= $value['coolDown'] ?>秒</td>
+                                    <td class="text-center"><?= $value['toolname'] ?></td>
+                                    <td class="text-center"><?= $value['unitprice'] ?></td>
+                                    <td class="text-center"><?= $value['minvip'] ?></td>
+                                    <td class="text-center"><?= $value['cooldown'] ?>秒</td>
                                     <td class="text-center"><?= $value['lastTime'] ?>秒</td>
-                                    <td class="text-center"><?= $value['toolDescript'] ?></td>
-                                    <?php if (!empty($value['updated_at'])):?>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
-                                    <?php else:?>
-                                    <td class="text-center"><?= $value['updated_at'] ?></td>
-                                    <?php endif;?>
+                                    <td class="text-center"><?= $value['tooldescript'] ?></td>
                                     <td class="text-center" style="width: 120px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['shop/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>

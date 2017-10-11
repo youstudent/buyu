@@ -30,7 +30,7 @@
                 <?php echo $form->field($model,'gold')->textInput(['readonly'=>true])?>
                 <?php echo $form->field($model,'diamond')->textInput(['readonly'=>true])?>
                 <?php echo $form->field($model,'fishGold')->textInput(['readonly'=>true])?>
-                <?php echo $form->field($model,'pay_gold_config')->dropDownList(['1'=>'金币','2'=>'钻石'])?>
+                <?php echo $form->field($model,'pay_gold_config')->dropDownList(['1'=>'金币','2'=>'钻石','3'=>'宝石'])?>
 <!--                升级版本的多货币改动-->
                 <?php echo $form->field($model,'pay_gold')->textInput([])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
@@ -38,7 +38,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times">&nbsp;</i><?=Yii::t('app','but_close')?></button>
-            <button type="button" id="payModalSubmit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;确认充值</button>
+            <button type="button" id="payModalSubmit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;确认扣除</button>
         </div>
     </div>
 </div>
@@ -53,6 +53,8 @@
     $(document).ready(function () {
         //平台用户充值
         $("#payModalSubmit").click(function () {
+            $("#payModalSubmit").attr("disabled", true);
+            $("#payModalSubmit").html('扣除中');
             var  form   = $("#payModalForm");
             var  action = form.attr('action');
             var  data   = form.serialize();
@@ -62,6 +64,8 @@
                 data:data,
                 success:function (res) {
                     console.log(res);
+                    $("#payModalSubmit").attr("disabled", false);
+                    $("#payModalSubmit").html('确认扣除');
                     if(res.code == 1)
                     {
                         swal({

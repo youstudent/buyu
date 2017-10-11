@@ -25,7 +25,7 @@
                 ])?>
                 <?php echo $form->field($model,'title')?>
                 <?php echo $form->field($model,'content')->textarea()?>
-                <?php echo $form->field($model,'number',['inline'=>true])->checkboxList(\common\models\Mail::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'gift',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -83,11 +83,15 @@
         });
 
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#mail-number').find('.checkbox-inline');
+        
+
+
+        //checkbox选中添加对应输入框
+        var  checkbox_input =  $('#email-gift').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'Mail['+ _this.find('input').val()+']';
+            var input_name = 'Email[type]['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){

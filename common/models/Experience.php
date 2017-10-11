@@ -255,8 +255,12 @@ class Experience extends  Object
        return $grade+1;
     }
     
+    /**
+     * @param $m
+     * @return int
+     */
     public static function ex($m){
-       // floor((($model->grade-1)^3+20)/5*(($model->grade-1)*2+20)+30);
-       
+        $num = ((($m - 1) * ($m - 1) * ($m - 1) + 20) / 5 * (($m - 1) * 2 + 20) + 30);
+        return (int)($num / 30) * 30;
     }
 }

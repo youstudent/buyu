@@ -26,8 +26,6 @@ $this->title = Yii::t('app', 'get_gold_index') . '-' . Yii::$app->params['appNam
                         <div class="col-sm-3 text-left">
                         
                         </div>
-                        <a style="margin-left: 30px" href="<?php echo \yii\helpers\Url::to(['getgold/getgold']) ?>"
-                           onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
                     </div>
                     <!--                搜索结束          -->
                 </div>
@@ -42,7 +40,6 @@ $this->title = Yii::t('app', 'get_gold_index') . '-' . Yii::$app->params['appNam
                                 <th class="text-center">最低谷值</th>
                                 <th class="text-center">领取数量</th>
                                 <th class="text-center">每日领取次数</th>
-                                <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
@@ -55,16 +52,11 @@ $this->title = Yii::t('app', 'get_gold_index') . '-' . Yii::$app->params['appNam
                                     <?php if ($value['type']==1):?>
                                         <td class="text-center">金币</td>
                                     <?php else:?>
-                                        <td class="text-center">鱼币</td>
+                                        <td class="text-center">宝石</td>
                                     <?php endif;?>
-                                    <td class="text-center"><?= $value['lowest'] ?></td>
-                                    <td class="text-center"><?= $value['number'] ?></td>
-                                    <td class="text-center"><?= $value['count'] ?></td>
-                                    <?php if (!empty($value['updated_at'])):?>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
-                                    <?php else:?>
-                                    <td class="text-center"><?= $value['updated_at'] ?></td>
-                                    <?php endif;?>
+                                    <td class="text-center"><?= $value['mingold'] ?></td>
+                                    <td class="text-center"><?= $value['gold'] ?></td>
+                                    <td class="text-center"><?= $value['receivednum'] ?></td>
                                     <td class="text-center" style="width: 120px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['getgold/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>

@@ -32,7 +32,7 @@
 
                 <!--                升级版本的多货币改动-->
                 
-                <?php echo $form->field($model,'pay_gold_config')->dropDownList([1=>'金币',2=>'钻石'])?>
+                <?php echo $form->field($model,'pay_gold_config')->dropDownList([1=>'金币',2=>'钻石',3=>'宝石'])?>
                 <!--                升级版本的多货币改动-->
 
                 <?php echo $form->field($model,'deduct_gold')->textInput([])?>
@@ -58,6 +58,8 @@
     $(document).ready(function () {
         //平台用户充值
         $("#payModalSubmit").click(function () {
+            $("#payModalSubmit").attr("disabled", true);
+            $("#payModalSubmit").html('扣除中');
             var  form   = $("#payModalForm");
             var  action = form.attr('action');
             var  data   = form.serialize();
@@ -67,6 +69,8 @@
                 data:data,
                 success:function (res) {
                     console.log(res);
+                    $("#payModalSubmit").attr("disabled", false);
+                    $("#payModalSubmit").html('确认扣除');
                     if(res.code == 1)
                     {
                         swal({

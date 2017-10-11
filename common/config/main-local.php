@@ -35,9 +35,9 @@ return [
         ],*/
        'commondb' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=39.108.86.157;dbname=fishing',
+            'dsn' => 'mysql:host=192.168.2.117;dbname=fishing',
             'username' => 'root',
-            'password' => '90c0lv6hu4VFkmON',
+            'password' => '123456',
             'charset' => 'utf8',
             'tablePrefix' =>'',
         ],
