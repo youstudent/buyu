@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2017 Double Software LLC
  * @license http://www.lrdouble.com/license/
  */
-$this->title = Yii::t('app', 'diamonds_index') . '-' . Yii::$app->params['appName'];
+$this->title = Yii::t('app', 'redpacket_index') . '-' . Yii::$app->params['appName'];
 ?>
 <section id="content">
     <section class="vbox">
@@ -12,25 +12,48 @@ $this->title = Yii::t('app', 'diamonds_index') . '-' . Yii::$app->params['appNam
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">金币兑换管理</a></li>
-                <li class="active">金币兑换详情</li>
+                <li><a href="#">留言板管理</a></li>
+                <li class="active">留言板记录</li>
             </ul>
             <!--            面包屑结束            -->
             <section class="panel panel-default">
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-9">
-                            <!--筛选状态 全部|正常|封停 开始-->
-                           
-                            <input type="hidden" name="Agency[searchstatus]" value="" id="status">
-                            <!--筛选状态 全部|正常|封停 结束-->
-                        </div>
-                        <div class="col-sm-3 text-right">
-                            <a href="<?= \yii\helpers\Url::to(['diamonds/add']) ?>" class="btn btn-primary"
-                               data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加金币兑换等级</a>
-                            
-                        </div>
+                        <!--                搜索开始          -->
+                        <div class="row text-sm wrapper">
+                            <div class="col-sm-9">
+                                <?php $form = \yii\bootstrap\ActiveForm::begin([
+                                    'id' => 'agencyForm',
+                                    'action' => ['messageboard/index'],
+                                    'method' => 'get',
+                                    'fieldConfig' => [
+                                        'template' => "{input}",
+                                    ],
+                                ]) ?>
+                                <input type="hidden" name="<?= Yii::$app->request->csrfParam ?>"
+                                       value="<?= Yii::$app->request->getCsrfToken() ?>">
+
+                                <div class="form-inline">
+                                    <div class="form-group"
+
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <div id="reportrange" class="pull-left dateRange form-control">
+                                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                                    <span id="searchDateRange"></span>
+                                                    <b class="caret"></b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?= $form->field($model,'starttime')->hiddenInput(['id'=>'startTime'])?>
+                                        <?= $form->field($model,'endtime')->hiddenInput(['id'=>'endTime'])?>
+                                    <button class="btn btn-default" type="submit"><i class="fa fa-search"></i>&nbsp;<?= Yii::t('app', 'search') ?>
+                                    </div>
+                                    </div>
+                                </div>
+                                <?php \yii\bootstrap\ActiveForm::end() ?>
+                            </div>
                     </div>
                     <!--                搜索结束          -->
                 </div>
@@ -41,23 +64,20 @@ $this->title = Yii::t('app', 'diamonds_index') . '-' . Yii::$app->params['appNam
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <th class="text-center">金币兑换等级</th>
+                                <th class="text-center">内容</th>
+                                <th class="text-center">时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
                             <tbody>
-
                             <?php $i = 1; ?>
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?= $value['needdiamond'] ?></td>
-                                    <td class="text-center" style="width: 500px;">
-                                        <a href="<?php echo \yii\helpers\Url::to(['diamonds/prize', 'id' => $value['id']]) ?>"
-                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
-                                        <a href="<?php echo \yii\helpers\Url::to(['diamonds/edit', 'id' => $value['id']]) ?>"
-                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
-                                        <a href="<?php echo \yii\helpers\Url::to(['diamonds/del', 'id' => $value['id']]) ?>"
+                                    <td class="text-center"><?=$value['message']?></td>
+                                    <td class="text-center"><?=$value['messageDate']?></td>
+                                    <td class="text-center" style="width: 300px;">
+                                        <a href="<?php echo \yii\helpers\Url::to(['messageboard/del', 'id' => $value['id']]) ?>"
                                            onclick="return openAgency(this,'是否确认删除?')" class="btn btn-xs btn-danger">删除</a>
                                     </td>
                                 </tr>

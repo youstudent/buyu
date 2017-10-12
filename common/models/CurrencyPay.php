@@ -82,32 +82,6 @@ class CurrencyPay extends Object
                 return $this->addError('type','备注字数长度小于9');
             }
             /**
-             * pays": [
-            {
-            "id": 1,
-            "money": 1,
-            "diamond": 0,
-            "firstDouble": 1,
-            "send": {
-            "sendDiamond": 1,
-            "sendGold": 1,
-            "sendFishGold": 1,
-            "tools": [
-            {
-            "toolId": 1,
-            "toolNum": 1
-            },
-            {
-            "toolId": 2,
-            "toolNum": 2
-            }
-            ]
-            }
-            },
-             */
-            
-            
-            /**
              *  将接收到的数据进行 拼装发送给游戏服务器
              */
             $datas=['gold','diamond','fishGold'];

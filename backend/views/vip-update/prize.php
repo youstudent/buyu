@@ -27,10 +27,10 @@ $i=1;
                     ],
                 ])?>
                 <div id="a1">
-                <?php echo $form->field($model,'give_day',['inline'=>true])->checkboxList(\common\models\VipUpdate::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'gift',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-type-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="type-<?php  echo $k ?>"><?php echo \common\models\VipUpdate::$give[$k] ?></label>
+                        <label class="col-lg-3 control-label" for="type-<?php  echo $k ?>"><?php echo \common\helps\getgift::getGift()[$k] ?></label>
                         <div class="col-lg-9">
                             <input type="text" id="type-<?php echo $k?>>" class="form-control" name="VipUpdate[day][<?php echo $k?>]" value="<?php echo $v?>" disabled="disabled">
                             <span class="help-block m-b-none"></span>
@@ -39,10 +39,10 @@ $i=1;
                 <?php endforeach;?>
                 </div>
                 <div id="a2">
-                <?php echo $form->field($model,'give_upgrade',['inline'=>true])->checkboxList(\common\models\VipUpdate::$give_day,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'gifts',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($datas as $k=>$v):?>
                     <div class="form-group field-give_upgrade-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="give_upgrade-<?php  echo $k ?>"><?php echo \common\models\VipUpdate::$give_day[$k] ?></label>
+                        <label class="col-lg-3 control-label" for="give_upgrade-<?php  echo $k ?>"><?php echo \common\helps\getgift::getGift()[$k] ?></label>
                         <div class="col-lg-9">
                             <input type="text" id="give_upgrade-<?php echo $k?>>" class="form-control" name="VipUpdate[upgrade][<?php echo $k?>]" value="<?php echo $v?>" disabled="disabled">
                             <span class="help-block m-b-none"></span>

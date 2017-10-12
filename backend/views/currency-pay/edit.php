@@ -25,20 +25,18 @@
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'money')?>
-                <?php echo $form->field($model,'fold')?>
-                <?php echo $form->field($model,'get_diamond')?>
+                <?php echo $form->field($model,'firstdouble')?>
+                <?php echo $form->field($model,'diamond')?>
                 <?php echo $form->field($model,'content')?>
-                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\CurrencyPay::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'gift',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
-                    <?php if ($v>0):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>">赠送 <?php echo \common\models\CurrencyPay::$give[$k]?></label>
+                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>">赠送 <?php echo \common\helps\getgift::getGift()[$k]?></label>
                         <div class="col-lg-9">
-                            <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="Notice[<?php echo $k?>]" value="<?php echo $v?>">
+                            <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="Pay[type][<?php echo $k?>]" value="<?php echo $v?>">
                             <span class="help-block m-b-none"></span>
                         </div>
                     </div>
-                    <?php endif;?>
                 <?php endforeach;?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
@@ -97,11 +95,11 @@
         });
 
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#currencypay-type').find('.checkbox-inline');
+        var  checkbox_input =  $('#pay-gift').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'CurrencyPay['+ _this.find('input').val()+']';
+            var input_name = 'Pay[type]['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){

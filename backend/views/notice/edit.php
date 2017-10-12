@@ -24,17 +24,17 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'location')->dropDownList([1=>'登录公告',2=>'大厅公告',3=>'滚动公告'])?>
+                <?php echo $form->field($model,'noticetype')->dropDownList([1=>'登录公告',2=>'大厅公告',3=>'滚动公告'])?>
                 <?php echo $form->field($model,'content')->textarea()?>
-                <?php echo $form->field($model,'status')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
+                <?php echo $form->field($model,'enable')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
                 <div class="dis" style="display: none">
-                <?php echo $form->field($model,'get_type',['inline'=>true])->checkboxList(\backend\models\Notice::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'gift',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
                 </div>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \backend\models\Notice::$give[$k] ?></label>
+                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\helps\getgift::getGift()[$k] ?></label>
                         <div class="col-lg-9">
-                            <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="Notice[<?php echo $k?>]" value="<?php echo $v?>">
+                            <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="Notices[<?php echo $k?>]" value="<?php echo $v?>">
                             <span class="help-block m-b-none"></span>
                         </div>
                     </div>
@@ -108,11 +108,11 @@
         });
 
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#notice-get_type').find('.checkbox-inline');
+        var  checkbox_input =  $('#notices-gift').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'Notice['+ _this.find('input').val()+']';
+            var input_name = 'Notices[type]['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){

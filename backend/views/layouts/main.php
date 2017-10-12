@@ -62,7 +62,7 @@ $config[] = ['label' => '公告管理', 'icon' => 'fa fa-bullhorn icon', 'bg_col
 $config[] = ['label' => '商城充值', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
     ['label' => '商城充值货币设置', 'url' => ['currency-pay/index']]
 ]];
-$config[] = ['label' => '兑换管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
+$config[] = ['label' => '兑换管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['redeem-code/index'], 'items' => [
     ['label' => '兑换列表', 'url' => ['redeem-code/index','show'=>'']],
     ['label' => '兑换记录', 'url' => ['redeem-code/record']],
 ]];
@@ -71,7 +71,7 @@ $config[] = ['label' => '金币兑换管理', 'icon' => 'fa fa-bullhorn icon', '
 ]];
 $config[] = ['label' => '大厅设置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['touch/index'], 'items' => [
     ['label' => '联系客户', 'url' => ['touch/index']],
-    //['label' => '游戏入口设置', 'url' => ['inle-porting/index']],
+    ['label' => '留言板记录', 'url' => ['messageboard/index']],
     ['label' => '邮件设置', 'url' => ['mail/index']],
    // ['label' => '货币设置', 'url' => ['money/index']],
     ['label' => '炮台等级', 'url' => ['battery/index']],

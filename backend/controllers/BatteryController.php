@@ -2,6 +2,9 @@
 
 namespace backend\controllers;
 
+use backend\models\Batterylocker;
+use backend\models\Batteryrate;
+use common\helps\getgift;
 use common\helps\players;
 use common\models\Battery;
 use common\models\GetGold;
@@ -14,14 +17,14 @@ class BatteryController extends ObjectController
     public function actionIndex()
     {
         //Battery::GetBattery();
-        $model  = Battery::find();
+        $model  = Batterylocker::find();
         $pages = new Pagination(
             [
                 'totalCount' =>$model->count(),
                 'pageSize' =>\Yii::$app->params['pageSize']
             ]
         );
-        $data  = $model->limit($pages->limit)->offset($pages->offset)->orderBy('multiple ASC')->asArray()->all();
+        $data  = $model->limit($pages->limit)->offset($pages->offset)->orderBy('power ASC')->asArray()->all();
         return $this->render('index',['data'=>$data,'pages'=>$pages]);
     }
     
@@ -34,7 +37,7 @@ class BatteryController extends ObjectController
     {
         players::actionPermission();
         $this->layout = false;
-        $model = new Battery();
+        $model = new Batterylocker();
         if (\Yii::$app->request->isPost) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if ($model->add(\Yii::$app->request->post())) {
@@ -58,7 +61,7 @@ class BatteryController extends ObjectController
         players::actionPermission();
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = Battery::findOne($id);
+        $model = Batterylocker::findOne($id);
         if(\Yii::$app->request->isPost)
         {
             \Yii::$app->response->format = Response::FORMAT_JSON;
@@ -71,34 +74,9 @@ class BatteryController extends ObjectController
             return ['code'=>0,'message'=>$message];
             
         }
-        $JSON = json_decode($model->give_gold_num,true);
-        $data  =[];
-        $re = Battery::$give;
-        foreach ($JSON as $key=>$value){
-            if (array_key_exists($key,$re)){
-                if ($value>0){
-                    $data[$key]=$value;
-                }
-                
-            }
-            if(is_array($value)){
-                foreach ($value as $K=>$v){
-                    if (array_key_exists($v['toolId'],$re)){
-                        if ($v['toolNum']>0){
-                            $data[$v['toolId']]=$v['toolNum'];
-                        }
-                      
-                    }
-                }
-            }
-            
-        }
-        $type=[];
-        foreach($data as $k=>$v){
-            $type[]=$k;
-        }
-        $model->type=$type;
-        return $this->render('edit',['model'=>$model,'data'=>$data]);
+        $row = getgift::getType($model,'send','toolId','toolNum');
+        $model->gift=$row['type'];
+        return $this->render('edit',['model'=>$model,'data'=>$row['data']]);
     }
     
     /**
@@ -114,13 +92,8 @@ class BatteryController extends ObjectController
         /**
          * 请求游戏服务端   删除数据
          */
-      $model = Battery::findOne($id);
-      $url = \Yii::$app->params['Api'].'/control/deletebatterypower';
-      $data=[];
-      $data['id']=$id;
-      $datas = Json::encode($data);
-      $re = \common\services\Request::request_post_raw($url,$datas);
-      if ($re['code']== 1){
+      $model = Batterylocker::findOne($id);
+      if ($model){
           $model->delete();
           return ['code'=>1,'message'=>'删除成功'];
       }
@@ -131,44 +104,9 @@ class BatteryController extends ObjectController
     //奖品内容的查看
     public function actionPrize(){
         $this->layout = false;
-        // RedeemCode::setShop();
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = Battery::findOne($id);
-        $JSON = json_decode($model->give_gold_num,true);
-        $data  =[];
-        $re = Battery::$give;
-        foreach ($JSON as $key=>$value){
-            if (array_key_exists($key,$re)){
-                if ($value>0){
-                    $data[$re[$key]]=$value;
-                }
-            }
-            if(is_array($value)){
-                foreach ($value as $K=>$v){
-                    if (array_key_exists($v['toolId'],$re)){
-                        if ($v['toolNum']>0){
-                            $data[$re[$v['toolId']]]=$v['toolNum'];
-                        }
-                       
-                    }
-                }
-            }
-            
-        }
+        $model =Batterylocker::findOne($id);
+        $data =  getgift::prize($model,'send','toolId','toolNum');
         return $this->render('prize',['model'=>$model,'data'=>$data]);
-    }
-    
-    /**
-     * 同步炮台数据
-     */
-    public function actionGetbattery(){
-        players::actionPermission();
-        $this->layout = false;
-        \Yii::$app->response->format = Response::FORMAT_JSON;
-        $code = Battery::GetBattery();
-        if ($code ==1){
-            return ['code'=>1,'message'=>'同步成功'];
-        }
-        return ['code'=>0,'message'=>'同步失败'];
     }
 }

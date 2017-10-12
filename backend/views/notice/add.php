@@ -27,7 +27,7 @@
                 <?php echo $form->field($model,'content')->textarea(['placeholder'=>'内容'])?>
                 <?php echo $form->field($model,'enable')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
             <div class="dis" style="display: none">
-                <?php echo $form->field($model,'get_type',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'gift',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
             </div>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
@@ -97,7 +97,7 @@
     });
         
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#notices-get_type').find('.checkbox-inline');
+        var  checkbox_input =  $('#notices-gift').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();

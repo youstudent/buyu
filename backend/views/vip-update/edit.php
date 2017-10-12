@@ -27,30 +27,30 @@ $i=1;
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'grade')->textInput(['readonly'=>true])?>
-                <?php echo $form->field($model,'number')->textInput(['readonly'=>\common\helps\players::EditPermission()])?>
-                <?php echo $form->field($model,'burst')->textInput(['readonly'=>\common\helps\players::EditPermission()])?>
-                <?php echo $form->field($model,'alms_num')?>
-                <?php echo $form->field($model,'alms_rate')?>
+                <?php echo $form->field($model,'viplevel')->textInput(['readonly'=>true])?>
+                <?php echo $form->field($model,'vipex')->textInput(['readonly'=>\common\helps\players::EditPermission()])?>
+                <?php echo $form->field($model,'killrate')->textInput(['readonly'=>\common\helps\players::EditPermission()])?>
+                <?php echo $form->field($model,'almsnum')?>
+                <?php echo $form->field($model,'almsrate')?>
                 <div id="a1">
-                <?php echo $form->field($model,'give_day',['inline'=>true])->checkboxList(\common\models\VipUpdate::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'gift',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-type-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="type-<?php  echo $k ?>"><?php echo \common\models\VipUpdate::$give[$k] ?></label>
+                        <label class="col-lg-3 control-label" for="type-<?php  echo $k ?>"><?php echo \common\helps\getgift::getGift()[$k] ?></label>
                         <div class="col-lg-9">
-                            <input type="text" id="type-<?php echo $k?>>" class="form-control" name="VipUpdate[day][<?php echo $k?>]" value="<?php echo $v?>">
+                            <input type="text" id="type-<?php echo $k?>>" class="form-control" name="Vipinfo[type][<?php echo $k?>]" value="<?php echo $v?>">
                             <span class="help-block m-b-none"></span>
                         </div>
                     </div>
                 <?php endforeach;?>
                 </div>
                 <div id="a2">
-                <?php echo $form->field($model,'give_upgrade',['inline'=>true])->checkboxList(\common\models\VipUpdate::$give_day,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'gifts',['inline'=>true])->checkboxList(\common\helps\getgift::getGifts(),['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($datas as $k=>$v):?>
                     <div class="form-group field-give_upgrade-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="give_upgrade-<?php  echo $k ?>"><?php echo \common\models\VipUpdate::$give_day[$k] ?></label>
+                        <label class="col-lg-3 control-label" for="give_upgrade-<?php  echo $k ?>"><?php echo \common\helps\getgift::getGifts()[$k] ?></label>
                         <div class="col-lg-9">
-                            <input type="text" id="give_upgrade-<?php echo $k?>>" class="form-control" name="VipUpdate[upgrade][<?php echo $k?>]" value="<?php echo $v?>">
+                            <input type="text" id="give_upgrade-<?php echo $k?>>" class="form-control" name="Vipinfo[types][<?php echo $k?>]" value="<?php echo $v?>">
                             <span class="help-block m-b-none"></span>
                         </div>
                     </div>
@@ -114,11 +114,11 @@ $i=1;
 
 
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#vipupdate-give_day').find('.checkbox-inline');
+        var  checkbox_input =  $('#vipinfo-gift').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'VipUpdate[day]['+ _this.find('input').val()+']';
+            var input_name = 'Vipinfo[type]['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){
@@ -135,11 +135,11 @@ $i=1;
             
         });
         //checkbox选中添加对应输入框
-        var  checkbox_input2 =  $('#vipupdate-give_upgrade').find('.checkbox-inline');
+        var  checkbox_input2 =  $('#vipinfo-gifts').find('.checkbox-inline');
         checkbox_input2.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'VipUpdate[upgrade]['+ _this.find('input').val()+']';
+            var input_name = 'Vipinfo[types]['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){

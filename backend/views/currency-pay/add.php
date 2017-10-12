@@ -24,10 +24,10 @@
                     ],
                 ])?>
                 <?php echo $form->field($model,'money')?>
-                <?php echo $form->field($model,'fold')?>
-                <?php echo $form->field($model,'get_diamond')?>
+                <?php echo $form->field($model,'firstdouble')?>
+                <?php echo $form->field($model,'diamond')?>
                 <?php echo $form->field($model,'content')?>
-                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\CurrencyPay::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'gift',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -85,11 +85,11 @@
         });
 
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#currencypay-type').find('.checkbox-inline');
+        var  checkbox_input =  $('#pay-gift').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'CurrencyPay['+ _this.find('input').val()+']';
+            var input_name = 'Pay[type]['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){

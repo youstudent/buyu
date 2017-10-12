@@ -23,8 +23,8 @@
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'need_diamond')?>
-                <?php echo $form->field($model,'content',['inline'=>true])->checkboxList(\common\models\Diamonds::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'needdiamond')?>
+                <?php echo $form->field($model,'gift',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -82,11 +82,11 @@
         });
 
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#diamonds-content').find('.checkbox-inline');
+        var  checkbox_input =  $('#exchangegold-gift').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'Diamonds[contents]['+ _this.find('input').val()+']';
+            var input_name = 'Exchangegold[type]['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){

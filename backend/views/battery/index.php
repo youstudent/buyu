@@ -20,16 +20,10 @@ $this->title = Yii::t('app', 'battery_index') . '-' . Yii::$app->params['appName
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <?php if (\common\helps\players::Permission()):?>
-                            <div class="col-sm-3 text-left">
-                                <a href="<?php echo \yii\helpers\Url::to(['battery/getbattery']) ?>"
-                                   onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
-                            </div>
                             <div class=" text-right">
                                 <a href="<?= \yii\helpers\Url::to(['battery/add'])?>" class="btn btn-primary"
                                    data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加炮台倍数</a>
                             </div>
-                        <?php endif;?>
                     </div>
                     <!--                搜索结束          -->
                 </div>
@@ -42,7 +36,6 @@ $this->title = Yii::t('app', 'battery_index') . '-' . Yii::$app->params['appName
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">炮台倍数</th>
                                 <th class="text-center">所需钻石</th>
-                                <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
@@ -52,9 +45,8 @@ $this->title = Yii::t('app', 'battery_index') . '-' . Yii::$app->params['appName
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?= $value['multiple']?></td>
-                                    <td class="text-center"><?= $value['number'] ?></td>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
+                                    <td class="text-center"><?= $value['power']?></td>
+                                    <td class="text-center"><?= $value['neednumber'] ?></td>
                                     <td  class="text-center" style="width: 200px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['battery/prize', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>

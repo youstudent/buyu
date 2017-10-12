@@ -9,6 +9,7 @@ namespace backend\controllers;
 
 use backend\models\Notice;
 use backend\models\Notices;
+use common\helps\getgift;
 use common\services\Request;
 use yii\data\Pagination;
 use yii\helpers\Json;
@@ -29,7 +30,7 @@ class NoticeController extends ObjectController
     
     {
         $data = new Notices();
-        $model = $data::find();
+        $model = $data::find()->andWhere(['status'=>1]);
         if (\Yii::$app->request->get('show') == 1) {
             $model->andWhere(["enable" => 1]);
         } else if (\Yii::$app->request->get('show') == 0) {
@@ -58,7 +59,6 @@ class NoticeController extends ObjectController
         if (\Yii::$app->request->isPost) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if ($model->add(\Yii::$app->request->post())) {
-                //Notice::GetNotice();
                 return ['code' => 1, 'message' => '添加成功'];
             }
             $message = $model->getFirstErrors();
@@ -77,7 +77,7 @@ class NoticeController extends ObjectController
     {
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = Notice::findOne($id);
+        $model = Notices::findOne($id);
         if (\Yii::$app->request->isPost) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if ($model->edit(\Yii::$app->request->post())) {
@@ -88,31 +88,12 @@ class NoticeController extends ObjectController
             return ['code' => 0, 'message' => $message];
             
         }
-        $JSON = json_decode($model->number, true);
-        $data = [];
-        $re = Notice::$give;
-        foreach ($JSON as $key => $value) {
-            if (array_key_exists($key, $re)) {
-                $data[$key] = $value;
-            }
-            if (is_array($value)) {
-                foreach ($value as $K => $v) {
-                    if (array_key_exists($v['toolId'], $re)) {
-                        $data[$v['toolId']] = $v['toolNum'];
-                    }
-                }
-            }
-            
+        $row = getgift::getType($model);
+        $model->gift=$row['type'];
+        if ($model->noticetype == 2) {
+            return $this->render('edit2', ['model' => $model, 'data' => $row['data']]);
         }
-        $type = [];
-        foreach ($data as $k => $v) {
-            $type[] = $k;
-        }
-        $model->get_type = $type;
-        if ($model->location == 2) {
-            return $this->render('edit2', ['model' => $model, 'data' => $data]);
-        }
-        return $this->render('edit', ['model' => $model, 'data' => $data]);
+        return $this->render('edit', ['model' => $model, 'data' => $row['data']]);
     }
     
     /**
@@ -124,14 +105,11 @@ class NoticeController extends ObjectController
         $this->layout = false;
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $id = \Yii::$app->request->get('id');
-        $model = Notice::findOne($id);
-        $data = [];
-        $data['id'] = $model->id;
-        $re =  \common\models\Notice::findOne(['id'=>$model->id]);
+        $re =  Notices::findOne(['id'=>$id]);
         if ($re){
             $re->enable=0;
+            $re->status=0;
             if ($re->save(false)){
-                $model->delete();
                 return ['code' => 1, 'message' => '删除成功'];
             }
         }
@@ -139,31 +117,15 @@ class NoticeController extends ObjectController
         
     }
     
-    
-    //奖品内容的查看
-    public function actionPrize()
-    {
+    /**
+     * @return string
+     */
+    public function actionPrize(){
         $this->layout = false;
-        // RedeemCode::setShop();
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = Notice::findOne($id);
-        $JSON = json_decode($model->number, true);
-        $data = [];
-        $re = Notice::$give;
-        foreach ($JSON as $key => $value) {
-            if (array_key_exists($key, $re)) {
-                $data[$re[$key]] = $value;
-            }
-            if (is_array($value)) {
-                foreach ($value as $K => $v) {
-                    if (array_key_exists($v['toolId'], $re)) {
-                        $data[$re[$v['toolId']]] = $v['toolNum'];
-                    }
-                }
-            }
-            
-        }
-        return $this->render('prize', ['model' => $model, 'data' => $data]);
+        $model = Notices::findOne($id);
+        $data =  getgift::prize($model);
+        return $this->render('prize',['model'=>$model,'data'=>$data]);
     }
     
     

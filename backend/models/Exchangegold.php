@@ -3,23 +3,21 @@
 namespace backend\models;
 
 use common\helps\getgift;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Yii;
 
 /**
- * This is the model class for table "{{%notice}}".
+ * This is the model class for table "{{%exchangegold}}".
  *
  * @property integer $id
- * @property string $content
- * @property string $createDate
+ * @property string $needdiamond
  * @property string $gold
  * @property string $diamond
  * @property string $fishgold
  * @property string $toolid
- * @property integer $noticetype
- * @property string $toolNum
- * @property integer $enable
+ * @property string $toolnum
  */
-class Notices extends \yii\db\ActiveRecord
+class Exchangegold extends \yii\db\ActiveRecord
 {
     public $gift;
     
@@ -29,7 +27,7 @@ class Notices extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%notice}}';
+        return '{{%exchangegold}}';
     }
 
     /**
@@ -46,10 +44,12 @@ class Notices extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['content', 'noticetype'], 'required'],
-            [['createDate','type','gift','status'], 'safe'],
-            [['gold', 'diamond', 'fishgold', 'noticetype', 'enable'], 'integer'],
-            [['content', 'toolid', 'toolNum'], 'string', 'max' => 255],
+            [['needdiamond'], 'required'],
+            [['needdiamond'],'unique'],
+            [['needdiamond'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'数量必须大于0'],
+            [['type','gift'], 'safe'],
+            [['needdiamond', 'gold', 'diamond', 'fishgold'], 'integer'],
+            [['toolid', 'toolnum'], 'string', 'max' => 255],
         ];
     }
 
@@ -60,34 +60,23 @@ class Notices extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'content' => '内容',
-            'createDate' => 'Create Date',
+            'needdiamond' => '金币兑换等级',
             'gold' => 'Gold',
             'diamond' => 'Diamond',
             'fishgold' => 'Fishgold',
             'toolid' => 'Toolid',
-            'noticetype' => '位置',
-            'toolNum' => 'Tool Num',
-            'enable' => '状态',
+            'toolnum' => 'Toolnum',
             'gift' => '礼包',
         ];
     }
     
     /**
-     * 添加 公告
+     * 添加 钻石兑换金币等级
      * @param array $data
      * @return bool
      */
-    public function add($data = [])
-    {
-        if($this->load($data) && $this->validate())
-        {
-            if ($this->noticetype == 1 || $this->noticetype == 2){
-                if (self::find()->where(['noticetype'=>$this->noticetype,'enable'=>1])->exists()){
-                    $this->addError('noticetype','登录公告和大厅公告只能显示一条');
-                    return false;
-                }
-            }
+    public function add($data=[]){
+        if ($this->load($data) && $this->validate()){
             if ($this->type) {
                 $getGift = new getgift();
                 $re = $getGift->disposeGift($this->type);
@@ -96,7 +85,7 @@ class Notices extends \yii\db\ActiveRecord
                         $this->toolid = $re['toolid'];
                     }
                     if ($re['toolNum']) {
-                        $this->toolNum = $re['toolNum'];
+                        $this->toolnum = $re['toolNum'];
                     }
                     $this->gold=$re['gold'];
                     $this->diamond=$re['diamond'];
@@ -110,7 +99,7 @@ class Notices extends \yii\db\ActiveRecord
     }
     
     /**
-     * 修改公告
+     * 修改 钻石兑换金币等级
      * @param array $data
      * @return bool
      */
@@ -121,7 +110,7 @@ class Notices extends \yii\db\ActiveRecord
             $this->diamond=0;
             $this->fishgold=0;
             $this->toolid='';
-            $this->toolNum='';
+            $this->toolnum='';
             if ($this->type) {
                 $getGift = new getgift();
                 $re = $getGift->disposeGift($this->type);
@@ -130,7 +119,7 @@ class Notices extends \yii\db\ActiveRecord
                         $this->toolid = $re['toolid'];
                     }
                     if ($re['toolNum']) {
-                        $this->toolNum = $re['toolNum'];
+                        $this->toolnum = $re['toolNum'];
                     }
                     $this->gold=$re['gold'];
                     $this->diamond=$re['diamond'];

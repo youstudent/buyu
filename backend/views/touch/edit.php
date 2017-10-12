@@ -24,10 +24,10 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'phone')?>
-                <?php echo $form->field($model,'qq_number')?>
-                <?php echo $form->field($model,'hkmovie')?>
-                <?php echo $form->field($model,'status')->dropDownList(['0'=>'隐藏','1'=>'显示'])?>
+                <?php echo $form->field($model,'telephone')?>
+                <?php echo $form->field($model,'qq')?>
+                <?php echo $form->field($model,'appcontract')?>
+                <?php echo $form->field($model,'status')->dropDownList(['1'=>'显示','0'=>'隐藏'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

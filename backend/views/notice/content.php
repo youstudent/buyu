@@ -23,7 +23,7 @@
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'content')->textarea()?>
+                <?php echo $form->field($model,'content')->textarea(['rows' => '6'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

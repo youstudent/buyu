@@ -20,10 +20,6 @@ $this->title = Yii::t('app', 'currency_pay_index') . '-' . Yii::$app->params['ap
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-9">
-                            <a href="<?php echo \yii\helpers\Url::to(['currency-pay/getcurrency']) ?>"
-                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
-                        </div>
                         <div class=" text-right">
                             <a href="<?= \yii\helpers\Url::to(['currency-pay/add'])?>" class="btn btn-primary"
                                data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加人民币等级</a>
@@ -38,13 +34,10 @@ $this->title = Yii::t('app', 'currency_pay_index') . '-' . Yii::$app->params['ap
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
-                                <!--<th class="text-center">类型</th>-->
-                                <!--<th class="text-center">数量</th>-->
                                 <th class="text-center">首冲翻倍数</th>
                                 <th class="text-center">人民币</th>
                                 <th class="text-center">购买钻石数</th>
                                 <th class="text-center">备注</th>
-                                <th class="text-center">添加时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
@@ -53,11 +46,10 @@ $this->title = Yii::t('app', 'currency_pay_index') . '-' . Yii::$app->params['ap
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?= $value['fold']?>倍</td>
+                                    <td class="text-center"><?= $value['firstdouble']?>倍</td>
                                     <td class="text-center"><?= $value['money']?>元</td>
-                                    <td class="text-center"><?= $value['get_diamond']?></td>
+                                    <td class="text-center"><?= $value['diamond']?></td>
                                     <td class="text-center"><?= $value['content']?></td>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['created_at']) ?></td>
                                     <td class="text-center" style="width: 200px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['currency-pay/prize', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>

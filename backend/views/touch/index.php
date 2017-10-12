@@ -35,7 +35,6 @@ $this->title = Yii::t('app', 'touch_index') . '-' . Yii::$app->params['appName']
                                 <th class="text-center">客户联系电话</th>
                                 <th class="text-center">QQ号</th>
                                 <th class="text-center">公众号</th>
-                                <th class="text-center">修改人</th>
                                 <th class="text-center">修改时间</th>
                                 <th class="text-center">状态</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
@@ -47,11 +46,10 @@ $this->title = Yii::t('app', 'touch_index') . '-' . Yii::$app->params['appName']
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?= $value['phone'] ?></td>
-                                    <td class="text-center"><?= $value['qq_number'] ?></td>
-                                    <td class="text-center"><?= $value['hkmovie'] ?></td>
-                                    <td class="text-center"><?= $value['manage_name'] ?></td>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
+                                    <td class="text-center"><?= $value['telephone'] ?></td>
+                                    <td class="text-center"><?= $value['qq'] ?></td>
+                                    <td class="text-center"><?= $value['appcontract'] ?></td>
+                                    <td class="text-center"><?= date($value['createtime']) ?></td>
                                     <td class="text-center" style="border-right: 0px;">
                                         <?php if ($value['status'] == 1): ?>
                                             <span class="badge bg-success">显示</span>

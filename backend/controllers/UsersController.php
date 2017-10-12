@@ -118,7 +118,6 @@ class UsersController extends ObjectController
     {
         $model = new Users();
         $data = $model->getPayLog(Yii::$app->request->get());
-       // var_dump($data);exit;
         return $this->render('pay_log',$data);
     }
     
