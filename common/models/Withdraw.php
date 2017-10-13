@@ -176,7 +176,7 @@ class Withdraw extends Object
             if ( $data->type ==1){
                 $pa->gold = $pa->gold+$data->gold;
             }else{
-                $pa->diamond = $pa->diamond+$data->gold;
+                $pa->fishGold = $pa->fishGold+$data->gold;
             }
             $pa->save();
         }

@@ -67,7 +67,7 @@ class Familyrecord extends \yii\db\ActiveRecord
             'type' => '类型',
             'gold' => '金币',
             'diamond' => '钻石',
-            'fishgold' => '鱼币',
+            'fishgold' => '宝石',
         ];
     }
     
@@ -102,8 +102,8 @@ class Familyrecord extends \yii\db\ActiveRecord
      * 统计玩家下分, 金币钻石
      */
     public static function GameDiamond($playerid,$type){
-        $row = self::find()->select(['sum(diamond)'])->andWhere(['type'=>$type,'playerid'=>$playerid])->asArray()->one();
-        return $row['sum(diamond)']?$row['sum(diamond)']:0;
+        $row = self::find()->select(['sum(fishgold)'])->andWhere(['type'=>$type,'playerid'=>$playerid])->asArray()->one();
+        return $row['sum(fishgold)']?$row['sum(fishgold)']:0;
         
     }
     

@@ -44,12 +44,13 @@ class getgift
         $data = Toolinfo::find()->asArray()->all();
         //将道具数组格式化成  对应的数组
         $new_data = ArrayHelper::map($data, 'toolid', 'toolname');
-        foreach ($new_data as $key=>&$v){
-            $new_data[$key.'9'];
+        $news_data=[];
+        foreach ($new_data as $key=>$v){
+            $news_data[$key.'9']=$v;
         }
         //自定义 赠送类型
         $datas = ['gold9' => '金币', 'diamond9' => '钻石', 'fishgold9' => '宝石'];
-        return ArrayHelper::merge($datas, $new_data);
+        return ArrayHelper::merge($datas, $news_data);
     }
     
     /**
@@ -150,7 +151,7 @@ class getgift
             $new_toolid =  explode('_',$data[$ji.$toolid]);
             $new_toolNum =  explode('_',$data[$ji.$toolNun]);
             foreach ($new_toolid as  $key=>$value){
-                $datas[$value] = $new_toolNum[$key];
+                $datas[$value.'9'] = $new_toolNum[$key];
             }
         }
         if (isset($datas)){

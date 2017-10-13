@@ -68,7 +68,7 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">玩家昵称</th>
                                 <th  class="text-center">金币</th>
                                 <th  class="text-center">钻石</th>
-                                <th  class="text-center">鱼币</th>
+                                <th  class="text-center">宝石</th>
                                 <th  class="text-center">保险箱金币</th>
                                 <th  class="text-center">保险箱钻石</th>
                                 <th  class="text-center">保险箱鱼币</th>

@@ -20,10 +20,6 @@ $this->title = Yii::t('app', 'experience_index') . '-' . Yii::$app->params['appN
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-9">
-                            <a href="<?php echo \yii\helpers\Url::to(['experience/getexperience']) ?>"
-                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
-                        </div>
                         <div class=" text-right">
                             <a href="<?= \yii\helpers\Url::to(['experience/add']) ?>" class="btn btn-primary"
                                data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加经验等级</a>
@@ -40,7 +36,6 @@ $this->title = Yii::t('app', 'experience_index') . '-' . Yii::$app->params['appN
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">经验等级</th>
                                 <th class="text-center">所需经验</th>
-                                <th class="text-center">添加时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
@@ -50,10 +45,9 @@ $this->title = Yii::t('app', 'experience_index') . '-' . Yii::$app->params['appN
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?= $value['grade']?>级</td>
-                                    <td class="text-center"><?=$value['type']?></td>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['created_at']) ?></td>
-                                    <td class="text-center" style="width: 200px;">
+                                    <td class="text-center"><?= $value['level']?>级</td>
+                                    <td class="text-center"><?=$value['ex']?></td>
+                                    <td class="text-center" style="width: 400px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['experience/prize', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['experience/edit', 'id' => $value['id']]) ?>"

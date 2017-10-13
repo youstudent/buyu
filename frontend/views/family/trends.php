@@ -68,7 +68,7 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">玩家昵称</th>
                                 <th  class="text-center">金币</th>
                                 <th  class="text-center">钻石</th>
-                                <th  class="text-center">鱼币</th>
+                                <th  class="text-center">宝石</th>
                                 <th  class="text-center">类型</th>
                                 <th  class="text-center">时间</th>
                             </tr>
@@ -85,7 +85,7 @@ use yii\bootstrap\ActiveForm;
                                 <td class="text-center">
                                     <?php if($value['type'] == 0):?>
                                         <span class="label bg-success">申请</span>
-                                    <?php elseif($value['type']==1):?>
+                                    <?php elseif($value['type']==1 || $value['type']==99):?>
                                         <span class="label bg-danger">通过</span>
                                     <?php elseif($value['type']==2):?>
                                         <span class="label bg-info">拒绝</span>

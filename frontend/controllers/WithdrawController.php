@@ -60,7 +60,7 @@ class WithdrawController extends ObjectController
             $model->bank_name=$data->realname;
             $model->bank_opening=$data->bank;
         }
-        //var_dump(\Yii::$app->session->get('gameId'));EXIT;
+        $model->gold=0;
         return $this->render('add',['model'=>$model]);
         
     }

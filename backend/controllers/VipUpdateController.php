@@ -73,9 +73,8 @@ class VipUpdateController extends ObjectController
         $rows = getgift::getTypes($model,'','toolid','toolnum');
         $model->gifts=$rows['type'];
         $model->almsrate= $model->almsrate/100;
-        $model->almsnum;
-         var_dump($row,$rows);EXIT;
-        return $this->render('edit',['model'=>$model,'data'=>$rows['data'],'datas'=>$row['data']]);
+        $model->killrate= $model->killrate/100;
+        return $this->render('edit',['model'=>$model,'data'=>$row['data'],'datas'=>$rows['data']]);
     }
     
     /**
@@ -124,8 +123,8 @@ class VipUpdateController extends ObjectController
         $model = Vipinfo::findOne($id);
         $row=  getgift::getType($model,'up','toolid','toolnum');
         $rows =  getgift::getType($model,'','toolid','toolnum');
-        $model->gift=$rows['type'];
-        $model->gifts=$row['type'];
-        return $this->render('prize',['model'=>$model,'data'=>$rows['data'],'datas'=>$row['data']]);
+        $model->gift=$row['type'];
+        $model->gifts=$rows['type'];
+        return $this->render('prize',['model'=>$model,'data'=>$row['data'],'datas'=>$rows['data']]);
     }
 }

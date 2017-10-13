@@ -36,9 +36,9 @@ $this->title = Yii::t('app', 'down_index') . '-' . Yii::$app->params['appName'];
                                 } ?> " onclick="setStatus(0)">
                                     <input type="radio" name="options" id="statusColose">下分</label>
                                     <input type="text" disabled="disabled" style="height: 33px;margin-left: 20px; width: 200px" value="总上分金币:<?=$rows['sum(gold)']?>">
-                                    <input type="text" disabled="disabled" style="height: 33px;margin-left: 20px; width: 200px" value="总上分钻石:<?=$rows['sum(diamond)']?>">
+                                    <input type="text" disabled="disabled" style="height: 33px;margin-left: 20px; width: 200px" value="总上分宝石:<?=$rows['sum(fishgold)']?>">
                                     <input type="text" disabled="disabled" style="height: 33px;margin-left: 20px; width: 200px" value="总下分金币:<?=$row['sum(gold)']?>">
-                                    <input type="text" disabled="disabled" style="height: 33px;margin-left: 20px; width: 200px" value="总下分钻石:<?=$row['sum(diamond)']?>">
+                                    <input type="text" disabled="disabled" style="height: 33px;margin-left: 20px; width: 200px" value="总下分宝石:<?=$row['sum(fishgold)']?>">
                             </div>
                             
                             <input type="hidden" name="Agency[searchstatus]" value="" id="status">
@@ -58,7 +58,7 @@ $this->title = Yii::t('app', 'down_index') . '-' . Yii::$app->params['appName'];
                                 <th class="text-center">上下</th>
                                 <th class="text-center">金币</th>
                                 <th class="text-center">钻石</th>
-                                <th class="text-center">鱼币</th>
+                                <th class="text-center">宝石</th>
                                 <th class="text-center">时间</th>
                             </tr>
                             </thead>

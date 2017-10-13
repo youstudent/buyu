@@ -39,9 +39,12 @@ class LogController extends ObjectController
         //计算族长总充值金币,钻石
         $row = AgencyPay::find()->select(['sum(gold)'])->andWhere(['type'=>'充值','gold_config'=>1])->andWhere(['agency_id'=>\Yii::$app->session->get('familyId')])->asArray()->one();
         $gold = $row['sum(gold)'];
-        $row = AgencyPay::find()->select(['sum(gold)'])->andWhere(['type'=>'充值','gold_config'=>2])->andWhere(['agency_id'=>\Yii::$app->session->get('familyId')])->asArray()->one();
-        $diamond = $row['sum(gold)'];
-        return $this->render('pay',['data'=>$data,'pages'=>$pages,'startTime'=>$startTime,'endTime'=>$endTime,'gold'=>$gold,'diamond'=>$diamond]);
+        $rows = AgencyPay::find()->select(['sum(gold)'])->andWhere(['type'=>'充值','gold_config'=>2])->andWhere(['agency_id'=>\Yii::$app->session->get('familyId')])->asArray()->one();
+        $diamond= $rows['sum(gold)'];
+    
+        $rowss = AgencyPay::find()->select(['sum(gold)'])->andWhere(['type'=>'充值','gold_config'=>3])->andWhere(['agency_id'=>\Yii::$app->session->get('familyId')])->asArray()->one();
+        $fishgold = $rowss['sum(gold)'];
+        return $this->render('pay',['data'=>$data,'pages'=>$pages,'startTime'=>$startTime,'endTime'=>$endTime,'gold'=>$gold,'diamond'=>$diamond,'fishgold'=>$fishgold]);
     }
 
     /**

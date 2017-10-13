@@ -68,12 +68,12 @@ use yii\bootstrap\ActiveForm;
                                 <th  class="text-center">金币</th>
                                 <th  class="text-center">钻石</th>
                                 <th  class="text-center">总上分金币</th>
-                                <th  class="text-center">总上分钻石</th>
-                                <th  class="text-center">总下分钻石</th>
-                                <th  class="text-center">总下分钻石</th>
+                                <th  class="text-center">总上分宝石</th>
+                                <th  class="text-center">总下分金币</th>
+                                <th  class="text-center">总下分宝石</th>
                                 <th  class="text-center">保险箱金币</th>
                                 <th  class="text-center">保险箱钻石</th>
-                                <th  class="text-center">保险箱鱼币</th>
+                                <th  class="text-center">保险箱宝石</th>
                                 <th  class="text-center">职位</th>
                                 <th  class="text-center">状态</th>
                                 <th  class="text-center">操作</th>

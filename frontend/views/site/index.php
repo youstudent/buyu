@@ -25,7 +25,7 @@ $agency = \backend\models\Agency::find();
                                         }*/
                                      '金币'. $model->users->gold.'&nbsp'.
                                      '钻石'. $model->users->diamond.'&nbsp'.
-                                     '鱼币'. $model->users->fishGold;
+                                     '宝石'. $model->users->fishGold;
                                     ?>
                                 </span>
                             <small class="text-muted text-uc">我的余额</small>
@@ -60,9 +60,9 @@ $agency = \backend\models\Agency::find();
                                 class="fa fa-ban fa-stack-1x text-white"></i> </span>
                         <a class="clear">
                             <span class="h3 block m-t-xs"><span class="h3 block m-t-xs">
-                                    <?='家族总鱼币'.$Family['fishgold']?>
+                                    <?='家族总宝石'.$Family['fishgold']?>
                             </span></span>
-                            <small class="text-muted text-uc">保险箱总鱼币</small>
+                            <small class="text-muted text-uc">保险箱总宝石</small>
                         </a>
                     </div>
                 </div>

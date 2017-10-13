@@ -36,12 +36,10 @@ use yii\bootstrap\ActiveForm;
                                         </div>
                                         <input class="form-control" name="startTime" value="<?=$startTime?>"  size="16" type="hidden" id="startTime">
                                         <input class="form-control" name="endTime" value="<?=$endTime?>" type="hidden" id="endTime">
-                                    
-                                       
-
                                         <input type="submit" value="查询" class="btn btn-default">
-                                        <input class="form-control" value="总购买金币:<?=$gold?>" disabled="disabled" style="width:300px">
-                                        <input class="form-control" value="总购买钻石:<?=$diamond?>" disabled="disabled" style="width:300px" >
+                                        <input class="form-control" value="总购买金币:<?=$gold?>" disabled="disabled" style="width:200px">
+                                        <input class="form-control" value="总购买钻石:<?=$diamond?>" disabled="disabled" style="width:200px" >
+                                        <input class="form-control" value="总购买宝石:<?=$fishgold?>" disabled="disabled" style="width:200px" >
                                     </form>
                                 </div>
                             </div>
@@ -79,7 +77,15 @@ use yii\bootstrap\ActiveForm;
                                 <td  class="text-center" style="border-left: 0px;"><?=$i?></td>
                                 <td  class="text-center"><?=$value['name']?></td>
                                 <td  class="text-center"><?=$value['gold']?></td>
-                                <td  class="text-center"><?=$value['gold_config']==1?'金币':'钻石'?></td>
+                                <td  class="text-center">
+                                <?php if ($value['gold_config']==1):?>
+                                    金币
+                                <?php elseif($value['gold_config']==2):?>
+                                    钻石
+                                <?php else:?>
+                                    宝石
+                                <?php endif;?>
+                                </td>
                                 <td  class="text-center"><?=date("Y-m-d H:i:s",$value['time'])?></td>
                                <!-- <td  class="text-center"><?/*=$value['money']*/?></td>-->
                                 <td  class="text-center"><?=$value['manage_name']?></td>

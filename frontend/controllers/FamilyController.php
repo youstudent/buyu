@@ -102,10 +102,10 @@ class FamilyController extends ObjectController
         );
         $data  = $model->limit($pages->limit)->offset($pages->offset)->all();
         //玩家总上分
-        $rows = Familyrecord::find()->select(['sum(gold)','sum(diamond)'])->andWhere(['familyid'=>\Yii::$app->session->get('familyId')])->andWhere(['type'=>6])->asArray()->one();
+        $rows = Familyrecord::find()->select(['sum(gold)','sum(fishgold)'])->andWhere(['familyid'=>\Yii::$app->session->get('familyId')])->andWhere(['type'=>6])->asArray()->one();
         
         //玩家总下分
-        $row = Familyrecord::find()->select(['sum(gold)','sum(diamond)'])->andWhere(['familyid'=>\Yii::$app->session->get('familyId')])->andWhere(['type'=>5])->asArray()->one();
+        $row = Familyrecord::find()->select(['sum(gold)','sum(fishgold)'])->andWhere(['familyid'=>\Yii::$app->session->get('familyId')])->andWhere(['type'=>5])->asArray()->one();
         return $this->render('up-and-down',['data'=>$data,'pages'=>$pages,'rows'=>$rows,'row'=>$row]);
     }
     

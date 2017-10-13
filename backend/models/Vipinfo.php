@@ -58,12 +58,12 @@ class Vipinfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['viplevel', 'vipex', 'ability', 'abilitydesc', 'gold', 'upgold', 'updiamond', 'upfishgold', 'uptoolid', 'uptoolnum', 'fishgold', 'diamond', 'toolid', 'toolnum'], 'required'],
+            [['viplevel', 'vipex', 'ability', 'abilitydesc', 'gold', ], 'required'],
             [['viplevel', 'vipex',  'gold', 'upgold', 'updiamond', 'upfishgold', 'fishgold', 'diamond', 'almsnum'], 'integer'],
             [['ability'], 'string', 'max' => 11],
             [['abilitydesc', 'uptoolid', 'uptoolnum', 'toolid', 'toolnum'], 'string', 'max' => 255],
-            [['gift','gifts','type','types'],'safe'],
-            [['killrate','almsrate','almsnum'],'match','pattern'=>'/^0$|^\+?[1-9]\d*$/','message'=>'数量无效'],
+            [['gift','gifts','type','types','upgold', 'updiamond', 'upfishgold', 'uptoolid', 'uptoolnum', 'fishgold', 'diamond', 'toolid', 'toolnum'],'safe'],
+            [['killrate','almsrate','almsnum'],'number'],
         ];
     }
 
@@ -99,9 +99,9 @@ class Vipinfo extends \yii\db\ActiveRecord
     public function edit($data =[]){
         if($this->load($data) && $this->validate())
         {
-    
+           
             if ($this->killrate<0 || $this->almsrate>100 || $this->killrate>100 ||$this->almsrate<0){
-                return $this->addError('alms_rate','爆率和救济金领取比例在0-100之间');
+                return $this->addError('killrate','爆率和救济金领取比例在0-100之间');
             }
             $this->upgold=0;
             $this->updiamond=0;
@@ -139,7 +139,11 @@ class Vipinfo extends \yii\db\ActiveRecord
              */
             if ($this->types) {
                 $getGift = new getgift();
-                $re = $getGift->disposeGift($this->types);
+                $data=[];
+                foreach ($this->types as $key=>&$value){
+                    $data[str_replace('9','',$key)]=$value;
+                }
+                $re = $getGift->disposeGift($data);
                 if ($re){
                     if ($re['toolid']) {
                         $this->toolid = $re['toolid'];
@@ -154,6 +158,8 @@ class Vipinfo extends \yii\db\ActiveRecord
                     return $this->addError('gift',$getGift->message);
                 }
             }
+            $this->almsrate= $this->almsrate*100;
+            $this->killrate= $this->killrate*100;
             return $this->save();
         }
     }

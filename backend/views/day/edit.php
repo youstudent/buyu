@@ -24,13 +24,13 @@
                     ],
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
-                <?php echo $form->field($model,'give_type',['inline'=>true])->dropDownList(['1'=>'是','0'=>'否'])?>
-                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\Day::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'batteryid',['inline'=>true])->dropDownList(['1'=>'是','0'=>'否'])?>
+                <?php echo $form->field($model,'gift',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\models\Day::$give[$k]?></label>
+                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\helps\getgift::getGift()[$k]?></label>
                         <div class="col-lg-9">
-                            <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="day[<?php echo $k?>]" value="<?php echo $v?>">
+                            <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="Signprize[type][<?php echo $k?>]" value="<?php echo $v?>">
                             <span class="help-block m-b-none"></span>
                         </div>
                     </div>
@@ -92,11 +92,11 @@
         });
 
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#day-type').find('.checkbox-inline');
+        var  checkbox_input =  $('#signprize-gift').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'day['+ _this.find('input').val()+']';
+            var input_name = 'Signprize[type]['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){

@@ -23,7 +23,7 @@ use yii\data\Pagination;
  */
 class Withdraw extends Object
 {
-    public static $option_type = [1=>'金币',2=>'钻石'];
+    public static $option_type = [1=>'金币',3=>'宝石'];
     /**
      * 搜索时使用的用于记住筛选
      * @var string
@@ -187,8 +187,8 @@ class Withdraw extends Object
                $num=$datas->gold;
                $datas->gold=($datas->gold-$this->gold);
             }else{
-                $num=$datas->diamond;
-                $datas->diamond=($datas->diamond-$this->gold);
+                $num=$datas->fishGold;
+                $datas->fishGold=($datas->fishGold-$this->gold);
             }
             if ($num<$this->gold){
                 return $this->addError('gold','数量不足');

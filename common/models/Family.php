@@ -135,11 +135,12 @@ class Family extends \yii\db\ActiveRecord
         return [
             ['pay_gold','match','pattern'=>'/^\+?[1-9][0-9]*$/','on'=>'pay'],
             [['name','realname', 'bankcard', 'bank', 'idcard', 'phone', 'maxmenber','password'], 'required','on'=>'add'],
-            [['owenerid', 'createtime', 'maxmenber'], 'integer'],
+            [['owenerid', 'createtime', 'maxmenber','bankcard','idcard'], 'integer'],
             [['name', 'realname', 'bankcard', 'bank', 'idcard', 'phone', 'notice','password'], 'string', 'max' => 255],
             [['notice'],'required','on'=>'edit'],
             [['pay_gold_config','pay_gold','password','searchstatus'],'safe'],
             [['phone'],'match','pattern'=>'/^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$/'],
+            [['select','keyword'],'safe']
         ];
     }
 
@@ -218,9 +219,9 @@ class Family extends \yii\db\ActiveRecord
             elseif ($this->select == 'phone')
                 return ['like','phone',$this->keyword];
             elseif($this->select == 'identity')
-                return ['like','identity',$this->keyword];
+                return ['like','idcard',$this->keyword];
             else
-                return ['or',['name'=>$this->keyword],['like','phone',$this->keyword],['like','identity',$this->keyword]];
+                return ['or',['name'=>$this->keyword],['like','phone',$this->keyword],['like','idcard',$this->keyword]];
         }
         return [];
     }

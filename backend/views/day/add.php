@@ -23,9 +23,9 @@
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'jewel_num')->dropDownList([1=>'首次',2=>'循环'])?>
-                <?php echo $form->field($model,'give_type',['inline'=>true])->dropDownList(['1'=>'是','0'=>'否'])?>
-                <?php echo $form->field($model,'type',['inline'=>true])->checkboxList(\common\models\Day::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'level')->dropDownList([1=>'首次',2=>'循环'])?>
+                <?php echo $form->field($model,'batteryid',['inline'=>true])->dropDownList(['1'=>'是','0'=>'否'])?>
+                <?php echo $form->field($model,'gift',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -83,11 +83,11 @@
         });
 
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#day-type').find('.checkbox-inline');
+        var  checkbox_input =  $('#signprize-gift').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'Day['+ _this.find('input').val()+']';
+            var input_name = 'Signprize[type]['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){

@@ -153,10 +153,6 @@ use yii\bootstrap\ActiveForm;
 </section>
 <script>
     
-    function setStatus(val) {
-        window.location = '<?php echo \yii\helpers\Url::to(['withdraw/index','show'=>''],true)?>' + val;
-        console.log($("#status").val());
-        
     function openAgency(_this, title) {
         swal({
                 title: title,
