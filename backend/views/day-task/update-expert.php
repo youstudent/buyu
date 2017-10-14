@@ -30,7 +30,7 @@
                     <?php echo $form->field($model,'id')->hiddenInput()?>
                 </div>
     
-                <?php echo $form->field($model,'types')->dropDownList(\backend\models\Redpacket::$option)?>
+                <?php echo $form->field($model,'types')->dropDownList(\common\helps\fish::$fishType)?>
                 <div>
                     <div  id="type1" style="display: <?php echo $model->types!==1?'none':''?>">
                         <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishingss(1),['name'=>$model->types!==1?'':'ExpertForm[fishings]'])?>
@@ -50,7 +50,7 @@
                 </div>
                 <?php echo $form->field($model,'num')?>
                 <?php echo $form->field($model,'enable')->dropDownList(\backend\models\ExpertForm::$enables)?>
-                <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\ExpertForm::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
                         <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \backend\models\ExpertForm::$give[$k]?></label>

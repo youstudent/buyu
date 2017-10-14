@@ -3,14 +3,17 @@
 namespace backend\controllers;
 
 use backend\models\DayForm;
+use backend\models\Everydaytask;
 use backend\models\ExpertForm;
 use backend\models\LandForm;
 use backend\models\OneCannonForm;
 use Codeception\Util\JsonArray;
+use common\helps\getgift;
 use common\models\DayList;
 use common\models\DayTask;
 use common\models\Test;
 use common\services\Request;
+use Symfony\Component\DomCrawler\Field\InputFormField;
 use yii\helpers\Json;
 use yii\web\Response;
 
@@ -33,7 +36,7 @@ class DayTaskController extends ObjectController
      */
     public function actionList()
     {
-        $data = DayList::find()->asArray()->all();
+        $data = Everydaytask::find()->where(['typeId'=>[1,8,11,12,13]])->asArray()->all();
         return $this->render('list',['data'=>$data]);
     }
     
@@ -113,7 +116,7 @@ class DayTaskController extends ObjectController
        
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = DayTask::findOne(['type_id'=>$id]);
+        $model = Everydaytask::findOne(['id'=>$id]);
         $modelForm = new LandForm();
         if(\Yii::$app->request->isPost)
         {
@@ -130,13 +133,13 @@ class DayTaskController extends ObjectController
         $products = json_decode($model->content,true);
         $rows = Test::get($products['send']);
         $modelForm->id=$model->id;
-        $modelForm->typeId= $model->type_id;
+        $modelForm->typeId= $model->typeId;
         $modelForm->gives=$rows['type'];
-        $modelForm->enable=$model->status;
+        $modelForm->enable=$model->enable;
         $modelForm->description=$model->description;
-        if ($model->type_id ==1){
+        if ($model->typeId ==1){
             return $this->render('land',['model'=>$modelForm,'data'=>$rows['data']]);
-        }elseif ($model->type_id ==8){
+        }elseif ($model->typeId ==8){
             return $this->render('share',['model'=>$modelForm,'data'=>$rows['data']]);
         }else{
             return $this->render('prop',['model'=>$modelForm,'data'=>$rows['data']]);
@@ -152,7 +155,7 @@ class DayTaskController extends ObjectController
         
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = DayTask::findOne(['type_id'=>$id]);
+        $model = Everydaytask::findOne(['id'=>$id]);
         $modelForm = new LandForm();
         if(\Yii::$app->request->isPost)
         {
@@ -168,15 +171,21 @@ class DayTaskController extends ObjectController
         }
         $data=[];
         $products = json_decode($model->content,true);
-        $re = DayTask::$give;
+        $re = getgift::getGiftss();
         foreach ($products['send'] as $key=>$value){
             if (array_key_exists($key,$re)){
-                $data[$key]=$value;
+                if ($value>0){
+                    $data[$key]=$value;
+                }
+               
             }
             if(is_array($value)){
                 foreach ($value as $K=>$v){
                     if (array_key_exists($v['toolId'],$re)){
-                        $data[$v['toolId']]=$v['toolNum'];
+                        if ($v['toolNum']>0){
+                            $data[$v['toolId']]=$v['toolNum'];
+                        }
+                       
                     }
                 }
             }
@@ -187,11 +196,12 @@ class DayTaskController extends ObjectController
             $type[]=$k;
         }
         $modelForm->id=$model->id;
-        $modelForm->typeId= $model->type_id;
+        $modelForm->typeId= $model->typeId;
         $modelForm->gives=$type;
         $modelForm->num=$products['num'];
-        $modelForm->enable=$model->status;
-        if ($model->type_id ==11){
+        $modelForm->enable=$model->enable;
+        $modelForm->description=$model->description;
+        if ($model->typeId ==11){
             return $this->render('skill',['model'=>$modelForm,'data'=>$data]);
         }else{
             return $this->render('assn',['model'=>$modelForm,'data'=>$data]);
@@ -200,25 +210,11 @@ class DayTaskController extends ObjectController
     }
     
     
-    
-    
-    
-    //同步数据
-    public function actionGetDay(){
-        $this->layout = false;
-        \Yii::$app->response->format = Response::FORMAT_JSON;
-        $code = DayTask::GetDay();
-        if ($code ==1){
-            return ['code'=>1,'message'=>'同步成功'];
-        }
-        return ['code'=>0,'message'=>'同步失败'];
-    }
-    
     /**
      *  捕鱼能手列表
      */
     public function actionExpert(){
-        $data = DayTask::find()->where(['type_id'=>2])->asArray()->all();
+        $data = Everydaytask::find()->where(['typeId'=>2])->asArray()->all();
         return $this->render('expert',['data'=>$data]);
     }
     
@@ -236,7 +232,6 @@ class DayTaskController extends ObjectController
             $message = $modelForm->getFirstErrors();
             $message = reset($message);
             return ['code' => 0, 'message' => $message];
-        
         }
         $modelForm->typeId=2;
         return $this->render('add-expert', ['model' =>$modelForm]);
@@ -244,14 +239,13 @@ class DayTaskController extends ObjectController
     }
     
     /**
-     *   修改
+     *  添加捕鱼能手任务
      */
     public function actionUpdate()
     {
-    
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = DayTask::findOne(['id' => $id]);
+        $model = Everydaytask::findOne(['id' => $id]);
         $modelForm = new ExpertForm();
         if (\Yii::$app->request->isPost) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
@@ -265,13 +259,12 @@ class DayTaskController extends ObjectController
         }
         $data = [];
         $products = json_decode($model->content, true);
-        $re = DayTask::$give;
+        $re = getgift::getGiftss();
         foreach ($products['send'] as $key => $value) {
             if (array_key_exists($key, $re)) {
                 if ($value>0){
                     $data[$key] = $value;
                 }
-               
             }
             if (is_array($value)) {
                 foreach ($value as $K => $v) {
@@ -279,20 +272,17 @@ class DayTaskController extends ObjectController
                         if ($v['toolNum']>0){
                             $data[$v['toolId']] = $v['toolNum'];
                         }
-                        
                     }
                 }
             }
-        
         }
         $type = [];
         foreach ($data as $k => $v) {
             $type[] = $k;
         }
-        
         $modelForm->id = $model->id;
-        $modelForm->enable = $model->status;
-        $modelForm->typeId = $model->type_id;
+        $modelForm->enable = $model->enable;
+        $modelForm->typeId = $model->typeId;
         $modelForm->num = $products['num'];
         $modelForm->gives = $type;
         $modelForm->fishings = $products['fishId'];
@@ -310,7 +300,7 @@ class DayTaskController extends ObjectController
         
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = DayTask::findOne(['id' => $id]);
+        $model = Everydaytask::findOne(['id' => $id]);
         $modelForm = new DayForm();
         if (\Yii::$app->request->isPost) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
@@ -324,15 +314,21 @@ class DayTaskController extends ObjectController
         }
         $data = [];
         $products = json_decode($model->content, true);
-        $re = DayTask::$give;
+        $re = getgift::getGiftss();
         foreach ($products['send'] as $key => $value) {
             if (array_key_exists($key, $re)) {
-                $data[$key] = $value;
+                if ($value>0){
+                    $data[$key] = $value;
+                }
+                
             }
             if (is_array($value)) {
                 foreach ($value as $K => $v) {
                     if (array_key_exists($v['toolId'], $re)) {
-                        $data[$v['toolId']] = $v['toolNum'];
+                        if ($v['toolNum']>0){
+                            $data[$v['toolId']] = $v['toolNum'];
+                        }
+                       
                     }
                 }
             }
@@ -343,8 +339,8 @@ class DayTaskController extends ObjectController
             $type[] = $k;
         }
         $modelForm->id = $model->id;
-        $modelForm->enable = $model->status;
-        $modelForm->typeId = $model->type_id;
+        $modelForm->enable = $model->enable;
+        $modelForm->typeId = $model->typeId;
         $modelForm->num = $products['num'];
         $modelForm->gold = $products['type'];
         $modelForm->gives = $type;
@@ -359,7 +355,7 @@ class DayTaskController extends ObjectController
      * 今日斗金列表
      */
     public function actionMoneyToday(){
-       $data = DayTask::find()->where(['type_id'=>3])->asArray()->all();
+       $data = Everydaytask::find()->where(['typeId'=>3])->orderBy('id DESC')->asArray()->all();
        return $this->render('money-today',['data'=>$data]);
     }
     
@@ -390,7 +386,7 @@ class DayTaskController extends ObjectController
      *  鱼王列表
      */
     public function actionKing(){
-        $data = DayTask::find()->where(['type_id'=>4])->asArray()->all();
+        $data = Everydaytask::find()->where(['typeId'=>4])->asArray()->all();
         return $this->render('fish-king',['data'=>$data]);
     }
     
@@ -497,13 +493,8 @@ class DayTaskController extends ObjectController
         $this->layout = false;
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $id     = \Yii::$app->request->get('id');
-        $model  = DayTask::findOne($id);
-        $data =[];
-        $data['id']=$model->id;
-        $datas = Json::encode($data);
-        $url = \Yii::$app->params['Api'].'/control/deleteEveryDayTask';
-        $re = Request::request_post_raw($url,$datas);
-        if ($re['code']==1){
+        $model  = Everydaytask::findOne($id);
+        if ($model){
             $model->delete();
             return ['code'=>1,'message'=>'删除成功'];
         }
@@ -518,7 +509,7 @@ class DayTaskController extends ObjectController
     public function actionCannon(){
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = DayTask::findOne(['id'=>$id]);
+        $model = Everydaytask::findOne(['id'=>$id]);
         $modelForm = new OneCannonForm();
         if(\Yii::$app->request->isPost)
         {
@@ -534,7 +525,7 @@ class DayTaskController extends ObjectController
         }
         $JSON = json_decode($model->content,true);
         $data  =[];
-        $re = OneCannonForm::$give;
+        $re = getgift::getGiftss();
         foreach ($JSON['send'] as $key => $value) {
             if (array_key_exists($key, $re)) {
                 $data[$key] = $value;
@@ -552,12 +543,12 @@ class DayTaskController extends ObjectController
             $type[]=$k;
         }
         $modelForm->id=$model->id;
-        $modelForm->typeId=$model->type_id;
+        $modelForm->typeId=$model->typeId;
         $modelForm->gives=$type;
         $modelForm->get=$JSON['get'];
         $modelForm->lost=$JSON['lost'];
         $modelForm->type1=$JSON['type'];
-        $modelForm->enable=$model->status;
+        $modelForm->enable=$model->enable;
         return $this->render('cannon',['model'=>$modelForm,'data'=>$data]);
     }
     
@@ -566,10 +557,9 @@ class DayTaskController extends ObjectController
      *  弹无须发
      */
     public function actionCannonIndex(){
-        $data = DayTask::find()->where(['type_id'=>5])->asArray()->all();
+        $data = Everydaytask::find()->where(['typeId'=>5])->asArray()->all();
         return $this->render('cannon-index',['data'=>$data]);
     }
-    
     
     /**
      *  惊天一炮
@@ -853,18 +843,24 @@ class DayTaskController extends ObjectController
     public function actionPrize(){
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = DayList::findOne($id);
+        $model = Everydaytask::findOne($id);
         $JSON = json_decode($model->content,true);
         $data  =[];
-        $re = DayList::$give;
+        $re = getgift::getGiftss();
         foreach ($JSON['send'] as $key => $value) {
             if (array_key_exists($key, $re)) {
-                $data[$key] = $value;
+                if ($value>0){
+                    $data[$key] = $value;
+                }
+               
             }
             if (is_array($value)) {
                 foreach ($value as $K => $v) {
                     if (array_key_exists($v['toolId'], $re)) {
-                        $data[$v['toolId']] = $v['toolNum'];
+                        if ($v['toolNum']>0){
+                            $data[$v['toolId']] = $v['toolNum'];
+                        }
+                        
                     }
                 }
             }
@@ -881,10 +877,10 @@ class DayTaskController extends ObjectController
     public function actionPrizeExpert(){
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = DayTask::findOne($id);
+        $model = Everydaytask::findOne($id);
         $JSON = json_decode($model->content,true);
         $data  =[];
-        $re = DayTask::$give;
+        $re = getgift::getGiftss();
         foreach ($JSON['send'] as $key => $value) {
             if (array_key_exists($key, $re)) {
                 if ($value>0){

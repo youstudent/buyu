@@ -12,7 +12,7 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">每日捕鱼任务管理</a></li>
+                <li><a href="#">基础捕鱼任务管理</a></li>
                 <li class="active">任务列表</li>
             </ul>
             <!--            面包屑结束            -->
@@ -20,11 +20,6 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-9">
-                            <a href="<?php echo \yii\helpers\Url::to(['day-task/get-day']) ?>"
-                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
-                            <!--筛选状态 全部|正常|封停 结束-->
-                        </div>
                         <div class="col-sm-3 text-right">
                         
                         </div>
@@ -51,11 +46,11 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?= $value['name'] ?></td>
-                                    <td class="text-center"><?=\common\models\DayTask::getBasics($value['content'])?></td>
+                                    <td class="text-center"><?= $value['taskname'] ?></td>
+                                    <td class="text-center"><?=\backend\models\Everydaytask::getBasics($value['content'])?></td>
                                     <td class="text-center"><?= $value['description'] ?></td>
                                     <td class="text-center">
-                                        <?php if($value['status'] == 1):?>
+                                        <?php if($value['enable'] == 1):?>
                                         <a href="#" class="active">
                                             <?php else:?>
                                             <a href="#" class="">
@@ -67,8 +62,14 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                                     <td class="text-center" style="width: 500px;">
                                         <a href="<?php echo \yii\helpers\Url::to(['day-task/prize', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖励</a>
-                                        <a href="<?php echo \yii\helpers\Url::to(["day-task/".$value['url'], 'id' => $value['type_id']]) ?>"
-                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                        <?php if ($value['typeId']==11 || $value['typeId']==13):?>
+                                            <a href="<?php echo \yii\helpers\Url::to(["day-task/num",'id' => $value['id']]) ?>"
+                                               data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                         <?php else:?>
+                                            <a href="<?php echo \yii\helpers\Url::to(["day-task/land",'id' => $value['id']]) ?>"
+                                               data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
+                                        <?php endif;?>
+                                        
                                     </td>
                                 </tr>
                                 <?php $i++ ?>

@@ -27,14 +27,14 @@
                     ],
                 ])?>
            
-            <?php echo $form->field($model,'fishings')->dropDownList(\backend\models\ExpertForm::$boos)?>
+            <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\fish::boss())?>
             <?php echo $form->field($model,'num')?>
             <div style="display: none">
     
                 <?php echo $form->field($model,'typeId')->hiddenInput()?>
             </div>
            
-            <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\ExpertForm::$give,['style'=>'margin-left: 113px;'])?>
+            <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\common\helps\getgift::getGiftss(),['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

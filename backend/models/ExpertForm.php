@@ -98,7 +98,6 @@ class ExpertForm extends Model
     public function edit($data = []){
         if($this->load($data) && $this->validate())
         {
-            $arr = [];
             $content['fishId']=$this->fishings;
             $content['num']=$this->num;
             $send=[];
@@ -124,7 +123,6 @@ class ExpertForm extends Model
                     $i++;
                 }
             }
-    
             }
             if (!empty($tools)){
                 $send['tools']=$tools;
@@ -135,28 +133,10 @@ class ExpertForm extends Model
             }else{
                 $content['send']=$send;
             }
-            //$content['send']=$send;
-            $arr['enable']=$this->enable;
-            $arr['id']=$this->id;
-            $arr['typeId']=$this->typeId;
-            $arr['description']='';
-            $arr['content']=$content;
-            $JS = Json::encode($arr);
-            /**
-             * 请求游戏服务端   修改数据
-             */
-            $url = \Yii::$app->params['Api'].'/control/updateEveryDayTask';
-            $re = Request::request_post_raw($url,$JS);
-            
-            if ($re['code']== 1){
-                $model =DayTask::findOne(['id'=>$this->id]);
-                $model->content=Json::encode($content);
-                $model->status=$this->enable;
-                $model->type_id=$this->typeId;
-                $model->updated_at=time();
-                $model->save(false);
-                return true;
-            }
+            $model = Everydaytask::findOne(['id'=>$this->id]);
+            $model->enable=$this->enable;
+            $model->content=Json::encode($content);
+            return $model->save();
         }
             
         
@@ -165,11 +145,9 @@ class ExpertForm extends Model
     public function add($data = [])
     {
         if($this->load($data) && $this->validate()) {
-         
             if ($this->fishings<1){
                 return $this->addError('fishings','请选择鱼');
             }
-            $arr = [];
             $content['fishId']=$this->fishings;
             $content['num']=$this->num;
             $send=[];
@@ -206,31 +184,18 @@ class ExpertForm extends Model
             }else{
                 $content['send']=$send;
             }
-            //$content['send']=$send;
-            $arr['enable']=1;
-            $arr['typeId']=$this->typeId;
-            $arr['content']=$content;
-            $JS = Json::encode($arr);
-            /**
-             * 请求游戏服务端   修改数据
-             */
-            $url = \Yii::$app->params['Api'].'/control/addEveryDayTask';
-            $re = Request::request_post_raw($url,$JS);
-            if ($re['code']== 1){
-                $model = new DayTask();
+                $model = new Everydaytask();
                 if ($this->typeId == 2){
-                    $model->name='捕鱼能手';
+                    $model->taskname='捕鱼能手';
                 }else{
-                    $model->name='智斗鱼王';
+                    $model->taskname='智斗鱼王';
                 }
                 $model->content=Json::encode($content);
-                $model->status=1;
-                $model->type_id=$this->typeId;
-                $model->updated_at=time();
-                $model->save(false);
-                return true;
+                $model->enable=1;
+                $model->typeId=$this->typeId;
+                return $model->save();
             }
-        }
+        
     }
     
     public static function getFishingType($data){

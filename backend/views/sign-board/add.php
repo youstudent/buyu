@@ -24,48 +24,48 @@
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'type')->dropDownList(\backend\models\Redpacket::$option)?>
+                <?php echo $form->field($model,'type')->dropDownList(\common\helps\fish::$fishType)?>
                 <div>
                     <div  id="type1">
-                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishingss(1))?>
+                        <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishingss(1))?>
                     </div>
                     <div style="display: none" id="type2">
-                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishingss(2),['name'=>''])?>
+                        <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishingss(2),['name'=>''])?>
                     </div>
                     <div style="display: none" id="type3">
-                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishingss(3),['name'=>''])?>
+                        <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishingss(3),['name'=>''])?>
                     </div>
                     <div style="display: none" id="type4">
-                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishingss(4),['name'=>''])?>
+                        <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishingss(4),['name'=>''])?>
                     </div>
                     <div style="display: none" id="type5">
-                        <?php echo $form->field($model,'fishing_id')->dropDownList(\common\helps\players::getFishingss(5),['name'=>''])?>
+                        <?php echo $form->field($model,'fishid')->dropDownList(\common\helps\players::getFishingss(5),['name'=>''])?>
                     </div>
                 </div>
     
-                <?php echo $form->field($model,'from')->dropDownList(\backend\models\Redpacket::$option)?>
+                <?php echo $form->field($model,'from')->dropDownList(\common\helps\fish::$fishType)?>
                 <div>
                
                 <div id="from1">
-                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishingss(1))?>
+                    <?php echo $form->field($model,'fromfish')->dropDownList(\common\helps\players::getFishingss(1))?>
                 </div>
                 <div id="from2" style="display: none">
-                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishingss(2),['name'=>''])?>
+                    <?php echo $form->field($model,'fromfish')->dropDownList(\common\helps\players::getFishingss(2),['name'=>''])?>
                 </div>
                 <div id="from3" style="display: none">
-                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishingss(3),['name'=>''])?>
+                    <?php echo $form->field($model,'fromfish')->dropDownList(\common\helps\players::getFishingss(3),['name'=>''])?>
                 </div>
                 <div id="from4" style="display: none">
-                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishingss(4),['name'=>''])?>
+                    <?php echo $form->field($model,'fromfish')->dropDownList(\common\helps\players::getFishingss(4),['name'=>''])?>
                 </div>
                 <div id="from5" style="display: none">
-                    <?php echo $form->field($model,'from_fishing[]')->dropDownList(\common\helps\players::getFishingss(5),['name'=>''])?>
+                    <?php echo $form->field($model,'fromfish')->dropDownList(\common\helps\players::getFishingss(5),['name'=>''])?>
                 </div>
                 </div>
                 
-                <?php echo $form->field($model,'number')?>
-                <?php echo $form->field($model,'probability')?>
-                <?php echo $form->field($model,'give_number',['inline'=>true])->checkboxList(\common\models\SignBoard::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'fishnum')?>
+                <?php echo $form->field($model,'rate')?>
+                <?php echo $form->field($model,'gift',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>
@@ -122,35 +122,35 @@
             });
         });
 
-        $("#signboard-type").change(function(){
+        $("#fishtask-type").change(function(){
             var thisVal = $(this).val();
-            var tempText = $('#signboard-type').find('option[value='+ thisVal +']');
+            var tempText = $('#fishtask-type').find('option[value='+ thisVal +']');
 
             $("#type" + thisVal).attr("style","").siblings().attr('style', 'display: none');
 
-            $("#type" + thisVal).find('select').attr("name","SignBoard[fishing_id]");
+            $("#type" + thisVal).find('select').attr("name","Fishtask[fishid]");
             $("#type" + thisVal).siblings().find('select').attr('name', '')
         });
 
 
-        $("#signboard-from").change(function(){
+        $("#fishtask-from").change(function(){
             var thisVal = $(this).val();
             console.log(thisVal)
-            var tempText = $('#signboard-from').find('option[value='+ thisVal +']');
+            var tempText = $('#fishtask-from').find('option[value='+ thisVal +']');
 
             $("#from" + thisVal).attr("style","").siblings().attr('style', 'display: none');
 
-            $("#from" + thisVal).find('select').attr("name","SignBoard[from_fishing][]");
+            $("#from" + thisVal).find('select').attr("name","Fishtask[fromfish]");
             $("#from" + thisVal).siblings().find('select').attr('name', '')
         });
         
         
         //checkbox选中添加对应输入框
-        var  checkbox_input =  $('#signboard-give_number').find('.checkbox-inline');
+        var  checkbox_input =  $('#fishtask-gift').find('.checkbox-inline');
         checkbox_input.click(function(){
             var _this = $(this);
             var input_text = _this.text();
-            var input_name = 'SignBoard['+ _this.find('input').val()+']';
+            var input_name = 'Fishtask[types]['+ _this.find('input').val()+']';
             var input_id = _this.find('input').val();
             var html = '';
             if(_this.find('input').is(':checked')){

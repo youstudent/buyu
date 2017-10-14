@@ -23,22 +23,14 @@
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'from_fishing')->dropDownList(\common\models\SignBoard::$fishing,['multiple'=>true])?>
                 <?php foreach ($data as $key=>$value):?>
-                    <label class="col-lg-3 control-label" for="redeemcode-diamond"><?php echo $key?></label>
+                    <label class="col-lg-3 control-label" for="redeemcode-diamond">
+                        <?php if ($data):?>
+                            <?php echo  \common\helps\getgift::getGift()[$key]?>
+                        <?php endif;?>
+                    </label>
                     <div class="col-lg-9"><input type="text" id="redeemcode-diamond" class="form-control" name="RedeemCode[diamond]" value="<?php echo $value?>" readonly=""><span class="help-block m-b-none"></span></div>
                 <?php endforeach;?>
-                
-               <!-- <?php /*echo $form->field($model,'give_type')->checkboxList(\common\models\RedeemCode::$give)*/?>
-                <?php /*echo $form->field($model,'gold')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'diamond')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'fishGold')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'one')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'tow')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'three')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'four')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'five')->textInput(['readonly'=>true])*/?>
-                --><?php /*echo $form->field($model,'six')->textInput(['readonly'=>true])*/?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

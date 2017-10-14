@@ -13,6 +13,7 @@ use backend\controllers\DayController;
 use common\models\DayList;
 use common\models\DayTask;
 use common\services\Request;
+use Symfony\Component\CssSelector\Node\ElementNode;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
@@ -82,33 +83,45 @@ class LandForm extends Model
     public function edit($data = []){
         if($this->load($data) && $this->validate())
         {
-            $arr = [];
-            $content = \common\models\Test::set($this->type);
-            if (!$content){
-                return $this->addError('types','数量无效');
+            $send=[];
+            $tools = [];
+            $i = 0;
+            $tool = [];
+            $datas=['gold','diamond','fishGold'];
+            if ($this->type){
+                foreach ($this->type as $key => $value) {
+                    if (in_array($key,$datas)) {
+                        if ($value<=0 || $value==null || !is_numeric($value)){
+                            return $this->addError('types','数量无效');
+                        }
+                        $send[$key] = $value;
+                    }
+                    if (is_numeric($key)) {
+                        if ($value<=0 || $value==null || !is_numeric($value)){
+                            return $this->addError('types','数量无效');
+                        }
+                        $tool['toolId'] = $key;
+                        $tool['toolNum'] = $value;
+                        $tools[$i] = $tool;
+                        $i++;
+                    }
+                }
+        
             }
-            $arr['enable']=$this->enable;
-            $arr['id']=$this->id;
-            $arr['typeId']=$this->typeId;
-            $arr['content']=$content;
-            $arr['description']=$this->description;
-            $JS = Json::encode($arr);
-            $url = \Yii::$app->params['Api'].'/control/updateEveryDayTask';
-            $re = Request::request_post_raw($url,$JS);
-            if ($re['code']== 1){
-                $row= DayList::findOne(['type_id'=>$this->typeId]);
-                $rows = DayTask::findOne(['type_id'=>$this->typeId]);
-                $rows->status =$this->enable;
-                $rows->description =$this->description;
-                $rows->content =Json::encode($content);
-                $rows->save(false);
-                $row->status=$this->enable;
-                $row->description=$this->description;
-                $row->content=Json::encode($content);
-                $row->save(false);
-                return true;
+            if (!empty($tools)){
+                $send['tools']=$tools;
             }
-            
+            $sends=['gold'=>0,'diamond'=>0,'fishGold'=>0];
+            if (empty($send)){
+                $content['send']=$sends;
+            }else{
+                $content['send']=$send;
+            }
+            $model = Everydaytask::findOne(['id'=>$this->id]);
+            $model->enable=$this->enable;
+            $model->content=Json::encode($content);
+            $model->description=$this->description;
+            return $model->save();
         }
     }
     
@@ -123,7 +136,6 @@ class LandForm extends Model
     public function editnum($data = []){
         if($this->load($data) && $this->validate())
         {
-            $arr = [];
             $content['num']=$this->num;
             $send=[];
             $tools = [];
@@ -159,24 +171,11 @@ class LandForm extends Model
             }else{
                 $content['send']=$send;
             }
-            //$content['send']=$send;
-            $arr['enable']=$this->enable;
-            $arr['id']=$this->id;
-            $arr['typeId']=$this->typeId;
-            $arr['content']=$content;
-            $arr['description']=$this->description;
-            $JS = Json::encode($arr);
-            $url = \Yii::$app->params['Api'].'/control/updateEveryDayTask';
-            $re = Request::request_post_raw($url,$JS);
-            if ($re['code']== 1){
-                $re= DayList::findOne(['type_id'=>$this->typeId]);
-                $re->status=$this->enable;
-                $re->description=$this->description;
-                $re->content=Json::encode($content);
-                $re->save(false);
-                return true;
-            }
-            
+            $model = Everydaytask::findOne(['id'=>$this->id]);
+            $model->enable=$this->enable;
+            $model->content=Json::encode($content);
+            $model->description=$this->description;
+            return $model->save();
         }
     }
     

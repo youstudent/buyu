@@ -12,7 +12,7 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
             <!--            面包屑开始           -->
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
                 <li><a href="/site/index"><i class="fa fa-home"></i>首页</a></li>
-                <li><a href="#">每日捕鱼任务管理</a></li>
+                <li><a href="#">基础任务捕鱼任务管理</a></li>
                 <li class="active">任务列表</li>
             </ul>
             <!--            面包屑结束            -->

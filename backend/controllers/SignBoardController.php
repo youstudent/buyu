@@ -2,6 +2,8 @@
 
 namespace backend\controllers;
 
+use backend\models\Fishtask;
+use common\helps\getgift;
 use common\models\SignBoard;
 use common\services\Request;
 use Symfony\Component\DomCrawler\Field\InputFormField;
@@ -14,8 +16,7 @@ class SignBoardController extends ObjectController
     //捕鱼任务首页
     public function actionIndex()
     {
-       // SignBoard::GetSign();
-        $data = new SignBoard();
+        $data = new Fishtask();
         $model = $data::find();
         $pages = new Pagination(
             [
@@ -30,61 +31,18 @@ class SignBoardController extends ObjectController
     
     
     /**
-     * 捕鱼任务改操作操作
-     * @return array|string
-     */
-   /* public function actionEdit()
-    {
-        $this->layout = false;
-        $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = SignBoard::findOne($id);
-        if(\Yii::$app->request->isPost)
-        {
-            \Yii::$app->response->format = Response::FORMAT_JSON;
-            $model->manage_id    = \Yii::$app->session->get('manageId');
-            $model->manage_name  = \Yii::$app->session->get('manageName');
-            $model->updated_at=time();
-            if($model->load(\Yii::$app->request->post()) && $model->save())
-            {
-                return ['code'=>1,'message'=>'修改成功'];
-            }
-            $message = $model->getFirstErrors();
-            $message = reset($message);
-            return ['code'=>0,'message'=>$message];
-            
-        }
-        return $this->render('edit',['model'=>$model]);
-    }*/
-    
-    
-    /**
-     * 获取 任务列表
-     */
-    public function actionGetSign(){
-        $this->layout = false;
-        \Yii::$app->response->format = Response::FORMAT_JSON;
-        $code = SignBoard::GetSign();
-        if ($code == 1){
-            return ['code'=>1,'message'=>'同步成功'];
-        }
-        return ['code'=>0,'message'=>'同步失败'];
-    }
-    
-    
-    /**
      *  添加 任务
      * @return array|string
      */
     public function actionAdd()
     {
         $this->layout = false;
-        $model = new SignBoard();
+        $model = new Fishtask();
         if(\Yii::$app->request->isPost)
         {
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if($model->add(\Yii::$app->request->post()))
             {
-                SignBoard::GetSign();
                 return ['code'=>1,'message'=>'添加成功'];
             }
             $message = $model->getFirstErrors();
@@ -103,7 +61,7 @@ class SignBoardController extends ObjectController
     {
         $this->layout = false;
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = SignBoard::findOne($id);
+        $model = Fishtask::findOne($id);
         if(\Yii::$app->request->isPost)
         {
             \Yii::$app->response->format = Response::FORMAT_JSON;
@@ -114,43 +72,13 @@ class SignBoardController extends ObjectController
             $message = $model->getFirstErrors();
             $message = reset($message);
             return ['code'=>0,'message'=>$message];
-            
         }
-        $JSON = json_decode($model->give_number,true);
-        $data  =[];
-        $re = SignBoard::$give;
-        foreach ($JSON as $key=>$value){
-            if (array_key_exists($key,$re)){
-                if ($value>0){
-                    $data[$key]=$value;
-                }
-               
-            }
-            if(is_array($value)){
-                foreach ($value as $K=>$v){
-                    if (array_key_exists($v['toolId'],$re)){
-                        if ($v['toolNum']>0){
-                            $data[$v['toolId']]=$v['toolNum'];
-                        }
-                        
-                    }
-                }
-            }
-            
-        }
-        $type=[];
-        foreach($data as $k=>$v){
-            $type[]=$k;
-        }
-        $a = trim($model->from_fishing, "[");
-        $b = trim($a, "]");
-        $c = explode(",", $b);
-        $model->from_fishing=$c;
-        $model->give_number=$type;
-        $model->probability=$model->probability/100;
-        $model->type = SignBoard::GetFishtype($model->fishing_id);
-        $model->from = SignBoard::GetFishfrom($c);
-        return $this->render('edit',['model'=>$model,'data'=>$data]);
+        $row = getgift::getType($model,'','toolid','toolnum');
+        $model->gift=$row['type'];
+        $model->type=Fishtask::GetFishtype($model->fishid);
+        $model->from=Fishtask::GetFishtype($model->fromfish);
+        $model->rate=$model->rate/100;
+        return $this->render('edit',['model'=>$model,'data'=>$row['data']]);
     }
     
     /**
@@ -162,71 +90,28 @@ class SignBoardController extends ObjectController
         $this->layout = false;
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $id     = \Yii::$app->request->get('id');
-        $model  = SignBoard::findOne($id);
-        $data =[];
-        $data['id']=$model->id;
-        $datas = Json::encode($data);
-        $url = \Yii::$app->params['Api'].'/control/deleteFishTask';
-        $re = Request::request_post_raw($url,$datas);
-        if ($re['code']==1){
+        $model  = Fishtask::findOne($id);
+        if ($model){
             $model->delete();
             return ['code'=>1,'message'=>'删除成功'];
         }
         return ['code'=>0,'message'=>'删除失败'];
-        /*   if($model)
-           {
-               if($model->delete()) {
-                   return ['code'=>1,'message'=>'删除成功'];
-               }
-               $messge = $model->getFirstErrors();
-               $messge = reset($messge);
-               return ['code'=>0,'message'=>$messge];
-           }
-           return ['code'=>0,'message'=>'删除的ID不存在'];*/
     }
     
     
     //奖品内容的查看
     public function actionPrize(){
         $this->layout = false;
-        // RedeemCode::setShop();
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
-        $model = SignBoard::findOne($id);
-        $JSON = json_decode($model->give_number,true);
-        $data  =[];
-        $re = SignBoard::$give;
-        foreach ($JSON as $key=>$value){
-            if (array_key_exists($key,$re)){
-                if ($value>0){
-                    $data[$re[$key]]=$value;
-                }
-                
-            }
-            if(is_array($value)){
-                foreach ($value as $K=>$v){
-                    if (array_key_exists($v['toolId'],$re)){
-                        if ($v['toolNum']>0){
-                            $data[$re[$v['toolId']]]=$v['toolNum'];
-                        }
-                       
-                    }
-                }
-            }
-            
-        }
-        $a = trim($model->from_fishing, "[");
-        $b = trim($a, "]");
-        $c = explode(",", $b);
-        
-       /* $D  = [];
-        foreach (SignBoard::$fishing as $k=>$v){
-             if (array_key_exists($k,$c)){
-                $D[$k]=$v;
-             }
-        }
-        SignBoard::$prize=$D;*/
-        $model->from_fishing=$c;
+        $model = Fishtask::findOne($id);
+        $data =  getgift::prize($model,'','toolid','toolnum');
         return $this->render('prize',['model'=>$model,'data'=>$data]);
     }
+    /**
+     *  $a = trim($model->from_fishing, "[");
+    $b = trim($a, "]");
+    $c = explode(",", $b);
+    $model->from_fishing=$c;
+     */
 
 }

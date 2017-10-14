@@ -20,10 +20,6 @@ $this->title = Yii::t('app', 'sign_board_index') . '-' . Yii::$app->params['appN
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-3 text-left">
-                            <a href="<?php echo \yii\helpers\Url::to(['sign-board/get-sign']) ?>"
-                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
-                        </div>
                         <div class=" text-right">
                             <a href="<?= \yii\helpers\Url::to(['sign-board/add']) ?>" class="btn btn-primary"
                                data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加鱼任务</a>
@@ -43,7 +39,6 @@ $this->title = Yii::t('app', 'sign_board_index') . '-' . Yii::$app->params['appN
                                 <th class="text-center">任务鱼</th>
                                 <th class="text-center">击杀数量</th>
                                 <th class="text-center">任务出现概率</th>
-                                <th class="text-center">修改时间</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
                             </thead>
@@ -53,13 +48,14 @@ $this->title = Yii::t('app', 'sign_board_index') . '-' . Yii::$app->params['appN
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
-                                    <td class="text-center"><?= \common\models\SignBoard::GetFishtypes([$value['fishing_id']]) ?></td>
-                                    <td class="text-center"><?= \common\models\SignBoard::$fishing[$value['fishing_id']]?></td>
-                                    <td class="text-center"><?= \common\models\SignBoard::fromfishing([$value['from_fishing']])?></td>
-                                    <td class="text-center"><?= $value['number'] ?></td>
-                                    <td class="text-center"><?= $value['probability']/100 ?>%</td>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
+                                    <td class="text-center"><?= \backend\models\Fishtask::GetFishtypes($value['fishid']) ?></td>
+                                    <td class="text-center"><?= \common\helps\fish::getFish()[$value['fishid']]?></td>
+                                    <td class="text-center"><?=  \backend\models\Fishtask::fromfishing($value['fromfish'])?></td>
+                                    <td class="text-center"><?= $value['fishnum'] ?></td>
+                                    <td class="text-center"><?= $value['rate']/100 ?>%</td>
                                     <td class="text-center" style="width: 200px;">
+                                        <a href="<?php echo \yii\helpers\Url::to(['sign-board/prize', 'id' => $value['id']]) ?>"
+                                           data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">查看奖品</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['sign-board/edit', 'id' => $value['id']]) ?>"
                                            data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
                                         <a href="<?php echo \yii\helpers\Url::to(['sign-board/del', 'id' => $value['id']]) ?>"

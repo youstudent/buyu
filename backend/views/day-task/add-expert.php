@@ -25,7 +25,7 @@
                         'labelOptions'  => ['class'=>'col-lg-3 control-label'],
                     ],
                 ])?>
-                <?php echo $form->field($model,'types')->dropDownList(\backend\models\Redpacket::$option)?>
+                <?php echo $form->field($model,'types')->dropDownList(\common\helps\fish::$fishType)?>
                 <div>
                     <div  id="type1">
                         <?php echo $form->field($model,'fishings')->dropDownList(\common\helps\players::getFishingss(1))?>
@@ -48,7 +48,7 @@
         
                     <?php echo $form->field($model,'typeId')->hiddenInput()?>
                 </div>
-            <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\ExpertForm::$give,['style'=>'margin-left: 113px;'])?>
+            <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

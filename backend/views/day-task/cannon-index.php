@@ -20,10 +20,6 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                 <div class="panel-heading">
                     <!--                搜索开始          -->
                     <div class="row text-sm wrapper">
-                        <div class="col-sm-9">
-                            <a href="<?php echo \yii\helpers\Url::to(['day-task/get-day']) ?>"
-                               onclick="return openAgency(this,'是否确认同步数据?')" class="btn btn-primary btn-info">一键同步数据</a>
-                        </div>
                         <div class=" text-right">
                             <a href="<?= \yii\helpers\Url::to(['day-task/add-cannon']) ?>" class="btn btn-primary"
                                data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>添加弹无虚发任务</a>
@@ -40,7 +36,6 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                                 <th class="text-center" style="border-left: 0px;">编号</th>
                                 <th class="text-center">任务名字</th>
                                 <th class="text-center">内容</th>
-                                <th class="text-center">修改时间</th>
                                 <th class="text-center">状态</th>
                                 <th class="text-center" style="border-right: 0px;">操作</th>
                             </tr>
@@ -51,15 +46,10 @@ $this->title = Yii::t('app', 'day_task_index') . '-' . Yii::$app->params['appNam
                             <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i.'任务'?></td>
-                                    <td class="text-center"><?= $value['name'] ?></td>
+                                    <td class="text-center"><?= $value['taskname'] ?></td>
                                     <td class="text-center"><?=\backend\models\OneCannonForm::getname($value['content'])?></td>
-                                    <?php if (!empty($value['updated_at'])):?>
-                                    <td class="text-center"><?= date("Y-m-d H:i:s", $value['updated_at']) ?></td>
-                                    <?php else:?>
-                                    <td class="text-center"><?= $value['updated_at'] ?></td>
-                                    <?php endif;?>
                                     <td class="text-center">
-                                    <?php if($value['status'] == 1):?>
+                                    <?php if($value['enable'] == 1):?>
                                     <a href="#" class="active">
                                             <?php else:?>
                                              <a href="#" class="">

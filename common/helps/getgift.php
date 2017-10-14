@@ -35,6 +35,23 @@ class getgift
     
     
     /**
+     * 字段不一样
+     * @return array
+     */
+    public static function getGiftss()
+    {
+        //查询 道具列表中的数据
+        $data = Toolinfo::find()->asArray()->all();
+        //将道具数组格式化成  对应的数组
+        $new_data = ArrayHelper::map($data, 'toolid', 'toolname');
+        //自定义 赠送类型
+        $datas = ['gold' => '金币', 'diamond' => '钻石', 'fishGold' => '宝石'];
+        return ArrayHelper::merge($datas, $new_data);
+    }
+    
+    
+    
+    /**
      * 获取礼包
      * @return array
      */
@@ -193,5 +210,6 @@ class getgift
         
         return $re;
     }
+    
     
 }

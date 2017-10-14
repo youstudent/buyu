@@ -9,21 +9,12 @@
 namespace common\models;
 
 
+use common\helps\getgift;
 use yii\db\ActiveRecord;
 
 
 class Test extends ActiveRecord
 {
-    public static function getDb()
-    {
-        return \Yii::$app->commondb;  // 使用名为 "secondDb" 的应用组件  重新定义主键
-    }
-    
-    public static function tableName()
-    {
-        return 'player';
-    }
-    
     /**
      * @param $data
      * @return array
@@ -31,9 +22,11 @@ class Test extends ActiveRecord
      */
     public static function set($data){
         $send=[];
+        $e =[];
+       $sends=['gold'=>0,'diamond'=>0,'fishGold'=>0];
         if (empty($data)){
-            return $send;
-        }
+        return $e['send']=$sends;
+       }
         $datas=['gold','diamond','fishGold'];
         
         $tools = [];
@@ -61,12 +54,12 @@ class Test extends ActiveRecord
         if (!empty($tools)){
             $send['tools']=$tools;
         }
-        $sends=['gold'=>0,'diamond'=>0,'fishGold'=>0];
+        
         if (empty($send)){
-            $content['send']=$sends;
-        }else{
+          $content['send']=$sends;
+       }else{
             $content['send']=$send;
-        }
+       }
         return $content;
         
     }
@@ -76,16 +69,22 @@ class Test extends ActiveRecord
      * 解析礼包
      */
     public static function get($send){
-        $re = DayTask::$give;
+        $re = getgift::getGiftss();
         $data=[];
         foreach ($send as $key=>$value){
             if (array_key_exists($key,$re)){
-                $data[$key]=$value;
+                if ($value>0){
+                    $data[$key]=$value;
+                }
+                
             }
             if(is_array($value)){
                 foreach ($value as $K=>$v){
                     if (array_key_exists($v['toolId'],$re)){
-                        $data[$v['toolId']]=$v['toolNum'];
+                        if ($v['toolNum']>0){
+                            $data[$v['toolId']]=$v['toolNum'];
+                        }
+                        
                     }
                 }
             }

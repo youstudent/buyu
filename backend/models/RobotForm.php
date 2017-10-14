@@ -29,8 +29,9 @@ class RobotForm extends Model
     public function rules()
     {
         return [
-            [['name','num','rate'],'required'],
-            [['num','rate','id'],'number']
+            [['num','rate'],'required'],
+            [['num','rate','id'],'number'],
+            [['name'],'safe']
         ];
     }
     
@@ -78,7 +79,7 @@ class RobotForm extends Model
             if ($re['code']== 1){
                 return true;
             }
-            return $this->addError('id','修改数据失败');
+            return $this->addError('id','指派失败');
         }
         
     }

@@ -92,7 +92,6 @@ class OneCannonForm extends Model
     public function edit($data = []){
         if($this->load($data) && $this->validate())
         {
-            $arr = [];
             if ($this->typeId == 5){
                 if (empty($this->get) || empty($this->lost)){
                     return false;
@@ -146,29 +145,10 @@ class OneCannonForm extends Model
             }else{
                 $content['send']=$send;
             }
-           // $content['send']=$send;
-            $arr['enable']=$this->enable;
-            $arr['id']=$this->id;
-            $arr['typeId']=$this->typeId;
-            $arr['content']=$content;
-            $arr['description']='';
-            $JS = Json::encode($arr);
-         
-            
-            /**
-             * 请求游戏服务端   修改数据
-             */
-            $url = \Yii::$app->params['Api'].'/control/updateEveryDayTask';
-            $re =Request::request_post_raw($url,$JS);
-            if ($re['code']== 1){
-                $model =DayTask::findOne(['id'=>$this->id]);
-                $model->content=Json::encode($content);
-                $model->status=$this->enable;
-                $model->type_id=$this->typeId;
-                $model->updated_at=time();
-                $model->save(false);
-                return true;
-            }
+            $model = Everydaytask::findOne(['id'=>$this->id]);
+            $model->enable=$this->enable;
+            $model->content=Json::encode($content);
+            return $model->save();
             
         }
     }
@@ -178,7 +158,6 @@ class OneCannonForm extends Model
         if($this->load($data) && $this->validate())
         {
             $name = '弹无虚发';
-            $arr = [];
             if ($this->typeId == 6){
                 if (empty($this->num)){
                     $this->addError('num','分数不能为空');
@@ -253,27 +232,14 @@ class OneCannonForm extends Model
             }else{
                 $content['send']=$send;
             }
-            //$content['send']=$send;
-            $arr['enable']=$this->enable;
-            $arr['typeId']=$this->typeId;
-            $arr['content']=$content;
-            $JS = Json::encode($arr);
-            /**
-             * 请求游戏服务端   修改数据
-             */
-            $url = \Yii::$app->params['Api'].'/control/addEveryDayTask';
-            $re = Request::request_post_raw($url,$JS);
-            if ($re['code']== 1){
-                $model = new DayTask();
-                $model->name=$name;
-                $model->content=Json::encode($content);
-                $model->status=1;
-                $model->type_id=$this->typeId;
-                $model->updated_at=time();
-                $model->save(false);
-                return true;
-            }
-            
+    
+            $model = new Everydaytask();
+            $model->taskname=$name;
+            $model->content=Json::encode($content);
+            $model->enable=$this->enable;
+            $model->typeId=$this->typeId;
+            return $model->save();
+           
         }
         
     }
