@@ -13,8 +13,17 @@ class RobotsVipController extends \yii\web\Controller
      */
     public function actionIndex()
     {
-        $data = Robot::find()->asArray()->one();
-        return $this->render('index', ['value' => $data]);
+        $data = Robot::find()->asArray()->all();
+        foreach ($data as &$value){
+            if ($value['roomtype']==1){
+                $value['roomtype'] ='1倍房间';
+            }elseif ($value['roomtype'] ==2){
+                $value['roomtype'] ='30倍房间';
+            }else{
+                $value['roomtype'] ='300倍房间';
+            }
+        }
+        return $this->render('index', ['data' => $data]);
     }
     
     

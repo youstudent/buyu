@@ -27,17 +27,6 @@
                     <label class="col-lg-3 control-label" for="redeemcode-diamond"><?php echo $key?></label>
                     <div class="col-lg-9"><input type="text" id="redeemcode-diamond" class="form-control" name="RedeemCode[diamond]" value="<?php echo $value?>" readonly=""><span class="help-block m-b-none"></span></div>
                 <?php endforeach;?>
-                
-               <!-- <?php /*echo $form->field($model,'give_type')->checkboxList(\common\models\RedeemCode::$give)*/?>
-                <?php /*echo $form->field($model,'gold')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'diamond')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'fishGold')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'one')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'tow')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'three')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'four')->textInput(['readonly'=>true])*/?>
-                <?php /*echo $form->field($model,'five')->textInput(['readonly'=>true])*/?>
-                --><?php /*echo $form->field($model,'six')->textInput(['readonly'=>true])*/?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

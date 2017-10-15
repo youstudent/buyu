@@ -28,6 +28,7 @@ $this->title = Yii::t('app', 'robots_index') . '-' . Yii::$app->params['appName'
                             <thead>
                             <tr>
                                 <th class="text-center" style="border-left: 0px;">编号</th>
+                                <th class="text-center">房间倍数</th>
                                 <th class="text-center">vip最小</th>
                                 <th class="text-center">vip最大</th>
                                 <th class="text-center">金币最小</th>
@@ -44,8 +45,10 @@ $this->title = Yii::t('app', 'robots_index') . '-' . Yii::$app->params['appName'
                             </thead>
                             <tbody>
                             <?php $i = 1; ?>
+                            <?php foreach ($data as $key => $value): ?>
                                 <tr>
                                     <td class="text-center" style="border-left: 0px;"><?= $i ?></td>
+                                    <td class="text-center"><?= $value['roomtype'] ?></td>
                                     <td class="text-center"><?= $value['levelmin'] ?></td>
                                     <td class="text-center"><?= $value['levelmax']?></td>
                                     <td class="text-center"><?= $value['goldmin']?></td>
@@ -62,6 +65,7 @@ $this->title = Yii::t('app', 'robots_index') . '-' . Yii::$app->params['appName'
                                                data-toggle="modal" data-target="#myModal" class="btn btn-xs btn-primary">编辑</a>
                                     </td>
                                 </tr>
+                            <?php endforeach;?>
                                 <?php $i++ ?>
                             </tbody>
                         </table>

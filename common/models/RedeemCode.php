@@ -5,6 +5,7 @@ namespace common\models;
 use api\models\Users;
 use backend\models\Shop;
 use Codeception\Module\REST;
+use common\helps\players;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Symfony\Component\DomCrawler\Field\InputFormField;
 use Yii;
@@ -129,7 +130,7 @@ class RedeemCode extends Object
             'prize' => '奖品内容',
             'give_type_id' => '赠送类型ID',
             'start_time' => '开始时间',
-            'give_type'=>'奖品名',
+            'give_type'=>'礼包',
             'gold'=>'金币',
             'one'=>'神灯',
             'diamond'=>'钻石',
@@ -236,7 +237,7 @@ class RedeemCode extends Object
         if($this->load($data) && $this->validate())
         {
             $vv =[];
-            $re = RedeemCode::$give;
+            $re = \common\helps\getgift::getGiftss();
             foreach ($data as $key=>$v){
         
                 if (is_array($v)){
@@ -261,16 +262,16 @@ class RedeemCode extends Object
             }
            
             if (empty($vv)){
-                $this->addError('give_type','请选择类型');
+                $this->addError('give_type','请选择礼包');
                 return false;
             }
             foreach ($vv as $kk=>$value){
                 if (empty($value)){
-                    $this->addError('gold','请选择对应类型的数量');
+                    $this->addError('gold','请选择对应礼包的数量');
                     return false;
                 }
                 if (!is_numeric($value)){
-                    $this->addError('gold','请输入数字类型');
+                    $this->addError('gold','数量无效');
                     return false;
                 }
             }
@@ -315,7 +316,7 @@ class RedeemCode extends Object
         if($this->load($data) && $this->validate())
         {
              $vv =[];
-            $re = RedeemCode::$give;
+            $re = \common\helps\getgift::getGiftss();
             foreach ($data as $key=>$v){
                 
                 if (is_array($v)){
@@ -332,16 +333,16 @@ class RedeemCode extends Object
             }
             
             if (empty($vv)){
-                $this->addError('give_type','请选择类型');
+                $this->addError('give_type','请选择礼包');
                 return false;
             }
             foreach ($vv as $kk=>$value){
                 if (empty($value)){
-                    $this->addError('gold','请选择对应类型的数量');
+                    $this->addError('gold','请选择对应礼包的数量');
                     return false;
                 }
                 if (!is_numeric($value)){
-                    $this->addError('gold','请输入数字类型');
+                    $this->addError('gold','数量无效');
                     return false;
                 }
             }
@@ -403,13 +404,13 @@ class RedeemCode extends Object
                 $result->status=1;
                 $result->save(false);
             }
-            if ($results= Users::findOne(['game_id'=>$this->game_id])){
+            if ($results= Player::findOne(['id'=>$this->game_id])){
                 $model =new RedeemRecord();
                 $model->uid=$results->id;//用户表的自增ID
                 $model->game_id=$this->game_id;//用户表的自增ID
                 $model->redeem_code=$this->redeem_code;//用户表的自增ID
                 $model->uid=$results->id;//用户表的自增ID
-                $model->nickname=$results->nickname;
+                $model->nickname=$results->name;
                 $model->created_at=time();
                 $model->status=1;
                 $model->save(false);
@@ -458,23 +459,12 @@ class RedeemCode extends Object
         parent::__construct($config);
     }
     
-    /*public static function setShop(){
-        //查询 道具列表中的数据
-        $data  = Shop::find()->asArray()->all();
-        //将道具数组格式化成  对应的数组
-        $new_data = ArrayHelper::map($data,'id','name');
-        //自定义 赠送类型
-        $datas = ['gold'=>'金币','diamond'=>'钻石','fishGold'=>'鱼币'];
-        //将数据合并 赋值给数组
-        self::$give= ArrayHelper::merge($datas,$new_data);
-    }*/
-    
     
     // 修改兑换码
     public function edit($data=[]){
         if($this->load($data) && $this->validate()){
             $vv =[];
-            $re = RedeemCode::$give;
+            $re = \common\helps\getgift::getGiftss();
             foreach ($data as $key=>$v){
         
                 if (is_array($v)){

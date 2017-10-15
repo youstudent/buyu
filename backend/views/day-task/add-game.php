@@ -30,7 +30,7 @@
             </div>
             <?php echo $form->field($model,'time')?>
             <?php echo $form->field($model,'enable')->dropDownList(\backend\models\OneCannonForm::$enables)?>
-            <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\OneCannonForm::$give,['style'=>'margin-left: 113px;'])?>
+            <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\common\helps\getgift::getGiftss(),['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

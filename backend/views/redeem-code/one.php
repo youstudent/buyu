@@ -25,17 +25,8 @@
                 ])?>
                 <?php echo $form->field($model,'name')?>
                 <?php echo $form->field($model,'time')->textInput(['id'=>'IDIDID'])?>
-                <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\RedeemCode::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\helps\getgift::getGiftss(),['style'=>'margin-left: 113px;'])?>
                 <?php echo $form->field($model,'type')->dropDownList(\common\models\RedeemCode::$type)?>
-               <!-- <?php /*echo $form->field($model,'gold')*/?>
-                <?php /*echo $form->field($model,'diamond')*/?>
-                <?php /*echo $form->field($model,'fishGold')*/?>
-                <?php /*echo $form->field($model,'one')*/?>
-                <?php /*echo $form->field($model,'tow')*/?>
-                <?php /*echo $form->field($model,'three')*/?>
-                <?php /*echo $form->field($model,'four')*/?>
-                <?php /*echo $form->field($model,'five')*/?>
-                --><?php /*echo $form->field($model,'six')*/?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

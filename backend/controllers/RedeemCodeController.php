@@ -26,7 +26,6 @@ class RedeemCodeController extends ObjectController
     public function actionAdd()
     {
         $this->layout = false;
-        //RedeemCode::setShop();
         $model = new RedeemCode();
         if(\Yii::$app->request->isPost)
         {
@@ -40,7 +39,6 @@ class RedeemCodeController extends ObjectController
             return ['code'=>0,'message'=>$message];
             
         }
-        //$model->initTime();
         return $this->render('add',['model'=>$model]);
     }
     
@@ -52,7 +50,6 @@ class RedeemCodeController extends ObjectController
     public function actionAddOne()
     {
         $this->layout = false;
-        //RedeemCode::setShop();
         $model = new RedeemCode();
         if(\Yii::$app->request->isPost)
         {
@@ -71,54 +68,18 @@ class RedeemCodeController extends ObjectController
     //奖品内容的查看
     public function actionPrize(){
         $this->layout = false;
-       // RedeemCode::setShop();
         $id = empty(\Yii::$app->request->get('id')) ? \Yii::$app->request->post('id') : \Yii::$app->request->get('id');
         $model = RedeemCode::findOne($id);
         $JSON = json_decode($model->prize,true);
         $data  =[];
-        $re = RedeemCode::$give;
+        $re = \common\helps\getgift::getGiftss();
         
         foreach ($JSON as $key=>$value){
             if (array_key_exists($key,$re)){
                 $data[$re[$key]]=$value;
             }
-            
-            
         }
-        //var_dump($JSON);
-        /*foreach ($JSON as  $k=>$v){
-            if ($k=='gold'){     //金币
-                $model->gold=$v;
-            }
-            if ($k=='diamond'){
-                $model->diamond=$v;   //钻石
-            }
-            if ($k=='fishGold'){
-                $model->fishGold=$v;   //宝石鱼币
-            }
-            if ($k=='1'){
-                $model->one=$v;   //神灯
-            }
-            if ($k=='2'){
-                $model->tow=$v;  //锁定
-            }
-            if ($k=='3'){
-                $model->three=$v; //冻结
-            }
-            if ($k=='4'){
-                $model->four=$v;  //核弹
-            }
-            if ($k=='5'){
-                $model->five=$v; //狂暴
-            }
-            if ($k=='6'){
-                $model->six=$v;   //黑洞
-            }
-            $data[]=$k;
-        }*/
-       // $model->give_type=$data;
-       // var_dump($model->give_type);
-       // var_dump(RedeemCode::$give);
+        
         return $this->render('prize',['model'=>$model,'data'=>$data]);
     }
     
@@ -145,13 +106,6 @@ class RedeemCodeController extends ObjectController
     
     //导出兑换
     public function actionExport(){
-        //theCsv::export('g_redeem_code');
-        
-        /*theCsv::export([
-            'table' => 'g_redeem_code',
-            'fields' => ['redeem_code','name'],
-            'header' => ['兑换码','名称'],
-        ]);*/
         $data = RedeemCode::find()->select(['redeem_code','name'])->where(['in','status',[0,2]])->asArray()->all();
         theCsv::export([
                 'data'=>$data,

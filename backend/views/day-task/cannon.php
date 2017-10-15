@@ -33,10 +33,10 @@
                 <?php echo $form->field($model,'get')?>
                 <?php echo $form->field($model,'lost')?>
                 <?php echo $form->field($model,'enable')->dropDownList(\backend\models\OneCannonForm::$enables)?>
-                <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\backend\models\OneCannonForm::$give,['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\common\helps\getgift::getGiftss(),['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \backend\models\OneCannonForm::$give[$k]?></label>
+                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\helps\getgift::getGiftss()[$k]?></label>
                         <div class="col-lg-9">
                             <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="OneCannonForm[type][<?php echo $k?>]" value="<?php echo $v?>">
                             <span class="help-block m-b-none"></span>

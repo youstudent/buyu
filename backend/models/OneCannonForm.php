@@ -20,16 +20,16 @@ class OneCannonForm extends Model
     public static $give;
     public $type;
     public $id;
-    public $num=0;
+    public $num=1;
     public $typeId;
     public $gives;
     public $enable;
-    public $lost=0;
-    public $get=0;
+    public $lost=1;
+    public $get=1;
     public $type1;
-    public $number=0;
+    public $number=1;
     public $out_gold;
-    public $time=0;
+    public $time=1;
     public static $enables=[1=>'开启',0=>'关闭'];
     public static $types=[2=>'宝石',0=>'金币'];
     public static $pay_out=[0=>'充值',1=>'消耗'];
@@ -41,6 +41,7 @@ class OneCannonForm extends Model
         return [
             [['num','enable','lost','get','number','out_gold','time'],'integer'],
             [['give','type','id','typeId','gives','type1'],'safe'],
+            [['time','number','num','lost','get','number'],'match','pattern'=>'/^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/'],
             //[['time'],'unique'],
         ];
     }
@@ -120,13 +121,13 @@ class OneCannonForm extends Model
             if ($this->type){
             foreach ($this->type as $key => $value) {
                 if (in_array($key,$datas)) {
-                    if ($value<0 || $value==null || !is_numeric($value)){
+                    if ($value<=0 || $value==null || !is_numeric($value)){
                         return $this->addError('gives','奖品数量无效');
                     }
                     $send[$key] = $value;
                 }
                 if (is_numeric($key)) {
-                    if ($value<0 || $value==null || !is_numeric($value)){
+                    if ($value<=0 || $value==null || !is_numeric($value)){
                         return $this->addError('gives','奖品数量无效');
                     }
                     $tool['toolId'] = $key;
@@ -159,16 +160,16 @@ class OneCannonForm extends Model
         {
             $name = '弹无虚发';
             if ($this->typeId == 6){
-                if (empty($this->num)){
-                    $this->addError('num','分数不能为空');
+                if (empty($this->num) || $this->num<=0){
+                    $this->addError('num','分数无效');
                     return false;
                 }
                 $content['num']=$this->num;
                 $content['type']=$this->type1;
                 $name='惊天一炮';
             }elseif ($this->typeId == 7){
-                if (empty($this->number)){
-                    $this->addError('number','钻石不能为空');
+                if (empty($this->number) || $this->number<=0){
+                    $this->addError('number','钻石无效');
                     return false;
                 }
                 $name='挥金如土';
@@ -176,21 +177,21 @@ class OneCannonForm extends Model
                 $content['num']=$this->number;
             }elseif ($this->typeId==9){
                 $name='决战深海';
-                if (empty($this->lost)){
-                    $this->addError('lost','消耗数量不能为空');
+                if (empty($this->lost) || $this->lost<=0){
+                    $this->addError('lost','消耗数量无效');
                     return false;
                 }
                 $content['num']=$this->lost;
                 $content['type']=$this->type1;
             }elseif ($this->typeId == 10){
-                if (empty($this->time)){
-                    $this->addError('time','在线时间不能为空');
+                if (empty($this->time) || $this->time<=0){
+                    $this->addError('time','在线时间无效');
                     return false;
                 }
                 $name='持之以恒';
                 $content['num']=($this->time*1000)*60;
             }else{
-                if ($this->get<0 || $this->lost<0){
+                if ($this->get<=0 || $this->lost<=0){
                     $this->addError('get','数量不能小于0');
                     return  false;
                 }
@@ -207,13 +208,13 @@ class OneCannonForm extends Model
             if ($this->type){
             foreach ($this->type as $key => $value) {
                 if (in_array($key,$datas)) {
-                    if ($value<0 || $value==null || !is_numeric($value)){
+                    if ($value<=0 || $value==null || !is_numeric($value)){
                         return $this->addError('gives','奖品数量无效');
                     }
                     $send[$key] = $value;
                 }
                 if (is_numeric($key)) {
-                    if ($value<0 || $value==null || !is_numeric($value)){
+                    if ($value<=0 || $value==null || !is_numeric($value)){
                         return $this->addError('gives','奖品数量无效');
                     }
                     $tool['toolId'] = $key;

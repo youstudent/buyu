@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use backend\models\Fish;
 use backend\models\Shop;
 use common\services\Request;
 use Yii;
@@ -225,7 +226,7 @@ class DayTask extends Object
        $JSON = json_decode($data,true);
        $fishing_id =$JSON['fishId'];
        $num =$JSON['num'];
-       $row = Fishing::findOne(['id'=>$fishing_id]);
+       $row = Fish::findOne(['id'=>$fishing_id]);
        if ($row){
            $name =$row->name;
            return '击杀'.$name.$num.'条';
@@ -237,21 +238,21 @@ class DayTask extends Object
     public static function getFishingType($data){
         $JSON = json_decode($data,true);
         $fishing_id =$JSON['fishId'];
-        $re =  Fishing::findOne(['id'=>$fishing_id]);
+        $re =  Fish::findOne(['id'=>$fishing_id]);
         if ($re){
-            if ($re->type ==1){
+            if ($re->fishtype ==1){
                return '小鱼';
             }
-            if ($re->type ==2){
+            if ($re->fishtype ==2){
                 return '中鱼';
             }
-            if ($re->type ==3){
+            if ($re->fishtype ==3){
                 return '大鱼';
             }
-            if ($re->type ==4){
+            if ($re->fishtype ==4){
                 return '金鱼';
             }
-            if ($re->type ==5){
+            if ($re->fishtype ==5){
                 return 'BOOS';
             }
         }

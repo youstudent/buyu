@@ -48,7 +48,7 @@
         
                     <?php echo $form->field($model,'typeId')->hiddenInput()?>
                 </div>
-            <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
+            <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\common\helps\getgift::getGiftss(),['style'=>'margin-left: 113px;'])?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

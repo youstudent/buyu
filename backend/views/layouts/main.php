@@ -5,7 +5,7 @@ use yii\helpers\Url;
 
 $config = [
     ['label' => '首页中心', 'icon' => 'fa fa-dashboard icon', 'bg_color' => 'bg-danger', 'url' => ['site/index']],
-    ['label' => '用户管理', 'icon' => 'fa fa-users icon', 'bg_color' => 'bg-success', 'url' => ['product/index'], 'items' => [
+    ['label' => '用户管理', 'icon' => 'fa fa-users icon', 'bg_color' => 'bg-success', 'url' => ['users/list'], 'items' => [
         ['label' => '玩家列表', 'url' => ['users/list']],
        // ['label' => '充值记录', 'url' => ['users/pay-log']],
        // ['label' => '扣除记录', 'url' => ['users/pay-out']],
@@ -25,7 +25,7 @@ $config = [
     ['label' => '鱼群管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['fishing/index'], 'items' => [
         ['label' => '鱼群列表', 'url' => ['fishing/index', 'show' => '']],
     ]],
-    ['label' => '族长管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['agency/index'], 'items' => [
+    ['label' => '族长管理', 'icon' => 'fa fa-sitemap icon', 'bg_color' => 'bg-info', 'url' => ['family/index'], 'items' => [
         ['label' => '族长列表','url' => ['family/index']],
         ['label' => '族长充值记录', 'url' => ['pay/agency-pay-log']],
         ['label' => '族长扣除记录', 'url' => ['pay/agency-out-log']],
@@ -57,7 +57,7 @@ if (Yii::$app->params['distribution']) {
 }
 $config[] = ['label' => '公告管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
     ['label' => '公告管理', 'url' => ['notice/index', 'show' => '2']],
-    ['label' => '大赢家公告', 'url' => ['notice/index', 'show' => '2']]
+   // ['label' => '大赢家公告', 'url' => ['notice/index', 'show' => '2']]
 ]];
 $config[] = ['label' => '商城充值', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['currency-pay/index'], 'items' => [
     ['label' => '商城充值货币设置', 'url' => ['currency-pay/index']]
@@ -84,7 +84,7 @@ $config[] = ['label' => '大厅设置', 'icon' => 'fa fa-bullhorn icon', 'bg_col
     ['label' => '捕鱼任务奖励设置', 'url' => ['sign-board/index']],
     ['label' => '救济金(金币和鱼币设置)', 'url' => ['getgold/index']],
 ]];
-$config[] = ['label' => '每日任务管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-info', 'url' => ['manage/index'], 'items' => [
+$config[] = ['label' => '每日任务管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-info', 'url' => ['day-task/list'], 'items' => [
     ['label' => '基础任务', 'url' => ['day-task/list']],
     ['label' => '捕鱼能手', 'url' => ['day-task/expert']],
     ['label' => '日进斗金', 'url' => ['day-task/money-today']],
@@ -104,11 +104,11 @@ $config[] = ['label' => '基础设置', 'icon' => 'fa fa-bullhorn icon', 'bg_col
     ['label' => '商店道具设置', 'url' => ['shop/index']],
     ['label' => '管理员列表', 'url' => ['manage/index', 'id' => 1]],
 ]];
-$config[] = ['label' => '开关管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
+$config[] = ['label' => '开关管理', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['entryconfig/index'], 'items' => [
     ['label' => '游戏入口设置', 'url' => ['entryconfig/index']],
     ['label' => '功能开关设置', 'url' => ['entryconfig/feature']],
 ]];
-$config[] = ['label' => '二人对战场配置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['notice/index'], 'items' => [
+$config[] = ['label' => '二人对战场配置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['config/fee-index'], 'items' => [
     ['label' => '配置列表', 'url' => ['config/fee-index']],
     
 ]];$config[] = ['label' => '机器人参数配置', 'icon' => 'fa fa-bullhorn icon', 'bg_color' => 'bg-danger', 'url' => ['robots-vip/index'], 'items' => [

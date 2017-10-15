@@ -50,10 +50,10 @@
                 </div>
                 <?php echo $form->field($model,'num')?>
                 <?php echo $form->field($model,'enable')->dropDownList(\backend\models\ExpertForm::$enables)?>
-                <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
+                <?php echo $form->field($model,'gives',['inline'=>true])->checkboxList(\common\helps\getgift::getGiftss(),['style'=>'margin-left: 113px;'])?>
                 <?php foreach ($data as $k=>$v):?>
                     <div class="form-group field-notice-<?php  echo $k ?>" id=<?php echo $k?>>
-                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \backend\models\ExpertForm::$give[$k]?></label>
+                        <label class="col-lg-3 control-label" for="notice-<?php  echo $k ?>"><?php echo \common\helps\getgift::getGiftss()[$k]?></label>
                         <div class="col-lg-9">
                             <input type="text" id="notice-<?php echo $k?>>" class="form-control" name="ExpertForm[type][<?php echo $k?>]" value="<?php echo $v?>">
                             <span class="help-block m-b-none"></span>

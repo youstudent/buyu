@@ -108,13 +108,13 @@ class ExpertForm extends Model
             if ($this->type){
             foreach ($this->type as $key => $value) {
                 if (in_array($key,$datas)) {
-                    if ($value<0 || $value==null || !is_numeric($value)){
+                    if ($value<=0 || $value==null || !is_numeric($value)){
                         return $this->addError('gives','奖品数量无效');
                     }
                     $send[$key] = $value;
                 }
                 if (is_numeric($key)) {
-                    if ($value<0 || $value==null || !is_numeric($value)){
+                    if ($value<=0 || $value==null || !is_numeric($value)){
                         return $this->addError('gives','奖品数量无效');
                     }
                     $tool['toolId'] = $key;
@@ -199,9 +199,9 @@ class ExpertForm extends Model
     }
     
     public static function getFishingType($data){
-      $datas =   Fishing::findOne(['id'=>$data]);
+      $datas =   Fish::findOne(['id'=>$data]);
       if($datas){
-          return $datas->type;
+          return $datas->fishtype;
       }
           return 1;
     }

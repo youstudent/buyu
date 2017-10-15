@@ -51,7 +51,7 @@ class Pay extends \yii\db\ActiveRecord
             [['money', 'firstdouble', 'senddiamond', 'sendgold', 'sendfishgold', 'diamond'], 'integer'],
             [['sendtoolid', 'sendtoolnum', 'content'], 'string', 'max' => 255],
             [['gift','type','senddiamond', 'sendgold','sendfishgold'],'safe'],
-            [['money','firstdouble','senddiamond'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'数量必须大于0'],
+            [['money','firstdouble','diamond'],'match','pattern'=>'/^$|^\+?[1-9]\d*$/','message'=>'数量必须大于0'],
         ];
     }
 

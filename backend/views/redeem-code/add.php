@@ -31,38 +31,8 @@ use yii\web\View;
                 <?php echo $form->field($model,'name')?>
                 <?php echo $form->field($model,'number')?>
                 <?php echo $form->field($model,'time')->textInput(['id'=>'IDIDID'])?>
-                <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\models\RedeemCode::$give,['style'=>'margin-left: 113px;'])?>
-               
+                <?php echo $form->field($model,'give_type',['inline'=>true])->checkboxList(\common\helps\getgift::getGiftss(),['style'=>'margin-left: 113px;'])?>
                 <?php echo $form->field($model,'type')->dropDownList(\common\models\RedeemCode::$type) ?>
-            <?php
-            $arr=\common\models\RedeemCode::$give;
-            //var_dump($arr);
-           /* $arr = [
-                ['name'=> 'gold', 'value'=> '', 'label' => '金币'],
-                ['name'=> 'diamond', 'value'=> '', 'label' => '砖石'],
-                ['name'=> 'fishGold', 'value'=> '', 'label' => '鱼币'],
-                ['name'=> 'one', 'value'=> '', 'label' => 'one'],
-                ['name'=> 'tow', 'value'=> '', 'label' => 'two'],
-            ];*/
-            ?>
-                <?php /*foreach($arr as $index=> $val): */?><!--
-                    <div class="form-group field-redeemcode-<?php /* echo $index */?>" style="display: none">
-                        <label class="col-lg-3 control-label" for="redeemcode-<?php /* echo $index */?>"><?php /* echo $index */?></label>
-                        <div class="col-lg-9">
-                            <input type="text" id="redeemcode-<?php /* echo $index*/?>>" class="form-control" name="RedeemCode[<?php /*echo $index*/?>">
-                            <span class="help-block m-b-none"></span>
-                        </div>
-                    </div>
-                --><?php /*endforeach; */?>
-<!--                --><?php //echo $form->field($model,'gold')?>
-<!--                --><?php //echo $form->field($model,'diamond')?>
-<!--                --><?php //echo $form->field($model,'fishGold')?>
-<!--                --><?php //echo $form->field($model,'one')?>
-<!--                --><?php //echo $form->field($model,'tow')?>
-<!--                --><?php //echo $form->field($model,'three')?>
-<!--                --><?php //echo $form->field($model,'four')?>
-<!--                --><?php //echo $form->field($model,'five')?>
-<!--                --><?php //echo $form->field($model,'six')?>
             <?php \yii\bootstrap\ActiveForm::end()?>
             </div>
         </div>

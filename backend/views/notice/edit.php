@@ -25,7 +25,7 @@
                 ])?>
                 <input type="hidden" name="id" value="<?=$model->id?>">
                 <?php echo $form->field($model,'noticetype')->dropDownList([1=>'登录公告',2=>'大厅公告',3=>'滚动公告'],['disabled'=>"disabled"])?>
-                <?php echo $form->field($model,'content')->textarea()?>
+                <?php echo $form->field($model,'content')->textarea(['rows'=>6])?>
                 <?php echo $form->field($model,'enable')->dropDownList(['1'=>'显 示','0'=>'隐 藏'])?>
                 <div class="dis" style="display: none">
                 <?php echo $form->field($model,'gift',['inline'=>true])->checkboxList(\common\helps\getgift::getGift(),['style'=>'margin-left: 113px;'])?>
