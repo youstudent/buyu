@@ -2,7 +2,9 @@
 
 namespace backend\models;
 
+use common\services\Request;
 use Yii;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "{{%chat}}".
@@ -67,22 +69,14 @@ class Chat extends \yii\db\ActiveRecord
              * 请求 游戏服务器 聊天设置
              */
             $data=[];
-            $data['message']=$this->content;  //内容
-            $data['useable']=$this->status;   //状态
+            $data['message']=$this->message;  //内容
+            $data['useable']=$this->useable;   //状态
             $payss = Json::encode($data);
             $url = \Yii::$app->params['Api'].'/control/addChat';
             $re = Request::request_post_raw($url,$payss);
             if ($re['code']== 1){
-                $this->manage_id    = \Yii::$app->session->get('manageId');
-                $this->manage_name  = \Yii::$app->session->get('manageName');
-                $this->reg_time=time();
-                $this->save(false);
                 return true;
             }
-            /*$this->manage_id    = \Yii::$app->session->get('manageId');
-            $this->manage_name  = \Yii::$app->session->get('manageName');
-            $this->reg_time         = time();
-            return $this->save();*/
         }
     }
     

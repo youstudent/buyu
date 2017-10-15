@@ -34,7 +34,7 @@ class MailController extends ObjectController
         if(\Yii::$app->request->isPost)
         {
             \Yii::$app->response->format = Response::FORMAT_JSON;
-            if($model->add(\Yii::$app->request->post()))
+            if($model->adds(\Yii::$app->request->post()))
             {
                 return ['code'=>1,'message'=>'发布成功'];
             }

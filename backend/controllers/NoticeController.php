@@ -58,7 +58,7 @@ class NoticeController extends ObjectController
         $model = new Notices();
         if (\Yii::$app->request->isPost) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
-            if ($model->add(\Yii::$app->request->post())) {
+            if ($model->adds(\Yii::$app->request->post())) {
                 return ['code' => 1, 'message' => '添加成功'];
             }
             $message = $model->getFirstErrors();
@@ -80,7 +80,7 @@ class NoticeController extends ObjectController
         $model = Notices::findOne($id);
         if (\Yii::$app->request->isPost) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
-            if ($model->edit(\Yii::$app->request->post())) {
+            if ($model->edits(\Yii::$app->request->post())) {
                 return ['code' => 1, 'message' => '修改成功'];
             }
             $message = $model->getFirstErrors();
@@ -107,9 +107,27 @@ class NoticeController extends ObjectController
         $id = \Yii::$app->request->get('id');
         $re =  Notices::findOne(['id'=>$id]);
         if ($re){
-            $re->enable=0;
-            $re->status=0;
-            if ($re->save(false)){
+            $pays=[];
+            $send=[];
+            $tools = [];
+            $pays['id']=$re->id;
+            $pays['content']=$re->content;
+            $pays['type']=$re->noticetype;
+            $pays['useable']=0;
+            $pays['status']=0;
+            if (!empty($tools)){
+                $send['tools']=$tools;
+            }
+            if (!empty($send)){
+                $pays['send']=$send;
+            }
+            /**
+             * 请求游戏服务端   修改数据
+             */
+            $payss = Json::encode($pays);
+            $url = \Yii::$app->params['Api'].'/control/updateNotice';
+            $re = Request::request_post_raw($url,$payss);
+            if ($re['code']== 1){
                 return ['code' => 1, 'message' => '删除成功'];
             }
         }

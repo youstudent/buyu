@@ -3,10 +3,12 @@
 namespace backend\models;
 
 use common\helps\getgift;
+use common\services\Request;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Yii;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "{{%email}}".
@@ -181,6 +183,58 @@ class Email extends \yii\db\ActiveRecord
             return $this->save();
         }
     }
+    
+    
+    public function adds($data = [])
+    {
+        if ($this->load($data) && $this->validate()) {
+            /**
+             *  将接收到的数据进行 拼装发送给游戏服务器
+             */
+            $datas = ['gold', 'diamond', 'fishGold'];
+            $pays = [];
+            $send = [];
+            $tools = [];
+            $i = 0;
+            $tool = [];
+            $pays['title'] = $this->title;
+            $pays['content'] = $this->content;
+            if ($this->type){
+                
+                    foreach ($this->type as $kk => $VV) {
+                        if (in_array($kk, $datas)) {
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('type','奖品数量无效');
+                            }
+                            $send[$kk] = $VV;
+                        }
+                        if (is_numeric($kk) ) {
+                            if ($VV<=0 || $VV==null || !is_numeric($VV)){
+                                return $this->addError('type','奖品数量无效');
+                            }
+                            $tool['toolId'] = $kk;
+                            $tool['toolNum'] = $VV;
+                            $tools[$i] = $tool;
+                            $i++;
+                        }
+                    }
+                }
+            
+            $send['tools'] = $tools;
+            $pays['send'] = $send;
+            $payss = Json::encode($pays);
+            /**
+             * 请求服务器  添加邮件
+             */
+            $url = \Yii::$app->params['Api'] . '/control/addemail';
+            $re = Request::request_post_raws($url, $payss);
+            if ($re['code'] == 1) {
+               
+                return true;
+            }
+        }
+    }
+    
     
     // 创建模型自动设置赠送礼品类型
     public function __construct(array $config = [])

@@ -3,7 +3,9 @@
 namespace backend\models;
 
 use common\helps\getgift;
+use common\services\Request;
 use Yii;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "{{%notice}}".
@@ -109,6 +111,66 @@ class Notices extends \yii\db\ActiveRecord
         }
     }
     
+    public function adds($data = [])
+    {
+        if($this->load($data) && $this->validate())
+        {
+            if ($this->noticetype == 1 || $this->noticetype == 2){
+                if (self::find()->where(['noticetype'=>$this->noticetype,'enable'=>1])->exists()){
+                    $this->addError('noticetype','登录公告和大厅公告只能显示一条');
+                    return false;
+                }
+            }/**
+             *  将接收到的数据进行 拼装发送给游戏服务器
+             */
+            $datas=['gold','diamond','fishGold'];
+            $pays=[];
+            $send=[];
+            $tools = [];
+            $i = 0;
+            $tool = [];
+            $pays['content']=$this->content;
+            $pays['type']=$this->noticetype;
+            $pays['useable']=$this->enable;
+            $pays['status']=1;
+            if ($this->type){
+                    foreach ($this->type as $kk=>$VV){
+                        if (in_array($kk,$datas)){
+                            if (empty($VV) || !is_numeric($VV) || $VV<=0){
+                                return $this->addError('type','奖品数量无效');
+                            }
+                            $send[$kk]=$VV;
+                        }
+                        if (is_numeric($kk)){
+                            if (empty($VV)  || !is_numeric($VV)  || $VV<=0){
+                                return $this->addError('type','奖品数量无效');
+                            }
+                            $tool['toolId']=$kk;
+                            $tool['toolNum']=$VV;
+                            $tools[$i]=$tool;
+                            $i++;
+                        }
+                    }
+            }
+            
+            if (!empty($tools)){
+                $send['tools']=$tools;
+            }
+            if (!empty($send)){
+                $pays['send']=$send;
+            }
+            /**
+             * 请求服务器地址 炮台倍数
+             */
+            $payss = Json::encode($pays);
+            $url = \Yii::$app->params['Api'].'/control/addNotice';
+            $re = Request::request_post_raw($url,$payss);
+            if ($re['code']== 1){
+                return true;
+            }
+        }
+    }
+    
     /**
      * 修改公告
      * @param array $data
@@ -140,6 +202,62 @@ class Notices extends \yii\db\ActiveRecord
                 }
             }
             return $this->save();
+        }
+    }
+    
+    public function edits($data = []){
+        if($this->load($data) && $this->validate())
+        {
+            /**
+             * 接收数据  拼装
+             */
+            $datas=['gold','diamond','fishGold'];
+            $pays=[];
+            $send=[];
+            $tools = [];
+            $i = 0;
+            $tool = [];
+            $pays['id']=$this->id;
+            $pays['content']=$this->content;
+            $pays['type']=$this->noticetype;
+            $pays['useable']=$this->enable;
+            $pays['status']=1;
+            if ($this->type){
+                    foreach ($this->type as $kk=>$VV){
+                        if (in_array($kk,$datas)){
+                            if (empty($VV) || !is_numeric($VV) || $VV<=0 ){
+                                return $this->addError('type','奖品数量无效');
+                            }
+                            $send[$kk]=$VV;
+                        }
+                        if (is_numeric($kk)){
+                            if (empty($VV) || !is_numeric($VV) || $VV<=0 ){
+                                return $this->addError('type','奖品数量无效');
+                            }
+                            $tool['toolId']=$kk;
+                            $tool['toolNum']=$VV;
+                            $tools[$i]=$tool;
+                            $i++;
+                        }
+                    }
+                
+            }
+            if (!empty($tools)){
+                $send['tools']=$tools;
+            }
+            if (!empty($send)){
+                $pays['send']=$send;
+            }
+            /**
+             * 请求游戏服务端   修改数据
+             */
+            $payss = Json::encode($pays);
+            $url = \Yii::$app->params['Api'].'/control/updateNotice';
+            $re = Request::request_post_raw($url,$payss);
+            if ($re['code']== 1){
+                return true;
+            }
+            
         }
     }
 }

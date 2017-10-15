@@ -445,7 +445,6 @@ class MonitoringController extends ObjectController
         //"gonggao":0,"meiriqiandao":0,"meirirenwu":0,"youjian":0}' (length=164)
         $data = [];
         if ($new_gold) {
-            var_dump($new_gold);
             foreach ($new_gold as $key => $value) {
                 
                 if ($key == 'buyu'&& $value > 0) {
