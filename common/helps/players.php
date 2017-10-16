@@ -236,7 +236,7 @@ class players
      */
     public static function getFishing($type){
         //根据类型查询所有的鱼
-        $data = Fishing::find()->where(['type'=>$type])->asArray()->all();
+        $data = \backend\models\Fish::find()->where(['fishtype'=>$type])->asArray()->all();
         $data =  ArrayHelper::map($data,'id','name');
         $datas =  Redpacket::find()->asArray()->all();
         //查询所有已添加的鱼
@@ -259,7 +259,7 @@ class players
      */
     public static function getFishingss($type){
         //根据类型查询所有的鱼
-        $data = Fishing::find()->where(['type'=>$type])->asArray()->all();
+        $data = \backend\models\Fish::find()->where(['fishtype'=>$type])->asArray()->all();
         $data =  ArrayHelper::map($data,'id','name');
         return $data;
         
@@ -271,7 +271,7 @@ class players
      * @return string
      */
     public static function getFishings($id){
-      $data =   Fishing::findOne(['id'=>$id]);
+      $data =   \backend\models\Fish::findOne(['id'=>$id]);
       if ($data){
           return $data->name;
       }
